@@ -1,6 +1,6 @@
 .header {
   height: 80px;
-  font-size: 1.5rem;
+  font-size: .8rem;
   letter-spacing: normal;
   margin: 0 auto;
   color: $black;
@@ -16,21 +16,23 @@
 
 .brand {
   margin-left: 68px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav {
   margin: 0 auto;
   left: 0;
   right: 0;
-  height: 26px;
+
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  margin: 1px;
   align-items: center;
   justify-content: center;
 
-  color: #000;
+  color: $black;
   font-family: 'Noto Sans';
   font-style: normal;
   font-weight: 400;
@@ -52,26 +54,14 @@
 }
 
 .nav-link {
-  margin: 1.5em;
+  margin: 1.5rem;
   color: $black;
   text-decoration: none;
-  font-size: .8em;
-  padding: .3em;
+  font-size: .8rem;
+
 
 }
 
-.nav-link.active {
-  border-bottom: $black 3px solid;
-}
-
-.nav-link:not(.active):hover {
-  border-bottom: $black 3px solid;
-}
-
-/*兄弟選擇器 ~ 當 .nav-link 不具有 .active 狀態且被 :hover 時，會取消其他同層級具有 .active 狀態兄弟選擇器 ~ 的 .nav-link 的元素*/
-.nav-link:not(.active):hover~.nav-link.active {
-  border-bottom: none;
-}
 
 
 /*let it to upper layer for clicking */

@@ -40,7 +40,7 @@ code {
 /*360px 手機螢幕*/
 /*1201以上大螢幕*/
 @media screen and (min-width: 1201px) {
-  body {
+  html, body {
     font-size: 20px;
   }
   .container {
@@ -199,7 +199,7 @@ code {
 
 .header {
   height: 80px;
-  font-size: 1.5rem;
+  font-size: 0.8rem;
   letter-spacing: normal;
   margin: 0 auto;
   color: #000;
@@ -215,17 +215,18 @@ code {
 
 .brand {
   margin-left: 68px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav {
   margin: 0 auto;
   left: 0;
   right: 0;
-  height: 26px;
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  margin: 1px;
   align-items: center;
   justify-content: center;
   color: #000;
@@ -247,24 +248,10 @@ code {
 }
 
 .nav-link {
-  margin: 1.5em;
+  margin: 1.5rem;
   color: #000;
   text-decoration: none;
-  font-size: 0.8em;
-  padding: 0.3em;
-}
-
-.nav-link.active {
-  border-bottom: #000 3px solid;
-}
-
-.nav-link:not(.active):hover {
-  border-bottom: #000 3px solid;
-}
-
-/*兄弟選擇器 ~ 當 .nav-link 不具有 .active 狀態且被 :hover 時，會取消其他同層級具有 .active 狀態兄弟選擇器 ~ 的 .nav-link 的元素*/
-.nav-link:not(.active):hover ~ .nav-link.active {
-  border-bottom: none;
+  font-size: 0.8rem;
 }
 
 /*let it to upper layer for clicking */

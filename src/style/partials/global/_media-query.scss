@@ -1,6 +1,6 @@
  /*1201以上大螢幕*/
  @media screen and (min-width: $big-screen-min) {
-   body {
+   html, body {
      font-size: $font-size-xl;
    }
 

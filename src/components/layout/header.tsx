@@ -36,7 +36,7 @@ export const Header = () => {
       <div className='header'>
         <div className='brand'>
           <NavLink to="/" className="home-link">
-            <img src={logo} alt="logo" width={'100%'} />
+            <img src={logo} alt="logo" width={'162px'} height={'42px'} />
           </NavLink>
         </div>
 
