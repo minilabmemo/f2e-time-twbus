@@ -4,7 +4,7 @@ import pet from '../images/pet.svg';
 import usePetApi from '../hooks/usePetApi';
 import Card from './base/Card';
 import Loading from './base/Loading';
-import { StorageKey, save_text, savedAnimalsMax } from './const';
+import { StorageKey, savedAnimalsMax } from './const';
 import React, { useEffect, useState } from 'react';
 import icon_save from '../images/icon_save.svg';
 import info from '../images/info.svg';
@@ -72,7 +72,7 @@ const Stores = () => {
 
       <div className='title-box' >
         <img style={{ width: "2em", height: "2em" }} src={pet} alt="pet" />
-        <span className="title-text">{save_text}</span>
+
 
 
       </div>
@@ -81,39 +81,6 @@ const Stores = () => {
         <div className="hint-text">提醒您，本頁面是根據您在寵物找尋時點擊喜歡 <img width="20px" height="20px" src={icon_save} alt="icon_save" /> 的<b>浪浪暫存區</b>，紀錄僅暫時存於瀏覽器紀錄中，如要永久保存<b>請自行列印本頁或紀錄</b>，本站無永久保存功能。</div>
       </div>
       {/* TODO 下拉說明 會因為你清除瀏覽器紀錄而消失 本平台不服儲存責任 */}
-      <ResultBox>
-        <div className='title-box' >
-          <span className="total-text">筆數</span> <span className="number-text">{petData.total}/{savedAnimalsMax}</span>
-          <span style={{ marginLeft: '.4em' }} onClick={() => onRefresh()} >  <FontAwesomeIcon icon={faArrowsRotate} /></span>
-
-        </div>
-
-        <Result isDataFound={isDataFound} ref={resultRef}>
-
-          {petData.isLoading && <Loading LoadHeight={resultBoxHeight} />}
-
-          {petData.records.map((item, index) => (
-            <Card
-              key={item.animal_id}
-              animal_id={item.animal_id}
-              album_file={item.album_file}
-              animal_sterilization={item.animal_sterilization}
-              animal_bacterin={item.animal_bacterin}
-              animal_kind={item.animal_kind}
-              animal_Variety={item.animal_Variety}
-              animal_sex={item.animal_sex}
-              animal_age={item.animal_age}
-              animal_bodytype={item.animal_bodytype}
-              animal_color={item.animal_colour}
-              animal_status={item.animal_status}
-              shelter_name={item.shelter_name}
-
-            />
-          ))}
-        </Result>
-
-
-      </ResultBox>
 
 
 

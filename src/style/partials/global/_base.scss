@@ -14,9 +14,23 @@ code {
 }
 
 
+.base {
+  overflow: hidden;
+  /* solve margin collapsing */
+  background-color: $gray-bg;
+  width: 100%;
+  height: 100vh;
+  font-size: $font-size-xl;
+}
+
+.container {
+  height: 100%;
+  font-family: $font-family;
+}
+
 
 .title-box {
-  color: $primary-color;
+  color: $black;
   font-size: 1.2em;
   text-align: left;
   display: flex;
@@ -31,7 +45,7 @@ code {
 }
 
 .query-hint {
-  color: $gray-color;
+  color: $gray-bg;
   font-size: .8em;
   text-align: left;
   margin: 10px 10px;
@@ -114,7 +128,7 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: $blue-bright;
+  background-color: $blue-font;
   color: white;
 }
 

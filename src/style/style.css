@@ -17,8 +17,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.base {
+  overflow: hidden;
+  /* solve margin collapsing */
+  background-color: #F5F6F6;
+  width: 100%;
+  height: 100vh;
+  font-size: 20px;
+}
+
+.container {
+  height: 100%;
+  font-family: "Noto Sans";
+}
+
 .title-box {
-  color: #144480;
+  color: #000;
   font-size: 1.2em;
   text-align: left;
   display: flex;
@@ -33,7 +47,7 @@ code {
 }
 
 .query-hint {
-  color: #777;
+  color: #F5F6F6;
   font-size: 0.8em;
   text-align: left;
   margin: 10px 10px;
@@ -106,7 +120,7 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #5AC1F9;
+  background-color: #3591C5;
   color: white;
 }
 
@@ -126,24 +140,16 @@ table tr td:nth-child(1) {
   body {
     font-size: 20px;
   }
-  .page-content-box {
-    padding: 3em;
-    margin: 2em;
-  }
   .container {
-    width: 80%;
-    margin: 3em auto;
+    max-width: 1440px;
+    margin: auto;
   }
 }
 /*1200以下小螢幕*/
 @media screen and (max-width: 1200px) {
-  .page-content-box {
-    padding: 3em;
-    margin: 2em;
-  }
   .container {
     width: 80%;
-    margin: 3em auto;
+    margin: auto;
   }
   .search-button-with-ripple {
     height: auto !important;
@@ -194,13 +200,9 @@ table tr td:nth-child(1) {
   .info .info_pet_block, .info .shelter_data_block, .shelter .info_pet_block, .shelter .shelter_data_block {
     width: 100% !important;
   }
-  .page-content-box {
-    padding: 0.8em;
-    margin: 0.8em;
-  }
   .container {
     width: 90%;
-    margin: 2em auto;
+    margin: auto;
   }
   .MuiSvgIcon-root {
     height: 10px !important;
@@ -216,6 +218,26 @@ table tr td:nth-child(1) {
     /*12*/
   }
 }
+.header {
+  height: 80px;
+  font-size: 1.5rem;
+  letter-spacing: normal;
+  margin: 0 auto;
+  color: #000;
+  background: #FFF;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.brand {
+  margin-left: 68px;
+}
+
 .nav {
   margin: 0 auto;
   left: 0;
@@ -227,37 +249,38 @@ table tr td:nth-child(1) {
   margin: 1px;
   align-items: center;
   justify-content: center;
+  color: #000;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.store {
-  right: 5px;
-  height: 35px;
-  box-sizing: border-box;
-  border-radius: 7px;
+.lang {
+  right: 1.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0.2em 1em;
 }
-.store img {
-  padding-right: 0.3em;
+.lang img {
+  padding-right: 11px;
 }
 
 .nav-link {
-  margin: 0.3em;
-  color: #144480;
+  margin: 1.5em;
+  color: #000;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 0.8em;
   padding: 0.3em;
 }
 
 .nav-link.active {
-  border-bottom: #144480 3px solid;
+  border-bottom: #000 3px solid;
 }
 
 .nav-link:not(.active):hover {
-  border-bottom: #144480 3px solid;
+  border-bottom: #000 3px solid;
 }
 
 /*兄弟選擇器 ~ 當 .nav-link 不具有 .active 狀態且被 :hover 時，會取消其他同層級具有 .active 狀態兄弟選擇器 ~ 的 .nav-link 的元素*/
@@ -272,20 +295,6 @@ table tr td:nth-child(1) {
 }
 .home-link img {
   max-width: 214px;
-}
-
-.store-link {
-  font-size: 0.8em;
-  color: #494949;
-  text-decoration: none;
-  position: absolute;
-  border-radius: 7px;
-  height: 35px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
 
 .brand-link {
@@ -305,12 +314,9 @@ table tr td:nth-child(1) {
     width: 100%;
   }
   .brand,
-  .store,
+  .lang,
   .about-image {
     position: absolute;
-  }
-  .store {
-    width: 8em;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -322,9 +328,6 @@ table tr td:nth-child(1) {
   .brand .home-link img {
     width: 100%;
   }
-  .store {
-    width: 8em;
-  }
 }
 @media all and (max-width: 1024px) {
   .brand {
@@ -335,7 +338,7 @@ table tr td:nth-child(1) {
     width: 80%;
   }
   .brand,
-  .store,
+  .lang,
   .about-image {
     position: relative;
     top: 0;
@@ -352,23 +355,20 @@ table tr td:nth-child(1) {
   .brand .home-link img {
     width: 100%;
   }
-  .store {
-    width: 7.5em;
-  }
   .nav,
-  .store,
+  .lang,
   .about-image {
     margin: 8px;
   }
 }
 @media all and (max-width: 360px) {
-  .store {
+  .lang {
     width: 8.5em;
   }
 }
 .save-hint-box {
-  color: #144480;
-  background-color: #feffe0;
+  color: #000;
+  background-color: #7FC0C5;
   border-radius: 0.5em;
   width: 75%;
   height: auto;
@@ -383,7 +383,7 @@ table tr td:nth-child(1) {
 }
 
 .hint-text {
-  color: #144480;
+  color: #000;
   margin-left: 1.25em;
   width: 90%;
   height: auto;
@@ -409,10 +409,10 @@ table tr td:nth-child(1) {
 }
 
 .qa-question {
-  color: #144480;
+  color: #000;
   cursor: pointer;
   font-size: 1em;
-  border-left: #144480 4px solid;
+  border-left: #000 4px solid;
   padding-left: 8px;
   margin-top: 32px;
   box-sizing: border-box;
@@ -435,7 +435,7 @@ table tr td:nth-child(1) {
   font-family: "Noto Sans TC Black";
   font-weight: 900;
   margin-right: 8px;
-  color: #175fbf;
+  color: #3591C5;
 }
 
 .animal-Variety {
@@ -448,7 +448,7 @@ table tr td:nth-child(1) {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #5AC1F9;
+  color: #3591C5;
 }
 
 .tabs-content {
@@ -513,7 +513,7 @@ table tr td:nth-child(1) {
 
 #map path {
   fill: transparent;
-  stroke: #175fbf;
+  stroke: #3591C5;
   cursor: pointer;
   transition: fill 0.2s ease, stroke 0.2s ease, transform 0.2s ease;
 }

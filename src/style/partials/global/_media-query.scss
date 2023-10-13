@@ -4,16 +4,11 @@
      font-size: $font-size-xl;
    }
 
-   .page-content-box {
-     padding: 3em;
-     margin: 2em;
-   }
 
    .container {
-     width: 80%;
-     margin: 3em auto;
+     max-width: 1440px;
+     margin: auto;
    }
-
 
 
 
@@ -22,14 +17,11 @@
 
  /*1200以下小螢幕*/
  @media screen and (max-width: $small-screen-max) {
-   .page-content-box {
-     padding: 3em;
-     margin: 2em;
-   }
+
 
    .container {
      width: 80%;
-     margin: 3em auto;
+     margin: auto;
    }
 
    .search-button-with-ripple {
@@ -105,14 +97,11 @@
      ;
    }
 
-   .page-content-box {
-     padding: .8em;
-     margin: .8em;
-   }
+
 
    .container {
      width: 90%;
-     margin: 2em auto;
+     margin: auto;
    }
 
 

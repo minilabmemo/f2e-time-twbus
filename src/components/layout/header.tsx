@@ -1,45 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import brand from '../images/brand.svg';
-import icon_save from '../images/icon_save.svg';
-import styled from '@emotion/styled';
-import { theme } from '../style/theme';
+import logo from '../../images/logo.svg';
+import icon_language from '../../images/icon_language.svg';
+
+import { theme } from '../../style/theme';
 import { ThemeProvider } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
-import { NawText, save_text } from './const';
-
-const HeaderBar = styled.div`
-  font-size: .9em;
-  line-height: 26px;
-  letter-spacing: normal;
-  text-align: left;
-  color: ${(props) => {
-    return props.theme.primeColor;
-  }};
-
-  width: 90%;
-  margin: 0 auto;
-  padding-top: 2.5em;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  flex-wrap:wrap ;
-`;
+import { NawText } from '../const';
 
 
 
-
-const Store = styled.div`
-
-  right: 5px;
-  background-color: ${(props) => {
-    return props.theme.secondColor;
-  }};
- 
-
-`;
 export const Header = () => {
   const [isBigScreen, setSmallScreen] = useState(false);
   const handleOnResize = () => {
@@ -64,10 +33,10 @@ export const Header = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <HeaderBar data-testid="header-component">
+      <div className='header'>
         <div className='brand'>
           <NavLink to="/" className="home-link">
-            <img src={brand} alt="brand" />
+            <img src={logo} alt="logo" width={'100%'} />
           </NavLink>
         </div>
 
@@ -89,15 +58,15 @@ export const Header = () => {
           </NavLink>
         </div>
 
-        <Store className="store">
-          <NavLink to="/stores" className="store-link">
-            <img width="20px" height="20px" src={icon_save} alt="icon_save" />
-            <span >{save_text}</span>
-          </NavLink>
-        </Store>
+        <div className="lang">
+
+          <img width="20px" height="20px" src={icon_language} alt="icon_save" />
+          <span >中文</span>｜<span >英文</span>
+
+        </div>
 
 
-      </HeaderBar>
+      </div>
     </ThemeProvider >
   );
 };

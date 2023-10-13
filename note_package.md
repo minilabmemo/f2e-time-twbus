@@ -108,6 +108,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - vscode-stylted-components
 - Code Spell Checker
 - SCSS intellisense
+- Live Sass Compiler > watch sass [vscode button at below]
 
 ## storybook
 ```

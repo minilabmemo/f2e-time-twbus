@@ -1,3 +1,23 @@
+.header {
+  height: 80px;
+  font-size: 1.5rem;
+  letter-spacing: normal;
+  margin: 0 auto;
+  color: $black;
+  background: #FFF;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.brand {
+  margin-left: 68px;
+}
+
 .nav {
   margin: 0 auto;
   left: 0;
@@ -9,39 +29,43 @@
   margin: 1px;
   align-items: center;
   justify-content: center;
+
+  color: #000;
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.store {
-  right: 5px;
-  height: 35px;
-  box-sizing: border-box;
-  border-radius: 7px;
+.lang {
+  right: 1.5rem;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: .2em 1em;
+
 
   img {
-    padding-right: .3em;
+    padding-right: 11px;
   }
 }
 
 .nav-link {
-  margin: .3em;
-  color: $primary-color;
+  margin: 1.5em;
+  color: $black;
   text-decoration: none;
-  font-size: 1em;
+  font-size: .8em;
   padding: .3em;
 
 }
 
 .nav-link.active {
-  border-bottom: $primary-color 3px solid;
+  border-bottom: $black 3px solid;
 }
 
 .nav-link:not(.active):hover {
-  border-bottom: $primary-color 3px solid;
+  border-bottom: $black 3px solid;
 }
 
 /*兄弟選擇器 ~ 當 .nav-link 不具有 .active 狀態且被 :hover 時，會取消其他同層級具有 .active 狀態兄弟選擇器 ~ 的 .nav-link 的元素*/
@@ -61,20 +85,7 @@
 
 }
 
-.store-link {
-  font-size: .8em;
-  color: $gray-dark-color;
-  text-decoration: none;
-  position: absolute;
-  border-radius: 7px;
-  height: 35px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 
-}
 
 
 .brand-link {
@@ -102,17 +113,12 @@
 
 
   .brand,
-  .store,
+  .lang,
   .about-image {
     position: absolute;
 
   }
 
-  .store {
-    width: 8em;
-
-
-  }
 
 
 
@@ -134,11 +140,7 @@
 
   }
 
-  .store {
-    width: 8em;
 
-
-  }
 
 
 
@@ -165,7 +167,7 @@
 
 
   .brand,
-  .store,
+  .lang,
   .about-image {
     position: relative;
     top: 0;
@@ -190,13 +192,9 @@
     }
   }
 
-  .store {
-    width: 7.5em;
-
-  }
 
   .nav,
-  .store,
+  .lang,
   .about-image {
     margin: 8px;
   }
@@ -205,7 +203,7 @@
 
 @media all and (max-width: $phone-360) {
 
-  .store {
+  .lang {
     width: 8.5em;
 
   }

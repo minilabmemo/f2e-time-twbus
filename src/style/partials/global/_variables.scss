@@ -1,16 +1,21 @@
-$primary-color: #144480;
-$blue-bright: #5AC1F9;
-$orange-bright: #f9d35a;
-$blue-light: #E0F4FF;
-$yellow-light: #feffe0;
-$blue-bright-dark: #175fbf;
-$gray-color: #777;
-$gray-dark-color: #494949;
+//color -----
+$black: #000;
+$white: #FFF;
 
+$black-foot: #444444;
+$gray-bg: #F5F6F6;
 
+$black-font: #283C43;
+$pink-font: #D08181;
+$blue-font: #3591C5;
+$cyan-font: #7FC0C5;
+$blue-font-light-font: #5E9BAE;
+$blue-font-font: #52797C;
 
-$font-family: "Apple LiGothic", "Ubuntu", sans-serif;
+//font -----
+$font-family: "Noto Sans";
 
+//font-size -----
 $font-size-xs: 12px;
 $font-size-sm: 14px;
 $font-size-base: 16px;
@@ -21,6 +26,7 @@ $font-size-3xl: 30px;
 $font-size-5xl: 48px;
 
 
+//RWD -----
 
 $big-screen-min: 1201px;
 /*大於1200 大螢幕介面*/

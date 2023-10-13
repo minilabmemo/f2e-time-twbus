@@ -3,12 +3,11 @@ import construct_img from '../images/construct_img.png';
 export const savedAnimalsMax = 20;
 
 export const NawText = {
-  about: { text: "關於本站 | About", short: "關於本站" },
-  find: { text: "寵物找尋 | Find", short: "寵物找尋" },
-  adopt: { text: "關於領養 | Adoption", short: "關於領養" },
-  chart: { text: "統計圖表 | Chart", short: "統計圖表" },
+  about: { text: "附近站牌", short: "附近站牌" },
+  find: { text: "路線規劃", short: "路線規劃" },
+  adopt: { text: "站點查詢", short: "站點查詢" },
+  chart: { text: "我的收藏 ", short: "我的收藏" },
 };
-export const save_text = '寵物收藏區';
 
 export const StorageKey = "savedAnimalIDs";
 
