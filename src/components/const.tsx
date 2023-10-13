@@ -9,6 +9,15 @@ export const NawText = {
   chart: { text: "我的收藏 ", short: "我的收藏" },
 };
 
+export const IconColors = {
+  blackFont: "#283C43",
+  pinkFont: "#D08181",
+  blueFont: "#3591C5",
+  cyanFont: "#7FC0C5",
+  blueLightFont: "#5E9BAE",
+  blueDarkFont: "#52797C",
+}
+
 export const StorageKey = "savedAnimalIDs";
 
 export const URI_PET_FIND_PREFIX = "find-pet";

@@ -5,6 +5,7 @@ import { Theme } from '@emotion/react';
 //  You can define a theme type by extending our type declarations via your own declarations file.
 declare module '@emotion/react' {
   export interface Theme {
+    
     sectionColor: string;
     typeColor: string;
     primeColor: string;
