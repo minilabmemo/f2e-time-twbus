@@ -1,0 +1,25 @@
+.pet-link {
+  text-decoration: none;
+}
+
+.animal-ID {
+  font-size: 18px;
+  font-family: 'Noto Sans TC Black';
+  font-weight: 900;
+  margin-right: 8px;
+  color: $blue-bright-dark;
+}
+
+.animal-Variety {
+  font-size: 18px;
+  font-family: 'Noto Sans TC Black';
+  font-weight: 900;
+  /*超出範圍呈現省略符號 */
+  width: 120px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: $blue-bright;
+}

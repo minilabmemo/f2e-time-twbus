@@ -1,0 +1,4 @@
+{
+  "prettier.bracketSameLine": true,
+  "betterAlign.indentBase": "activeline"
+}

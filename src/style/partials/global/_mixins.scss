@@ -1,0 +1,8 @@
+@mixin container_center {
+  padding: 1.5rem;
+  color: $primary-color;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+}
