@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import main from '../images/home_main.svg';
-import carbon_bus from '../images/carbon_bus.svg';
 import BusSvg from '../components/Icons/BusSvg';
 import { IconColors } from '../components/const';
 const CityBusHome = () => {
@@ -10,6 +9,7 @@ const CityBusHome = () => {
     <>
       <section className="main">
         <img className="city-icon" src={main} alt="main_photo" width={'100%'} />
+        {/* TBD */}
         <div className="main-text">
           <div >taiwan bus+</div>
           <div >台 灣 公 車 動 態</div>
