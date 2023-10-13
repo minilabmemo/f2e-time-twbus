@@ -3,7 +3,7 @@ import './style/notosanstc.css';
 import './style/notosans.css';
 import './style/style.css';
 import { Header } from './components/layout/header';
-import PetFinder from './components/CityBusHome';
+import PetFinder from './pages/CityBusHome';
 import { Footer } from './components/Footer';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 

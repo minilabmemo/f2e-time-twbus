@@ -7,10 +7,11 @@
 @import './partials/global/mixins';
 @import './partials/global/media-query';
 
+@import './partials/pages/citybushome';
 
-@import './partials/layouts/header';
-@import './partials/layouts/store';
-@import './partials/layouts/news';
+@import './partials/components/layouts/header';
+@import './partials/components/layouts/store';
+@import './partials/components/layouts/news';
 
 @import './partials/components/card';
 @import './partials/components/tabs';

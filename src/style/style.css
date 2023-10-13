@@ -218,6 +218,18 @@ table tr td:nth-child(1) {
     /*12*/
   }
 }
+.main {
+  position: relative;
+}
+
+.main-text {
+  writing-mode: vertical-lr;
+  position: absolute;
+  left: 150px;
+  top: 100px;
+  color: #FFF;
+}
+
 .header {
   height: 80px;
   font-size: 1.5rem;

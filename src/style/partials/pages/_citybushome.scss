@@ -1,0 +1,11 @@
+.main {
+  position: relative;
+}
+
+.main-text {
+  writing-mode: vertical-lr;
+  position: absolute;
+  left: 150px;
+  top: 100px;
+  color: $white;
+}
