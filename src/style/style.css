@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import './partials/global/_animate.css';
 /*大於1200 大螢幕介面*/
 /*980~1200 低解析小螢幕*/
 /*iPad 橫放螢幕 寬1024 或是螢幕寬度1024 */
@@ -6,7 +7,6 @@
 /*iPad 橫放螢幕 寬768px */
 /*480px 手機螢幕*/
 /*360px 手機螢幕*/
-@import './partials/global/_animate.css';
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -29,103 +29,6 @@ code {
 .container {
   height: 100%;
   font-family: "Noto Sans";
-}
-
-.title-box {
-  color: #000;
-  font-size: 1.2em;
-  text-align: left;
-  display: flex;
-  align-items: end;
-  justify-content: end;
-  margin: 10px 0px;
-}
-
-.title-text {
-  margin-left: 8px;
-  color: #144480;
-}
-
-.query-hint {
-  color: #F5F6F6;
-  font-size: 0.8em;
-  text-align: left;
-  margin: 10px 10px;
-}
-
-.total-text {
-  display: inline-block;
-  margin-left: 10px;
-  margin-top: 3px;
-  font-size: 1.2em;
-  color: black;
-}
-
-.number-text {
-  display: inline-block;
-  margin-left: 1px;
-  margin-top: 3px;
-  font-size: 0.7em;
-  color: black;
-}
-
-.tag + .tag {
-  margin-right: 10px;
-}
-
-.left-space {
-  margin-left: 8px;
-}
-
-.right-space {
-  margin-right: 8px;
-}
-
-.transform90deg {
-  transform: rotate(90deg);
-}
-
-.field-value {
-  color: #175fbf;
-  font-size: 0.8em;
-  font-family: "Noto Sans TC";
-  font-weight: 700;
-  line-height: 16px;
-  margin-left: 0.4em;
-  margin-right: 0.5em;
-}
-
-table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: auto;
-  margin: 0.8em;
-  overflow: hidden;
-}
-
-table td, table th {
-  border: 1px solid #ddd;
-  padding: 0.2em;
-}
-
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-table tr:hover {
-  background-color: #ddd;
-}
-
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #3591C5;
-  color: white;
-}
-
-table tr td:nth-child(1) {
-  white-space: nowrap;
 }
 
 /*大於1200 大螢幕介面*/
@@ -442,176 +345,15 @@ table tr td:nth-child(1) {
     width: 8.5em;
   }
 }
-.save-hint-box {
-  color: #000;
-  background-color: #7FC0C5;
-  border-radius: 0.5em;
-  width: 75%;
-  height: auto;
-  box-sizing: border-box;
-  padding: 1.12em 3em;
-  margin-left: 2em;
-  margin-top: 1.6em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.hint-text {
-  color: #000;
-  margin-left: 1.25em;
-  width: 90%;
-  height: auto;
-  font-family: "Noto Sans TC";
-  font-size: 1em;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-
-.about-image {
-  right: 16px;
-  bottom: 16px;
-}
-
-.qa-container {
-  max-width: 500px;
-}
-
-.qa-item {
-  margin-left: 2em;
-  margin-bottom: 20px;
-}
-
-.qa-question {
-  color: #000;
-  cursor: pointer;
-  font-size: 1em;
-  border-left: #000 4px solid;
-  padding-left: 8px;
-  margin-top: 32px;
-  box-sizing: border-box;
-}
-
-.qa-answer {
-  color: #777;
-  font-size: 0.9em;
-  margin-top: 10px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-.pet-link {
-  text-decoration: none;
-}
-
-.animal-ID {
-  font-size: 18px;
-  font-family: "Noto Sans TC Black";
-  font-weight: 900;
-  margin-right: 8px;
-  color: #3591C5;
-}
-
-.animal-Variety {
-  font-size: 18px;
-  font-family: "Noto Sans TC Black";
-  font-weight: 900;
-  /*超出範圍呈現省略符號 */
-  width: 120px;
-  display: inline-block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: #3591C5;
-}
-
-.tabs-content {
-  border: 1px solid rgb(213, 216, 216);
-  width: 90%;
-  margin: 32px;
-  border-radius: 8px;
-}
-
-.tabs {
-  display: flex;
-  background-color: #D0EFFF;
-  border-radius: 8px 8px 0px 0px;
-}
-
-.tab {
-  width: 120px;
-  height: 36px;
-  border-radius: 8px;
-  background-color: #D0EFFF;
-  text-align: center;
-  font-size: 0.9em;
-  line-height: 36px;
-}
-
-.tab.active {
-  background-color: #0da1eb;
-  color: white;
-}
-
-.tab:hover {
-  background-color: #adb1b4;
-  color: white;
-}
-
-.container-map {
+.footer {
+  background: #444444;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.taiwan-map, .shop-list {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#map {
+  height: 59px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
 }
-
-#map svg {
-  max-height: 100vh;
-}
-
-#map path {
-  fill: transparent;
-  stroke: #3591C5;
-  cursor: pointer;
-  transition: fill 0.2s ease, stroke 0.2s ease, transform 0.2s ease;
-}
-
-#map path:hover, #map path.active {
-  fill: rgba(255, 202, 40, 0.5);
-  stroke: #FFCA28;
-}
-
-.shop-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-  height: 100%;
-}
-
-.shop-list h2, .shop-list h3 {
-  width: 100%;
-}
-
-#map svg:nth-child(2) {
-  display: none;
+.footer .footer-right {
+  color: #FFF;
+  margin: 0 auto;
 }/*# sourceMappingURL=style.css.map */

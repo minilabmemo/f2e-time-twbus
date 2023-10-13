@@ -1,8 +1,9 @@
 @charset "UTF-8";
-@import './partials/global/base';
+
 
 @import './partials/global/_animate.css';
 
+@import './partials/global/body';
 @import './partials/global/variables';
 @import './partials/global/mixins';
 @import './partials/global/media-query';
@@ -10,9 +11,4 @@
 @import './partials/pages/citybushome';
 
 @import './partials/components/layouts/header';
-@import './partials/components/layouts/store';
-@import './partials/components/layouts/news';
-
-@import './partials/components/card';
-@import './partials/components/tabs';
-@import './partials/components/taiwan_map';
+@import './partials/components/layouts/footer';

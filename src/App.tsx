@@ -4,7 +4,7 @@ import './style/notosans.css';
 import './style/style.css';
 import { Header } from './components/layout/header';
 import PetFinder from './pages/CityBusHome';
-import { Footer } from './components/Footer';
+import { Footer } from './components/layout/Footer';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import { About } from './components/News';
