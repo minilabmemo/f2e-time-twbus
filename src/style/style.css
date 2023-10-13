@@ -221,13 +221,77 @@ table tr td:nth-child(1) {
 .main {
   position: relative;
 }
-
-.main-text {
+.main .main-text {
   writing-mode: vertical-lr;
   position: absolute;
   left: 150px;
   top: 100px;
   color: #FFF;
+}
+
+.city-color-1 {
+  color: #283C43;
+}
+
+.city-color-2 {
+  color: #3591C5;
+}
+
+.city-color-3 {
+  color: #D08181;
+}
+
+.city-color-4 {
+  color: #7FC0C5;
+}
+
+.city-color-5 {
+  color: #5E9BAE;
+}
+
+.city-color-6 {
+  color: #52797C;
+}
+
+.cities {
+  background-color: #F5F6F6;
+  width: 100%;
+  height: 218px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cities .city-card {
+  margin: 1rem;
+  background-color: #FFF;
+  box-sizing: border-box;
+  width: 217px;
+  height: 174px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+}
+.cities .city-card .city-icon {
+  margin: 0.5em 1.5rem;
+}
+.cities .city-card .city-name {
+  margin-bottom: 6px;
+  font-family: "Noto Sans";
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.1rem;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.cities .city-card .city-name-en {
+  font-family: "Noto Sans";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 
 .header {

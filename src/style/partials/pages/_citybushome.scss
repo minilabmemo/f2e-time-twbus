@@ -1,11 +1,85 @@
 .main {
   position: relative;
+
+  .main-text {
+    writing-mode: vertical-lr;
+    position: absolute;
+    left: 150px;
+    top: 100px;
+    color: $white;
+  }
 }
 
-.main-text {
-  writing-mode: vertical-lr;
-  position: absolute;
-  left: 150px;
-  top: 100px;
-  color: $white;
+.city-color-1 {
+  color: $black-font;
+}
+
+.city-color-2 {
+  color: $blue-font;
+}
+
+.city-color-3 {
+  color: $pink-font;
+}
+
+.city-color-4 {
+  color: $cyan-font;
+}
+
+.city-color-5 {
+  color: $blue-light-font;
+}
+
+.city-color-6 {
+  color: $blue-dark-font;
+}
+
+.cities {
+  background-color: $gray-bg;
+  width: 100%;
+  height: 218px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .city-card {
+    margin: 1rem;
+    background-color: $white;
+    box-sizing: border-box;
+    width: 217px;
+    height: 174px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+
+    .city-icon {
+      margin: .5em 1.5rem;
+    }
+
+    .city-name {
+      margin-bottom: 6px;
+      font-family: 'Noto Sans';
+      font-size: .8rem;
+      font-weight: 700;
+      line-height: 1.1rem;
+      letter-spacing: 0em;
+      text-align: left;
+
+    }
+
+    .city-name-en {
+
+      font-family: 'Noto Sans';
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0em;
+      text-align: center;
+
+    }
+
+  }
+
 }
