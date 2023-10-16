@@ -47,6 +47,9 @@
   align-items: center;
   justify-content: center;
 
+  .active {
+    font-weight: 700;
+  }
 
   img {
     padding-right: 11px;
@@ -62,6 +65,9 @@
 
 }
 
+.nav-link.active {
+  font-weight: 700;
+}
 
 
 /*let it to upper layer for clicking */

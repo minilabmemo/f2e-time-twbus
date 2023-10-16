@@ -10,26 +10,8 @@ import { NawText } from '../const';
 
 
 export const Header = () => {
-  const [isBigScreen, setSmallScreen] = useState(false);
-  const handleOnResize = () => {
+  const [isLangZH, setLangZH] = useState(true);
 
-
-    const nowWidth = document.documentElement.offsetWidth;
-    if (nowWidth > 1500) {
-      setSmallScreen(true)
-    } else {
-      setSmallScreen(false)
-    }
-
-  };
-
-  useEffect(() => {
-    handleOnResize();
-    window.addEventListener('resize', handleOnResize);
-    return () => {
-      window.removeEventListener('resize', handleOnResize);
-    };
-  }, [isBigScreen]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -40,28 +22,40 @@ export const Header = () => {
           </NavLink>
         </div>
 
+
         <div className='nav'>
           <NavLink to="/about" className="nav-link">
-            {isBigScreen ? NawText.about.text : NawText.about.short}
+            {isLangZH ? NawText.about.text : NawText.about.short}
           </NavLink>
 
           <NavLink to="/find-pet" className="nav-link">
-            {isBigScreen ? NawText.find.text : NawText.find.short}
+            {isLangZH ? NawText.find.text : NawText.find.short}
 
           </NavLink>
+
           <NavLink to="/adopt" className="nav-link">
 
-            {isBigScreen ? NawText.adopt.text : NawText.adopt.short}
+            {isLangZH ? NawText.adopt.text : NawText.adopt.short}
           </NavLink>
           <NavLink to="/chart" className="nav-link">
-            {isBigScreen ? NawText.chart.text : NawText.chart.short}
+            {isLangZH ? NawText.chart.text : NawText.chart.short}
           </NavLink>
         </div>
 
         <div className="lang">
 
           <img width="20px" height="20px" src={icon_language} alt="icon_save" />
-          <span >中文</span>｜<span >英文</span>
+
+          {/* TODO need by web URL*/}
+          {isLangZH ?
+            (<div onClick={() => setLangZH(!isLangZH)}>
+              <span className="active"> 中文</span>｜<span >英文</span></div>)
+            :
+            (
+              <div onClick={() => setLangZH(!isLangZH)}>
+                <span > 中文</span>｜<span className="active" >英文</span>
+              </div>)
+          }
 
         </div>
 
