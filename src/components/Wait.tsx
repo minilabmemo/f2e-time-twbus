@@ -1,6 +1,6 @@
 
 import styled from '@emotion/styled';
-import { ConstructPhoto } from './const';
+import { ConstructPhoto } from '../utils/const';
 
 
 
@@ -22,6 +22,7 @@ const Box = styled.div`
 
 
 export const Wait = () => {
+
 
 
   return (

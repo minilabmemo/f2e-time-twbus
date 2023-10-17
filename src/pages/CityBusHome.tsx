@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import main from '../images/home_main.svg';
 import BusSvg from '../components/Icons/BusSvg';
-import { IconColors } from '../components/const';
+import { IconColors } from '../utils/const';
 const CityBusHome = () => {
 
 

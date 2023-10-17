@@ -4,7 +4,7 @@ import pet from '../images/pet.svg';
 import usePetApi from '../hooks/usePetApi';
 import Card from './base/Card';
 import Loading from './base/Loading';
-import { StorageKey, savedAnimalsMax } from './const';
+import { StorageKey, savedAnimalsMax } from '../utils/const';
 import React, { useEffect, useState } from 'react';
 import icon_save from '../images/icon_save.svg';
 import info from '../images/info.svg';

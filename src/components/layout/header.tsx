@@ -5,7 +5,7 @@ import icon_language from '../../images/icon_language.svg';
 import { theme } from '../../style/theme';
 import { ThemeProvider } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
-import { NawText } from '../const';
+import { LinkNames } from '../../utils/const';
 
 
 
@@ -25,20 +25,19 @@ export const Header = () => {
 
         <div className='nav'>
           <NavLink to="/about" className="nav-link">
-            {isLangZH ? NawText.about.text : NawText.about.short}
+            {isLangZH ? LinkNames.about.text : LinkNames.about.short}
           </NavLink>
 
           <NavLink to="/find-pet" className="nav-link">
-            {isLangZH ? NawText.find.text : NawText.find.short}
+            {isLangZH ? LinkNames.find.text : LinkNames.find.short}
 
           </NavLink>
 
-          <NavLink to="/adopt" className="nav-link">
-
-            {isLangZH ? NawText.adopt.text : NawText.adopt.short}
+          <NavLink to={`/query/zh/cities`} className="nav-link">
+            {isLangZH ? LinkNames.search.zh : LinkNames.search.en}
           </NavLink>
           <NavLink to="/chart" className="nav-link">
-            {isLangZH ? NawText.chart.text : NawText.chart.short}
+            {isLangZH ? LinkNames.chart.text : LinkNames.chart.short}
           </NavLink>
         </div>
 

@@ -10,9 +10,10 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import { About } from './components/News';
 import Stores from './components/Stores';
 import PetDetailsPage from './components/PetDetailsPage';
-import { URI_PET_FIND_PREFIX } from './components/const';
+import { URI_PET_FIND_PREFIX } from './utils/const';
 import PetChart from './components/PetChart';
 import { Wait } from './components/Wait';
+import { BusRouteSearch } from './pages/BusRouteSearch';
 
 
 const BaseLayout = ({ children }: { children: React.ReactNode }) => (
@@ -31,8 +32,8 @@ function App() {
       <Routes>
         <Route path="/" element={<BaseLayout><PetFinder /></BaseLayout>} />
         <Route path="/about" element={<BaseLayout><About /></BaseLayout>} />
-        <Route path={`/${URI_PET_FIND_PREFIX}`} element={<BaseLayout><PetFinder /></BaseLayout>} />
-        <Route path="/adopt" element={<BaseLayout><Wait /></BaseLayout>} />
+        <Route path={`/${URI_PET_FIND_PREFIX}`} element={<BaseLayout><Wait /></BaseLayout>} />
+        <Route path={`/query/:lang/:city`} element={<BaseLayout><BusRouteSearch /></BaseLayout>} />
         <Route path="/chart" element={<BaseLayout><PetChart /></BaseLayout>} />
         <Route path="/stores" element={<BaseLayout><Stores /></BaseLayout>} />
         <Route path={`/${URI_PET_FIND_PREFIX}/:id`} element={<BaseLayout><PetDetailsPage /></BaseLayout>} />

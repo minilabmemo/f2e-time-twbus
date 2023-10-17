@@ -8,7 +8,7 @@ import styled from '@emotion/styled';
 import SwitchButton from '../btn/SwitchButton';
 
 import { AnimalBacterinTag, AnimalsterilizationTag, getAgeLabel, getBodyLabel, getColorLabel, getSexLabel, isAnimalSaved } from '../convert';
-import { StorageKey, URI_PET_FIND_PREFIX } from '../const';
+import { StorageKey, URI_PET_FIND_PREFIX } from '../../utils/const';
 import { Link } from 'react-router-dom';
 import SaveSvg from '../Icons/SaveSvg';
 import OpenSvg from '../Icons/OpenSvg';

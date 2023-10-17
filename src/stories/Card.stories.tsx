@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from '../style/theme';
 import Card from '../components/base/Card';
-import { URI_PET_FIND_PREFIX } from '../components/const';
+import { URI_PET_FIND_PREFIX } from '../utils/const';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
