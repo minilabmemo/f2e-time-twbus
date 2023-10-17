@@ -5,7 +5,7 @@ import { faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { cityData, getCityNameOrValue } from '../utils/cities';
-import useBusApi from '../hooks/useBusApi';
+import useBusApi, { BusRouteResult } from '../hooks/useBusApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 
 
@@ -22,13 +22,18 @@ export const BusRouteSearch = () => {
   if (city === URI_SEARCH_DEFAULT) {
     callAtInstall = false;
   }
-
   const [result, fetchData] = useBusApi({ City: city, callAtInstall: callAtInstall });
-  console.log("🚀 ~ file: BusRouteSearch.tsx:13 ~ BusRouteSearch ~ result:", result)
+
   console.log(lang, city);//TODO lang
 
   const [cityKeyboard, setCityKeyboard] = useState(false)
 
+  const [routes, setRoutes] = useState(result)
+
+  // 当 result 发生变化时，更新 routes
+  useEffect(() => {
+    setRoutes(result);
+  }, [result]);
 
 
   const KeyboardCities: React.FC = () => {
@@ -75,7 +80,7 @@ export const BusRouteSearch = () => {
           inputRef.current.value += item.zh;
 
         }
-
+        handleInputChange();
       }
     };
 
@@ -128,17 +133,18 @@ export const BusRouteSearch = () => {
   }
 
 
-  function RoutesResult() {
+  function RoutesResult({ routes }: { routes: BusRouteResult }) {
     return (
       <div className='result-routes'>
-        {(result.status === 404) ? <div className='err-404'> 找不到資料，請稍後再試。</div>
+        {(routes.status === 404) ? <div className='err-404'> 找不到資料，請稍後再試。</div>
           : ''}
-        {(result.status === 200) && (
+        {(routes.total === 0) ? <div className='err-404'> 無此路線，請輸入其他關鍵字。</div>
+          : ''}
+        {(routes.status === 200) && (
           <div>
-            {result.records.map((item, index) => (
-              <>
+            {routes.records.map((item, index) => (
+              <div key={index}>
                 <div
-                  key={index}
                   className='route'
                 // onClick={() => handleButtonClick(item)}
                 >
@@ -156,7 +162,7 @@ export const BusRouteSearch = () => {
                 </div>
 
                 <div className='gray-line'></div>
-              </>
+              </div>
             ))}
 
           </div>
@@ -166,6 +172,41 @@ export const BusRouteSearch = () => {
       </div>
     );
   }
+  function filterRecords({ input, data }: { input: string, data: BusRouteResult }) {
+    const filteredRecords = data.records.filter((record) => {
+
+      const { RouteName, DepartureStopNameZh, DestinationStopNameZh } = record; //TODO lang
+      return (
+        RouteName.Zh_tw.includes(input) ||
+        DepartureStopNameZh.includes(input) ||
+        DestinationStopNameZh.includes(input)
+      );
+    });
+
+
+
+    return {
+      records: filteredRecords,
+      status: data.status,
+      total: filteredRecords.length, // 更新总记录数
+      isLoading: data.isLoading,
+    };
+  }
+  const handleInputChange = () => {
+    if (inputRef.current) {
+      const inputValue = inputRef.current.value;
+      if (inputValue === "") {
+        setRoutes(result);
+      } else {
+
+        const res = filterRecords({ input: inputValue, data: result });
+        setRoutes(res);
+      }
+
+
+
+    }
+  };
   return (
     <div className='search'>
       <section className='search-header'>
@@ -178,10 +219,10 @@ export const BusRouteSearch = () => {
 
       <section className='search-main'>
         <div className='sidebar'>
-          <input placeholder='請輸入關鍵字或使用鍵盤輸入站名' ref={inputRef}>
+          <input placeholder='請輸入關鍵字或使用鍵盤輸入站名' ref={inputRef} onChange={() => handleInputChange()}>
             {/* TODO query icon */}
           </input>
-          <RoutesResult />
+          <RoutesResult routes={routes} />
 
           <Keyboard city={city} />
         </div>

@@ -8,8 +8,6 @@ interface BusRoute {
   DestinationStopNameZh: string,
   DestinationStopNameEn: string,
   City: string;
-
-
 }
 
 export interface BusRouteResult {
