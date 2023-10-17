@@ -1,0 +1,166 @@
+.search {
+  font-family: 'Noto Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+
+}
+
+.search-header {
+  position: relative;
+  background-color: $gray-bg;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  color: $black;
+  line-height: normal;
+
+  .breadcrumb {
+
+    position: absolute;
+    left: 66px;
+
+  }
+
+  .timetable {
+
+    position: absolute;
+    right: 66px;
+  }
+}
+
+.search-main {
+  height: 723px;
+  background-color: $white;
+  display: flex;
+
+  .sidebar {
+
+    width: 464px;
+    height: 723px;
+    flex-shrink: 0;
+
+    input {
+      width: 422px;
+      height: 36px;
+      flex-shrink: 0;
+      background-color: $gray-bg;
+      margin: 20px;
+      border-radius: 10px;
+      border: 0;
+      box-sizing: border-box;
+      padding: 10px;
+
+      &::placeholder {
+        opacity: 1;
+
+      }
+    }
+  }
+
+  .result-map {
+    background-color: $blueFont;
+    width: 976px;
+    height: 723px;
+    flex-shrink: 0;
+
+  }
+
+}
+
+
+
+.keyboard {
+
+  background-color: $gray-bg;
+  width: 464px;
+  height: 309px;
+  padding: 26px 50px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .city {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: $black-btn;
+    width: 364px;
+    height: 38px;
+    border-radius: 10px;
+    color: $white;
+
+
+  }
+
+  .routes {
+    width: 380px;
+    display: flex;
+
+    flex-wrap: wrap;
+
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      margin: 8px;
+      width: 60px;
+      height: 38px;
+      flex-shrink: 0;
+      background-color: $gray-btn;
+
+    }
+
+    .btn-grad {
+      background-color: $gray-btn ;
+      color: $white;
+    }
+
+    .btn-red {
+      background-color: $red-btn ;
+      color: $white;
+    }
+
+    .btn-blue {
+      background-color: $blue-btn ;
+      color: $white;
+    }
+
+    .btn-green {
+      background-color: $green-btn ;
+      color: $white;
+    }
+
+    .btn-brown {
+      background-color: $brown-btn ;
+      color: $white;
+    }
+
+    .btn-orange {
+      background-color: $orange-btn ;
+      color: $white;
+    }
+
+    .btn-yellow {
+      background-color: $yellow-btn ;
+      color: $white;
+    }
+
+    .btn-gray-dark {
+      background-color: $gray-dark-btn ;
+      color: $white;
+    }
+
+    .btn-black {
+      background-color: $black ;
+      color: $white;
+    }
+
+  }
+
+}

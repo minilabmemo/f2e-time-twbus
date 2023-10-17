@@ -7,7 +7,7 @@ const CityBusHome = () => {
 
   return (
     <>
-      <section className="main">
+      <section className="home-main">
         <img className="city-icon" src={main} alt="main_photo" width={'100%'} />
         {/* TBD */}
         <div className="main-text">
@@ -17,7 +17,7 @@ const CityBusHome = () => {
         </div>
       </section>
 
-      <section className="cities">
+      <section className="home-cities">
         <div className="city-card city-color-1">
           <div className="city-icon"> <BusSvg width="51px" height="51px" fill={IconColors.blackFont} /></div>
 

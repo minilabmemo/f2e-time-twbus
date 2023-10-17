@@ -121,82 +121,6 @@ code {
     /*12*/
   }
 }
-.main {
-  position: relative;
-}
-.main .main-text {
-  writing-mode: vertical-lr;
-  position: absolute;
-  left: 150px;
-  top: 100px;
-  color: #FFF;
-}
-
-.city-color-1 {
-  color: #283C43;
-}
-
-.city-color-2 {
-  color: #3591C5;
-}
-
-.city-color-3 {
-  color: #D08181;
-}
-
-.city-color-4 {
-  color: #7FC0C5;
-}
-
-.city-color-5 {
-  color: #5E9BAE;
-}
-
-.city-color-6 {
-  color: #52797C;
-}
-
-.cities {
-  background-color: #F5F6F6;
-  width: 100%;
-  height: 218px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.cities .city-card {
-  margin: 1rem;
-  background-color: #FFF;
-  box-sizing: border-box;
-  width: 217px;
-  height: 174px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
-}
-.cities .city-card .city-icon {
-  margin: 0.5em 1.5rem;
-}
-.cities .city-card .city-name {
-  margin-bottom: 6px;
-  font-family: "Noto Sans";
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1.1rem;
-  letter-spacing: 0em;
-  text-align: left;
-}
-.cities .city-card .city-name-en {
-  font-family: "Noto Sans";
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: 0em;
-  text-align: center;
-}
-
 .header {
   height: 80px;
   font-size: 0.8rem;
@@ -350,4 +274,215 @@ code {
 .footer .footer-right {
   color: #FFF;
   margin: 0 auto;
+}
+
+.home-main {
+  position: relative;
+}
+.home-main .main-text {
+  writing-mode: vertical-lr;
+  position: absolute;
+  left: 150px;
+  top: 100px;
+  color: #FFF;
+}
+
+.city-color-1 {
+  color: #283C43;
+}
+
+.city-color-2 {
+  color: #3591C5;
+}
+
+.city-color-3 {
+  color: #D08181;
+}
+
+.city-color-4 {
+  color: #7FC0C5;
+}
+
+.city-color-5 {
+  color: #5E9BAE;
+}
+
+.city-color-6 {
+  color: #52797C;
+}
+
+.home-cities {
+  background-color: #F5F6F6;
+  width: 100%;
+  height: 218px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-cities .city-card {
+  margin: 1rem;
+  background-color: #FFF;
+  box-sizing: border-box;
+  width: 217px;
+  height: 174px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+}
+.home-cities .city-card .city-icon {
+  margin: 0.5em 1.5rem;
+}
+.home-cities .city-card .city-name {
+  margin-bottom: 6px;
+  font-family: "Noto Sans";
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.1rem;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.home-cities .city-card .city-name-en {
+  font-family: "Noto Sans";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.search {
+  font-family: "Noto Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.search-header {
+  position: relative;
+  background-color: #F5F6F6;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  color: #000;
+  line-height: normal;
+}
+.search-header .breadcrumb {
+  position: absolute;
+  left: 66px;
+}
+.search-header .timetable {
+  position: absolute;
+  right: 66px;
+}
+
+.search-main {
+  height: 723px;
+  background-color: #FFF;
+  display: flex;
+}
+.search-main .sidebar {
+  width: 464px;
+  height: 723px;
+  flex-shrink: 0;
+}
+.search-main .sidebar input {
+  width: 422px;
+  height: 36px;
+  flex-shrink: 0;
+  background-color: #F5F6F6;
+  margin: 20px;
+  border-radius: 10px;
+  border: 0;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.search-main .sidebar input::-moz-placeholder {
+  opacity: 1;
+}
+.search-main .sidebar input::placeholder {
+  opacity: 1;
+}
+.search-main .result-map {
+  background-color: #3591C5;
+  width: 976px;
+  height: 723px;
+  flex-shrink: 0;
+}
+
+.keyboard {
+  background-color: #F5F6F6;
+  width: 464px;
+  height: 309px;
+  padding: 26px 50px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.keyboard .city {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #283C43;
+  width: 364px;
+  height: 38px;
+  border-radius: 10px;
+  color: #FFF;
+}
+.keyboard .routes {
+  width: 380px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.keyboard .routes .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin: 8px;
+  width: 60px;
+  height: 38px;
+  flex-shrink: 0;
+  background-color: #D5D5D5;
+}
+.keyboard .routes .btn-grad {
+  background-color: #D5D5D5;
+  color: #FFF;
+}
+.keyboard .routes .btn-red {
+  background-color: #E87E7E;
+  color: #FFF;
+}
+.keyboard .routes .btn-blue {
+  background-color: #3591C5;
+  color: #FFF;
+}
+.keyboard .routes .btn-green {
+  background-color: #5CC1A9;
+  color: #FFF;
+}
+.keyboard .routes .btn-brown {
+  background-color: #A86556;
+  color: #FFF;
+}
+.keyboard .routes .btn-orange {
+  background-color: #EEA12E;
+  color: #FFF;
+}
+.keyboard .routes .btn-yellow {
+  background-color: #DEBE4E;
+  color: #FFF;
+}
+.keyboard .routes .btn-gray-dark {
+  background-color: #888888;
+  color: #FFF;
+}
+.keyboard .routes .btn-black {
+  background-color: #000;
+  color: #FFF;
 }/*# sourceMappingURL=style.css.map */

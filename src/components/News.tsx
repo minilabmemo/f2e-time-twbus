@@ -7,6 +7,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 
+
 interface QAItemProps {
   question: string;
   answer: string | JSX.Element;
