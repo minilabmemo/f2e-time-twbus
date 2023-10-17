@@ -1,4 +1,8 @@
-export const cityData = [
+interface CityData {
+  name: string;
+  value: string;
+}
+export const cityData: CityData[] = [
   { name: '臺北市', value: 'Taipei' },
   { name: '新北市', value: 'NewTaipei' },
   { name: '桃園市', value: 'Taoyuan' },
@@ -22,3 +26,14 @@ export const cityData = [
   { name: '澎湖縣', value: 'PenghuCounty' },
   { name: '連江縣', value: 'LienchiangCounty' },
 ]
+
+
+export function getCityNameOrValue(value: string | undefined, lang: string | undefined): string | undefined {
+  const city = cityData.find((city) => city.value === value);
+
+  if (!city) {
+    return undefined;
+  }
+
+  return lang === 'en' ? city.value : lang === 'zh' ? city.name : undefined;
+}

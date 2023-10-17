@@ -74,7 +74,7 @@
 
   background-color: $gray-bg;
   width: 464px;
-  height: 309px;
+  height: 350px;
   padding: 26px 50px;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -83,7 +83,13 @@
   justify-content: center;
   align-items: center;
 
-  .city {
+
+  .city-link {
+    text-decoration: none;
+  }
+
+  .city-option {
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,13 +101,28 @@
     color: $white;
 
 
+    .icon {
+      margin-right: 10px;
+    }
+
   }
 
-  .routes {
+  .routes.disable_routes {
+    width: 380px;
+    height: 216px;
+    background-color: $gray-bg;
+    position: absolute;
+    opacity: .7;
+  }
+
+  .routes, .cities-keyboard {
+    position: relative;
     width: 380px;
     display: flex;
 
     flex-wrap: wrap;
+
+
 
     .btn {
       display: flex;

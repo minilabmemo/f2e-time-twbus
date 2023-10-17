@@ -48,7 +48,7 @@ export interface itemI {
   attr: string;
   action?: keyof typeof ActionType | undefined;
 }
-export const keyboardList: itemI[] = [
+export const keyboardRouteList: itemI[] = [
   { zh: '紅', attr: 'btn btn-red' },
   { zh: '藍', attr: 'btn btn-blue' },
   { zh: '1', attr: 'btn btn-gray' },

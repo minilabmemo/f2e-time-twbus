@@ -1,22 +1,49 @@
 
-import { useParams } from 'react-router-dom';
-import { ActionType, Dict, itemI, keyboardList } from '../utils/const';
+import { NavLink, useParams } from 'react-router-dom';
+import { ActionType, Dict, URI_SEARCH_DEFAULT, itemI, keyboardRouteList } from '../utils/const';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRef } from 'react';
-import { Console } from 'console';
+import { useRef, useState } from 'react';
+import { cityData, getCityNameOrValue } from '../utils/cities';
 
 
 export const BusRouteSearch = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { lang, city } = useParams();
 
-  console.log(lang, city);
+  console.log(lang, city);//TODO lang
+
+  const [cityKeyboard, setCityKeyboard] = useState(false)
 
 
-  const KeyboardBtn: React.FC = () => {
+
+  const KeyboardCities: React.FC = () => {
+
+    const handleButtonClick = () => {
+      setCityKeyboard(false)
+
+    };
+
+    return (
+      <>
+        {cityData.map((item, index) => (
 
 
+          <NavLink to={`/query/${lang}/${item.value}`} className="city-link">
+            <div
+              key={index}
+              className='btn btn-blue'
+              onClick={() => handleButtonClick()}
+            >
+              {item.name}
+            </div>
+          </NavLink>
+        ))}
+      </>
+    );
+  };
+
+  const KeyboardRoutes: React.FC = () => {
 
     const handleButtonClick = (item: itemI) => {
 
@@ -40,7 +67,7 @@ export const BusRouteSearch = () => {
 
     return (
       <>
-        {keyboardList.map((item, index) => (
+        {keyboardRouteList.map((item, index) => (
           <div
             key={index}
             className={item.attr}
@@ -56,13 +83,33 @@ export const BusRouteSearch = () => {
   function Keyboard({ city }: { city: string | undefined }) {
     return (
       <div className='keyboard'>
-        <div className='city'>
-          <FontAwesomeIcon icon={faLocationDot} />  請先選擇城市
-        </div>
-        <div className='routes'>
-          <KeyboardBtn />
-        </div>
-      </div>
+
+        {(city === URI_SEARCH_DEFAULT) ? (
+          <div className='city-option' onClick={() => setCityKeyboard(true)}>
+            <FontAwesomeIcon icon={faLocationDot} className='icon' />  請先選擇城市
+          </div>)
+          : (
+            <div className='city-option' onClick={() => setCityKeyboard(true)}>
+              <FontAwesomeIcon icon={faLocationDot} className='icon' /> {getCityNameOrValue(city, lang)}
+            </div>)
+        }
+        {(cityKeyboard) ? (
+
+          <div className='cities-keyboard'>
+            <KeyboardCities />
+          </div>
+        ) :
+          <div className='routes'>
+            {city === URI_SEARCH_DEFAULT && (
+              <div className='disable_routes'>
+              </div>)
+            }
+            <KeyboardRoutes />
+
+
+          </div>}
+
+      </div >
     );
   }
 

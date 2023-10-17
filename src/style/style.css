@@ -414,7 +414,7 @@ code {
 .keyboard {
   background-color: #F5F6F6;
   width: 464px;
-  height: 309px;
+  height: 350px;
   padding: 26px 50px;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -423,7 +423,10 @@ code {
   justify-content: center;
   align-items: center;
 }
-.keyboard .city {
+.keyboard .city-link {
+  text-decoration: none;
+}
+.keyboard .city-option {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -434,12 +437,23 @@ code {
   border-radius: 10px;
   color: #FFF;
 }
-.keyboard .routes {
+.keyboard .city-option .icon {
+  margin-right: 10px;
+}
+.keyboard .routes.disable_routes {
+  width: 380px;
+  height: 216px;
+  background-color: #F5F6F6;
+  position: absolute;
+  opacity: 0.7;
+}
+.keyboard .routes, .keyboard .cities-keyboard {
+  position: relative;
   width: 380px;
   display: flex;
   flex-wrap: wrap;
 }
-.keyboard .routes .btn {
+.keyboard .routes .btn, .keyboard .cities-keyboard .btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -450,39 +464,39 @@ code {
   flex-shrink: 0;
   background-color: #D5D5D5;
 }
-.keyboard .routes .btn-grad {
+.keyboard .routes .btn-grad, .keyboard .cities-keyboard .btn-grad {
   background-color: #D5D5D5;
   color: #FFF;
 }
-.keyboard .routes .btn-red {
+.keyboard .routes .btn-red, .keyboard .cities-keyboard .btn-red {
   background-color: #E87E7E;
   color: #FFF;
 }
-.keyboard .routes .btn-blue {
+.keyboard .routes .btn-blue, .keyboard .cities-keyboard .btn-blue {
   background-color: #3591C5;
   color: #FFF;
 }
-.keyboard .routes .btn-green {
+.keyboard .routes .btn-green, .keyboard .cities-keyboard .btn-green {
   background-color: #5CC1A9;
   color: #FFF;
 }
-.keyboard .routes .btn-brown {
+.keyboard .routes .btn-brown, .keyboard .cities-keyboard .btn-brown {
   background-color: #A86556;
   color: #FFF;
 }
-.keyboard .routes .btn-orange {
+.keyboard .routes .btn-orange, .keyboard .cities-keyboard .btn-orange {
   background-color: #EEA12E;
   color: #FFF;
 }
-.keyboard .routes .btn-yellow {
+.keyboard .routes .btn-yellow, .keyboard .cities-keyboard .btn-yellow {
   background-color: #DEBE4E;
   color: #FFF;
 }
-.keyboard .routes .btn-gray-dark {
+.keyboard .routes .btn-gray-dark, .keyboard .cities-keyboard .btn-gray-dark {
   background-color: #888888;
   color: #FFF;
 }
-.keyboard .routes .btn-black {
+.keyboard .routes .btn-black, .keyboard .cities-keyboard .btn-black {
   background-color: #000;
   color: #FFF;
 }/*# sourceMappingURL=style.css.map */
