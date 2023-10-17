@@ -7,11 +7,12 @@ interface BusRoute {
   DepartureStopNameEn: string,
   DestinationStopNameZh: string,
   DestinationStopNameEn: string,
+  City: string;
 
 
 }
 
-export interface BusRouteArray {
+export interface BusRouteResult {
   records: BusRoute[];
   status: number | undefined;
   total: number;
@@ -34,17 +35,16 @@ interface BusRequestParam {
 
 // The useBusApi hook provides a reusable mechanism for fetching Bus data and managing the loading state in a React component.
 //return data and useCallback function.
-const useBusApi = (query: BusRequestParam): [BusRouteArray, () => void] => {
+const useBusApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
   const { City, callAtInstall } = query;
 
   const fetchData = useCallback(() => {
 
 
     const fetchingData = async () => {
-      let url = "http:test"
-      // let url = 'https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City';
+      let url = 'https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City';
       if (City !== null) {
-        url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn&%24format=JSON`;
+        url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City&%24format=JSON`;
       }
       try {
         const response = await axios.get(url); // 请注意修改为你的API地址
@@ -84,7 +84,7 @@ const useBusApi = (query: BusRequestParam): [BusRouteArray, () => void] => {
   }, [City]);
 
 
-  const [resData, setResData] = useState<BusRouteArray>({
+  const [resData, setResData] = useState<BusRouteResult>({
     records: [],
     total: 0,
     status: 0,
@@ -97,7 +97,7 @@ const useBusApi = (query: BusRequestParam): [BusRouteArray, () => void] => {
     }
   }, [callAtInstall, fetchData]);
 
-  return [resData, fetchData] as [BusRouteArray, () => void];
+  return [resData, fetchData] as [BusRouteResult, () => void];
 };
 
 export default useBusApi;

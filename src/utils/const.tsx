@@ -70,3 +70,10 @@ export const keyboardRouteList: itemI[] = [
   { zh: '0', attr: 'btn btn-0' },
   { zh: '清除', attr: 'btn btn-x', action: 'clear' },
 ];
+
+
+export const LangType = {
+  zh: 'zh' as 'zh',
+  en: 'en' as 'en',
+
+};

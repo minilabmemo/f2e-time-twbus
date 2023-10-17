@@ -70,11 +70,12 @@
 
 
 
+
+
 .keyboard {
 
   background-color: $gray-bg;
   width: 464px;
-  height: 350px;
   padding: 26px 50px;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -189,11 +190,71 @@
 
 .result-routes {
   height: 290px;
-
+  overflow-y: scroll;
+  margin: 20px;
 }
 
 .err-404 {
   margin: 20px;
   color: $pinkFont;
   font-weight: 900;
+}
+
+.route {
+
+  height: 58px;
+  display: flex;
+  justify-content: space-between;
+
+  .route-info {
+    width: 70%;
+    align-self: start;
+
+    .route-name {
+
+      color: #000;
+      font-family: 'Roboto';
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .route-direction {
+
+      color: #888;
+      font-family: 'Noto Sans';
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+
+  .route-action {
+    width: 60px;
+    height: 100%;
+    text-align: center;
+    align-self: end;
+
+    .save-icon {}
+
+    .route-city {
+
+      color: #888;
+      font-family: 'Noto Sans';
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+}
+
+.gray-line {
+  width: 394px;
+  height: 1px;
+  margin-bottom: 12px;
+  background-color: $gray-bg;
+
 }

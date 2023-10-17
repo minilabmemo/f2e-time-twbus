@@ -1,3 +1,5 @@
+import { LangType } from "./const";
+
 interface CityData {
   name: string;
   value: string;
@@ -35,5 +37,5 @@ export function getCityNameOrValue(value: string | undefined, lang: string | und
     return undefined;
   }
 
-  return lang === 'en' ? city.value : lang === 'zh' ? city.name : undefined;
+  return lang === LangType.en ? city.value : lang === LangType.zh ? city.name : undefined;
 }
