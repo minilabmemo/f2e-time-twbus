@@ -1,6 +1,6 @@
 # f2e-time-twbus
 
-`pet-finder` `react` `scss` `typescript` `storybook`
+ `react` `scss` `typescript` `storybook`
 
 
 # Getting Started with Create React App
