@@ -3,14 +3,26 @@ import { NavLink, useParams } from 'react-router-dom';
 import { ActionType, Dict, URI_SEARCH_DEFAULT, itemI, keyboardRouteList } from '../utils/const';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cityData, getCityNameOrValue } from '../utils/cities';
+import useBusApi from '../hooks/useBusApi';
 
 
 export const BusRouteSearch = () => {
+
+
+
+
+
   const inputRef = useRef<HTMLInputElement>(null);
   const { lang, city } = useParams();
+  let callAtInstall = true;
+  if (city === URI_SEARCH_DEFAULT) {
+    callAtInstall = false;
+  }
 
+  const [result, fetchData] = useBusApi({ City: city, callAtInstall: callAtInstall });
+  console.log("🚀 ~ file: BusRouteSearch.tsx:13 ~ BusRouteSearch ~ result:", result)
   console.log(lang, city);//TODO lang
 
   const [cityKeyboard, setCityKeyboard] = useState(false)
@@ -21,7 +33,7 @@ export const BusRouteSearch = () => {
 
     const handleButtonClick = () => {
       setCityKeyboard(false)
-
+      fetchData()
     };
 
     return (
@@ -116,7 +128,7 @@ export const BusRouteSearch = () => {
   return (
     <div className='search'>
       <section className='search-header'>
-        <div className='breadcrumb'> 首頁/</div>
+        <div className='breadcrumb'> 首頁/ {getCityNameOrValue(city, lang)}</div>
 
 
 
@@ -129,6 +141,8 @@ export const BusRouteSearch = () => {
             {/* TODO query icon */}
           </input>
           <div className='result-routes'>
+            {(result.status === 404) ? <div className='err-404'> 找不到資料，請稍後再試。</div>
+              : ''}
 
           </div>
 

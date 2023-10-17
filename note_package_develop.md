@@ -101,7 +101,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-## node version
+## node version node -v
 - node v18.16.1
 
 ## vscode plugin

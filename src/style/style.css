@@ -499,4 +499,14 @@ code {
 .keyboard .routes .btn-black, .keyboard .cities-keyboard .btn-black {
   background-color: #000;
   color: #FFF;
+}
+
+.result-routes {
+  height: 290px;
+}
+
+.err-404 {
+  margin: 20px;
+  color: #D08181;
+  font-weight: 900;
 }/*# sourceMappingURL=style.css.map */
