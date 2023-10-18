@@ -411,6 +411,10 @@ code {
   flex-shrink: 0;
 }
 
+.city-link, .route-link {
+  text-decoration: none;
+}
+
 .keyboard {
   background-color: #F5F6F6;
   width: 464px;
@@ -421,9 +425,6 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.keyboard .city-link {
-  text-decoration: none;
 }
 .keyboard .city-option {
   display: flex;

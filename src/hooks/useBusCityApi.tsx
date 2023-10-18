@@ -33,7 +33,7 @@ interface BusRequestParam {
 
 // The useBusApi hook provides a reusable mechanism for fetching Bus data and managing the loading state in a React component.
 //return data and useCallback function.
-const useBusApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
+const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
   const { City, callAtInstall } = query;
 
   const fetchData = useCallback(() => {
@@ -98,4 +98,4 @@ const useBusApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
   return [resData, fetchData] as [BusRouteResult, () => void];
 };
 
-export default useBusApi;
+export default useBusCityApi;

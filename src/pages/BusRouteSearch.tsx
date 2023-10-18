@@ -1,11 +1,11 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { ActionType, Dict, LangType, URI_SEARCH_DEFAULT, itemI, keyboardRouteList } from '../utils/const';
+import { ActionType, Dict, LangType, URI_SEARCH_DEFAULT, URI_STOPS, itemI, keyboardRouteList } from '../utils/const';
 import { faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { cityData, getCityNameOrValue } from '../utils/cities';
-import useBusApi, { BusRouteResult } from '../hooks/useBusApi';
+import useBusApi, { BusRouteResult } from '../hooks/useBusCityApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 
 
@@ -17,12 +17,12 @@ export const BusRouteSearch = () => {
 
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const { lang, city } = useParams();
+  const { lang = 'defaultLang', city = 'defaultCity' } = useParams();
   let callAtInstall = true;
   if (city === URI_SEARCH_DEFAULT) {
     callAtInstall = false;
   }
-  const [result, fetchData] = useBusApi({ City: city, callAtInstall: callAtInstall });
+  const [result] = useBusApi({ City: city, callAtInstall: callAtInstall });
 
   console.log(lang, city);//TODO lang
 
@@ -30,7 +30,7 @@ export const BusRouteSearch = () => {
 
   const [routes, setRoutes] = useState(result)
 
-  // 当 result 发生变化时，更新 routes
+  // 當回傳 result 發現變化時，更新 路線顯示
   useEffect(() => {
     setRoutes(result);
   }, [result]);
@@ -139,6 +139,9 @@ export const BusRouteSearch = () => {
 
 
   function RoutesResult({ routes }: { routes: BusRouteResult }) {
+    function calculateURL({ lang, city, route }: { lang: string, city: string, route: string }) {
+      return URI_STOPS.replace(':lang', lang).replace(':city', city).replace(':route', route);
+    }
     return (
       <div className='result-routes'>
         {(routes.status === 404) ? <div className='err-404'> 找不到資料，請稍後再試。</div>
@@ -149,10 +152,12 @@ export const BusRouteSearch = () => {
         {(routes.status === 200) && (
           <div>
             {routes.records.map((item, index) => (
-              <div key={index}>
+
+              <NavLink to={calculateURL({ lang, city, route: item.RouteName.Zh_tw })} className="route-link" key={index}>
+
+
                 <div
                   className='route'
-                // onClick={() => handleButtonClick(item)}
                 >
                   <div className="route-info" >
                     <div className='route-name'> {lang === LangType.en ? (item.RouteName.En) : (item.RouteName.Zh_tw)} </div>
@@ -168,7 +173,8 @@ export const BusRouteSearch = () => {
                 </div>
 
                 <div className='gray-line'></div>
-              </div>
+
+              </NavLink>
             ))}
 
           </div>

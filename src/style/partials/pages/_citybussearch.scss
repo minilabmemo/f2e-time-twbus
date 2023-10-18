@@ -71,6 +71,9 @@
 
 
 
+.city-link, .route-link {
+  text-decoration: none;
+}
 
 .keyboard {
 
@@ -85,9 +88,7 @@
   align-items: center;
 
 
-  .city-link {
-    text-decoration: none;
-  }
+
 
   .city-option {
 
