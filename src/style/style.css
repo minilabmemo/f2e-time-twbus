@@ -507,7 +507,7 @@ code {
   margin: 20px;
 }
 
-.err-404 {
+.err-hint {
   margin: 20px;
   color: #D08181;
   font-weight: 900;
@@ -558,4 +558,16 @@ code {
   height: 1px;
   margin-bottom: 12px;
   background-color: #F5F6F6;
+}
+
+.link-container {
+  height: 38px;
+  display: flex;
+  padding-left: 20px;
+  align-items: center;
+}
+
+.return-search-link {
+  text-decoration: none;
+  color: #000;
 }/*# sourceMappingURL=style.css.map */

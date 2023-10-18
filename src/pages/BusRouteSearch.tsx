@@ -15,7 +15,7 @@ export const BusRouteSearch = () => {
   const SaveIcon = <SaveSvg width="21px" height="21px" />;
 
 
-
+  //TODO lang
   const inputRef = useRef<HTMLInputElement>(null);
   const { lang = 'defaultLang', city = 'defaultCity' } = useParams();
   let callAtInstall = true;
@@ -24,7 +24,7 @@ export const BusRouteSearch = () => {
   }
   const [result] = useBusApi({ City: city, callAtInstall: callAtInstall });
 
-  console.log(lang, city);//TODO lang
+
 
   const [cityKeyboard, setCityKeyboard] = useState(false)
 
@@ -137,17 +137,31 @@ export const BusRouteSearch = () => {
     );
   }
 
+  const ErrorHint = ({ routes }: { routes: BusRouteResult }) => {
+    if (routes.status === 429) {
+      return <div className='err-hint'>請求已達上限，請明日再試。</div>;
+    }
+    if (routes.status === 404) {
+      return <div className='err-hint'>找不到資料，請稍後再試。</div>;
+    }
+    if (routes.status === 200 && routes.total === 0) {
+      return <div className='err-hint'>無此路線，請輸入其他關鍵字。</div>;
+    }
+    if (routes.status !== 200 && routes.status !== 0) {
+      return <div className='err-hint'>Ops..遇到了問題，請稍後再試。</div>;
+    }
+    return null;
+  };
 
   function RoutesResult({ routes }: { routes: BusRouteResult }) {
     function calculateURL({ lang, city, route }: { lang: string, city: string, route: string }) {
       return URI_STOPS.replace(':lang', lang).replace(':city', city).replace(':route', route);
     }
+
     return (
       <div className='result-routes'>
-        {(routes.status === 404) ? <div className='err-404'> 找不到資料，請稍後再試。</div>
-          : ''}
-        {(routes.status === 200) && (routes.total === 0) && <div className='err-404'> 無此路線，請輸入其他關鍵字。</div>}
-        {(routes.status !== 200) && (routes.status !== 0) && <div className='err-404'> Ops..遇到了問題，請稍後再試。</div>}
+
+        <ErrorHint routes={routes} />
 
         {(routes.status === 200) && (
           <div>

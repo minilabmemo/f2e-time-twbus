@@ -1,13 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios, { AxiosError } from 'axios';
 
-export interface BusRouteResult {
+export interface BusStopsResult {
   results: Results | null;
   status: number | undefined;
   isLoading: boolean;
 }
 
-export interface Results {
+interface Results {
   BusStopOfRoutes: BusStopOfRoute[];
   BusN1EstimateTimes: BusN1EstimateTime[];
 }
@@ -56,28 +56,28 @@ interface BusRequestParam {
   callAtInstall: boolean;
 }
 
-// The useBusRouteApi hook provides a reusable mechanism for fetching Bus data and managing the loading state in a React component.
+// The useBusStopsApi hook provides a reusable mechanism for fetching Bus data and managing the loading state in a React component.
 //return data and useCallback function.
-const useBusRouteApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
-  const { City, callAtInstall } = query;
+const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] => {
+  const { City, Route, callAtInstall } = query;
 
   const fetchData = useCallback(() => {
 
 
     const fetchingData = async () => {
-      let url = "";
-      // let url = 'https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City';
-      if (City !== null) {
-        url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City&%24format=JSON`;
-      }
-      const request1 = axios.get("API_ENDPOINT_1");
-      const request2 = axios.get("API_ENDPOINT_2");
+      let DisplayStopOfRoute_URL = "https://tdx.transportdata.tw/api/basic/v2/Bus/DisplayStopOfRoute/City";
+      let EstimatedTimeOfArrival_URL = "https://tdx.transportdata.tw/api/basic/v2/Bus/EstimatedTimeOfArrival/City";
 
-      // 使用Promise.all等待两个请求完成
+      if (City !== null && Route != null) {
+        DisplayStopOfRoute_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
+        EstimatedTimeOfArrival_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
+      }
+      const request1 = axios.get(DisplayStopOfRoute_URL);
+      const request2 = axios.get(EstimatedTimeOfArrival_URL);
+
+
       Promise.all([request1, request2])
         .then((responses) => {
-          // 将结果存储在result对象中
-          // setResult({ res1: responses[0].data, res2: responses[1].data });
           setResData({
             results: { BusStopOfRoutes: responses[0].data, BusN1EstimateTimes: responses[1].data },
             status: 200,
@@ -86,12 +86,12 @@ const useBusRouteApi = (query: BusRequestParam): [BusRouteResult, () => void] =>
         })
         .catch((error) => {
           console.error("useBusRouteApi API请求失败", error);
-          if (axios.isAxiosError(error)) { // 检查是否为 Axios 错误对象
-            const axiosError = error as AxiosError; // 使用类型断言将 error 声明为 AxiosError 类型
-            const responseStatus = axiosError.response ? axiosError.response.status : 0; // 使用条件语句获取 status 属性
+          if (axios.isAxiosError(error)) {
+            const axiosError = error as AxiosError;
+            const responseStatus = axiosError.response ? axiosError.response.status : 0;
             setResData((prevState) => ({
               ...prevState,
-              status: responseStatus, // 获取 HTTP 错误状态码
+              status: responseStatus,
               isLoading: false,
             }));
 
@@ -108,10 +108,10 @@ const useBusRouteApi = (query: BusRequestParam): [BusRouteResult, () => void] =>
 
     fetchingData();
 
-  }, [City]);
+  }, [City, Route]);
 
 
-  const [resData, setResData] = useState<BusRouteResult>({
+  const [resData, setResData] = useState<BusStopsResult>({
     results: null,
     status: 0,
     isLoading: false,
@@ -123,7 +123,7 @@ const useBusRouteApi = (query: BusRequestParam): [BusRouteResult, () => void] =>
     }
   }, [callAtInstall, fetchData]);
 
-  return [resData, fetchData] as [BusRouteResult, () => void];
+  return [resData, fetchData] as [BusStopsResult, () => void];
 };
 
-export default useBusRouteApi;
+export default useBusStopsApi;

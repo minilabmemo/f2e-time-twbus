@@ -1,61 +1,55 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { ActionType, Dict, LangType, URI_SEARCH, URI_SEARCH_DEFAULT, itemI, keyboardRouteList } from '../utils/const';
-import { faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { Dict, URI_SEARCH } from '../utils/const';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useRef, useState } from 'react';
-import { cityData, getCityNameOrValue } from '../utils/cities';
-import useBusApi, { BusRouteResult } from '../hooks/useBusCityApi';
-import SaveSvg from '../components/Icons/SaveSvg';
+import { getCityNameOrValue } from '../utils/cities';
+import { BusRouteResult } from '../hooks/useBusCityApi';
+import useBusRouteApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 
 
 export const BusRouteStops = () => {
 
+  const { lang = 'defaultLang', city = 'defaultCity', route } = useParams();//TODO lang
 
-  const SaveIcon = <SaveSvg width="21px" height="21px" />;
-
-
-
-  const inputRef = useRef<HTMLInputElement>(null);
-  const { lang, city, route } = useParams();
-
-  console.log(lang, city, route);//TODO lang
-  function calculateSearchURL({ lang, city }: { lang: string | undefined, city: string | undefined }) {
-    lang = lang || 'defaultLang';
-    city = city || 'defaultCity';
+  function calculateSearchURL({ lang, city }: { lang: string, city: string }) {
     return URI_SEARCH.replace(':lang', lang).replace(':city', city);
   }
 
-  let callAtInstall = true;
-  if (city === URI_SEARCH_DEFAULT) {
-    callAtInstall = false;
-  }
-  const [result, fetchData] = useBusApi({ City: city, callAtInstall: callAtInstall });
 
+  const [result, fetchData] = useBusRouteApi({ City: city, Route: route, callAtInstall: true });
 
-
-  const [cityKeyboard, setCityKeyboard] = useState(false)
-
-  const [routes, setRoutes] = useState(result)
+  console.log(result);
+  // const [routes, setRoutes] = useState(result)
 
   // 当 result 发生变化时，更新 routes
-  useEffect(() => {
-    setRoutes(result);
-  }, [result]);
+  // useEffect(() => {
+  //   setRoutes(result);
+  // }, [result]);
 
 
+  const ErrorHint = ({ result }: { result: BusStopsResult }) => {
+    if (result.status === 429) {
+      return <div className='err-hint'>請求已達上限，請明日再試。</div>;
+    }
+    if (result.status === 404) {
+      return <div className='err-hint'>找不到資料，請稍後再試。</div>;
+    }
+    if (result.status !== 200 && result.status !== 0) {
+      return <div className='err-hint'>Ops..遇到了問題，請稍後再試。</div>;
+    }
+    return null;
+  };
 
-
-  function RoutesResult({ routes }: { routes: BusRouteResult }) {
+  function BusStopsResult({ result }: { result: BusStopsResult }) {
     return (
       <div className='result-routes'>
-        {(routes.status === 404) ? <div className='err-404'> 找不到資料，請稍後再試。</div>
-          : ''}
-        {(routes.total === 0) ? <div className='err-404'> 無此路線，請輸入其他關鍵字。</div>
-          : ''}
-        {(routes.status === 200) && (
+
+        <ErrorHint result={result} />
+
+        {(result.status === 200) && (
           <div>
-            {routes.records.map((item, index) => (
+            {/* {routes.records.map((item, index) => (
               <div key={index}>
                 <div
                   className='route'
@@ -69,14 +63,14 @@ export const BusRouteStops = () => {
                     </div>
                   </div>
                   <div className="route-action" >
-                    <div className='save-icon'>{SaveIcon}</div>
+
                     <div className='route-city'> {getCityNameOrValue(item.City, lang)}</div>
                   </div>
                 </div>
 
                 <div className='gray-line'></div>
               </div>
-            ))}
+            ))} */}
 
           </div>
         )}
@@ -118,10 +112,12 @@ export const BusRouteStops = () => {
 
       <section className='search-main'>
         <div className='sidebar'>
-          <NavLink to={calculateSearchURL({ lang, city, })} className="route-link">
-            返回搜尋
-          </NavLink >
-          <RoutesResult routes={routes} />
+          <div className="link-container">
+            <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
+              <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋
+            </NavLink >
+          </div>
+          <BusStopsResult result={result} />
 
 
         </div>
