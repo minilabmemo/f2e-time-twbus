@@ -1,0 +1,1438 @@
+[
+  {
+    "StopUID": "TPE33251",
+    "StopID": "33251",
+    "StopName": {
+      "Zh_tw": "桂林路",
+      "En": "Guilin Rd."
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 274,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33252",
+    "StopID": "33252",
+    "StopName": {
+      "Zh_tw": "龍山寺(西園)",
+      "En": "Longshan Temple(Xiyuan)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 402,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33250",
+    "StopID": "33250",
+    "StopName": {
+      "Zh_tw": "桂林昆明街口",
+      "En": "Guilin and Kunming Intersection"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 177,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33259",
+    "StopID": "33259",
+    "StopName": {
+      "Zh_tw": "埔墘(中山路)",
+      "En": "Puqian(Zhongshan Rd.)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1005,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33257",
+    "StopID": "33257",
+    "StopName": {
+      "Zh_tw": "光復橋",
+      "En": "Guangfu Bridge"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 873,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33258",
+    "StopID": "33258",
+    "StopName": {
+      "Zh_tw": "埔墘派出所",
+      "En": "Puqian Police Substation"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 927,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33255",
+    "StopID": "33255",
+    "StopName": {
+      "Zh_tw": "華江高中(西園)",
+      "En": "Huajiang High School(Xiyuan)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 585,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33256",
+    "StopID": "33256",
+    "StopName": {
+      "Zh_tw": "西園路二段",
+      "En": "Xiyuan Rd. Sec. 2"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 694,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33253",
+    "StopID": "33253",
+    "StopName": {
+      "Zh_tw": "大理服飾",
+      "En": "Dali Garments"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 493,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33254",
+    "StopID": "33254",
+    "StopName": {
+      "Zh_tw": "西園29服飾基地",
+      "En": "Fashion Institute of Taipei"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 535,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33240",
+    "StopID": "33240",
+    "StopName": {
+      "Zh_tw": "大理服飾",
+      "En": "Dali Garments"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 386,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33241",
+    "StopID": "33241",
+    "StopName": {
+      "Zh_tw": "捷運龍山寺站",
+      "En": "MRT Longshan Temple Sta."
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 28,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33248",
+    "StopID": "33248",
+    "StopName": {
+      "Zh_tw": "捷運西門站",
+      "En": "MRT Ximen Sta."
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 825,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33249",
+    "StopID": "33249",
+    "StopName": {
+      "Zh_tw": "小南門",
+      "En": "Xiaonanmen"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 65,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33246",
+    "StopID": "33246",
+    "StopName": {
+      "Zh_tw": "漢口街",
+      "En": "Hankou St."
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 556,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33247",
+    "StopID": "33247",
+    "StopName": {
+      "Zh_tw": "中華路北站",
+      "En": "Zhonghua Rd. N. Stop"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 671,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33244",
+    "StopID": "33244",
+    "StopName": {
+      "Zh_tw": "西門國小(臺大醫院北護分院)",
+      "En": "Ximen Elementary School(Nat'l Taiwan U. Hospital Bei-hu Branch)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 332,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33245",
+    "StopID": "33245",
+    "StopName": {
+      "Zh_tw": "峨眉街口(中醫院區)",
+      "En": "Emei St. Entrance"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 431,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33242",
+    "StopID": "33242",
+    "StopName": {
+      "Zh_tw": "龍山寺(康定)",
+      "En": "Longshan Temple(Kangding)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 110,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33243",
+    "StopID": "33243",
+    "StopName": {
+      "Zh_tw": "祖師廟(康定)",
+      "En": "Zushi Temple(Kangding)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 249,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33230",
+    "StopID": "33230",
+    "StopName": {
+      "Zh_tw": "新北市政府(中山路)",
+      "En": "New Taipei City Hall(Zhongshan Rd.)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 316,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33237",
+    "StopID": "33237",
+    "StopName": {
+      "Zh_tw": "西園路二段",
+      "En": "Xiyuan Rd. Sec. 2"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 61,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33238",
+    "StopID": "33238",
+    "StopName": {
+      "Zh_tw": "華江高中(西園)",
+      "En": "Huajiang High School(Xiyuan)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 238,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33235",
+    "StopID": "33235",
+    "StopName": {
+      "Zh_tw": "埔墘派出所",
+      "En": "Puqian Police Substation"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 804,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33236",
+    "StopID": "33236",
+    "StopName": {
+      "Zh_tw": "光復橋",
+      "En": "Guangfu Bridge"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 853,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33233",
+    "StopID": "33233",
+    "StopName": {
+      "Zh_tw": "埔墘國小",
+      "En": "Puqian Elementary School"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 665,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33234",
+    "StopID": "33234",
+    "StopName": {
+      "Zh_tw": "埔墘(中山路)",
+      "En": "Puqian(Zhongshan Rd.)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 691,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33231",
+    "StopID": "33231",
+    "StopName": {
+      "Zh_tw": "中山漢生路口",
+      "En": "Zhongshan & Hansheng Intersection"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 547,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33232",
+    "StopID": "33232",
+    "StopName": {
+      "Zh_tw": "西安里",
+      "En": "Xian Li"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 582,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33239",
+    "StopID": "33239",
+    "StopName": {
+      "Zh_tw": "西園29服飾基地",
+      "En": "Fashion Institute of Taipei"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 306,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33226",
+    "StopID": "33226",
+    "StopName": {
+      "Zh_tw": "介壽公園",
+      "En": "Jieshou Park"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 526,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33227",
+    "StopID": "33227",
+    "StopName": {
+      "Zh_tw": "民權路口",
+      "En": "Minquan Rd. Entrance"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 608,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33224",
+    "StopID": "33224",
+    "StopName": {
+      "Zh_tw": "鄉雲里",
+      "En": "Xiangyun Li"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 228,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33225",
+    "StopID": "33225",
+    "StopName": {
+      "Zh_tw": "後站商圈",
+      "En": "Old Banqiao Sta. Shopping Circle"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 439,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33222",
+    "StopID": "33222",
+    "StopName": {
+      "Zh_tw": "仁愛新村",
+      "En": "Renai New Village"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 88,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33223",
+    "StopID": "33223",
+    "StopName": {
+      "Zh_tw": "福星里",
+      "En": "Fuxing Village"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 134,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33220",
+    "StopID": "33220",
+    "StopName": {
+      "Zh_tw": "亞東科技大學",
+      "En": "Oriental University of Science & Technology"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 399,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33221",
+    "StopID": "33221",
+    "StopName": {
+      "Zh_tw": "豫章工商",
+      "En": "Yu Chang Technical & Commercial Vocational Senior High School"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 6,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33228",
+    "StopID": "33228",
+    "StopName": {
+      "Zh_tw": "新北市政府(新府路)",
+      "En": "New Taipei City Hall(Xinfu Rd.)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 676,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33229",
+    "StopID": "33229",
+    "StopName": {
+      "Zh_tw": "新北板橋公車站",
+      "En": "NTPC Banqiao Bus Station"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 884,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33215",
+    "StopID": "33215",
+    "StopName": {
+      "Zh_tw": "中山實小",
+      "En": "Zhongshan Experimental Elementary School"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "StopStatus": 1,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33216",
+    "StopID": "33216",
+    "StopName": {
+      "Zh_tw": "板橋榮家",
+      "En": "Banqiao Veterans Home"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "StopStatus": 1,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33213",
+    "StopID": "33213",
+    "StopName": {
+      "Zh_tw": "大觀國小",
+      "En": "Daguan Elementary School"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "StopStatus": 1,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33214",
+    "StopID": "33214",
+    "StopName": {
+      "Zh_tw": "國立臺灣藝術大學",
+      "En": "National Taiwan U. of Arts"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "StopStatus": 1,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33211",
+    "StopID": "33211",
+    "StopName": {
+      "Zh_tw": "僑中一街",
+      "En": "Qiaozhong 1st. St."
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "StopStatus": 1,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33212",
+    "StopID": "33212",
+    "StopName": {
+      "Zh_tw": "大觀路一段28巷",
+      "En": "Daguan Rd. Lane 28"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "StopStatus": 1,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33210",
+    "StopID": "33210",
+    "StopName": {
+      "Zh_tw": "歡仔園",
+      "En": "Huanziyuan"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "StopStatus": 1,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33219",
+    "StopID": "33219",
+    "StopName": {
+      "Zh_tw": "南雅站",
+      "En": "Nanya Stop"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 332,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33217",
+    "StopID": "33217",
+    "StopName": {
+      "Zh_tw": "力行新村",
+      "En": "Lixing New Village"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "StopStatus": 1,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33282",
+    "StopID": "33282",
+    "StopName": {
+      "Zh_tw": "大觀路一段28巷",
+      "En": "Daguan Rd. Lane 28"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1387,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33280",
+    "StopID": "33280",
+    "StopName": {
+      "Zh_tw": "國立臺灣藝術大學",
+      "En": "National Taiwan U. of Arts"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1264,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33281",
+    "StopID": "33281",
+    "StopName": {
+      "Zh_tw": "大觀國小",
+      "En": "Daguan Elementary School"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1337,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33286",
+    "StopID": "33286",
+    "StopName": {
+      "Zh_tw": "僑中一街",
+      "En": "Qiaozhong 1st. St."
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1457,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33287",
+    "StopID": "33287",
+    "StopName": {
+      "Zh_tw": "歡仔園",
+      "En": "Huanziyuan"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1539,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33273",
+    "StopID": "33273",
+    "StopName": {
+      "Zh_tw": "亞東科技大學",
+      "En": "Oriental University of Science & Technology"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 660,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33274",
+    "StopID": "33274",
+    "StopName": {
+      "Zh_tw": "南雅站",
+      "En": "Nanya Stop"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 794,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33271",
+    "StopID": "33271",
+    "StopName": {
+      "Zh_tw": "仁愛新村",
+      "En": "Renai New Village"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 496,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33272",
+    "StopID": "33272",
+    "StopName": {
+      "Zh_tw": "豫章工商",
+      "En": "Yu Chang Technical & Commercial Vocational Senior High School"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 553,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33270",
+    "StopID": "33270",
+    "StopName": {
+      "Zh_tw": "福星里",
+      "En": "Fuxing Village"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 413,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33279",
+    "StopID": "33279",
+    "StopName": {
+      "Zh_tw": "中山實小",
+      "En": "Zhongshan Experimental Elementary School"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1227,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33277",
+    "StopID": "33277",
+    "StopName": {
+      "Zh_tw": "力行新村",
+      "En": "Lixing New Village"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1095,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33278",
+    "StopID": "33278",
+    "StopName": {
+      "Zh_tw": "板橋榮家",
+      "En": "Banqiao Veterans Home"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1189,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33275",
+    "StopID": "33275",
+    "StopName": {
+      "Zh_tw": "浮洲橋",
+      "En": "Fuzhou Bridge"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 930,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33262",
+    "StopID": "33262",
+    "StopName": {
+      "Zh_tw": "中山漢生路口",
+      "En": "Zhongshan Hansheng Rd. Intersection"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1235,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33263",
+    "StopID": "33263",
+    "StopName": {
+      "Zh_tw": "新北市政府(中山路)",
+      "En": "New Taipei City Hall(Zhongshan Rd.)"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1311,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33260",
+    "StopID": "33260",
+    "StopName": {
+      "Zh_tw": "埔墘國小",
+      "En": "Puqian Elementary School"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1098,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33261",
+    "StopID": "33261",
+    "StopName": {
+      "Zh_tw": "西安里",
+      "En": "Xian Li"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1192,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33268",
+    "StopID": "33268",
+    "StopName": {
+      "Zh_tw": "後站商圈",
+      "En": "Old Banqiao Sta. Shopping Circle"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 173,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33269",
+    "StopID": "33269",
+    "StopName": {
+      "Zh_tw": "鄉雲里",
+      "En": "Xiangyun Li"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 356,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33266",
+    "StopID": "33266",
+    "StopName": {
+      "Zh_tw": "民權路口",
+      "En": "Minquan Rd. Entrance"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 125,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33267",
+    "StopID": "33267",
+    "StopName": {
+      "Zh_tw": "板橋外站",
+      "En": "Banqiao Bus Terminal Extension"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 140,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33264",
+    "StopID": "33264",
+    "StopName": {
+      "Zh_tw": "新北板橋公車站",
+      "En": "NTPC Banqiao Bus Station"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 13,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE33265",
+    "StopID": "33265",
+    "StopName": {
+      "Zh_tw": "新北市政府(新府路)",
+      "En": "Taipei County Hall"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 0,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE58028",
+    "StopID": "58028",
+    "StopName": {
+      "Zh_tw": "福安里",
+      "En": "Fuan Li"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1058,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE180862",
+    "StopID": "180862",
+    "StopName": {
+      "Zh_tw": "中山民生路口",
+      "En": "Zhongshan and Minsheng Intersection"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 0,
+    "EstimateTime": 632,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  },
+  {
+    "StopUID": "TPE180068",
+    "StopID": "180068",
+    "StopName": {
+      "Zh_tw": "中山民生路口",
+      "En": "Zhongshan and Minsheng Intersection"
+    },
+    "RouteUID": "TPE10132",
+    "RouteID": "10132",
+    "RouteName": {
+      "Zh_tw": "234",
+      "En": "234"
+    },
+    "Direction": 1,
+    "EstimateTime": 1156,
+    "StopStatus": 0,
+    "SrcUpdateTime": "2023-10-18T15:45:00+08:00",
+    "UpdateTime": "2023-10-18T15:45:05+08:00"
+  }
+]

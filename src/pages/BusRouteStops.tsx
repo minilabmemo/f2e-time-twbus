@@ -5,7 +5,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getCityNameOrValue } from '../utils/cities';
 import { BusRouteResult } from '../hooks/useBusCityApi';
-import useBusRouteApi, { BusStopsResult } from '../hooks/useBusStopsApi';
+import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 
 
 export const BusRouteStops = () => {
@@ -17,7 +17,7 @@ export const BusRouteStops = () => {
   }
 
 
-  const [result, fetchData] = useBusRouteApi({ City: city, Route: route, callAtInstall: true });
+  const [result, fetchData] = useBusStopsApi({ City: city, Route: route, callAtInstall: true });
 
   console.log(result);
   // const [routes, setRoutes] = useState(result)

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import { cityRoutes_mock_data } from '../utils/mock';
 interface BusRoute {
   RouteID: string;
   RouteName: NameType;
@@ -31,31 +33,43 @@ interface BusRequestParam {
 
 }
 
-// The useBusApi hook provides a reusable mechanism for fetching Bus data and managing the loading state in a React component.
-//return data and useCallback function.
 const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
+  const mock = process.env.REACT_APP_MOCK_DATA;
   const { City, callAtInstall } = query;
-
   const fetchData = useCallback(() => {
 
-
     const fetchingData = async () => {
+
       let url = 'https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City';
       if (City !== null) {
         url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City&%24format=JSON`;
       }
       try {
-        const response = await axios.get(url); // 请注意修改为你的API地址
+        if (mock) {
+          console.error('Mock data return, only use in develop.');
+          const cityRoutesArray = JSON.parse(cityRoutes_mock_data);
+          setResData({
+            records: cityRoutesArray,
+            status: 200,
+            total: cityRoutesArray.length,
+            isLoading: false,
+          });
 
-        const data: BusRoute[] = response.data;
-        const status = response.status;
 
-        setResData({
-          records: data,
-          status: status,
-          total: data.length,
-          isLoading: false,
-        });
+
+        } else {
+          const response = await axios.get(url);
+
+          const data: BusRoute[] = response.data;
+          const status = response.status;
+
+          setResData({
+            records: data,
+            status: status,
+            total: data.length,
+            isLoading: false,
+          });
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
         if (axios.isAxiosError(error)) { // 检查是否为 Axios 错误对象
@@ -79,7 +93,7 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
 
     fetchingData();
 
-  }, [City]);
+  }, [City, mock]);
 
 
   const [resData, setResData] = useState<BusRouteResult>({
