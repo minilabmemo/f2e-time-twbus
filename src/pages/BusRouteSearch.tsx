@@ -43,7 +43,7 @@ export const BusRouteSearch = () => {
       if (inputRef.current) { //切換城市清空之前的關鍵字輸入
         inputRef.current.value = "";
       }
-      fetchData()
+
 
 
     };
