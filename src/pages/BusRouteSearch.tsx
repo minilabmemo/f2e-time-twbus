@@ -10,7 +10,8 @@ import SaveSvg from '../components/Icons/SaveSvg';
 
 
 export const BusRouteSearch = () => {
-
+  const apiKey = process.env.REACT_APP_API_KEY;
+  console.log("🚀 ~ file: BusRouteSearch.tsx:14 ~ BusRouteSearch ~ apiKey:", apiKey)
 
   const SaveIcon = <SaveSvg width="21px" height="21px" />;
 
