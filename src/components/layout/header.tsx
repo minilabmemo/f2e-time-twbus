@@ -33,7 +33,7 @@ export const Header = () => {
 
           </NavLink>
 
-          <NavLink to={`/query/zh/cities`} className="nav-link">
+          <NavLink to={`/search/zh/cities`} className="nav-link">
             {isLangZH ? LinkNames.search.zh : LinkNames.search.en}
           </NavLink>
           <NavLink to="/chart" className="nav-link">

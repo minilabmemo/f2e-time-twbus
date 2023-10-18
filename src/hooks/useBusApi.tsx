@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
 interface BusRoute {
   RouteID: string;
-  RouteName: OperatorName;
+  RouteName: NameType;
   DepartureStopNameZh: string,
   DepartureStopNameEn: string,
   DestinationStopNameZh: string,
@@ -17,7 +17,7 @@ export interface BusRouteResult {
   isLoading: boolean;
 }
 
-export interface OperatorName {
+export interface NameType {
   Zh_tw: string;
   En: string;
 }

@@ -38,9 +38,14 @@ export const BusRouteSearch = () => {
 
   const KeyboardCities: React.FC = () => {
 
-    const handleButtonClick = () => {
+    const handleCityButtonClick = () => {
       setCityKeyboard(false)
+      if (inputRef.current) { //切換城市清空之前的關鍵字輸入
+        inputRef.current.value = "";
+      }
       fetchData()
+
+
     };
 
     return (
@@ -48,11 +53,11 @@ export const BusRouteSearch = () => {
         {cityData.map((item, index) => (
 
 
-          <NavLink to={`/query/${lang}/${item.value}`} className="city-link">
+          <NavLink to={`/search/${lang}/${item.value}`} className="city-link">
             <div
               key={index}
               className='btn btn-blue'
-              onClick={() => handleButtonClick()}
+              onClick={() => handleCityButtonClick()}
             >
               {item.name}
             </div>
@@ -64,7 +69,7 @@ export const BusRouteSearch = () => {
 
   const KeyboardRoutes: React.FC = () => {
 
-    const handleButtonClick = (item: itemI) => {
+    const handleRouteButtonClick = (item: itemI) => {
 
       if (inputRef.current) {
         if (item.action === ActionType.delete) {
@@ -90,7 +95,7 @@ export const BusRouteSearch = () => {
           <div
             key={index}
             className={item.attr}
-            onClick={() => handleButtonClick(item)}
+            onClick={() => handleRouteButtonClick(item)}
           >
             {item.zh}
           </div>
@@ -138,8 +143,9 @@ export const BusRouteSearch = () => {
       <div className='result-routes'>
         {(routes.status === 404) ? <div className='err-404'> 找不到資料，請稍後再試。</div>
           : ''}
-        {(routes.total === 0) ? <div className='err-404'> 無此路線，請輸入其他關鍵字。</div>
-          : ''}
+        {(routes.status === 200) && (routes.total === 0) && <div className='err-404'> 無此路線，請輸入其他關鍵字。</div>}
+        {(routes.status !== 200) && (routes.status !== 0) && <div className='err-404'> Ops..遇到了問題，請稍後再試。</div>}
+
         {(routes.status === 200) && (
           <div>
             {routes.records.map((item, index) => (
@@ -172,6 +178,8 @@ export const BusRouteSearch = () => {
       </div>
     );
   }
+
+  //TODO 這邊只有查詢起點終點 應該要有中間的站名才是
   function filterRecords({ input, data }: { input: string, data: BusRouteResult }) {
     const filteredRecords = data.records.filter((record) => {
 
