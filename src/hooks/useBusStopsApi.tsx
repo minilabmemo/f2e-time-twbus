@@ -82,6 +82,7 @@ interface BusRequestParam {
 //return data and useCallback function.
 const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] => {
   const mock = process.env.REACT_APP_MOCK_DATA;
+  const root_url = process.env.REACT_APP_API_URL
   const { City, Route, callAtInstall } = query;
   console.error('mock' + mock);
   const fetchData = useCallback(() => {
@@ -98,8 +99,8 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
 
       }
       if (!mock) {
-        let DisplayStopOfRoute_URL = "https://tdx.transportdata.tw/api/basic/v2/Bus/DisplayStopOfRoute/City";
-        let EstimatedTimeOfArrival_URL = "https://tdx.transportdata.tw/api/basic/v2/Bus/EstimatedTimeOfArrival/City";
+        let DisplayStopOfRoute_URL = `${root_url}/api/basic/v2/Bus/DisplayStopOfRoute/City`;
+        let EstimatedTimeOfArrival_URL = `${root_url}/api/basic/v2/Bus/EstimatedTimeOfArrival/City`;
 
         if (City !== null && Route != null) {
           DisplayStopOfRoute_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
