@@ -193,7 +193,7 @@ export const BusRouteStops = () => {
 
 
         </div>
-        <div className='result-map'></div>
+        <div className='result-map' id="map"></div>
 
       </section>
 
