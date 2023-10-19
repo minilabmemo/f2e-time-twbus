@@ -7,8 +7,9 @@ import { getCityNameOrValue } from '../utils/cities';
 
 import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 export const BusRouteStops = () => {
 
@@ -171,6 +172,26 @@ export const BusRouteStops = () => {
       </div >
     );
   }
+  const LeafletMap: React.FC<{ id: string; }> = ({ id }) => {
+    useEffect(() => {
+
+      const map = L.map(id).setView([25.03418, 121.564517], 17);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      L.marker([25.03418, 121.564517]).addTo(map)
+        .bindPopup("A sample popup.")
+        .openPopup();
+      return () => {
+        if (map) {
+          map.remove();
+        }
+      };
+    }, [id]);
+
+    return <div id={id} style={{ height: "100%" }} />;
+  };
 
 
   return (
@@ -193,7 +214,9 @@ export const BusRouteStops = () => {
 
 
         </div>
-        <div className='result-map' id="map"></div>
+        <div className='result-map'>
+          <LeafletMap id="street-map" />
+        </div>
 
       </section>
 
