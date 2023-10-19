@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { cityRoutes_mock_data } from '../utils/mock';
+
+import { cityRoutes_mock_data } from '../utils/mocks/mock';
 interface BusRoute {
   RouteID: string;
   RouteName: NameType;

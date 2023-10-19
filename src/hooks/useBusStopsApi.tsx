@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios, { AxiosError } from 'axios';
-import { DisplayStopOfRoute_mock, EstimatedTimeOfArrival_mock } from '../utils/mock';
+import { DisplayStopOfRoute_mock, EstimatedTimeOfArrival_mock } from '../utils/mocks/mock';
 
 export interface BusStopsResult {
   results: Results | null;
@@ -46,7 +46,18 @@ interface BusN1EstimateTime {
   StopID: string;
   //站牌名
   StopName: NameType;
-
+  //路線唯一識別代碼，規則為 {業管機關代碼} + {RouteID}，其中 {業管機關代碼} 可於Authority API中的AuthorityCode欄位查詢
+  RouteUID: string;
+  //地區既用中之路線代碼(為原資料內碼)
+  RouteID: string;
+  //去返程(該方向指的是此車牌車輛目前所在路線的去返程方向，非指站站牌所在路線的去返程方向，使用時請加值業者多加注意) : [0:'去程',1:'返程',2:'迴圈',255:'未知']
+  Direction: number;
+  //到站時間預估(秒) [當StopStatus値為2~4或PlateNumb値為 - 1時，EstimateTime値為null; 當StopStatus値為1時， EstimateTime値多數為null，僅部分路線因有固定發車時間，故EstimateTime有値; 當StopStatus値為0時，EstimateTime有値。]
+  EstimateTime: number | null;
+  //車輛狀態備註 : [0:'正常',1:'尚未發車',2:'交管不停靠',3:'末班車已過',4:'今日未營運']
+  StopStatus: number;
+  //本平台資料更新時間(ISO8601格式:yyyy-MM-ddTHH:mm:sszzz)
+  UpdateTime: string;
 
 }
 

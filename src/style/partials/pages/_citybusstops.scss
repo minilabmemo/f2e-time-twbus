@@ -68,23 +68,74 @@
 
 .tab-contents {
 
-
-  // .active {
-  //   display: block;
-  // }
-
-  // .inactive {
-  //   display: none;
-  // }
-
   .tab-content {
     width: 403px;
     height: 487px;
     overflow-y: scroll;
+    overflow-x: hidden;
     margin: 30px;
 
     .stop {
       height: 42px;
     }
   }
+}
+
+
+.stop-container {
+  display: flex;
+  font-family: 'Noto Sans';
+
+  .estimateTime {
+    width: 77px;
+    height: 26px;
+    border-radius: 10px;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.gray {
+      background-color: $gray-time;
+    }
+
+    &.red {
+      background-color: $red-time;
+
+    }
+
+    &.blue {
+      background-color: $blue-time;
+
+    }
+
+  }
+
+  .name {
+    margin: 0 10px;
+    width: 50%;
+
+    &.gray {
+      color: $gray-time;
+    }
+
+    &.red {
+      color: $black;
+
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 19px;
+      letter-spacing: 0em;
+      text-align: left;
+
+    }
+
+    &.blue {
+      color: $black;
+
+    }
+
+  }
+
+
 }

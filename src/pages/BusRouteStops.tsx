@@ -4,7 +4,7 @@ import { Dict, URI_SEARCH } from '../utils/const';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getCityNameOrValue } from '../utils/cities';
-import { BusRouteResult } from '../hooks/useBusCityApi';
+
 import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 import { useState } from 'react';
@@ -22,7 +22,7 @@ export const BusRouteStops = () => {
   const [result, fetchData] = useBusStopsApi({ City: city, Route: route, callAtInstall: true });
 
   console.log(result);
-  // const [routes, setRoutes] = useState(result)
+  // robot?字型
 
   // 当 result 发生变化时，更新 routes
   // useEffect(() => {
@@ -42,6 +42,64 @@ export const BusRouteStops = () => {
     }
     return null;
   };
+
+
+  function statusDefine(status: number, estimateTime: number | null) {
+    if (status === 1) {
+      return ['尚未發車', "gray"];//TODO 2345
+    }
+    if (estimateTime === null) {
+      return ['無資訊', "gray"];
+    }
+    if (typeof estimateTime === 'number') {
+      if (estimateTime < 60) {
+        // return [`進站中 ${estimateTime}秒`, "red"];  
+        return [`進站中`, "red"];  //60秒內顯示進站中
+      }
+
+      if (estimateTime >= 60 && estimateTime < 3600) {
+        const minutes = Math.floor(estimateTime / 60);
+
+        const seconds = estimateTime % 60;
+        if (minutes === 1) { //兩分鐘內顯示 即將進站
+          // return [` 即將進站 ${minutes}分${seconds}秒`, "red"];
+          return [` 即將進站`, "red"];
+        }
+        return [`${minutes}分${seconds}秒`, "blue"];
+      }
+
+      if (estimateTime >= 3600) {
+        const hours = Math.floor(estimateTime / 3600);
+        const remainingSeconds = estimateTime % 3600;
+        const minutes = Math.floor(remainingSeconds / 60);
+        const seconds = remainingSeconds % 60;
+        return [`${hours}小時${minutes}分${seconds}秒`, "blue"];
+      }
+    }
+    return ['未知', "gray"];
+  }
+
+
+  function StopStatus({ name, status, estimateTime }: { name: string, status: number, estimateTime: number | null }) {
+
+    const [showStatus, color] = statusDefine(status, estimateTime);
+
+    return (
+      <div className="stop-container">
+        <div className={`estimateTime ${color}`}>
+          {showStatus}
+        </div>
+        <div className={`name ${color}`}>
+          {name}
+
+        </div>
+
+        {/* TODO line &  */}
+        {/* {status} */}
+      </div>
+
+    );
+  }
 
   function BusStopsResult({ result, route }: { result: BusStopsResult, route: string }) {
     const [activeTab, setActiveTab] = useState(0);
@@ -82,46 +140,38 @@ export const BusRouteStops = () => {
               {result.results?.BusStopOfRoutes.map((item, index) => (
                 activeTab === index && (
                   <div key={index} className={`tab-content active`}>
-                    {
-                      item.Stops.map((itemStop, index) => (
-                        <div className='stop'>
-                          {itemStop.StopName.Zh_tw}
+
+                    {item.Stops.map((itemStop, stopIndex) => {
+                      const filterStopName = itemStop.StopName.Zh_tw;
+                      const filterDirection = item.Direction;
+                      const targetObject = result.results?.BusN1EstimateTimes.find(item => item.StopName.Zh_tw === filterStopName && item.Direction === filterDirection);
+
+                      return (
+                        <div className='stop' key={stopIndex}>
+
+                          <StopStatus
+                            name={itemStop.StopName.Zh_tw}
+                            status={targetObject ? (targetObject.StopStatus) : -101}
+                            estimateTime={targetObject ? (targetObject.EstimateTime) : null}
+                          />
+
+                          <div className='gray-line'></div>
                         </div>
-                      ))
-                    }
+                      );
+                    })}
                   </div>)
               ))}
             </div>
           </div>
 
 
+          //TODO更新鈕
         )
         }
       </div >
     );
   }
 
-  //TODO 這邊只有查詢起點終點 應該要有中間的站名才是
-  function filterRecords({ input, data }: { input: string, data: BusRouteResult }) {
-    const filteredRecords = data.records.filter((record) => {
-
-      const { RouteName, DepartureStopNameZh, DestinationStopNameZh } = record; //TODO lang
-      return (
-        RouteName.Zh_tw.includes(input) ||
-        DepartureStopNameZh.includes(input) ||
-        DestinationStopNameZh.includes(input)
-      );
-    });
-
-
-
-    return {
-      records: filteredRecords,
-      status: data.status,
-      total: filteredRecords.length, // 更新总记录数
-      isLoading: data.isLoading,
-    };
-  }
 
   return (
     <div className='search'>
