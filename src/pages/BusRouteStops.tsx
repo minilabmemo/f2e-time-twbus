@@ -80,19 +80,16 @@ export const BusRouteStops = () => {
             <div className="tab-contents">
 
               {result.results?.BusStopOfRoutes.map((item, index) => (
-                <div
-                  key={index}
-                  className={`tab-content ${activeTab === index ? 'active' : 'inactive'}`}
-                >
-
-                  {
-                    item.Stops.map((itemStop, index) => (
-                      <div className='stop'>
-                        {itemStop.StopName.Zh_tw}
-                      </div>
-                    ))
-                  }
-                </div>
+                activeTab === index && (
+                  <div key={index} className={`tab-content active`}>
+                    {
+                      item.Stops.map((itemStop, index) => (
+                        <div className='stop'>
+                          {itemStop.StopName.Zh_tw}
+                        </div>
+                      ))
+                    }
+                  </div>)
               ))}
             </div>
           </div>

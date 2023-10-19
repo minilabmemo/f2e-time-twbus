@@ -614,12 +614,6 @@ code {
   border-radius: 5px 5px 0px 0px;
 }
 
-.tab-contents .active {
-  display: block;
-}
-.tab-contents .inactive {
-  display: none;
-}
 .tab-contents .tab-content {
   width: 403px;
   height: 487px;
