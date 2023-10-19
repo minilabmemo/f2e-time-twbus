@@ -4,7 +4,7 @@ import { Dict, URI_SEARCH } from '../utils/const';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getCityNameOrValue } from '../utils/cities';
-
+import point from '../images/point.svg';
 import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 import { useEffect, useState } from 'react';
@@ -12,7 +12,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 export const BusRouteStops = () => {
-
+  const [activeTab, setActiveTab] = useState(0);
   const { lang = 'defaultLang', city = 'defaultCity', route = "defaultRoute" } = useParams();//TODO lang
 
   function calculateSearchURL({ lang, city }: { lang: string, city: string }) {
@@ -103,7 +103,8 @@ export const BusRouteStops = () => {
   }
 
   function BusStopsResult({ result, route }: { result: BusStopsResult, route: string }) {
-    const [activeTab, setActiveTab] = useState(0);
+
+
 
     return (
       <div className='result-stops'>
@@ -174,15 +175,50 @@ export const BusRouteStops = () => {
   }
   const LeafletMap: React.FC<{ id: string; }> = ({ id }) => {
     useEffect(() => {
+      let zoom = 15; // 0 - 18
 
-      const map = L.map(id).setView([25.03418, 121.564517], 17);
+      let center: L.LatLngExpression = [25.03418, 121.564517]; // 中心點座標
+      const map = L.map(id).setView(center, zoom);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+
       }).addTo(map);
-      L.marker([25.03418, 121.564517]).addTo(map)
-        .bindPopup("A sample popup.")
-        .openPopup();
+      // L.marker([25.03418, 121.564517]).addTo(map)
+      //   .bindPopup("A sample popup.")
+      //   .openPopup();
+
+      const pointIcon = new L.Icon({
+        iconUrl: point,
+        iconSize: [49, 49],
+        iconAnchor: [24, 24],
+        popupAnchor: [0, -24]
+      })
+
+      result.results?.BusStopOfRoutes[activeTab].Stops.forEach((stop) => {
+        console.log(stop.StopPosition.PositionLat, stop.StopPosition.PositionLon)
+        L.marker([stop.StopPosition.PositionLat, stop.StopPosition.PositionLon], {
+          icon: pointIcon,
+          title: 'Your title here',
+          opacity: 1.0,
+        }).addTo(map);
+      });
+
+
+
+      // L.marker([25.03418, 121.564517], {
+      //   icon: pointIcon, title: '跟 <a> 的 title 一樣', // 跟 <a> 的 title 一樣
+      //   opacity: 1.0
+      // }).addTo(map);
+
+      // L.marker([25.03418, 122], {
+      //   title: '跟 <a> 的 title 一樣', // 跟 <a> 的 title 一樣
+      //   opacity: 1.0
+      // }).addTo(map);
+
+
+
+
       return () => {
         if (map) {
           map.remove();
@@ -192,6 +228,7 @@ export const BusRouteStops = () => {
 
     return <div id={id} style={{ height: "100%" }} />;
   };
+
 
 
   return (
