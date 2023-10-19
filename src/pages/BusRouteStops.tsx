@@ -6,11 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getCityNameOrValue } from '../utils/cities';
 import { BusRouteResult } from '../hooks/useBusCityApi';
 import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
+import SaveSvg from '../components/Icons/SaveSvg';
+import { useState } from 'react';
 
 
 export const BusRouteStops = () => {
 
-  const { lang = 'defaultLang', city = 'defaultCity', route } = useParams();//TODO lang
+  const { lang = 'defaultLang', city = 'defaultCity', route = "defaultRoute" } = useParams();//TODO lang
 
   function calculateSearchURL({ lang, city }: { lang: string, city: string }) {
     return URI_SEARCH.replace(':lang', lang).replace(':city', city);
@@ -41,42 +43,64 @@ export const BusRouteStops = () => {
     return null;
   };
 
-  function BusStopsResult({ result }: { result: BusStopsResult }) {
+  function BusStopsResult({ result, route }: { result: BusStopsResult, route: string }) {
+    const [activeTab, setActiveTab] = useState(0);
+
     return (
-      <div className='result-routes'>
+      <div className='result-stops'>
 
         <ErrorHint result={result} />
+        <div className="route-infos">
+          <div className="route-name">{route}</div>
+
+          <div className="route-?"></div>{/* //TODO API? */}
+
+        </div>
 
         {(result.status === 200) && (
           <div>
-            {/* {routes.records.map((item, index) => (
-              <div key={index}>
+            <div className="tab-buttons">
+              {result.results?.BusStopOfRoutes.map((item, index) => (
+                <>
+
+                  <button
+                    key={index}
+                    className={`tab-button ${activeTab === index ? 'active' : 'inactive'}`}
+
+                    onClick={() => setActiveTab(index)}
+                  >
+                    {item.Stops[item.Stops.length - 1].StopName.Zh_tw}
+                  </button>
+
+
+                </>
+              ))}
+            </div>
+
+            <div className="tab-contents">
+
+              {result.results?.BusStopOfRoutes.map((item, index) => (
                 <div
-                  className='route'
-                // onClick={() => handleButtonClick(item)}
+                  key={index}
+                  className={`tab-content ${activeTab === index ? 'active' : 'inactive'}`}
                 >
-                  <div className="route-info" >
-                    <div className='route-name'> {lang === LangType.en ? (item.RouteName.En) : (item.RouteName.Zh_tw)} </div>
-                    <div className='route-direction'>
-                      {lang === LangType.en ? (`${item.DepartureStopNameEn} - ${item.DestinationStopNameEn}`) : (`${item.DepartureStopNameZh} - ${item.DestinationStopNameZh}`)}
 
-                    </div>
-                  </div>
-                  <div className="route-action" >
-
-                    <div className='route-city'> {getCityNameOrValue(item.City, lang)}</div>
-                  </div>
+                  {
+                    item.Stops.map((itemStop, index) => (
+                      <div className='stop'>
+                        {itemStop.StopName.Zh_tw}
+                      </div>
+                    ))
+                  }
                 </div>
-
-                <div className='gray-line'></div>
-              </div>
-            ))} */}
-
+              ))}
+            </div>
           </div>
-        )}
 
 
-      </div>
+        )
+        }
+      </div >
     );
   }
 
@@ -116,8 +140,9 @@ export const BusRouteStops = () => {
             <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
               <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋
             </NavLink >
+            <span className='save-icon'><SaveSvg width="21px" height="21px" /></span>
           </div>
-          <BusStopsResult result={result} />
+          <BusStopsResult result={result} route={route} />
 
 
         </div>

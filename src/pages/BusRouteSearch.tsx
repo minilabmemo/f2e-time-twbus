@@ -12,7 +12,6 @@ import SaveSvg from '../components/Icons/SaveSvg';
 export const BusRouteSearch = () => {
 
 
-  const SaveIcon = <SaveSvg width="21px" height="21px" />;
   //TODO lang
   const inputRef = useRef<HTMLInputElement>(null);
   const { lang = 'defaultLang', city = 'defaultCity' } = useParams();
@@ -179,7 +178,7 @@ export const BusRouteSearch = () => {
                     </div>
                   </div>
                   <div className="route-action" >
-                    <div className='save-icon'>{SaveIcon}</div>
+                    <div className='save-icon'><SaveSvg width="21px" height="21px" /></div>
                     <div className='route-city'> {getCityNameOrValue(item.City, lang)}</div>
                   </div>
                 </div>

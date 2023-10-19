@@ -2,11 +2,89 @@
   height: 38px;
   display: flex;
   padding-left: 20px;
+  padding-right: 20px;
   align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+
+  .save-icon {
+    text-align: right;
+
+  }
 }
 
 .return-search-link {
   text-decoration: none;
   color: $black;
 
+}
+
+.result-stops {
+
+  width: 464px;
+  height: 690px;
+
+  .route-infos {
+    width: 464px;
+    height: 94px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .route-name {
+    color: #000;
+    font-family: Roboto;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
+
+.tab-buttons {
+  .tab-button {
+    width: 50%;
+    height: 37px;
+    border: 0;
+  }
+
+  .active {
+    color: $white;
+
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background-color: $blue-tab;
+    border-radius: 5px 5px 0px 0px;
+
+  }
+
+}
+
+.tab-contents {
+
+
+  .active {
+    display: block;
+  }
+
+  .inactive {
+    display: none;
+  }
+
+  .tab-content {
+    width: 403px;
+    height: 487px;
+    overflow-y: scroll;
+    margin: 30px;
+
+    .stop {
+      height: 42px;
+    }
+  }
 }
