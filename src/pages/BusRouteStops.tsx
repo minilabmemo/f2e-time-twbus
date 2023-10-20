@@ -175,7 +175,7 @@ export const BusRouteStops = () => {
   }
   const LeafletMap: React.FC<{ id: string; }> = ({ id }) => {
     useEffect(() => {
-      let zoom = 15; // 0 - 18
+      let zoom = 13; // 0 - 18
 
       let center: L.LatLngExpression = [25.03418, 121.564517]; // 中心點座標
       const map = L.map(id).setView(center, zoom);
@@ -195,30 +195,30 @@ export const BusRouteStops = () => {
         popupAnchor: [0, -24]
       })
 
+      let lineCoordinates: L.LatLngExpression[] = [];
       result.results?.BusStopOfRoutes[activeTab].Stops.forEach((stop) => {
-        console.log(stop.StopPosition.PositionLat, stop.StopPosition.PositionLon)
-        L.marker([stop.StopPosition.PositionLat, stop.StopPosition.PositionLon], {
+        const lat = stop.StopPosition.PositionLat;
+        const lon = stop.StopPosition.PositionLon;
+        const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
+
+        L.marker(latLng, {
           icon: pointIcon,
           title: 'Your title here',
           opacity: 1.0,
         }).addTo(map);
+
+        lineCoordinates.push(latLng);
+
       });
 
+      L.polyline(lineCoordinates, {
+        color: "red",
+        className: "blue", // 设置折线的颜色
+      }).addTo(map);
 
-
-      // L.marker([25.03418, 121.564517], {
-      //   icon: pointIcon, title: '跟 <a> 的 title 一樣', // 跟 <a> 的 title 一樣
-      //   opacity: 1.0
-      // }).addTo(map);
-
-      // L.marker([25.03418, 122], {
-      //   title: '跟 <a> 的 title 一樣', // 跟 <a> 的 title 一樣
-      //   opacity: 1.0
-      // }).addTo(map);
-
-
-
-
+      if (lineCoordinates.length > 0) {
+        map.flyTo(lineCoordinates[Math.floor(lineCoordinates.length / 2)]);
+      }
       return () => {
         if (map) {
           map.remove();
