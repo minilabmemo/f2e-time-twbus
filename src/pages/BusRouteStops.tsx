@@ -1,6 +1,7 @@
 
 import { NavLink, useParams } from 'react-router-dom';
 import { Dict, URI_SEARCH } from '../utils/const';
+import { getUserLocation } from '../utils/gps';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactDOMServer from "react-dom/server";
@@ -9,7 +10,7 @@ import { getCityNameOrValue } from '../utils/cities';
 import pointBlue from '../images/point_blue.svg';
 import pointRed from '../images/point_red.svg';
 import point_red_large_bus from '../images/point_red_large_bus.svg';
-
+import user_position from '../images/user_position.svg';
 import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 import { useEffect, useState } from 'react';
@@ -21,6 +22,7 @@ import BusSvg from '../components/Icons/BusSvg';
 
 export const BusRouteStops = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [defaultUserLoc, setUserLoc] = useState([0, 0]);
   const { lang = 'defaultLang', city = 'defaultCity', route = "defaultRoute" } = useParams();//TODO lang
 
   function calculateSearchURL({ lang, city }: { lang: string, city: string }) {
@@ -34,9 +36,17 @@ export const BusRouteStops = () => {
   // robot?字型
 
   // 当 result 发生变化时，更新 routes
-  // useEffect(() => {
-  //   setRoutes(result);
-  // }, [result]);
+  useEffect(() => {
+    getUserLocation().then((location) => {
+      if (location) {
+        // 在这里使用用户的位置坐标 (location.userLat, location.userLng)
+        console.log("🚀 ~ file: BusRouteStops.tsx:41 ~ getUserLocation ~ location.userLat:", location.userLat)
+        setUserLoc([location.userLat, location.userLng])
+      }
+    });
+
+    // setRoutes(result);
+  }, []);
 
 
   const ErrorHint = ({ result }: { result: BusStopsResult }) => {
@@ -199,6 +209,22 @@ export const BusRouteStops = () => {
       }).addTo(map);
 
 
+
+      const userLocIcon = new L.Icon({
+        iconUrl: user_position,
+        iconSize: [40, 40],
+        iconAnchor: [24, 24],
+        popupAnchor: [0, -24]
+      })
+
+      if (defaultUserLoc[0] !== 0 && (defaultUserLoc[1] !== 0)) {
+        const userlatLng = L.latLng(defaultUserLoc[0], defaultUserLoc[1]);
+        L.marker(userlatLng, {
+          icon: userLocIcon,
+          opacity: 1.0,
+        }).bindTooltip("你在這裡！").addTo(map).openTooltip();
+      }
+
       const pointRedLargeBusIcon = new L.Icon({
         iconUrl: point_red_large_bus,
         iconSize: [40, 40],
@@ -237,14 +263,7 @@ export const BusRouteStops = () => {
         const lon = stop.StopPosition.PositionLon;
         const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
 
-        const customContent = `
-        <div style="text-align: center;">
-        ${ReactDOMServer.renderToString(<SaveSvg width="21px" height="21px" />)}
-          <img src="your-image-url.jpg" alt="Image" style="max-width: 100%;">
-          <h2 style="margin: 5px 0;">Your Name</h2>
-          <p style="font-size: 14px;">Additional information or description here.</p>
-        </div>
-      `;
+
 
         const tooltipBody = `
       <div  style="color: white" class="map-stop-body">
@@ -275,7 +294,9 @@ export const BusRouteStops = () => {
               opacity: 1.0,
             })
           );
-          markersNearToShow.push( //當地圖放大時，較近時顯示藍色tooltip
+
+
+          markersNearToShow.push( //當地圖放大時，較近時顯示進站中tooltip
             L.marker(latLng).bindTooltip(L.tooltip({
               permanent: true,
               direction: "top",
@@ -358,6 +379,8 @@ export const BusRouteStops = () => {
 
     return <div id={id} style={{ height: "100%" }} />;
   };
+
+
 
 
 
