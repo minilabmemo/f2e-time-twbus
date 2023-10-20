@@ -647,21 +647,32 @@ code {
 .stop-container .estimateTime.blue {
   background-color: #355F8B;
 }
-.stop-container .name {
-  margin: 0 10px;
-  width: 50%;
-}
-.stop-container .name.gray {
-  color: #A9A9A9;
-}
-.stop-container .name.red {
-  color: #000;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 19px;
+
+.map-stop-tooltip .map-stop-name {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
   letter-spacing: 0em;
-  text-align: left;
+  text-align: center;
 }
-.stop-container .name.blue {
-  color: #000;
+.map-stop-tooltip .map-stop-status {
+  font-weight: 700;
+  line-height: normal;
+}
+.map-stop-tooltip.style {
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  color: #FFF;
+  text-align: center;
+  opacity: 1;
+}
+.map-stop-tooltip.gray {
+  background-color: #A9A9A9;
+}
+.map-stop-tooltip.red {
+  background-color: #D08181;
+}
+.map-stop-tooltip.blue {
+  background-color: #355F8B;
 }/*# sourceMappingURL=style.css.map */

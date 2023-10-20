@@ -111,31 +111,50 @@
 
   }
 
-  .name {
-    margin: 0 10px;
-    width: 50%;
 
-    &.gray {
-      color: $gray-time;
-    }
 
-    &.red {
-      color: $black;
+}
 
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 19px;
-      letter-spacing: 0em;
-      text-align: left;
+.map-stop-tooltip {
 
-    }
+  .map-stop-name {
+    font-family: 'Roboto';
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
 
-    &.blue {
-      color: $black;
+  .map-stop-status {
 
-    }
+    font-weight: 700;
+    line-height: normal;
+  }
+
+
+  &.style {
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    color: $white;
+    text-align: center;
+    opacity: 1.0,
 
   }
+
+  &.gray {
+    background-color: $gray-time;
+  }
+
+  &.red {
+    background-color: $red-time;
+
+  }
+
+  &.blue {
+    background-color: $blue-time;
+  }
+
 
 
 }

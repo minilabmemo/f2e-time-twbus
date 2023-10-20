@@ -3,15 +3,20 @@ import { NavLink, useParams } from 'react-router-dom';
 import { Dict, URI_SEARCH } from '../utils/const';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReactDOMServer from "react-dom/server";
+
 import { getCityNameOrValue } from '../utils/cities';
 import pointBlue from '../images/point_blue.svg';
 import pointRed from '../images/point_red.svg';
+import point_red_large_bus from '../images/point_red_large_bus.svg';
+
 import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 import { useEffect, useState } from 'react';
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { MapColors } from '../utils/color';
+import BusSvg from '../components/Icons/BusSvg';
 
 
 export const BusRouteStops = () => {
@@ -183,7 +188,7 @@ export const BusRouteStops = () => {
   }
   const LeafletMap: React.FC<{ id: string; }> = ({ id }) => {
     useEffect(() => {
-      let zoom = 13; // 0 - 18
+      let zoom = 15; // 0 - 18
 
       let center: L.LatLngExpression = [25.03418, 121.564517]; // 中心點座標
       const map = L.map(id).setView(center, zoom);
@@ -194,6 +199,12 @@ export const BusRouteStops = () => {
       }).addTo(map);
 
 
+      const pointRedLargeBusIcon = new L.Icon({
+        iconUrl: point_red_large_bus,
+        iconSize: [40, 40],
+        iconAnchor: [24, 24],
+        popupAnchor: [0, -24]
+      })
       const pointRedIcon = new L.Icon({
         iconUrl: pointRed,
         iconSize: [40, 40],
@@ -208,15 +219,14 @@ export const BusRouteStops = () => {
       })
 
 
-      const customContent = `
-      <div style="text-align: center;">
-       
-      </div>
-    `;
 
+      const markersFarToShow: L.Marker[] = []; //縮小時較遠的顯示
+      const markersNearToShow: L.Marker[] = [];//放大時較近的顯示
       let lineCoordinates: L.LatLngExpression[] = [];
       const filterDirection = result.results?.BusStopOfRoutes[activeTab].Direction;
-      result.results?.BusStopOfRoutes[activeTab].Stops.forEach((stop) => {
+      const stops = result.results?.BusStopOfRoutes[activeTab].Stops;
+      const lastIndex = stops ? stops.length - 1 : -1;
+      result.results?.BusStopOfRoutes[activeTab].Stops.forEach((stop, index) => {
         //TODO 效能優化 targetObject用到多次
         const targetObject = result.results?.BusN1EstimateTimes.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
         const status = targetObject ? (targetObject.StopStatus) : -101;
@@ -227,28 +237,111 @@ export const BusRouteStops = () => {
         const lon = stop.StopPosition.PositionLon;
         const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
 
+        const customContent = `
+        <div style="text-align: center;">
+        ${ReactDOMServer.renderToString(<SaveSvg width="21px" height="21px" />)}
+          <img src="your-image-url.jpg" alt="Image" style="max-width: 100%;">
+          <h2 style="margin: 5px 0;">Your Name</h2>
+          <p style="font-size: 14px;">Additional information or description here.</p>
+        </div>
+      `;
+
+        const tooltipBody = `
+      <div  style="color: white" class="map-stop-body">
+        <div class="map-stop-name">   ${stop.StopName.Zh_tw}</div>
+        <div class="map-stop-status">   ${showStatus}</div>
+      </div>
+    `;
+        const tooltipBodyRed = `
+    <div  style="color: white" class="map-stop-body">
+    ${ReactDOMServer.renderToString(<BusSvg width="21px" height="21px" fill="white" />)}
+      <div class="map-stop-name">   ${stop.StopName.Zh_tw}</div>
+      <div class="map-stop-status">   ${showStatus}</div>
+    </div>
+  `;
+
+
+
         if (color === StatusColorType.red) {
-          L.marker(latLng, {
-            icon: pointRedIcon,
-            title: 'Your title here',
-            opacity: 1.0,
-          }).addTo(map);
+          markersFarToShow.push( //當地圖縮小時，較遠時顯示將到站的巴士圖標
+            L.marker(latLng, {
+              icon: pointRedLargeBusIcon,
+              opacity: 1.0,
+            }).bindTooltip("放大查看站點")
+          );
+          markersNearToShow.push( //當地圖放大時，較近時顯示紅色原點
+            L.marker(latLng, {
+              icon: pointRedIcon,
+              opacity: 1.0,
+            })
+          );
+          markersNearToShow.push( //當地圖放大時，較近時顯示藍色tooltip
+            L.marker(latLng).bindTooltip(L.tooltip({
+              permanent: true,
+              direction: "top",
+              className: "map-stop-tooltip style red" //TODO 箭頭怎改
+            }).setContent(tooltipBodyRed))
+          );
+
         } else {
+          markersNearToShow.push( //當地圖放大時，較近時顯示藍色tooltip
+            L.marker(latLng).bindTooltip(L.tooltip({
+              permanent: true,
+              direction: "top",
+              className: "map-stop-tooltip style blue" //TODO 箭頭怎改
+            }).setContent(tooltipBody))
+          );
+        }
+        markersNearToShow.push( //當地圖放大時，較近時顯示藍色原點
           L.marker(latLng, {
             icon: pointBlueIcon,
-            title: 'Your title here',
             opacity: 1.0,
-          }).addTo(map).bindTooltip(customContent).openTooltip();
+          })
+
+        );
+
+        if ((index === 0) || (index === lastIndex)) {
+          markersFarToShow.push( //當地圖縮小時， 只顯示起點跟終點藍色原點
+            L.marker(latLng, {
+              icon: pointBlueIcon,
+              opacity: 1.0,
+            })
+          );
         }
 
-        // L.marker([25.03418, 121.564517]).addTo(map)
-        //   .bindPopup("A sample popup.")
-        //   .openPopup();
+
+
 
         lineCoordinates.push(latLng);
 
       });
+      map.on("zoomend", function () {
+        const currentZoomLevel = map.getZoom();
+        //清除markersFarToShow與markersNearToShow
+        // 清除 markersFarToShow 数组中的标记
+        markersFarToShow.forEach((marker) => {
+          map.removeLayer(marker);
+        });
 
+        // 清除 markersNearToShow 数组中的标记
+        markersNearToShow.forEach((marker) => {
+          map.removeLayer(marker);
+        });
+        if (currentZoomLevel >= 15) { //放大縮小時顯示近的標示組
+          markersNearToShow.forEach((marker) => {
+            marker.addTo(map).openTooltip();
+
+          });
+        } else {
+          markersFarToShow.forEach((marker) => {
+            marker.addTo(map);
+          });
+
+        }
+
+
+
+      });
       L.polyline(lineCoordinates, {
         color: MapColors.blueLine,
       }).addTo(map);
