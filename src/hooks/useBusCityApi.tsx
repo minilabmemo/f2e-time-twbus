@@ -34,7 +34,7 @@ interface BusRequestParam {
 }
 
 const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
-  const mock = process.env.REACT_APP_MOCK_DATA;
+  const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
   const { City, callAtInstall } = query;
   const fetchData = useCallback(() => {
 
@@ -45,7 +45,7 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
         url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City&%24format=JSON`;
       }
       try {
-        if (mock) {
+        if (isMockData) {
           console.error('Mock data return, only use in develop.');
           const cityRoutesArray = JSON.parse(cityRoutes_mock_data);
           setResData({
@@ -93,7 +93,7 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
 
     fetchingData();
 
-  }, [City, mock]);
+  }, [City, isMockData]);
 
 
   const [resData, setResData] = useState<BusRouteResult>({

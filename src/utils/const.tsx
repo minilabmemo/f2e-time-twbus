@@ -15,14 +15,8 @@ export const Dict = {
   timetable: { zh: "時刻表 ", en: "Time Table" },
 };
 
-export const IconColors = {
-  blackFont: "#283C43",
-  pinkFont: "#D08181",
-  blueFont: "#3591C5",
-  cyanFont: "#7FC0C5",
-  blueLightFont: "#5E9BAE",
-  blueDarkFont: "#52797C",
-}
+
+
 
 
 export const URI_SEARCH_DEFAULT = "cities"

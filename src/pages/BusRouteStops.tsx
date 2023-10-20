@@ -4,12 +4,15 @@ import { Dict, URI_SEARCH } from '../utils/const';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getCityNameOrValue } from '../utils/cities';
-import point from '../images/point.svg';
+import pointBlue from '../images/point_blue.svg';
+import pointRed from '../images/point_red.svg';
 import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 import { useEffect, useState } from 'react';
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { MapColors } from '../utils/color';
+
 
 export const BusRouteStops = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -44,18 +47,23 @@ export const BusRouteStops = () => {
     return null;
   };
 
+  const StatusColorType = {
+    red: 'red' as 'red',
+    blue: 'blue' as 'blue',
+    gray: 'gray' as 'gray',
 
+  };
   function statusDefine(status: number, estimateTime: number | null) {
     if (status === 1) {
-      return ['尚未發車', "gray"];//TODO 2345
+      return ['尚未發車', StatusColorType.gray];//TODO 2345
     }
     if (estimateTime === null) {
-      return ['無資訊', "gray"];
+      return ['無資訊', StatusColorType.gray];
     }
     if (typeof estimateTime === 'number') {
       if (estimateTime < 60) {
         // return [`進站中 ${estimateTime}秒`, "red"];  
-        return [`進站中`, "red"];  //60秒內顯示進站中
+        return [`進站中`, StatusColorType.red];  //60秒內顯示進站中
       }
 
       if (estimateTime >= 60 && estimateTime < 3600) {
@@ -64,9 +72,9 @@ export const BusRouteStops = () => {
         const seconds = estimateTime % 60;
         if (minutes === 1) { //兩分鐘內顯示 即將進站
           // return [` 即將進站 ${minutes}分${seconds}秒`, "red"];
-          return [` 即將進站`, "red"];
+          return [` 即將進站`, StatusColorType.red];
         }
-        return [`${minutes}分${seconds}秒`, "blue"];
+        return [`${minutes}分${seconds}秒`, StatusColorType.blue];
       }
 
       if (estimateTime >= 3600) {
@@ -74,10 +82,10 @@ export const BusRouteStops = () => {
         const remainingSeconds = estimateTime % 3600;
         const minutes = Math.floor(remainingSeconds / 60);
         const seconds = remainingSeconds % 60;
-        return [`${hours}小時${minutes}分${seconds}秒`, "blue"];
+        return [`${hours}小時${minutes}分${seconds}秒`, StatusColorType.blue];
       }
     }
-    return ['未知', "gray"];
+    return ['未知', StatusColorType.gray];
   }
 
 
@@ -184,36 +192,65 @@ export const BusRouteStops = () => {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 
       }).addTo(map);
-      // L.marker([25.03418, 121.564517]).addTo(map)
-      //   .bindPopup("A sample popup.")
-      //   .openPopup();
 
-      const pointIcon = new L.Icon({
-        iconUrl: point,
-        iconSize: [49, 49],
+
+      const pointRedIcon = new L.Icon({
+        iconUrl: pointRed,
+        iconSize: [40, 40],
+        iconAnchor: [24, 24],
+        popupAnchor: [0, -24]
+      })
+      const pointBlueIcon = new L.Icon({
+        iconUrl: pointBlue,
+        iconSize: [40, 40],
         iconAnchor: [24, 24],
         popupAnchor: [0, -24]
       })
 
+
+      const customContent = `
+      <div style="text-align: center;">
+       
+      </div>
+    `;
+
       let lineCoordinates: L.LatLngExpression[] = [];
+      const filterDirection = result.results?.BusStopOfRoutes[activeTab].Direction;
       result.results?.BusStopOfRoutes[activeTab].Stops.forEach((stop) => {
+        //TODO 效能優化 targetObject用到多次
+        const targetObject = result.results?.BusN1EstimateTimes.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
+        const status = targetObject ? (targetObject.StopStatus) : -101;
+        const estimateTime = targetObject ? (targetObject.EstimateTime) : null;
+        const [showStatus, color] = statusDefine(status, estimateTime);
+
         const lat = stop.StopPosition.PositionLat;
         const lon = stop.StopPosition.PositionLon;
         const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
 
-        L.marker(latLng, {
-          icon: pointIcon,
-          title: 'Your title here',
-          opacity: 1.0,
-        }).addTo(map);
+        if (color === StatusColorType.red) {
+          L.marker(latLng, {
+            icon: pointRedIcon,
+            title: 'Your title here',
+            opacity: 1.0,
+          }).addTo(map);
+        } else {
+          L.marker(latLng, {
+            icon: pointBlueIcon,
+            title: 'Your title here',
+            opacity: 1.0,
+          }).addTo(map).bindTooltip(customContent).openTooltip();
+        }
+
+        // L.marker([25.03418, 121.564517]).addTo(map)
+        //   .bindPopup("A sample popup.")
+        //   .openPopup();
 
         lineCoordinates.push(latLng);
 
       });
 
       L.polyline(lineCoordinates, {
-        color: "red",
-        className: "blue", // 设置折线的颜色
+        color: MapColors.blueLine,
       }).addTo(map);
 
       if (lineCoordinates.length > 0) {

@@ -81,15 +81,15 @@ interface BusRequestParam {
 // The useBusStopsApi hook provides a reusable mechanism for fetching Bus data and managing the loading state in a React component.
 //return data and useCallback function.
 const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] => {
-  const mock = process.env.REACT_APP_MOCK_DATA;
+  const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
   const root_url = process.env.REACT_APP_API_URL
   const { City, Route, callAtInstall } = query;
-  console.error('mock' + mock);
+  console.error('isMockData' + isMockData);
   const fetchData = useCallback(() => {
 
 
     const fetchingData = async () => {
-      if (mock) {
+      if (isMockData) {
         console.error('Mock data return, only use in develop.');
         setResData({
           results: { BusStopOfRoutes: JSON.parse(DisplayStopOfRoute_mock), BusN1EstimateTimes: JSON.parse(EstimatedTimeOfArrival_mock) },
@@ -98,7 +98,7 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
         });
 
       }
-      if (!mock) {
+      if (!isMockData) {
         let DisplayStopOfRoute_URL = `${root_url}/api/basic/v2/Bus/DisplayStopOfRoute/City`;
         let EstimatedTimeOfArrival_URL = `${root_url}/api/basic/v2/Bus/EstimatedTimeOfArrival/City`;
 
@@ -144,7 +144,7 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
 
     fetchingData();
 
-  }, [City, Route]);
+  }, [City, Route, isMockData, root_url]);
 
 
   const [resData, setResData] = useState<BusStopsResult>({
