@@ -11,6 +11,7 @@ import pointBlue from '../images/point_blue.svg';
 import pointRed from '../images/point_red.svg';
 import point_red_large_bus from '../images/point_red_large_bus.svg';
 import user_position from '../images/user_position.svg';
+import to_loc from '../images/to_loc.svg';
 import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 import { useEffect, useState } from 'react';
@@ -29,18 +30,17 @@ export const BusRouteStops = () => {
     return URI_SEARCH.replace(':lang', lang).replace(':city', city);
   }
 
-
   const [result, fetchData] = useBusStopsApi({ City: city, Route: route, callAtInstall: true });
 
-  console.log(result);
-  // robot?字型
+  console.log("BusRouteStops", result);
+
 
   // 当 result 发生变化时，更新 routes
   useEffect(() => {
     getUserLocation().then((location) => {
       if (location) {
-        // 在这里使用用户的位置坐标 (location.userLat, location.userLng)
-        console.log("🚀 ~ file: BusRouteStops.tsx:41 ~ getUserLocation ~ location.userLat:", location.userLat)
+
+
         setUserLoc([location.userLat, location.userLng])
       }
     });
@@ -144,10 +144,10 @@ export const BusRouteStops = () => {
           <div>
             <div className="tab-buttons">
               {result.results?.BusStopOfRoutes.map((item, index) => (
-                <>
+                <span key={index}>
 
                   <button
-                    key={index}
+
                     className={`tab-button ${activeTab === index ? 'active' : 'inactive'}`}
 
                     onClick={() => setActiveTab(index)}
@@ -156,7 +156,7 @@ export const BusRouteStops = () => {
                   </button>
 
 
-                </>
+                </span>
               ))}
             </div>
 
@@ -197,18 +197,19 @@ export const BusRouteStops = () => {
     );
   }
   const LeafletMap: React.FC<{ id: string; }> = ({ id }) => {
-    useEffect(() => {
-      let zoom = 15; // 0 - 18
+    const data = result;
+    const userLocation = defaultUserLoc;
 
+    useEffect(() => {
+      let zoom = 13; // 0 - 18  越大越近
       let center: L.LatLngExpression = [25.03418, 121.564517]; // 中心點座標
       const map = L.map(id).setView(center, zoom);
+
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 
       }).addTo(map);
-
-
 
       const userLocIcon = new L.Icon({
         iconUrl: user_position,
@@ -217,13 +218,18 @@ export const BusRouteStops = () => {
         popupAnchor: [0, -24]
       })
 
-      if (defaultUserLoc[0] !== 0 && (defaultUserLoc[1] !== 0)) {
-        const userlatLng = L.latLng(defaultUserLoc[0], defaultUserLoc[1]);
+      if (userLocation[0] !== 0 && (userLocation[1] !== 0)) {
+        const userlatLng = L.latLng(userLocation[0], userLocation[1]);
         L.marker(userlatLng, {
           icon: userLocIcon,
           opacity: 1.0,
         }).bindTooltip("你在這裡！").addTo(map).openTooltip();
+
       }
+
+
+
+
 
       const pointRedLargeBusIcon = new L.Icon({
         iconUrl: point_red_large_bus,
@@ -249,12 +255,12 @@ export const BusRouteStops = () => {
       const markersFarToShow: L.Marker[] = []; //縮小時較遠的顯示
       const markersNearToShow: L.Marker[] = [];//放大時較近的顯示
       let lineCoordinates: L.LatLngExpression[] = [];
-      const filterDirection = result.results?.BusStopOfRoutes[activeTab].Direction;
-      const stops = result.results?.BusStopOfRoutes[activeTab].Stops;
+      const filterDirection = data.results?.BusStopOfRoutes[activeTab].Direction;
+      const stops = data.results?.BusStopOfRoutes[activeTab].Stops;
       const lastIndex = stops ? stops.length - 1 : -1;
-      result.results?.BusStopOfRoutes[activeTab].Stops.forEach((stop, index) => {
+      data.results?.BusStopOfRoutes[activeTab].Stops.forEach((stop, index) => {
         //TODO 效能優化 targetObject用到多次
-        const targetObject = result.results?.BusN1EstimateTimes.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
+        const targetObject = data.results?.BusN1EstimateTimes.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
         const status = targetObject ? (targetObject.StopStatus) : -101;
         const estimateTime = targetObject ? (targetObject.EstimateTime) : null;
         const [showStatus, color] = statusDefine(status, estimateTime);
@@ -336,46 +342,54 @@ export const BusRouteStops = () => {
         lineCoordinates.push(latLng);
 
       });
-      map.on("zoomend", function () {
-        const currentZoomLevel = map.getZoom();
-        //清除markersFarToShow與markersNearToShow
-        // 清除 markersFarToShow 数组中的标记
-        markersFarToShow.forEach((marker) => {
-          map.removeLayer(marker);
-        });
+      if (map) {
+        map.on("zoomend", function () {
+          const currentZoomLevel = map.getZoom();
 
-        // 清除 markersNearToShow 数组中的标记
-        markersNearToShow.forEach((marker) => {
-          map.removeLayer(marker);
-        });
-        if (currentZoomLevel >= 15) { //放大縮小時顯示近的標示組
-          markersNearToShow.forEach((marker) => {
-            marker.addTo(map).openTooltip();
 
-          });
-        } else {
           markersFarToShow.forEach((marker) => {
-            marker.addTo(map);
+            map.removeLayer(marker);
           });
+
+
+          markersNearToShow.forEach((marker) => {
+            map.removeLayer(marker);
+          });
+          if (currentZoomLevel >= 15) { //放大縮小時顯示近的標示組
+            markersNearToShow.forEach((marker) => {
+              marker.addTo(map).openTooltip();
+
+            });
+          } else {
+            markersFarToShow.forEach((marker) => {
+              marker.addTo(map);
+            });
+
+          }
+
+
+
+        });
+        L.polyline(lineCoordinates, {
+          color: MapColors.blueLine,
+        }).addTo(map);
+
+
+        if (lineCoordinates.length > 0) {
+
+          map.flyTo(lineCoordinates[Math.floor(lineCoordinates.length / 2)]);
 
         }
 
 
 
-      });
-      L.polyline(lineCoordinates, {
-        color: MapColors.blueLine,
-      }).addTo(map);
-
-      if (lineCoordinates.length > 0) {
-        map.flyTo(lineCoordinates[Math.floor(lineCoordinates.length / 2)]);
       }
       return () => {
         if (map) {
           map.remove();
         }
       };
-    }, [id]);
+    },);
 
     return <div id={id} style={{ height: "100%" }} />;
   };
@@ -383,7 +397,7 @@ export const BusRouteStops = () => {
 
 
 
-
+  console.log("return")
   return (
     <div className='search'>
       <section className='search-header'>
@@ -400,12 +414,17 @@ export const BusRouteStops = () => {
             </NavLink >
             <span className='save-icon'><SaveSvg width="21px" height="21px" /></span>
           </div>
-          <BusStopsResult result={result} route={route} />
+          <BusStopsResult result={result} route={route} key={0} />
 
 
         </div>
+
         <div className='result-map'>
-          <LeafletMap id="street-map" />
+          <div className="to-user-loc-icon" >
+            <img src={to_loc} alt="to_loc" />
+          </div>
+
+          {result.isLoading ? "loading...." : (<LeafletMap id="street-map" />)}
         </div>
 
       </section>

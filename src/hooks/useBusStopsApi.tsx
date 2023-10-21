@@ -84,7 +84,7 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
   const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
   const root_url = process.env.REACT_APP_API_URL
   const { City, Route, callAtInstall } = query;
-  console.error('isMockData' + isMockData);
+  console.warn('isMockData' + isMockData);
   const fetchData = useCallback(() => {
 
 
