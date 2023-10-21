@@ -1,30 +1,21 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { Dict, StatusColorType, URI_SEARCH, statusDefine } from '../utils/const';
-import { getUserLocation } from '../utils/gps';
+import { Dict, URI_SEARCH, statusDefine } from '../utils/const';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ReactDOMServer from "react-dom/server";
 
 import { getCityNameOrValue } from '../utils/cities';
-import pointBlue from '../images/point_blue.svg';
-import pointRed from '../images/point_red.svg';
-import point_red_large_bus from '../images/point_red_large_bus.svg';
-import user_position from '../images/user_position.svg';
 import to_loc from '../images/to_loc.svg';
 import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
-import { useEffect, useState } from 'react';
-import L from "leaflet";
+import { useState } from 'react';
 import "leaflet/dist/leaflet.css";
-import { MapColors } from '../utils/color';
-import BusSvg from '../components/Icons/BusSvg';
 import { StreetMap } from './StreetMap';
 
 
 export const BusRouteStops = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const [defaultUserLoc, setUserLoc] = useState([0, 0]);
+
   const { lang = 'defaultLang', city = 'defaultCity', route = "defaultRoute" } = useParams();//TODO lang
 
   function calculateSearchURL({ lang, city }: { lang: string, city: string }) {
@@ -34,15 +25,6 @@ export const BusRouteStops = () => {
   const [result, fetchData] = useBusStopsApi({ City: city, Route: route, callAtInstall: true });
 
   console.log("BusRouteStops", result);
-
-  useEffect(() => {
-    getUserLocation().then((location) => {
-      if (location) {
-        setUserLoc([location.userLat, location.userLng])
-      }
-    });
-
-  }, []);
 
 
   const ErrorHint = ({ result }: { result: BusStopsResult }) => {
@@ -182,7 +164,7 @@ export const BusRouteStops = () => {
 
           {/* {result.isLoading ? "loading...." : (<LeafletMap id="street-map" />)} */}
 
-          <StreetMap id="street-map" result={result} userLocation={defaultUserLoc} activeTab={activeTab} />
+          <StreetMap id="street-map" result={result} activeTab={activeTab} />
         </div>
 
       </section>

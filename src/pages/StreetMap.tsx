@@ -9,16 +9,15 @@ import { StatusColorType, statusDefine } from "../utils/const";
 import BusSvg from '../components/Icons/BusSvg';
 import { MapColors } from "../utils/color";
 import { useEffect } from "react";
+import { getUserLocation } from "../utils/gps";
 interface StreetMapData {
   id: string;
   result: BusStopsResult;
-  userLocation: number[];
   activeTab: number;
-
 }
 
 
-export const StreetMap: React.FC<StreetMapData> = ({ id, result, userLocation, activeTab }) => {
+export const StreetMap: React.FC<StreetMapData> = ({ id, result, activeTab }) => {
 
 
   useEffect(() => {
@@ -39,14 +38,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, result, userLocation, a
       popupAnchor: [0, -24]
     })
 
-    if (userLocation[0] !== 0 && (userLocation[1] !== 0)) {
-      const userlatLng = L.latLng(userLocation[0], userLocation[1]);
-      L.marker(userlatLng, {
-        icon: userLocIcon,
-        opacity: 1.0,
-      }).bindTooltip("你在這裡！").addTo(map).openTooltip();
 
-    }
 
 
 
@@ -198,10 +190,29 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, result, userLocation, a
 
       if (lineCoordinates.length > 0) {
 
-        map.panTo(lineCoordinates[Math.floor(lineCoordinates.length / 2)]);
+        map.flyTo(lineCoordinates[Math.floor(lineCoordinates.length / 2)]);
 
       }
 
+      const fetchUserLocation = async () => {
+        try {
+          const location = await getUserLocation();
+          if (location) {
+            console.log("抓取到使用者定位");
+            if (location.userLat !== 0 && location.userLng !== 0) {
+              const userMarkerLoc = L.latLng(location.userLat, location.userLng);
+              L.marker(userMarkerLoc, {
+                icon: userLocIcon,
+                opacity: 1.0,
+              }).bindTooltip("你在這裡！").addTo(map).openTooltip();
+            }
+          }
+        } catch (error) {
+          console.error("捕獲異常:", error, "map", map);
+        }
+      };
+
+      fetchUserLocation();
 
 
     }
@@ -210,7 +221,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, result, userLocation, a
         map.remove();
       }
     };
-  }, [activeTab, id, result.results?.BusN1EstimateTimes, result.results?.BusStopOfRoutes, userLocation]);
+  }, [activeTab, id, result.results?.BusN1EstimateTimes, result.results?.BusStopOfRoutes]);
 
   return <div id={id} style={{ height: "100%" }} />;
 };

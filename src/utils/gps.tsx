@@ -24,13 +24,10 @@ export async function getUserLocation(): Promise<{ userLat: number; userLng: num
       const position = await new Promise<GeolocationPosition>((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       });
-
-      // 成功获取用户的地理位置
       const userLat = position.coords.latitude;
       const userLng = position.coords.longitude;
       return { userLat, userLng };
     } catch (error) {
-      // 处理地理位置获取错误
       handleGPSError(error as GeolocationPositionError);
       return null;
     }

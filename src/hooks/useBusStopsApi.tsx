@@ -88,53 +88,42 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
 
 
     const fetchingData = async () => {
-      const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
       const root_url = process.env.REACT_APP_API_URL
-      if (isMockData) {
-        console.warn('Mock data return, only use in develop.');
-        setResData({
-          results: { BusStopOfRoutes: JSON.parse(DisplayStopOfRoute_mock), BusN1EstimateTimes: JSON.parse(EstimatedTimeOfArrival_mock) },
-          status: 200,
-          isLoading: false,
+      let DisplayStopOfRoute_URL = `${root_url}/api/basic/v2/Bus/DisplayStopOfRoute/City`;
+      let EstimatedTimeOfArrival_URL = `${root_url}/api/basic/v2/Bus/EstimatedTimeOfArrival/City`;
+
+      if (City !== null && Route != null) {
+        DisplayStopOfRoute_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
+        EstimatedTimeOfArrival_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
+      }
+      const request1 = axios.get(DisplayStopOfRoute_URL);
+      const request2 = axios.get(EstimatedTimeOfArrival_URL);
+
+
+      Promise.all([request1, request2])
+        .then((responses) => {
+          setResData({
+            results: { BusStopOfRoutes: responses[0].data, BusN1EstimateTimes: responses[1].data },
+            status: 200,
+            isLoading: false,
+          });
+        })
+
+
+        .catch((error) => {
+          console.error("useBusRouteApi API请求失败", error);
+          if (axios.isAxiosError(error)) {
+            const axiosError = error as AxiosError;
+            const responseStatus = axiosError.response ? axiosError.response.status : 0;
+            setResData((prevState) => ({
+              ...prevState,
+              status: responseStatus,
+              isLoading: false,
+            }));
+
+          }
         });
 
-      }
-      if (!isMockData) {
-        let DisplayStopOfRoute_URL = `${root_url}/api/basic/v2/Bus/DisplayStopOfRoute/City`;
-        let EstimatedTimeOfArrival_URL = `${root_url}/api/basic/v2/Bus/EstimatedTimeOfArrival/City`;
-
-        if (City !== null && Route != null) {
-          DisplayStopOfRoute_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
-          EstimatedTimeOfArrival_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
-        }
-        const request1 = axios.get(DisplayStopOfRoute_URL);
-        const request2 = axios.get(EstimatedTimeOfArrival_URL);
-
-
-        Promise.all([request1, request2])
-          .then((responses) => {
-            setResData({
-              results: { BusStopOfRoutes: responses[0].data, BusN1EstimateTimes: responses[1].data },
-              status: 200,
-              isLoading: false,
-            });
-          })
-
-
-          .catch((error) => {
-            console.error("useBusRouteApi API请求失败", error);
-            if (axios.isAxiosError(error)) {
-              const axiosError = error as AxiosError;
-              const responseStatus = axiosError.response ? axiosError.response.status : 0;
-              setResData((prevState) => ({
-                ...prevState,
-                status: responseStatus,
-                isLoading: false,
-              }));
-
-            }
-          });
-      }
 
     };
 
@@ -142,8 +131,20 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
       ...prevState,
       isLoading: true,
     }));
+    const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
 
-    fetchingData();
+    if (isMockData) {
+      console.warn('Mock data return, only use in develop.');
+      setResData({
+        results: { BusStopOfRoutes: JSON.parse(DisplayStopOfRoute_mock), BusN1EstimateTimes: JSON.parse(EstimatedTimeOfArrival_mock) },
+        status: 200,
+        isLoading: false,
+      });
+
+    }
+    if (!isMockData) {
+      fetchingData();
+    }
 
   }, [City, Route]);
 
