@@ -81,14 +81,15 @@ interface BusRequestParam {
 // The useBusStopsApi hook provides a reusable mechanism for fetching Bus data and managing the loading state in a React component.
 //return data and useCallback function.
 const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] => {
-  const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
-  const root_url = process.env.REACT_APP_API_URL
+
   const { City, Route, callAtInstall } = query;
 
   const fetchData = useCallback(() => {
 
 
     const fetchingData = async () => {
+      const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
+      const root_url = process.env.REACT_APP_API_URL
       if (isMockData) {
         console.warn('Mock data return, only use in develop.');
         setResData({
@@ -144,7 +145,7 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
 
     fetchingData();
 
-  }, [City, Route, isMockData, root_url]);
+  }, [City, Route]);
 
 
   const [resData, setResData] = useState<BusStopsResult>({

@@ -70,3 +70,45 @@ export const LangType = {
   en: 'en' as 'en',
 
 };
+
+
+export const StatusColorType = {
+  red: 'red' as 'red',
+  blue: 'blue' as 'blue',
+  gray: 'gray' as 'gray',
+
+};
+export function statusDefine(status: number, estimateTime: number | null) {
+  if (status === 1) {
+    return ['尚未發車', StatusColorType.gray];//TODO 2345
+  }
+  if (estimateTime === null) {
+    return ['無資訊', StatusColorType.gray];
+  }
+  if (typeof estimateTime === 'number') {
+    if (estimateTime < 60) {
+      // return [`進站中 ${estimateTime}秒`, "red"];  
+      return [`進站中`, StatusColorType.red];  //60秒內顯示進站中
+    }
+
+    if (estimateTime >= 60 && estimateTime < 3600) {
+      const minutes = Math.floor(estimateTime / 60);
+
+      const seconds = estimateTime % 60;
+      if (minutes === 1) { //兩分鐘內顯示 即將進站
+        // return [` 即將進站 ${minutes}分${seconds}秒`, "red"];
+        return [` 即將進站`, StatusColorType.red];
+      }
+      return [`${minutes}分${seconds}秒`, StatusColorType.blue];
+    }
+
+    if (estimateTime >= 3600) {
+      const hours = Math.floor(estimateTime / 3600);
+      const remainingSeconds = estimateTime % 3600;
+      const minutes = Math.floor(remainingSeconds / 60);
+      const seconds = remainingSeconds % 60;
+      return [`${hours}小時${minutes}分${seconds}秒`, StatusColorType.blue];
+    }
+  }
+  return ['未知', StatusColorType.gray];
+}
