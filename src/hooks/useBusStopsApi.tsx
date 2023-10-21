@@ -84,13 +84,13 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
   const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
   const root_url = process.env.REACT_APP_API_URL
   const { City, Route, callAtInstall } = query;
-  console.warn('isMockData' + isMockData);
+
   const fetchData = useCallback(() => {
 
 
     const fetchingData = async () => {
       if (isMockData) {
-        console.error('Mock data return, only use in develop.');
+        console.warn('Mock data return, only use in develop.');
         setResData({
           results: { BusStopOfRoutes: JSON.parse(DisplayStopOfRoute_mock), BusN1EstimateTimes: JSON.parse(EstimatedTimeOfArrival_mock) },
           status: 200,

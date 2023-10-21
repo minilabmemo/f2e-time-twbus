@@ -46,7 +46,7 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
       }
       try {
         if (isMockData) {
-          console.error('Mock data return, only use in develop.');
+          console.warn('Mock data return, only use in develop.');
           const cityRoutesArray = JSON.parse(cityRoutes_mock_data);
           setResData({
             records: cityRoutesArray,
