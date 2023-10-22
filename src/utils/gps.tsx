@@ -17,22 +17,23 @@ export function handleGPSError(error: GeolocationPositionError) {
   }
 }
 
-
 export async function getUserLocation(): Promise<{ userLat: number; userLng: number } | null> {
-  if ("geolocation" in navigator) {
-    try {
+  try {
+    if ("geolocation" in navigator) {
       const position = await new Promise<GeolocationPosition>((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       });
       const userLat = position.coords.latitude;
       const userLng = position.coords.longitude;
       return { userLat, userLng };
-    } catch (error) {
-      handleGPSError(error as GeolocationPositionError);
+    } else {
+
+      console.error("瀏覽器不支持地理位置");
       return null;
     }
-  } else {
-    alert("瀏覽器不支持地理訊息");
+  } catch (error) {
+
+    handleGPSError(error as GeolocationPositionError);
     return null;
   }
 }

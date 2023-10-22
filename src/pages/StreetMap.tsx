@@ -25,23 +25,10 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, result, activeTab }) =>
     let center: L.LatLngExpression = [25.03418, 121.564517]; // 中心點座標
     const map = L.map(id).setView(center, zoom);
 
-
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 
     }).addTo(map);
-
-    const userLocIcon = new L.Icon({
-      iconUrl: user_position,
-      iconSize: [40, 40],
-      iconAnchor: [24, 24],
-      popupAnchor: [0, -24]
-    })
-
-
-
-
-
 
 
     const pointRedLargeBusIcon = new L.Icon({
@@ -155,16 +142,45 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, result, activeTab }) =>
       lineCoordinates.push(latLng);
 
     });
+    const fetchUserLocation = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));//wait 1s
+      try {
+        const location = await getUserLocation();
+        if (location) {
+          console.log("抓取到使用者定位");
+
+          if (location.userLat !== 0 && location.userLng !== 0) {
+            if (map) {
+              const userLocIcon = new L.Icon({
+                iconUrl: user_position,
+                iconSize: [40, 40],
+                iconAnchor: [24, 24],
+                popupAnchor: [0, -24]
+              })
+              const userMarkerLoc = L.latLng(location.userLat, location.userLng);
+              L.marker(userMarkerLoc, {
+                icon: userLocIcon,
+                opacity: 1.0,
+              }).bindTooltip("你在這裡！").addTo(map).openTooltip();
+            }
+          }
+        }
+      } catch (error) {
+        //FIXME 偶爾切換會出現error log Cannot read properties of undefined (reading 'appendChild') at NewClass._initIcon
+        console.error("捕獲異常:", error, "map", map.getPane);
+      }
+    };
+
+
+
+
+
     if (map) {
       map.on("zoomend", function () {
         const currentZoomLevel = map.getZoom();
-
-
         markersFarToShow.forEach((marker) => {
           map.removeLayer(marker);
         });
-
-
         markersNearToShow.forEach((marker) => {
           map.removeLayer(marker);
         });
@@ -177,45 +193,18 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, result, activeTab }) =>
           markersFarToShow.forEach((marker) => {
             marker.addTo(map);
           });
-
         }
-
-
 
       });
       L.polyline(lineCoordinates, {
         color: MapColors.blueLine,
       }).addTo(map);
-
-
       if (lineCoordinates.length > 0) {
-
         map.flyTo(lineCoordinates[Math.floor(lineCoordinates.length / 2)]);
-
       }
-
-      const fetchUserLocation = async () => {
-        try {
-          const location = await getUserLocation();
-          if (location) {
-            console.log("抓取到使用者定位");
-            if (location.userLat !== 0 && location.userLng !== 0) {
-              const userMarkerLoc = L.latLng(location.userLat, location.userLng);
-              L.marker(userMarkerLoc, {
-                icon: userLocIcon,
-                opacity: 1.0,
-              }).bindTooltip("你在這裡！").addTo(map).openTooltip();
-            }
-          }
-        } catch (error) {
-          console.error("捕獲異常:", error, "map", map);
-        }
-      };
-
-      fetchUserLocation();
-
-
     }
+
+    fetchUserLocation();
     return () => {
       if (map) {
         map.remove();
