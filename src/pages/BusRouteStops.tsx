@@ -6,12 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getCityNameOrValue } from '../utils/cities';
 import to_loc from '../images/to_loc.svg';
-import refresh_now from '../images/icons8_refresh.svg';
+
 import useBusStopsApi, { BusStopsResult } from '../apis/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 import { useEffect, useState } from 'react';
 import "leaflet/dist/leaflet.css";
 import { StreetMap } from '../components/base/StreetMap';
+import { RefreshBar } from '../components/base/RefreshBar';
 
 
 export const BusRouteStops = () => {
@@ -55,19 +56,15 @@ export const BusRouteStops = () => {
   function BusStopsResult({ result, route }: { result: BusStopsResult, route: string }) {
 
 
-
     return (
       <div className='result-stops'>
-
 
         <ResultErrorHint status={result.status} error={result.error} total={result.total} />
         <div className="route-infos">
           <div className="route-name">{route}</div>
 
           <div className="route-?"></div>{/* //TODO API? */}
-
         </div>
-
         {(result.status === 200) && (
           <div>
             <div className="tab-buttons">
@@ -75,7 +72,6 @@ export const BusRouteStops = () => {
                 <span key={index}>
 
                   <button
-
                     className={`tab-button ${activeTab === index ? 'active' : 'inactive'}`}
 
                     onClick={() => setActiveTab(index)}
@@ -121,50 +117,9 @@ export const BusRouteStops = () => {
 
         )
         }
-        <RefreshBar refreshAction={fetchData} updateTime={result.results?.BusN1EstimateTimes[0].UpdateTime}></RefreshBar>
+        <RefreshBar initialCountdown={100} refreshAction={fetchData} updateTime={result.results?.BusN1EstimateTimes[0].UpdateTime}></RefreshBar>
       </div >
     );
-  }
-  function RefreshBar({ refreshAction, updateTime }: { refreshAction: () => void, updateTime: string | undefined }) {
-    const initialCountdown = 300;
-    const [countdown, setCountdown] = useState(initialCountdown);
-    const startCountdown = () => {
-      setCountdown(initialCountdown); // 重置倒计时
-      const countdownTimer = setInterval(() => {
-        setCountdown((prevCountdown) => prevCountdown - 1);
-      }, 1000);
-
-      setTimeout(() => {
-        clearInterval(countdownTimer);
-      }, initialCountdown * 1000);
-    };
-    useEffect(() => {
-      startCountdown(); // 组件加載後就開始倒數
-    }, []);
-    useEffect(() => {
-      if (countdown === 0) {
-        refreshAction();
-      }
-    }, [countdown, refreshAction]);
-    function extractTimeFromDateTime(dateTimeString: string | undefined) {
-      if (dateTimeString) {
-        var indexOfT = dateTimeString.indexOf('T');
-        if (indexOfT !== -1) {
-          return dateTimeString.substr(indexOfT + 1, 8);
-        }
-      }
-    }
-    return (
-      <div className='refresh-bar'>
-        <div className='countdown-line'></div>
-        <div className='refresh-box'>
-          <div className="count">{countdown} 秒後更新</div>
-
-          <div className="button" onClick={() => refreshAction()}>  <img src={refresh_now} alt="refresh_now" className='icon' /> 立即更新 {extractTimeFromDateTime(updateTime)}</div>
-        </div>
-
-      </div>
-    )
   }
 
   return (

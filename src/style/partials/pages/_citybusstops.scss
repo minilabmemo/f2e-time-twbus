@@ -62,15 +62,21 @@
 
 
 .refresh-bar {
-  height: 44px;
+  height: 50px;
   margin: 0;
-
+  width: 464px;
   color: #000;
   font-family: 'Roboto';
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-top: 2px $gray-bg solid;
+
+  .countdown-line {
+    height: 2px;
+    background-color: $blueLine;
+  }
 
   .refresh-box {
     height: 43px;
@@ -82,6 +88,8 @@
     .count {
       margin: 0px 20px
     }
+
+
 
     .button {
       margin: 0px 20px
@@ -121,7 +129,9 @@
     height: 487px;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin: 15px;
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
 
     .stop {
       height: 42px;
@@ -142,6 +152,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 10px;
 
     &.gray {
       background-color: $gray-time;
