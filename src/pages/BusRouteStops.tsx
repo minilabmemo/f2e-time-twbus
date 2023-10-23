@@ -10,7 +10,7 @@ import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 import { useState } from 'react';
 import "leaflet/dist/leaflet.css";
-import { StreetMap } from './StreetMap';
+import { StreetMap } from '../components/base/StreetMap';
 
 
 export const BusRouteStops = () => {
@@ -165,6 +165,7 @@ export const BusRouteStops = () => {
           {/* {result.isLoading ? "loading...." : (<LeafletMap id="street-map" />)} */}
 
           <StreetMap id="street-map" result={result} activeTab={activeTab} />
+          123
         </div>
 
       </section>

@@ -1,15 +1,15 @@
-import { BusStopsResult } from "../hooks/useBusStopsApi";
-import user_position from '../images/user_position.svg';
-import pointBlue from '../images/point_blue.svg';
-import pointRed from '../images/point_red.svg';
-import point_red_large_bus from '../images/point_red_large_bus.svg';
+import { BusStopsResult } from "../../hooks/useBusStopsApi";
+import user_position from '../../images/user_position.svg';
+import pointBlue from '../../images/point_blue.svg';
+import pointRed from '../../images/point_red.svg';
+import point_red_large_bus from '../../images/point_red_large_bus.svg';
 import ReactDOMServer from "react-dom/server";
 import L from "leaflet";
-import { StatusColorType, statusDefine } from "../utils/const";
-import BusSvg from '../components/Icons/BusSvg';
-import { MapColors } from "../utils/color";
+import { StatusColorType, statusDefine } from "../../utils/const";
+import BusSvg from '../Icons/BusSvg';
+import { MapColors } from "../../utils/color";
 import { useEffect } from "react";
-import { getUserLocation } from "../utils/gps";
+import { getUserLocation } from "../../utils/gps";
 interface StreetMapData {
   id: string;
   result: BusStopsResult;
@@ -23,8 +23,10 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, result, activeTab }) =>
   useEffect(() => {
     let zoom = 13; // 0 - 18  越大越近
     let center: L.LatLngExpression = [25.03418, 121.564517]; // 中心點座標
-    const map = L.map(id).setView(center, zoom);
-
+    const map = L.map(id, {
+      zoomControl: false, // 禁用默认的放大缩小控制按钮
+    }).setView(center, zoom);
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 

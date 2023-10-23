@@ -9,6 +9,7 @@
 
 ## 作品說明
 The F2E 全台公車動態時刻查詢應用服務。
+- 設計稿特別感謝
 
 ## 系統說明
 本專案使用 `create-react-app` typescript 範本，部署到 Github Pages， 

@@ -25,7 +25,7 @@ export async function getUserLocation(): Promise<{ userLat: number; userLng: num
       });
       const userLat = position.coords.latitude;
       const userLng = position.coords.longitude;
-      return { userLat, userLng };
+      return { userLat, userLng };//TODO watch 是否要加上定位
     } else {
 
       console.error("瀏覽器不支持地理位置");
