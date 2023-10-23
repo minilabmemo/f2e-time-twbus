@@ -5,7 +5,7 @@ import { faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { cityData, getCityNameOrValue } from '../utils/cities';
-import useBusApi, { BusRouteResult } from '../hooks/useBusCityApi';
+import useBusApi, { BusRouteResult } from '../apis/useBusCityApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 
 

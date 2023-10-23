@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getCityNameOrValue } from '../utils/cities';
 import to_loc from '../images/to_loc.svg';
-import useBusStopsApi, { BusStopsResult } from '../hooks/useBusStopsApi';
+import useBusStopsApi, { BusStopsResult } from '../apis/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
 import { useState } from 'react';
 import "leaflet/dist/leaflet.css";

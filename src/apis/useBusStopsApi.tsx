@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios, { AxiosError } from 'axios';
 import { DisplayStopOfRoute_mock, EstimatedTimeOfArrival_mock } from '../utils/mocks/mock';
+import { fetchNewToken } from './fetchNewToken';
 
 export interface BusStopsResult {
   results: Results | null;
@@ -85,6 +86,7 @@ interface BusRequestParam {
 const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] => {
 
   const { City, Route, callAtInstall } = query;
+  const [token, setToken] = useState<string | null>(null); // 初始化为null
 
   const fetchData = useCallback(() => {
 
@@ -98,8 +100,16 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
         DisplayStopOfRoute_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
         EstimatedTimeOfArrival_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
       }
-      const request1 = axios.get(DisplayStopOfRoute_URL);
-      const request2 = axios.get(EstimatedTimeOfArrival_URL);
+      const request1 = axios.get(DisplayStopOfRoute_URL, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const request2 = axios.get(EstimatedTimeOfArrival_URL, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
 
       Promise.all([request1, request2])
@@ -113,17 +123,41 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
         })
 
 
-        .catch((error) => {
+        .catch(async (error) => {
           console.error("useBusRouteApi API请求失败", error);
           if (axios.isAxiosError(error)) {
             const axiosError = error as AxiosError;
+
             const responseStatus = axiosError.response ? axiosError.response.status : 0;
-            setResData((prevState) => ({
-              ...prevState,
-              status: responseStatus,
-              error: axiosError.message,
-              isLoading: false,
-            }));
+            const responseMessage = axiosError.response ? axiosError.response.data : "";
+
+            if (responseStatus === 401) {
+              const { token, error } = await fetchNewToken();
+              if (token) {
+                setToken(token);
+                fetchData();
+              } else {
+                console.error('Error fetching new token:', error);
+                const axiosError = error as AxiosError; // 使用类型断言将 error 声明为 AxiosError 类型
+                const responseStatus = axiosError.response ? axiosError.response.status : 0; // 使用条件语句获取 status 属性
+
+
+                setResData((prevState) => ({
+                  ...prevState,
+                  status: responseStatus,
+                  error: axiosError.message + JSON.stringify(responseMessage),
+                  isLoading: false,
+                }));
+
+              }
+            } else {
+              setResData((prevState) => ({
+                ...prevState,
+                status: responseStatus,
+                error: axiosError.message + JSON.stringify(responseMessage),
+                isLoading: false,
+              }));
+            }
 
           }
         });
@@ -151,8 +185,7 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
       fetchingData();
     }
 
-  }, [City, Route]);
-
+  }, [City, Route, token]);
 
   const [resData, setResData] = useState<BusStopsResult>({
     results: null,
@@ -162,10 +195,16 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
   });
 
   useEffect(() => {
-    if (callAtInstall) {
+    if (!token) {
+      fetchNewToken().then(({ token }) => {
+        if (token) {
+          setToken(token);
+        }
+      });
+    } else if (callAtInstall) {
       fetchData();
     }
-  }, [callAtInstall, fetchData]);
+  }, [callAtInstall, fetchData, token]);
 
   return [resData, fetchData] as [BusStopsResult, () => void];
 };

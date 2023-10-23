@@ -121,6 +121,11 @@ export const ResultErrorHint = ({ status, error, total }: { status: number | und
     return <div className='err-hint'>請求已達上限，請明日再試。</div>;
   }
   if (error) {
+
+    if (error.includes("City: 'HsinchuCounty' is not accepted but Taipei, Tainan, NewTaipei, Taoyuan, Taichung")) {
+      return <div className='err-hint'>路線站點，城市只支援台北/台南/新北/桃園/台中。{error}</div>;
+    }
+
     return <div className='err-hint'>Ops..遇到了錯誤，請稍後再試。{error}</div>;
   }
   if (status === 404) {
@@ -132,6 +137,7 @@ export const ResultErrorHint = ({ status, error, total }: { status: number | und
   if (status !== 200 && status !== 0) {
     return <div className='err-hint'>Ops..遇到了問題，請稍後再試。</div>;
   }
+
 
 
   return null;

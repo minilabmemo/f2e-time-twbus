@@ -1,4 +1,4 @@
-import { BusStopsResult } from "../../hooks/useBusStopsApi";
+import { BusStopsResult } from "../../apis/useBusStopsApi";
 import user_position from '../../images/user_position.svg';
 import pointBlue from '../../images/point_blue.svg';
 import pointRed from '../../images/point_red.svg';

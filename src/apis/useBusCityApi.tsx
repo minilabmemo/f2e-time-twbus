@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
 
 import { cityRoutes_mock_data } from '../utils/mocks/mock';
+import { fetchNewToken } from './fetchNewToken';
 interface BusRoute {
   RouteID: string;
   RouteName: NameType;
@@ -71,12 +72,22 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
           const responseStatus = axiosError.response ? axiosError.response.status : 0; // 使用条件语句获取 status 属性
           console.error('Error fetching data responseStatus:', responseStatus);
           if (responseStatus === 401) {
-            const newToken = await fetchNewToken();
-            if (newToken) {
-              setToken(newToken);
+            const { token, error } = await fetchNewToken();
+            if (token) {
+              setToken(token);
               fetchData();
             } else {
-              console.error('Error fetching new token.');
+              console.error('Error fetching new token:', error);
+              const axiosError = error as AxiosError; // 使用类型断言将 error 声明为 AxiosError 类型
+              const responseStatus = axiosError.response ? axiosError.response.status : 0; // 使用条件语句获取 status 属性
+              console.error('axiosError.response:', axiosError.response?.data);
+              setResData((prevState) => ({
+                ...prevState,
+                status: responseStatus,
+                error: axiosError.message,
+                isLoading: false,
+              }));
+
             }
           } else {
             setResData((prevState) => ({
@@ -112,39 +123,7 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
     }
 
   }, [City, token]);
-  const fetchNewToken = async () => {
-    try {
-      const clientID = process.env.REACT_APP_API_CLIENT_ID;
-      const clientSecret = process.env.REACT_APP_API_CLIENT_SECRET;
-      const root_url = process.env.REACT_APP_API_URL
 
-      let url = `${root_url}/auth/realms/TDXConnect/protocol/openid-connect/token`;
-      const tokenResponse = await axios.post(url, {
-        grant_type: 'client_credentials',
-        client_id: clientID,
-        client_secret: clientSecret,
-      }, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      });
-
-      const newToken = tokenResponse.data.access_token;
-      return newToken;
-    } catch (error) {
-      console.error('Error fetching new token:', error);
-      const axiosError = error as AxiosError; // 使用类型断言将 error 声明为 AxiosError 类型
-      const responseStatus = axiosError.response ? axiosError.response.status : 0; // 使用条件语句获取 status 属性
-      console.error('axiosError.response:', axiosError.response?.data);
-      setResData((prevState) => ({
-        ...prevState,
-        status: responseStatus,
-        error: axiosError.message,
-        isLoading: false,
-      }));
-      return null;
-    }
-  };
 
   const [resData, setResData] = useState<BusRouteResult>({
     records: [],
@@ -155,9 +134,9 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
 
   useEffect(() => {
     if (!token) {
-      fetchNewToken().then((newToken) => {
-        if (newToken) {
-          setToken(newToken);
+      fetchNewToken().then(({ token }) => {
+        if (token) {
+          setToken(token);
         }
       });
     } else if (callAtInstall) {
