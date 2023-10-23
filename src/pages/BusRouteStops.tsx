@@ -6,9 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getCityNameOrValue } from '../utils/cities';
 import to_loc from '../images/to_loc.svg';
+import refresh_now from '../images/icons8_refresh.svg';
 import useBusStopsApi, { BusStopsResult } from '../apis/useBusStopsApi';
 import SaveSvg from '../components/Icons/SaveSvg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "leaflet/dist/leaflet.css";
 import { StreetMap } from '../components/base/StreetMap';
 
@@ -117,13 +118,54 @@ export const BusRouteStops = () => {
           </div>
 
 
-          //TODO更新鈕
+
         )
         }
+        <RefreshBar refreshAction={fetchData} updateTime={result.results?.BusN1EstimateTimes[0].UpdateTime}></RefreshBar>
       </div >
     );
   }
+  function RefreshBar({ refreshAction, updateTime }: { refreshAction: () => void, updateTime: string | undefined }) {
+    const initialCountdown = 300;
+    const [countdown, setCountdown] = useState(initialCountdown);
+    const startCountdown = () => {
+      setCountdown(initialCountdown); // 重置倒计时
+      const countdownTimer = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
 
+      setTimeout(() => {
+        clearInterval(countdownTimer);
+      }, initialCountdown * 1000);
+    };
+    useEffect(() => {
+      startCountdown(); // 组件加載後就開始倒數
+    }, []);
+    useEffect(() => {
+      if (countdown === 0) {
+        refreshAction();
+      }
+    }, [countdown, refreshAction]);
+    function extractTimeFromDateTime(dateTimeString: string | undefined) {
+      if (dateTimeString) {
+        var indexOfT = dateTimeString.indexOf('T');
+        if (indexOfT !== -1) {
+          return dateTimeString.substr(indexOfT + 1, 8);
+        }
+      }
+    }
+    return (
+      <div className='refresh-bar'>
+        <div className='countdown-line'></div>
+        <div className='refresh-box'>
+          <div className="count">{countdown} 秒後更新</div>
+
+          <div className="button" onClick={() => refreshAction()}>  <img src={refresh_now} alt="refresh_now" className='icon' /> 立即更新 {extractTimeFromDateTime(updateTime)}</div>
+        </div>
+
+      </div>
+    )
+  }
 
   return (
     <div className='search'>
@@ -144,6 +186,7 @@ export const BusRouteStops = () => {
           <BusStopsResult result={result} route={route} key={0} />
 
 
+
         </div>
 
         <div className='result-map'>
@@ -152,14 +195,14 @@ export const BusRouteStops = () => {
           </div>
 
           {/* {result.isLoading ? "loading...." : (<LeafletMap id="street-map" />)} */}
-
+          {/* //TODO 更新站點的title不是整個地圖才是 */}
           <StreetMap id="street-map" result={result} activeTab={activeTab} />
-          123
+
         </div>
 
-      </section>
+      </section >
 
-    </ div>
+    </ div >
   );
 };
 

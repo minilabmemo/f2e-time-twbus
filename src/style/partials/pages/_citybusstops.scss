@@ -56,6 +56,40 @@
     font-weight: 700;
     line-height: normal;
   }
+
+
+}
+
+
+.refresh-bar {
+  height: 44px;
+  margin: 0;
+
+  color: #000;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  .refresh-box {
+    height: 43px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .count {
+      margin: 0px 20px
+    }
+
+    .button {
+      margin: 0px 20px
+    }
+
+  }
+
+
 }
 
 .tab-buttons {
@@ -87,7 +121,7 @@
     height: 487px;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin: 30px;
+    margin: 15px;
 
     .stop {
       height: 42px;
