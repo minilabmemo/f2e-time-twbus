@@ -5,6 +5,8 @@ import { DisplayStopOfRoute_mock, EstimatedTimeOfArrival_mock } from '../utils/m
 export interface BusStopsResult {
   results: Results | null;
   status: number | undefined;
+  error?: string | undefined;
+  total: number;
   isLoading: boolean;
 }
 
@@ -105,6 +107,7 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
           setResData({
             results: { BusStopOfRoutes: responses[0].data, BusN1EstimateTimes: responses[1].data },
             status: 200,
+            total: responses[0].data.length,
             isLoading: false,
           });
         })
@@ -118,6 +121,7 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
             setResData((prevState) => ({
               ...prevState,
               status: responseStatus,
+              error: axiosError.message,
               isLoading: false,
             }));
 
@@ -138,6 +142,7 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
       setResData({
         results: { BusStopOfRoutes: JSON.parse(DisplayStopOfRoute_mock), BusN1EstimateTimes: JSON.parse(EstimatedTimeOfArrival_mock) },
         status: 200,
+        total: JSON.parse(DisplayStopOfRoute_mock).length,
         isLoading: false,
       });
 
@@ -152,6 +157,7 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
   const [resData, setResData] = useState<BusStopsResult>({
     results: null,
     status: 0,
+    total: 0,
     isLoading: false,
   });
 

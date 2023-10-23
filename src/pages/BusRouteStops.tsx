@@ -1,6 +1,6 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { Dict, URI_SEARCH, statusDefine } from '../utils/const';
+import { Dict, ResultErrorHint, URI_SEARCH, statusDefine } from '../utils/const';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -27,18 +27,6 @@ export const BusRouteStops = () => {
   console.log("BusRouteStops", result);
 
 
-  const ErrorHint = ({ result }: { result: BusStopsResult }) => {
-    if (result.status === 429) {
-      return <div className='err-hint'>請求已達上限，請明日再試。</div>;
-    }
-    if (result.status === 404) {
-      return <div className='err-hint'>找不到資料，請稍後再試。</div>;
-    }
-    if (result.status !== 200 && result.status !== 0) {
-      return <div className='err-hint'>Ops..遇到了問題，請稍後再試。</div>;
-    }
-    return null;
-  };
 
 
 
@@ -70,7 +58,8 @@ export const BusRouteStops = () => {
     return (
       <div className='result-stops'>
 
-        <ErrorHint result={result} />
+
+        <ResultErrorHint status={result.status} error={result.error} total={result.total} />
         <div className="route-infos">
           <div className="route-name">{route}</div>
 

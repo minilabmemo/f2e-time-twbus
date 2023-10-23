@@ -15,6 +15,7 @@ interface BusRoute {
 export interface BusRouteResult {
   records: BusRoute[];
   status: number | undefined;
+  error?: string | undefined;
   total: number;
   isLoading: boolean;
 }
@@ -39,8 +40,8 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
   const fetchData = useCallback(() => {
 
     const fetchingData = async () => {
-
-      let url = 'https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City';
+      const root_url = process.env.REACT_APP_API_URL
+      let url = `${root_url}/api/basic/v2/Bus/Route/City`;
       if (City !== null) {
         url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City&%24format=JSON`;
       }
@@ -75,9 +76,12 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
         if (axios.isAxiosError(error)) { // 检查是否为 Axios 错误对象
           const axiosError = error as AxiosError; // 使用类型断言将 error 声明为 AxiosError 类型
           const responseStatus = axiosError.response ? axiosError.response.status : 0; // 使用条件语句获取 status 属性
+          console.error('Error fetching data responseStatus:', responseStatus);
+
           setResData((prevState) => ({
             ...prevState,
             status: responseStatus, // 获取 HTTP 错误状态码
+            error: axiosError.message,
             isLoading: false,
           }));
 

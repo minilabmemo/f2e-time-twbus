@@ -112,3 +112,25 @@ export function statusDefine(status: number, estimateTime: number | null) {
   }
   return ['未知', StatusColorType.gray];
 }
+
+
+
+export const ResultErrorHint = ({ status, error, total }: { status: number | undefined, error: string | undefined, total: number }) => {
+  if (status === 429) {
+    return <div className='err-hint'>請求已達上限，請明日再試。</div>;
+  }
+  if (status === 404) {
+    return <div className='err-hint'>找不到資料，請稍後再試。</div>;
+  }
+  if (status === 200 && total === 0) {
+    return <div className='err-hint'>無此路線，請輸入其他關鍵字。</div>;
+  }
+  if (status !== 200 && status !== 0) {
+    return <div className='err-hint'>Ops..遇到了問題，請稍後再試。</div>;
+  }
+  if (error) {
+    return <div className='err-hint'>Ops..遇到了錯誤，請稍後再試。{error}</div>;
+  }
+
+  return null;
+};

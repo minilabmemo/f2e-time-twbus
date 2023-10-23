@@ -1,6 +1,6 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { ActionType, Dict, LangType, URI_SEARCH_DEFAULT, URI_STOPS, itemI, keyboardRouteList } from '../utils/const';
+import { ActionType, Dict, LangType, ResultErrorHint, URI_SEARCH_DEFAULT, URI_STOPS, itemI, keyboardRouteList } from '../utils/const';
 import { faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
@@ -134,21 +134,7 @@ export const BusRouteSearch = () => {
     );
   }
 
-  const ErrorHint = ({ routes }: { routes: BusRouteResult }) => {
-    if (routes.status === 429) {
-      return <div className='err-hint'>請求已達上限，請明日再試。</div>;
-    }
-    if (routes.status === 404) {
-      return <div className='err-hint'>找不到資料，請稍後再試。</div>;
-    }
-    if (routes.status === 200 && routes.total === 0) {
-      return <div className='err-hint'>無此路線，請輸入其他關鍵字。</div>;
-    }
-    if (routes.status !== 200 && routes.status !== 0) {
-      return <div className='err-hint'>Ops..遇到了問題，請稍後再試。</div>;
-    }
-    return null;
-  };
+
 
   function RoutesResult({ routes }: { routes: BusRouteResult }) {
     function calculateURL({ lang, city, route }: { lang: string, city: string, route: string }) {
@@ -158,7 +144,7 @@ export const BusRouteSearch = () => {
     return (
       <div className='result-routes'>
 
-        <ErrorHint routes={routes} />
+        <ResultErrorHint status={routes.status} error={routes.error} total={routes.total} />
 
         {(routes.status === 200) && (
           <div>
