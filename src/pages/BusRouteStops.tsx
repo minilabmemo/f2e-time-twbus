@@ -117,7 +117,7 @@ export const BusRouteStops = () => {
 
         )
         }
-        <RefreshBar initialCountdown={10} refreshAction={fetchData} updateTime={result.results?.BusN1EstimateTimes[0].UpdateTime}></RefreshBar>
+        <RefreshBar initialCountdown={100} refreshAction={fetchData} updateTime={result.results?.BusN1EstimateTimes[0].UpdateTime}></RefreshBar>
       </div >
     );
   }

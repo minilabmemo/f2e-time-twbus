@@ -42,26 +42,32 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
     } else {
       lastCenterRef.current = [mapRef.current.getCenter().lat, mapRef.current.getCenter().lng];
     }
-
+    const largeIconSize = 40;
     const pointRedLargeBusIcon = new L.Icon({
       iconUrl: point_red_large_bus,
-      iconSize: [40, 40],
-      iconAnchor: [24, 24],
-      popupAnchor: [0, -24]
-    })
-    const pointRedIcon = new L.Icon({
-      iconUrl: pointRed,
-      iconSize: [40, 40],
-      iconAnchor: [24, 24],
-      popupAnchor: [0, -24]
+      iconSize: [largeIconSize, largeIconSize],
+      iconAnchor: [largeIconSize / 2, largeIconSize / 2],//定位
+      popupAnchor: [0, 0]
     })
     const pointBlueIcon = new L.Icon({
       iconUrl: pointBlue,
-      iconSize: [40, 40],
-      iconAnchor: [24, 24],
-      popupAnchor: [0, -24]
+      iconSize: [largeIconSize, largeIconSize],
+      iconAnchor: [largeIconSize / 2, largeIconSize / 2],
+      popupAnchor: [0, 0]
     })
-
+    const smallIconSize = 30;
+    const pointRedIconSmall = new L.Icon({
+      iconUrl: pointRed,
+      iconSize: [smallIconSize, smallIconSize],
+      iconAnchor: [smallIconSize / 2, smallIconSize / 2],
+      popupAnchor: [0, 0]
+    })
+    const pointBlueIconSmall = new L.Icon({
+      iconUrl: pointBlue,
+      iconSize: [smallIconSize, smallIconSize],
+      iconAnchor: [smallIconSize / 2, smallIconSize / 2],
+      popupAnchor: [0, 0]
+    })
     const markersFarToShow: L.Marker[] = []; //縮小時較遠的顯示
     const markersNearToShow: L.Marker[] = [];//放大時較近的顯示
     let lineCoordinates: L.LatLngExpression[] = [];
@@ -110,16 +116,20 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
             className: "map-stop-tooltip style red"
           }).setContent(tooltipBody))
         );
-        markersNearToShow.push( //當地圖放大時，較近時顯示紅色原點
-          L.marker(latLng, {
-            icon: pointRedIcon,
-            opacity: 1.0,
-          })
-        );
+
+        // markersNearToShow.push( //當地圖放大時，較近時顯示紅色原點
+        //   L.marker(latLng, {
+        //     icon: pointRedIcon,
+        //     opacity: 1.0,
+        //   })
+        // );
 
 
         markersNearToShow.push( //當地圖放大時，較近時顯示進站中tooltip
-          L.marker(latLng).bindTooltip(L.tooltip({
+          L.marker(latLng, {
+            icon: pointRedIconSmall,
+            opacity: 1.0,
+          }).bindTooltip(L.tooltip({
             permanent: true,
             direction: "top",
             className: "map-stop-tooltip style red" //TODO 箭頭怎改
@@ -127,21 +137,25 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
         );
 
       } else {
-        markersNearToShow.push( //當地圖放大時，較近時顯示藍色tooltip
-          L.marker(latLng).bindTooltip(L.tooltip({
+        markersNearToShow.push( //當地圖放大時，較近時顯示藍色圓點icon與藍色tooltip
+          L.marker(latLng, {
+            icon: pointBlueIconSmall,
+            opacity: 1.0,
+          }).bindTooltip(L.tooltip({
             permanent: true,
             direction: "top",
             className: "map-stop-tooltip style blue" //TODO 箭頭怎改
           }).setContent(tooltipBody))
         );
       }
-      markersNearToShow.push( //當地圖放大時，較近時顯示藍色原點
-        L.marker(latLng, {
-          icon: pointBlueIcon,
-          opacity: 1.0,
-        })
 
-      );
+      // markersNearToShow.push( //當地圖放大時，較近時顯示藍色原點
+      //   L.marker(latLng, {
+      //     icon: pointBlueIcon,
+      //     opacity: 1.0,
+      //   })
+
+      // );
 
       if ((index === 0) || (index === lastIndex)) {
         markersFarToShow.push( //當地圖縮小時， 只顯示起點跟終點藍色原點
