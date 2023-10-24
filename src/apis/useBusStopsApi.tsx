@@ -97,8 +97,8 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
       let EstimatedTimeOfArrival_URL = `${root_url}/api/basic/v2/Bus/EstimatedTimeOfArrival/City`;
 
       if (City !== null && Route != null) {
-        DisplayStopOfRoute_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
-        EstimatedTimeOfArrival_URL += `/${City}/${Route}?%24top=30&%24format=JSON`;
+        DisplayStopOfRoute_URL += `/${City}/${Route}?%24format=JSON`;
+        EstimatedTimeOfArrival_URL += `/${City}/${Route}?%24format=JSON`;
       }
       const request1 = axios.get(DisplayStopOfRoute_URL, {
         headers: {
