@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useReducer, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { DisplayStopOfRoute_mock, EstimatedTimeOfArrival_mock } from '../utils/mocks/mock';
 import { fetchNewToken } from './fetchNewToken';
@@ -35,6 +35,7 @@ interface NameType {
   Zh_tw: string;
   En: string;
 }
+
 export interface Stop {
   StopUID: string;
   StopName: NameType;
@@ -81,18 +82,58 @@ interface BusRequestParam {
   callAtInstall: boolean;
 }
 
-// The useBusStopsApi hook provides a reusable mechanism for fetching Bus data and managing the loading state in a React component.
-//return data and useCallback function.
-const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] => {
+// Define action types
+const FETCH_STARTED = 'FETCH_STARTED';
+const FETCH_SUCCESS = 'FETCH_SUCCESS';
+const FETCH_ERROR = 'FETCH_ERROR';
 
+const initialState: BusStopsResult = {
+  results: null,
+  status: 0,
+  total: 0,
+  isLoading: false,
+  error: undefined,
+};
+
+const dataReducer = (
+  state: BusStopsResult,
+  action: { type: string; payload?: any }
+): BusStopsResult => {
+  switch (action.type) {
+    case FETCH_STARTED:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case FETCH_SUCCESS:
+      return {
+        ...state,
+        results: action.payload.results,
+        status: action.payload.status,
+        total: action.payload.total,
+        isLoading: false,
+        error: action.payload.error,
+      };
+    case FETCH_ERROR:
+      return {
+        ...state,
+        status: action.payload.status,
+        isLoading: false,
+        error: action.payload.error,
+      };
+    default:
+      return state;
+  }
+};
+
+const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] => {
   const { City, Route, callAtInstall } = query;
-  const [token, setToken] = useState<string | null>(null); // 初始化为null
+  const [token, setToken] = useState<string | null>(null);
+  const [resData, dispatch] = useReducer(dataReducer, initialState);
 
   const fetchData = useCallback(() => {
-
-
     const fetchingData = async () => {
-      const root_url = process.env.REACT_APP_API_URL
+      const root_url = process.env.REACT_APP_API_URL;
       let DisplayStopOfRoute_URL = `${root_url}/api/basic/v2/Bus/DisplayStopOfRoute/City`;
       let EstimatedTimeOfArrival_URL = `${root_url}/api/basic/v2/Bus/EstimatedTimeOfArrival/City`;
 
@@ -100,99 +141,95 @@ const useBusStopsApi = (query: BusRequestParam): [BusStopsResult, () => void] =>
         DisplayStopOfRoute_URL += `/${City}/${Route}?%24format=JSON`;
         EstimatedTimeOfArrival_URL += `/${City}/${Route}?%24format=JSON`;
       }
-      const request1 = axios.get(DisplayStopOfRoute_URL, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const request2 = axios.get(EstimatedTimeOfArrival_URL, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
 
+      try {
+        const [response1, response2] = await Promise.all([
+          axios.get(DisplayStopOfRoute_URL, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }),
+          axios.get(EstimatedTimeOfArrival_URL, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }),
+        ]);
 
-      Promise.all([request1, request2])
-        .then((responses) => {
-          setResData({
-            results: { BusStopOfRoutes: responses[0].data, BusN1EstimateTimes: responses[1].data },
+        const results: Results = {
+          BusStopOfRoutes: response1.data,
+          BusN1EstimateTimes: response2.data,
+        };
+
+        dispatch({
+          type: FETCH_SUCCESS,
+          payload: {
+            results,
             status: 200,
-            total: responses[0].data.length,
-            isLoading: false,
-          });
-        })
+            total: response1.data.length,
+            error: undefined,
+          },
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
 
+        if (axios.isAxiosError(error)) {
+          const axiosError = error as AxiosError;
+          const responseStatus = axiosError.response ? axiosError.response.status : 0;
+          const responseMessage = axiosError.response ? axiosError.response.data : "";
 
-        .catch(async (error) => {
-          console.error("useBusRouteApi API请求失败", error);
-          if (axios.isAxiosError(error)) {
-            const axiosError = error as AxiosError;
-
-            const responseStatus = axiosError.response ? axiosError.response.status : 0;
-            const responseMessage = axiosError.response ? axiosError.response.data : "";
-
-            if (responseStatus === 401) {
-              const { token, error } = await fetchNewToken();
-              if (token) {
-                setToken(token);
-                fetchData();
-              } else {
-                console.error('Error fetching new token:', error);
-                const axiosError = error as AxiosError; // 使用类型断言将 error 声明为 AxiosError 类型
-                const responseStatus = axiosError.response ? axiosError.response.status : 0; // 使用条件语句获取 status 属性
-
-
-                setResData((prevState) => ({
-                  ...prevState,
+          if (responseStatus === 401) {
+            const { token, error } = await fetchNewToken();
+            if (token) {
+              setToken(token);
+              fetchData();
+            } else {
+              console.error('Error fetching new token:', error);
+              dispatch({
+                type: FETCH_ERROR,
+                payload: {
                   status: responseStatus,
                   error: axiosError.message + JSON.stringify(responseMessage),
-                  isLoading: false,
-                }));
-
-              }
-            } else {
-              setResData((prevState) => ({
-                ...prevState,
+                },
+              });
+            }
+          } else {
+            dispatch({
+              type: FETCH_ERROR,
+              payload: {
                 status: responseStatus,
                 error: axiosError.message + JSON.stringify(responseMessage),
-                isLoading: false,
-              }));
-            }
-
+              },
+            });
           }
-        });
-
-
+        }
+      }
     };
 
-    setResData((prevState) => ({
-      ...prevState,
-      isLoading: true,
-    }));
+    dispatch({ type: FETCH_STARTED });
+
     const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
 
     if (isMockData) {
-      console.warn('Mock data return, only use in develop.');
-      setResData({
-        results: { BusStopOfRoutes: JSON.parse(DisplayStopOfRoute_mock), BusN1EstimateTimes: JSON.parse(EstimatedTimeOfArrival_mock) },
-        status: 200,
-        total: JSON.parse(DisplayStopOfRoute_mock).length,
-        isLoading: false,
+      console.warn('Mock data return, only use in development.');
+      dispatch({
+        type: FETCH_SUCCESS,
+        payload: {
+          results: {
+            BusStopOfRoutes: JSON.parse(DisplayStopOfRoute_mock),
+            BusN1EstimateTimes: JSON.parse(EstimatedTimeOfArrival_mock),
+          },
+          status: 200,
+          total: JSON.parse(DisplayStopOfRoute_mock).length,
+          error: undefined,
+        },
       });
-
     }
+
     if (!isMockData) {
       fetchingData();
     }
-
   }, [City, Route, token]);
-
-  const [resData, setResData] = useState<BusStopsResult>({
-    results: null,
-    status: 0,
-    total: 0,
-    isLoading: false,
-  });
 
   useEffect(() => {
     if (!token) {
