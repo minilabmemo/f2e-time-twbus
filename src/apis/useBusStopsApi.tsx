@@ -35,7 +35,7 @@ interface NameType {
   Zh_tw: string;
   En: string;
 }
-interface Stop {
+export interface Stop {
   StopUID: string;
   StopName: NameType;
   StopPosition: PointType;
@@ -50,7 +50,7 @@ interface PointType {
   GeoHash: string;
 }
 
-interface BusN1EstimateTime {
+export interface BusN1EstimateTime {
   //車牌號碼 [値為値為-1時，表示目前該站位無車輛行駛]
   PlateNumb: string,
   //站牌唯一識別代碼，規則為 {業管機關簡碼} + {StopID}，其中 {業管機關簡碼} 可於Authority API中的AuthorityCode欄位查詢

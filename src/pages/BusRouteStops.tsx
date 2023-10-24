@@ -117,7 +117,7 @@ export const BusRouteStops = () => {
 
         )
         }
-        <RefreshBar initialCountdown={100} refreshAction={fetchData} updateTime={result.results?.BusN1EstimateTimes[0].UpdateTime}></RefreshBar>
+        <RefreshBar initialCountdown={10} refreshAction={fetchData} updateTime={result.results?.BusN1EstimateTimes[0].UpdateTime}></RefreshBar>
       </div >
     );
   }
@@ -151,7 +151,11 @@ export const BusRouteStops = () => {
 
           {/* {result.isLoading ? "loading...." : (<LeafletMap id="street-map" />)} */}
           {/* //TODO 更新站點的title不是整個地圖才是 */}
-          <StreetMap id="street-map" result={result} activeTab={activeTab} />
+          <StreetMap id="street-map"
+            stops={result.results?.BusStopOfRoutes[activeTab].Stops}
+            busN1EstimateTimes={result.results?.BusN1EstimateTimes}
+            activeTab={activeTab}
+          />
 
         </div>
 
