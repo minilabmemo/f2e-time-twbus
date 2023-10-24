@@ -116,7 +116,7 @@ export function statusDefine(status: number, estimateTime: number | null) {
 
 
 export const ResultErrorHint = ({ status, error, total }: { status: number | undefined, error: string | undefined, total: number }) => {
-  console.log(ResultErrorHint)
+
   if (status === 429) {
     return <div className='err-hint'>請求已達上限，請明日再試。</div>;
   }

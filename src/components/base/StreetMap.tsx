@@ -20,12 +20,40 @@ interface StreetMapData {
 
 
 export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTimes, activeTab }) => {
-  console.log("🚀 ~ file: StreetMap.tsx:23 ~ activeTab:", activeTab)
+
   const lastCenterRef = useRef<[number, number]>([25.03418, 121.564517]); // 初始化为默认中心点坐标
   const mapRef = useRef<L.Map | null>(null);
   const zoomRef = useRef(13); //  0 - 18，值越大越近
   const activeTabRef = useRef(-1);
   useEffect(() => {
+    const fetchUserLocation = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));//wait 1s
+      try {
+        const location = await getUserLocation();
+        if (location) {
+          console.log("抓取到使用者定位");
+
+          if (location.userLat !== 0 && location.userLng !== 0) {
+            if (mapRef.current) {
+              const userLocIcon = new L.Icon({
+                iconUrl: user_position,
+                iconSize: [40, 40],
+                iconAnchor: [24, 24],
+                popupAnchor: [0, -24]
+              })
+              const userMarkerLoc = L.latLng(location.userLat, location.userLng);
+              L.marker(userMarkerLoc, {
+                icon: userLocIcon,
+                opacity: 1.0,
+              }).bindTooltip("你在這裡！").addTo(mapRef.current).openTooltip();
+            }
+          }
+        }
+      } catch (error) {
+        //FIXME 偶爾切換會出現error log Cannot read properties of undefined (reading 'appendChild') at NewClass._initIcon
+        console.error("捕獲異常:", error, "map", mapRef.current?.getPane);
+      }
+    };
 
     if (!mapRef.current) {
       const map = L.map(id, {
@@ -39,9 +67,11 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
       }).addTo(map);
 
       mapRef.current = map;
+
     } else {
       lastCenterRef.current = [mapRef.current.getCenter().lat, mapRef.current.getCenter().lng];
     }
+    fetchUserLocation();
     const largeIconSize = 40;
     const pointRedLargeBusIcon = new L.Icon({
       iconUrl: point_red_large_bus,
@@ -117,15 +147,8 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
           }).setContent(tooltipBody))
         );
 
-        // markersNearToShow.push( //當地圖放大時，較近時顯示紅色原點
-        //   L.marker(latLng, {
-        //     icon: pointRedIcon,
-        //     opacity: 1.0,
-        //   })
-        // );
 
-
-        markersNearToShow.push( //當地圖放大時，較近時顯示進站中tooltip
+        markersNearToShow.push( //當地圖放大時，較近時顯示進站中tooltip與紅色原點
           L.marker(latLng, {
             icon: pointRedIconSmall,
             opacity: 1.0,
@@ -149,13 +172,6 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
         );
       }
 
-      // markersNearToShow.push( //當地圖放大時，較近時顯示藍色原點
-      //   L.marker(latLng, {
-      //     icon: pointBlueIcon,
-      //     opacity: 1.0,
-      //   })
-
-      // );
 
       if ((index === 0) || (index === lastIndex)) {
         markersFarToShow.push( //當地圖縮小時， 只顯示起點跟終點藍色原點
@@ -172,34 +188,6 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
       lineCoordinates.push(latLng);
 
     });
-    const fetchUserLocation = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1000));//wait 1s
-      try {
-        const location = await getUserLocation();
-        if (location) {
-          console.log("抓取到使用者定位");
-
-          if (location.userLat !== 0 && location.userLng !== 0) {
-            if (mapRef.current) {
-              const userLocIcon = new L.Icon({
-                iconUrl: user_position,
-                iconSize: [40, 40],
-                iconAnchor: [24, 24],
-                popupAnchor: [0, -24]
-              })
-              const userMarkerLoc = L.latLng(location.userLat, location.userLng);
-              L.marker(userMarkerLoc, {
-                icon: userLocIcon,
-                opacity: 1.0,
-              }).bindTooltip("你在這裡！").addTo(mapRef.current).openTooltip();
-            }
-          }
-        }
-      } catch (error) {
-        //FIXME 偶爾切換會出現error log Cannot read properties of undefined (reading 'appendChild') at NewClass._initIcon
-        console.error("捕獲異常:", error, "map", mapRef.current?.getPane);
-      }
-    };
 
 
     const handleZoomEnd = () => {
@@ -248,9 +236,10 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
         }
 
       }
+
     }
 
-    fetchUserLocation();
+
     return () => {
       if (mapRef.current) {
         mapRef.current.removeLayer(polyline);
@@ -271,11 +260,6 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
       markersNearToShow.length = 0;
     };
   }, [id, busN1EstimateTimes, stops, activeTab, lastCenterRef, activeTabRef]);
-
-
-
-
-
 
 
 

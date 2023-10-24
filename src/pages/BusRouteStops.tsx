@@ -26,12 +26,6 @@ export const BusRouteStops = () => {
 
   const [result, fetchData] = useBusStopsApi({ City: city, Route: route, callAtInstall: true });
 
-  console.log("BusRouteStops", result);
-
-
-
-
-
   function StopStatus({ name, status, estimateTime }: { name: string, status: number, estimateTime: number | null }) {
 
     const [showStatus, color] = statusDefine(status, estimateTime);
