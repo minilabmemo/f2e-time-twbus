@@ -4,13 +4,11 @@ export const savedAnimalsMax = 20;
 
 export const LinkNames = {
   about: { text: "附近站牌", short: "Nearby" },
-  find: { text: "路線規劃", short: "Route Plan" },
   search: { zh: "站點查詢", en: "Site Query" },
   chart: { text: "我的收藏 ", short: "My Collection" },
 };
 export const Dict = {
   about: { text: "附近站牌", short: "Nearby" },
-  find: { text: "路線規劃", short: "Route Plan" },
   home: { zh: "首頁", en: "home" },
   timetable: { zh: "時刻表 ", en: "Time Table" },
 };

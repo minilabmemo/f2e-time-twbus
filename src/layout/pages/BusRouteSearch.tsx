@@ -1,13 +1,13 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { ActionType, Dict, LangType, URI_SEARCH_DEFAULT, URI_STOPS, itemI, keyboardRouteList } from '../utils/const';
-import { ResultErrorHint } from '../utils/error';
+import { ActionType, Dict, LangType, URI_SEARCH_DEFAULT, URI_STOPS, itemI, keyboardRouteList } from '../../utils/const';
+import { ResultErrorHint } from '../../utils/error';
 import { faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
-import { cityData, getCityNameOrValue } from '../utils/cities';
-import useBusApi, { BusRouteResult } from '../apis/useBusCityApi';
-import SaveSvg from '../components/Icons/SaveSvg';
+import { cityData, getCityNameOrValue } from '../../utils/cities';
+import useBusApi, { BusRouteResult } from '../../apis/useBusCityApi';
+import SaveSvg from '../../components/Icons/SaveSvg';
 
 
 export const BusRouteSearch = () => {

@@ -1,15 +1,15 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { Dict, URI_SEARCH } from '../utils/const';
-import { ResultErrorHint } from '../utils/error';
+import { Dict, URI_SEARCH } from '../../utils/const';
+import { ResultErrorHint } from '../../utils/error';
 
-import to_loc from '../images/to_loc.svg';
+import to_loc from '../../images/to_loc.svg';
 
 import { useEffect } from 'react';
 import "leaflet/dist/leaflet.css";
 
-import { getUserLocation } from '../utils/gps';
-import useBusStopsNearByApi, { BusStationResult } from '../apis/useBusStopsNearByApi';
+import { getUserLocation } from '../../utils/gps';
+import useBusStopsNearByApi, { BusStationResult } from '../../apis/useBusStopsNearByApi';
 
 
 

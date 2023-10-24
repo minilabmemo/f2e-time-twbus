@@ -2,15 +2,15 @@
 import './style/notosanstc.css';
 import './style/notosans.css';
 import './style/style.css';
-import { Header } from './components/layout/header';
-import PetFinder from './pages/CityBusHome';
-import { Footer } from './components/layout/Footer';
+import { Header } from './layout/header';
+import PetFinder from './layout/pages/CityBusHome';
+import { Footer } from './layout/Footer';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { URI_NEARBY_DEFAULT, URI_PET_FIND_PREFIX, URI_SEARCH, URI_STOPS } from './utils/const';
 import { Wait } from './components/Wait';
-import { BusRouteSearch } from './pages/BusRouteSearch';
-import { BusRouteStops } from './pages/BusRouteStops';
-import { BusRouteStopsNearBy } from './pages/BusRouteStopsNearBy';
+import { BusRouteSearch } from './layout/pages/BusRouteSearch';
+import { BusRouteStops } from './layout/pages/BusRouteStops';
+import { BusRouteStopsNearBy } from './layout/pages/BusRouteStopsNearBy';
 
 
 const BaseLayout = ({ children }: { children: React.ReactNode }) => (
