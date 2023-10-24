@@ -24,7 +24,7 @@ export const Header = () => {
 
 
         <div className='nav'>
-          <NavLink to="/about" className="nav-link">
+          <NavLink to="/nearby" className="nav-link">
             {isLangZH ? LinkNames.about.text : LinkNames.about.short}
           </NavLink>
 

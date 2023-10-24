@@ -723,4 +723,35 @@ code {
 }
 .map-stop-tooltip.blue {
   background-color: #355F8B;
+}
+
+.result-body {
+  padding: 10px;
+}
+
+.result-stations {
+  display: flex;
+  flex-direction: column;
+}
+.result-stations .station {
+  height: 58px;
+  display: flex;
+  justify-content: space-between;
+}
+.result-stations .station .station-info {
+  width: 70%;
+  align-self: start;
+}
+.result-stations .station .station-info .station-name {
+  color: #000;
+  font-family: "Roboto";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.result-stations .station-stop-num {
+  font-size: 14px;
+  font-weight: 400;
+  color: #888;
 }/*# sourceMappingURL=style.css.map */

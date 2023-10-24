@@ -18,7 +18,7 @@ export const Dict = {
 
 
 
-
+export const URI_NEARBY_DEFAULT = "nearby"
 export const URI_SEARCH_DEFAULT = "cities"
 export const URI_SEARCH = "/search/:lang/:city"
 

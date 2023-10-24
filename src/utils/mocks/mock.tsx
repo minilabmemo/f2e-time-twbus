@@ -10118,3 +10118,279 @@ export const EstimatedTimeOfArrival_mock = `[
   }
 ]
   `
+
+
+export const nearby_mock_data = `[
+  {
+      "StationUID": "TNN7996",
+      "StationID": "7996",
+      "StationName": {
+          "Zh_tw": "安定國小",
+          "En": "Anding Elementary School"
+      },
+      "StationPosition": {
+          "PositionLon": 120.24591,
+          "PositionLat": 23.12243,
+          "GeoHash": "wsje8323u"
+      },
+      "StationAddress": "台南市安定區178縣道",
+      "Stops": [
+          {
+              "StopUID": "TNN7045",
+              "StopID": "7045",
+              "StopName": {
+                  "Zh_tw": "安定國小",
+                  "En": "Anding Elementary School"
+              },
+              "RouteUID": "TNN1403",
+              "RouteID": "1403",
+              "RouteName": {
+                  "Zh_tw": "橘3",
+                  "En": "O3"
+              }
+          }
+      ],
+      "LocationCityCode": "TNN",
+      "Bearing": "E",
+      "UpdateTime": "2023-10-24T14:09:26+08:00",
+      "VersionID": 4905
+  },
+  {
+      "StationUID": "TNN7997",
+      "StationID": "7997",
+      "StationName": {
+          "Zh_tw": "真護宮",
+          "En": "Jhenhu Temple"
+      },
+      "StationPosition": {
+          "PositionLon": 120.25151,
+          "PositionLat": 23.12476,
+          "GeoHash": "wsje83srr"
+      },
+      "StationAddress": "台南市安定區178縣道",
+      "Stops": [
+          {
+              "StopUID": "TNN7046",
+              "StopID": "7046",
+              "StopName": {
+                  "Zh_tw": "真護宮",
+                  "En": "Jhenhu Temple"
+              },
+              "RouteUID": "TNN1403",
+              "RouteID": "1403",
+              "RouteName": {
+                  "Zh_tw": "橘3",
+                  "En": "O3"
+              }
+          }
+      ],
+      "LocationCityCode": "TNN",
+      "Bearing": "NE",
+      "UpdateTime": "2023-10-24T14:09:26+08:00",
+      "VersionID": 4905
+  },
+  {
+      "StationUID": "TNN7998",
+      "StationID": "7998",
+      "StationName": {
+          "Zh_tw": "蘇厝",
+          "En": "Sucuo"
+      },
+      "StationPosition": {
+          "PositionLon": 120.25571,
+          "PositionLat": 23.12648,
+          "GeoHash": "wsje86p99"
+      },
+      "StationAddress": "台南市安定區興農路",
+      "Stops": [
+          {
+              "StopUID": "TNN7047",
+              "StopID": "7047",
+              "StopName": {
+                  "Zh_tw": "蘇厝",
+                  "En": "Sucuo"
+              },
+              "RouteUID": "TNN1403",
+              "RouteID": "1403",
+              "RouteName": {
+                  "Zh_tw": "橘3",
+                  "En": "O3"
+              }
+          }
+      ],
+      "LocationCityCode": "TNN",
+      "Bearing": "E",
+      "UpdateTime": "2023-10-24T14:09:26+08:00",
+      "VersionID": 4905
+  },
+  {
+      "StationUID": "TNN7999",
+      "StationID": "7999",
+      "StationName": {
+          "Zh_tw": "東蘇厝",
+          "En": "East Sucuo"
+      },
+      "StationPosition": {
+          "PositionLon": 120.26051,
+          "PositionLat": 23.12783,
+          "GeoHash": "wsje8d712"
+      },
+      "StationAddress": "台南市善化區興農路706號",
+      "Stops": [
+          {
+              "StopUID": "TNN7048",
+              "StopID": "7048",
+              "StopName": {
+                  "Zh_tw": "東蘇厝",
+                  "En": "East Sucuo"
+              },
+              "RouteUID": "TNN1403",
+              "RouteID": "1403",
+              "RouteName": {
+                  "Zh_tw": "橘3",
+                  "En": "O3"
+              }
+          }
+      ],
+      "LocationCityCode": "TNN",
+      "Bearing": "E",
+      "UpdateTime": "2023-10-24T14:09:26+08:00",
+      "VersionID": 4905
+  },
+  {
+      "StationUID": "TNN8042",
+      "StationID": "8042",
+      "StationName": {
+          "Zh_tw": "東蘇厝",
+          "En": "East Sucuo"
+      },
+      "StationPosition": {
+          "PositionLon": 120.26058,
+          "PositionLat": 23.12813,
+          "GeoHash": "wsje8d754"
+      },
+      "StationAddress": "台南市善化區興農路706號",
+      "Stops": [
+          {
+              "StopUID": "TNN7007",
+              "StopID": "7007",
+              "StopName": {
+                  "Zh_tw": "東蘇厝",
+                  "En": "East Sucuo"
+              },
+              "RouteUID": "TNN1403",
+              "RouteID": "1403",
+              "RouteName": {
+                  "Zh_tw": "橘3",
+                  "En": "O3"
+              }
+          }
+      ],
+      "LocationCityCode": "TNN",
+      "Bearing": "W",
+      "UpdateTime": "2023-10-24T14:09:26+08:00",
+      "VersionID": 4905
+  },
+  {
+      "StationUID": "TNN8043",
+      "StationID": "8043",
+      "StationName": {
+          "Zh_tw": "蘇厝",
+          "En": "Sucuo"
+      },
+      "StationPosition": {
+          "PositionLon": 120.25566,
+          "PositionLat": 23.12682,
+          "GeoHash": "wsje86p7r"
+      },
+      "StationAddress": "台南市安定區興農路6號",
+      "Stops": [
+          {
+              "StopUID": "TNN7008",
+              "StopID": "7008",
+              "StopName": {
+                  "Zh_tw": "蘇厝",
+                  "En": "Sucuo"
+              },
+              "RouteUID": "TNN1403",
+              "RouteID": "1403",
+              "RouteName": {
+                  "Zh_tw": "橘3",
+                  "En": "O3"
+              }
+          }
+      ],
+      "LocationCityCode": "TNN",
+      "Bearing": "SW",
+      "UpdateTime": "2023-10-24T14:09:26+08:00",
+      "VersionID": 4905
+  },
+  {
+      "StationUID": "TNN8044",
+      "StationID": "8044",
+      "StationName": {
+          "Zh_tw": "真護宮",
+          "En": "Jhenhu Temple"
+      },
+      "StationPosition": {
+          "PositionLon": 120.25122,
+          "PositionLat": 23.12492,
+          "GeoHash": "wsje83u22"
+      },
+      "StationAddress": "台南市安定區178縣道",
+      "Stops": [
+          {
+              "StopUID": "TNN7009",
+              "StopID": "7009",
+              "StopName": {
+                  "Zh_tw": "真護宮",
+                  "En": "Jhenhu Temple"
+              },
+              "RouteUID": "TNN1403",
+              "RouteID": "1403",
+              "RouteName": {
+                  "Zh_tw": "橘3",
+                  "En": "O3"
+              }
+          }
+      ],
+      "LocationCityCode": "TNN",
+      "Bearing": "SW",
+      "UpdateTime": "2023-10-24T14:09:26+08:00",
+      "VersionID": 4905
+  },
+  {
+      "StationUID": "TNN8045",
+      "StationID": "8045",
+      "StationName": {
+          "Zh_tw": "安定國小",
+          "En": "Anding Elementary School"
+      },
+      "StationPosition": {
+          "PositionLon": 120.24586,
+          "PositionLat": 23.12264,
+          "GeoHash": "wsje83275"
+      },
+      "StationAddress": "台南市安定區178縣道",
+      "Stops": [
+          {
+              "StopUID": "TNN7010",
+              "StopID": "7010",
+              "StopName": {
+                  "Zh_tw": "安定國小",
+                  "En": "Anding Elementary School"
+              },
+              "RouteUID": "TNN1403",
+              "RouteID": "1403",
+              "RouteName": {
+                  "Zh_tw": "橘3",
+                  "En": "O3"
+              }
+          }
+      ],
+      "LocationCityCode": "TNN",
+      "Bearing": "W",
+      "UpdateTime": "2023-10-24T14:09:26+08:00",
+      "VersionID": 4905
+  }
+]`
