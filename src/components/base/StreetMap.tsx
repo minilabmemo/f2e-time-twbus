@@ -15,7 +15,7 @@ interface StreetMapData {
 
   stops: Stop[] | undefined;
   busN1EstimateTimes: BusN1EstimateTime[] | undefined;
-  activeTab: number | undefined;
+  activeTab: number;
 }
 
 
@@ -24,8 +24,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
   const lastCenterRef = useRef<[number, number]>([25.03418, 121.564517]); // 初始化为默认中心点坐标
   const mapRef = useRef<L.Map | null>(null);
   const zoomRef = useRef(13); //  0 - 18，值越大越近
-
-
+  const activeTabRef = useRef(-1);
   useEffect(() => {
 
     if (!mapRef.current) {
@@ -41,7 +40,6 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
 
       mapRef.current = map;
     } else {
-
       lastCenterRef.current = [mapRef.current.getCenter().lat, mapRef.current.getCenter().lng];
     }
 
@@ -190,13 +188,10 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
     };
 
 
-
-
-
-    if (mapRef.current) {
-      mapRef.current.on("zoomend", function () {
+    const handleZoomEnd = () => {
+      if (mapRef.current) {
         const currentZoomLevel = mapRef.current?.getZoom() || 0;
-        zoomRef.current = currentZoomLevel; //記住上次的縮放大小
+        zoomRef.current = currentZoomLevel; // 记住上次的缩放大小
 
         markersFarToShow.forEach((marker) => {
           mapRef.current?.removeLayer(marker);
@@ -204,12 +199,11 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
         markersNearToShow.forEach((marker) => {
           mapRef.current?.removeLayer(marker);
         });
-        if (currentZoomLevel >= 15) { //放大縮小時顯示近的標示組
+        if (currentZoomLevel >= 15) { // 放大缩小时显示近的标示组
           markersNearToShow.forEach((marker) => {
             if (mapRef.current) {
               marker.addTo(mapRef.current).openTooltip();
             }
-
           });
         } else {
           markersFarToShow.forEach((marker) => {
@@ -218,6 +212,14 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
             }
           });
         }
+      }
+    };
+
+    handleZoomEnd();
+
+    if (mapRef.current) {
+      mapRef.current.on("zoomend", function () {
+        handleZoomEnd();
 
       });
       polyline = L.polyline(lineCoordinates, {
@@ -225,11 +227,10 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
       }).addTo(mapRef.current);
       if (lineCoordinates.length > 0) {
 
-        const centerLatLng = lineCoordinates[Math.floor(lineCoordinates.length / 2)] as [number, number];
-
-        if (lastCenterRef.current[0] !== centerLatLng[0] || lastCenterRef.current[1] !== centerLatLng[1]) {
+        if (activeTabRef.current !== activeTab) {//有發現切換時才重新移動到路徑中心點
+          const centerLatLng = lineCoordinates[Math.floor(lineCoordinates.length / 2)] as [number, number];
           mapRef.current.flyTo(centerLatLng);
-          lastCenterRef.current = centerLatLng;
+          activeTabRef.current = activeTab;
         }
 
       }
@@ -255,7 +256,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
       markersFarToShow.length = 0; // 上面的重新宣告沒用，要在這邊清空數組才行，不然會重複新舊資料
       markersNearToShow.length = 0;
     };
-  }, [id, busN1EstimateTimes, stops, activeTab, lastCenterRef]);
+  }, [id, busN1EstimateTimes, stops, activeTab, lastCenterRef, activeTabRef]);
 
 
 
