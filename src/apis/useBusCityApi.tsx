@@ -1,15 +1,16 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useReducer } from 'react';
 import axios, { AxiosError } from 'axios';
 
 import { cityRoutes_mock_data } from '../utils/mocks/mock';
 import { fetchNewToken } from './fetchNewToken';
+
 interface BusRoute {
   RouteID: string;
   RouteName: NameType;
-  DepartureStopNameZh: string,
-  DepartureStopNameEn: string,
-  DestinationStopNameZh: string,
-  DestinationStopNameEn: string,
+  DepartureStopNameZh: string;
+  DepartureStopNameEn: string;
+  DestinationStopNameZh: string;
+  DestinationStopNameEn: string;
   City: string;
 }
 
@@ -21,33 +22,73 @@ export interface BusRouteResult {
   isLoading: boolean;
 }
 
-export interface NameType {
+interface NameType {
   Zh_tw: string;
   En: string;
 }
 
-
-
 interface BusRequestParam {
   City: string | undefined;
-
   callAtInstall: boolean;
-
 }
 
-const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
+// Define action types
+const FETCH_STARTED = 'FETCH_STARTED';
+const FETCH_SUCCESS = 'FETCH_SUCCESS';
+const FETCH_ERROR = 'FETCH_ERROR';
 
+const initialState: BusRouteResult = {
+  records: [],
+  total: 0,
+  status: 0,
+  isLoading: false,
+};
+
+const dataReducer = (
+  state: BusRouteResult,
+  action: { type: string; payload?: any }
+): BusRouteResult => {
+  switch (action.type) {
+    case FETCH_STARTED:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case FETCH_SUCCESS:
+      return {
+        ...state,
+        records: action.payload.records,
+        total: action.payload.total,
+        status: action.payload.status,
+        isLoading: false,
+        error: undefined,
+      };
+    case FETCH_ERROR:
+      return {
+        ...state,
+        status: action.payload.status,
+        isLoading: false,
+        error: action.payload.error,
+      };
+    default:
+      return state;
+  }
+};
+
+const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
   const { City, callAtInstall } = query;
-  const [token, setToken] = useState<string | null>(null); // 初始化为null
+  const [token, setToken] = useState<string | null>(null);
+
+  const [resData, dispatch] = useReducer(dataReducer, initialState);
 
   const fetchData = useCallback(() => {
-
     const fetchingData = async () => {
-      const root_url = process.env.REACT_APP_API_URL
+      const root_url = process.env.REACT_APP_API_URL;
       let url = `${root_url}/api/basic/v2/Bus/Route/City`;
       if (City !== null) {
         url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City&%24format=JSON`;
       }
+
       try {
         const response = await axios.get(url, {
           headers: {
@@ -58,19 +99,22 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
         const data: BusRoute[] = response.data;
         const status = response.status;
 
-        setResData({
-          records: data,
-          status: status,
-          total: data.length,
-          isLoading: false,
+        dispatch({
+          type: FETCH_SUCCESS,
+          payload: {
+            records: data,
+            total: data.length,
+            status,
+          },
         });
-
       } catch (error) {
         console.error('Error fetching data:', error);
-        if (axios.isAxiosError(error)) { // 检查是否为 Axios 错误对象
-          const axiosError = error as AxiosError; // 使用类型断言将 error 声明为 AxiosError 类型
-          const responseStatus = axiosError.response ? axiosError.response.status : 0; // 使用条件语句获取 status 属性
+
+        if (axios.isAxiosError(error)) {
+          const axiosError = error as AxiosError;
+          const responseStatus = axiosError.response ? axiosError.response.status : 0;
           console.error('Error fetching data responseStatus:', responseStatus);
+
           if (responseStatus === 401) {
             const { token, error } = await fetchNewToken();
             if (token) {
@@ -78,59 +122,49 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
               fetchData();
             } else {
               console.error('Error fetching new token:', error);
-              const axiosError = error as AxiosError; // 使用类型断言将 error 声明为 AxiosError 类型
-              const responseStatus = axiosError.response ? axiosError.response.status : 0; // 使用条件语句获取 status 属性
               console.error('axiosError.response:', axiosError.response?.data);
-              setResData((prevState) => ({
-                ...prevState,
-                status: responseStatus,
-                error: axiosError.message,
-                isLoading: false,
-              }));
 
+              dispatch({
+                type: FETCH_ERROR,
+                payload: {
+                  status: responseStatus,
+                  error: axiosError.message,
+                },
+              });
             }
           } else {
-            setResData((prevState) => ({
-              ...prevState,
-              status: responseStatus,
-              error: axiosError.message,
-              isLoading: false,
-            }));
+            dispatch({
+              type: FETCH_ERROR,
+              payload: {
+                status: responseStatus,
+                error: axiosError.message,
+              },
+            });
           }
-
         }
       }
-
     };
 
-    setResData((prevState) => ({
-      ...prevState,
-      isLoading: true,
-    }));
-    const isMockData = process.env.REACT_APP_MOCK_DATA === "true";
+    dispatch({ type: FETCH_STARTED });
+
+    const isMockData = process.env.REACT_APP_MOCK_DATA === 'true';
     if (isMockData) {
-      console.warn('Mock data return, only use in develop.');
+      console.warn('Mock data return, only use in development.');
       const cityRoutesArray = JSON.parse(cityRoutes_mock_data);
-      setResData({
-        records: cityRoutesArray,
-        status: 200,
-        total: cityRoutesArray.length,
-        isLoading: false,
+      dispatch({
+        type: FETCH_SUCCESS,
+        payload: {
+          records: cityRoutesArray,
+          total: cityRoutesArray.length,
+          status: 200,
+        },
       });
     }
+
     if (!isMockData) {
       fetchingData();
     }
-
   }, [City, token]);
-
-
-  const [resData, setResData] = useState<BusRouteResult>({
-    records: [],
-    total: 0,
-    status: 0,
-    isLoading: false,
-  });
 
   useEffect(() => {
     if (!token) {
@@ -144,7 +178,7 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
     }
   }, [callAtInstall, fetchData, token]);
 
-  return [resData, fetchData] as [BusRouteResult, () => void];
+  return [resData, fetchData];
 };
 
 export default useBusCityApi;
