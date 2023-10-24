@@ -1,6 +1,7 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { Dict, ResultErrorHint, URI_SEARCH, statusDefine } from '../utils/const';
+import { Dict, URI_SEARCH, statusDefine } from '../utils/const';
+import { ResultErrorHint } from '../utils/error';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -47,6 +48,7 @@ export const BusRouteStops = () => {
     );
   }
 
+  //TODO 捲軸紀錄以免更新後回到上方
   function BusStopsResult({ result, route }: { result: BusStopsResult, route: string }) {
 
 
