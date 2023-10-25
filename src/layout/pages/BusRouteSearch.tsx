@@ -6,8 +6,10 @@ import { faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { cityData, getCityNameOrValue } from '../../utils/cities';
-import useBusApi, { BusRouteResult } from '../../apis/useBusCityApi';
+import useBusApi, { BusRoute, BusRouteResult } from '../../apis/useBusCityApi';
 import SaveSvg from '../../components/Icons/SaveSvg';
+import { IconColors } from '../../utils/color';
+import { isRouteLiked, routeLikeAction } from '../../utils/localStorages/routelikes';
 
 
 export const BusRouteSearch = () => {
@@ -137,10 +139,41 @@ export const BusRouteSearch = () => {
 
 
 
-  function RoutesResult({ routes }: { routes: BusRouteResult }) {
+
+
+  const RouteItem = ({ item }: { item: BusRoute }) => {
+    const [isLiked, setIsLiked] = useState(isRouteLiked(item.RouteUID))
     function calculateURL({ lang, city, route }: { lang: string, city: string, route: string }) {
       return URI_STOPS.replace(':lang', lang).replace(':city', city).replace(':route', route);
     }
+    return (
+      <div className='route'>
+        <NavLink to={calculateURL({ lang, city, route: item.RouteName.Zh_tw })} className="route-link" >
+          <div className="route-info" >
+            <div className='route-name'> {lang === LangType.en ? (item.RouteName.En) : (item.RouteName.Zh_tw)} </div>
+            <div className='route-direction'>
+              {lang === LangType.en ? (`${item.DepartureStopNameEn} - ${item.DestinationStopNameEn}`) : (`${item.DepartureStopNameZh} - ${item.DestinationStopNameZh}`)}
+
+            </div>
+          </div>
+
+
+        </NavLink>
+        <div className="route-action" onClick={() => { routeLikeAction(item.RouteUID); setIsLiked(!isLiked) }} >
+          <span className='save-icon'>
+            {isRouteLiked(item.RouteUID) ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
+              (<SaveSvg width="21px" height="21px" fill='gray' />)}
+          </span>
+          <div className='route-city'> {getCityNameOrValue(item.City, lang)}</div>
+        </div>
+        <div className='gray-line'></div>
+      </div>
+    )
+  }
+
+
+  function RoutesResult({ routes }: { routes: BusRouteResult }) {
+
 
     return (
       <div className='result-routes'>
@@ -150,29 +183,26 @@ export const BusRouteSearch = () => {
         {(routes.status === 200) && (
           <div>
             {routes.records.map((item, index) => (
+              <RouteItem key={index} item={item} />
+              // <div className='route'>
+              //   <NavLink to={calculateURL({ lang, city, route: item.RouteName.Zh_tw })} className="route-link" key={index}>
+              //     <div className="route-info" >
+              //       <div className='route-name'> {lang === LangType.en ? (item.RouteName.En) : (item.RouteName.Zh_tw)} </div>
+              //       <div className='route-direction'>
+              //         {lang === LangType.en ? (`${item.DepartureStopNameEn} - ${item.DestinationStopNameEn}`) : (`${item.DepartureStopNameZh} - ${item.DestinationStopNameZh}`)}
 
-              <NavLink to={calculateURL({ lang, city, route: item.RouteName.Zh_tw })} className="route-link" key={index}>
+              //       </div>
+              //     </div>
 
-
-                <div
-                  className='route'
-                >
-                  <div className="route-info" >
-                    <div className='route-name'> {lang === LangType.en ? (item.RouteName.En) : (item.RouteName.Zh_tw)} </div>
-                    <div className='route-direction'>
-                      {lang === LangType.en ? (`${item.DepartureStopNameEn} - ${item.DestinationStopNameEn}`) : (`${item.DepartureStopNameZh} - ${item.DestinationStopNameZh}`)}
-
-                    </div>
-                  </div>
-                  <div className="route-action" >
-                    <div className='save-icon'><SaveSvg width="21px" height="21px" /></div>
-                    <div className='route-city'> {getCityNameOrValue(item.City, lang)}</div>
-                  </div>
-                </div>
-
-                <div className='gray-line'></div>
-
-              </NavLink>
+              //   </NavLink>
+              //   <div className="route-action" onClick={() => { likeAction(item.RouteUID) }} >
+              //     <span className='save-icon'>{item.RouteUID}
+              //       {isRouteLiked(item.RouteUID) ? "tr" : "false"}
+              //       <SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} /></span>
+              //     <div className='route-city'> {getCityNameOrValue(item.City, lang)}</div>
+              //   </div>
+              //   <div className='gray-line'></div>
+              // </div>
             ))}
 
           </div>

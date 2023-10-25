@@ -14,6 +14,8 @@ import { useEffect, useState } from 'react';
 import "leaflet/dist/leaflet.css";
 import { StreetMap } from '../../components/base/StreetMap';
 import { RefreshBar } from '../../components/base/RefreshBar';
+import { IconColors } from '../../utils/color';
+import { isRouteLiked, routeLikeAction } from '../../utils/localStorages/routelikes';
 
 
 export const BusRouteStops = () => {
@@ -57,7 +59,7 @@ export const BusRouteStops = () => {
 
         <ResultErrorHint status={result.status} error={result.error} total={result.total} />
         <div className="route-infos">
-          <div className="route-name">{route}</div>
+          <div className="route-name">{route}  </div>
 
           <div className="route-?"></div>{/* //TODO API? */}
         </div>
@@ -118,6 +120,22 @@ export const BusRouteStops = () => {
     );
   }
 
+  function getRouteUID(result: BusStopsResult, route: string) {
+    if (result && result.results && Array.isArray(result.results.BusStopOfRoutes)) {
+      const index = result.results.BusStopOfRoutes.findIndex(item =>
+        item.RouteName.Zh_tw === route
+      );
+      if (index !== -1) {
+        const routeUID = result.results.BusStopOfRoutes[index].RouteUID;
+        return routeUID;
+      }
+    }
+    return null;
+  }
+
+
+  const routeUID = getRouteUID(result, route) || "";
+  const [isLiked, setIsLiked] = useState(isRouteLiked(routeUID))
   return (
     <div className='search'>
       <section className='search-header'>
@@ -132,7 +150,11 @@ export const BusRouteStops = () => {
             <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
               <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋
             </NavLink >
-            <span className='save-icon'><SaveSvg width="21px" height="21px" /></span>
+            {getRouteUID(result, route)}
+            <span className='save-icon' onClick={() => { routeLikeAction(routeUID); setIsLiked(!isLiked) }}>
+              {isRouteLiked(routeUID) ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
+                (<SaveSvg width="21px" height="21px" fill='gray' />)}
+            </span >
           </div>
           <BusStopsResult result={result} route={route} key={0} />
 

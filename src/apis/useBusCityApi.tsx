@@ -4,7 +4,8 @@ import axios, { AxiosError } from 'axios';
 import { cityRoutes_mock_data } from '../utils/mocks/mock';
 import { fetchNewToken } from './fetchNewToken';
 
-interface BusRoute {
+export interface BusRoute {
+  RouteUID: string;
   RouteID: string;
   RouteName: NameType;
   DepartureStopNameZh: string;
@@ -86,7 +87,7 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
       const root_url = process.env.REACT_APP_API_URL;
       let url = `${root_url}/api/basic/v2/Bus/Route/City`;
       if (City !== null) {
-        url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City&%24format=JSON`;
+        url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City%2C%20RouteUID&%24format=JSON`;
       }
 
       try {

@@ -76,6 +76,10 @@
   text-decoration: none;
 }
 
+.route-link {
+  width: 100%;
+}
+
 .keyboard {
 
   background-color: $gray-bg;
@@ -205,8 +209,9 @@
 .route {
 
   height: 58px;
-  display: flex;
-  justify-content: space-between;
+
+
+  position: relative;
 
   .route-info {
     width: 70%;
@@ -234,12 +239,21 @@
   }
 
   .route-action {
+
     width: 60px;
     height: 100%;
     text-align: center;
-    align-self: end;
+    position: absolute;
 
-    .save-icon {}
+    right: 0;
+    top: 0;
+
+    z-index: 0;
+
+
+    .save-icon {
+      user-select: none;
+    }
 
     .route-city {
 
