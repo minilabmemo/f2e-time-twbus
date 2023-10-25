@@ -538,12 +538,6 @@ code {
   margin: 20px;
 }
 
-.result-routes-save {
-  height: 100%;
-  overflow-y: scroll;
-  margin: 20px;
-}
-
 .err-hint {
   margin: 20px;
   color: #D08181;
@@ -808,4 +802,37 @@ code {
   font-size: 14px;
   font-weight: 400;
   color: #888;
+}
+
+.save-main {
+  height: 723px;
+  background-color: #FFF;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.result-routes-save {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 20px;
+  width: 742px;
+  height: 600px;
+  border-radius: 0px, 0px, 5px, 5px;
+  border-radius: 0px 0px 5px 5px;
+  background: #FFF;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
+}
+.result-routes-save .tab-buttons {
+  width: 100%;
+}
+.result-routes-save .tab-content {
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.result-routes-save .tab-button {
+  overflow: hidden;
+  width: 50%;
 }/*# sourceMappingURL=style.css.map */
