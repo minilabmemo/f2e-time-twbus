@@ -65,6 +65,7 @@ export const BusRouteStops = () => {
 
           <div className="route-?"></div>{/* //TODO API? */}
         </div>
+        {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
         {(result.status === 200) && (
           <div>
             <div className="tab-buttons">

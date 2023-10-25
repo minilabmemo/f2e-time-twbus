@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import './partials/global/_animate.css';
 /*大於1200 大螢幕介面*/
 /*980~1200 低解析小螢幕*/
 /*iPad 橫放螢幕 寬1024 或是螢幕寬度1024 */
@@ -119,6 +118,20 @@ code {
   body {
     font-size: 12px;
     /*12*/
+  }
+}
+.spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: conic-gradient(rgba(0, 0, 0, 0) 10%, #355F8B);
+  -webkit-mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 9px), #000 0);
+  animation: spinner-zp9dbg 1s infinite linear;
+}
+
+@keyframes spinner-zp9dbg {
+  to {
+    transform: rotate(1turn);
   }
 }
 .header {
@@ -350,6 +363,15 @@ code {
   line-height: 16px;
   letter-spacing: 0em;
   text-align: center;
+}
+
+.result-loading {
+  position: absolute;
+  opacity: 0.7;
+  box-sizing: border-box;
+  padding: 50px 150px;
+  display: flex;
+  justify-content: center;
 }
 
 .search {

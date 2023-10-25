@@ -1,27 +1,26 @@
 
-import { NavLink, useParams } from 'react-router-dom';
-import { Dict, URI_SEARCH } from '../../utils/const';
+import { useParams } from 'react-router-dom';
+import { Dict } from '../../utils/const';
 import { ResultErrorHint } from '../../utils/error';
-
 import to_loc from '../../images/to_loc.svg';
-
 import { useEffect, useState } from 'react';
 import "leaflet/dist/leaflet.css";
-
 import { getUserLocation } from '../../utils/gps';
 import useBusStopsNearByApi, { BusStationResult } from '../../apis/useBusStopsNearByApi';
-
-
 
 export const BusRouteStopsNearBy = () => {
   const { lang = 'defaultLang' } = useParams();//TODO lang
   const [filter, setFilter] = useState("")
 
   function NearByResultByLocation({ spatialFilter }: { spatialFilter: string }) {
-    const [result, fetchData] = useBusStopsNearByApi({ filter: spatialFilter, callAtInstall: true });
+    const [result] = useBusStopsNearByApi({ filter: spatialFilter, callAtInstall: true });
 
     return (
-      <div> <NearByResult result={result} /></div>
+      <div>
+        {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
+
+        <NearByResult result={result} />
+      </div>
     )
   }
 
@@ -84,7 +83,10 @@ export const BusRouteStopsNearBy = () => {
             </NavLink > */}
 
           </div>
-          {(filter !== "") && (<NearByResultByLocation spatialFilter={filter}></NearByResultByLocation>)}
+
+          {(filter !== "") ? (<NearByResultByLocation spatialFilter={filter}></NearByResultByLocation>) :
+            (<div className='result-loading'> <div className='spinner'></div></div>)
+          }
 
         </div>
 

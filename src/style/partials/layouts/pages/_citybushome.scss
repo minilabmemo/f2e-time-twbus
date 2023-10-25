@@ -83,3 +83,14 @@
   }
 
 }
+
+
+.result-loading {
+
+  position: absolute;
+  opacity: .7;
+  box-sizing: border-box;
+  padding: 50px 150px;
+  display: flex;
+  justify-content: center;
+}

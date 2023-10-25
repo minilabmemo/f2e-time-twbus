@@ -152,6 +152,7 @@ export const BusRouteSearch = () => {
 
         <ResultErrorHint status={routes.status} error={routes.error} total={routes.total} />
 
+        {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
         {(routes.status === 200) && (
           <div>
             {routes.records.map((item, index) => (
@@ -217,6 +218,7 @@ export const BusRouteSearch = () => {
           <input placeholder='請輸入關鍵字或使用鍵盤輸入站名' ref={inputRef} onChange={() => handleInputChange()}>
             {/* TODO query icon */}
           </input>
+
           <RoutesResult routes={routes} />
 
           <Keyboard city={city} />
