@@ -3,25 +3,48 @@ import { useParams } from 'react-router-dom';
 import { Dict } from '../../utils/const';
 import { ResultErrorHint } from '../../utils/error';
 import to_loc from '../../images/to_loc.svg';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import "leaflet/dist/leaflet.css";
 import { getUserLocation } from '../../utils/gps';
 import useBusStopsNearByApi, { BusStationResult } from '../../apis/useBusStopsNearByApi';
+import { StreetMap } from '../../components/base/StreetMap';
 
 export const BusRouteStopsNearBy = () => {
   const { lang = 'defaultLang' } = useParams();//TODO lang
   const [filter, setFilter] = useState("")
 
+
   function NearByResultByLocation({ spatialFilter }: { spatialFilter: string }) {
     const [result] = useBusStopsNearByApi({ filter: spatialFilter, callAtInstall: true });
 
     return (
-      <div>
-        {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
+      <>
+        <div className='sidebar'>
 
-        <NearByResult result={result} />
+          {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
 
-      </div>
+          <NearByResult result={result} />
+          <div className="link-container">
+            {/*TODO <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
+              <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋
+            </NavLink > */}
+
+          </div>
+        </div>
+        <div className='result-map'>
+
+          {/* //TODO 更新站點的title不是整個地圖才是 */}
+          <StreetMap id="street-map-nearby"
+            initZoom={13}
+            activeTab={0}
+            stations={result.records}
+            flyToUserLoc={true}
+          />
+
+
+
+        </div>
+      </ >
     )
   }
 
@@ -77,33 +100,19 @@ export const BusRouteStopsNearBy = () => {
       </section>
 
       <section className='search-main'>
-        <div className='sidebar'>
-          <div className="link-container">
-            {/* <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
+
+        {/* <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
               <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋
             </NavLink > */}
 
-          </div>
 
-          {(filter !== "") ? (<NearByResultByLocation spatialFilter={filter}></NearByResultByLocation>) :
-            (<div className='result-loading'> <div className='spinner'></div></div>)
-          }
-
-        </div>
-
-        <div className='result-map'>
-
-          {/* {result.isLoading ? "loading...." : (<LeafletMap id="street-map" />)} */}
-          {/* //TODO 更新站點的title不是整個地圖才是 */}
-          {/* <StreetMap id="street-map"
-            stops={result.results?.BusStopOfRoutes[activeTab].Stops}
-            busN1EstimateTimes={result.results?.BusN1EstimateTimes}
-            activeTab={activeTab}
-          /> */}
+        {(filter !== "") ? (<NearByResultByLocation spatialFilter={filter} ></NearByResultByLocation>) :
+          (<div className='result-loading'> <div className='spinner'></div></div>)
+        }
 
 
 
-        </div>
+
 
       </section >
 

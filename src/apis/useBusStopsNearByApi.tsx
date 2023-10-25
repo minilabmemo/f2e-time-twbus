@@ -5,7 +5,7 @@ import { nearby_mock_data } from '../utils/mocks/mock';
 import { fetchNewToken } from './fetchNewToken';
 import { PointType } from './struct';
 
-interface BusStation {
+export interface BusStation {
   StationUID: string;
   StationID: string;
   StationName: NameType;

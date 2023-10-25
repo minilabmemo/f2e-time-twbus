@@ -229,6 +229,7 @@ export const BusRouteSearch = () => {
           <StreetMap id="street-map-init"
             initZoom={8}
             activeTab={0}
+            flyToUserLoc={false}
           />
         </div>
 

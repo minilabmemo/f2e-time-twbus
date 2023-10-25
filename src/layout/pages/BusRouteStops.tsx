@@ -177,6 +177,7 @@ export const BusRouteStops = () => {
             busN1EstimateTimes={result.results?.BusN1EstimateTimes}
             activeTab={activeTab}
             initZoom={13}
+            flyToUserLoc={false}
           />
 
         </div>

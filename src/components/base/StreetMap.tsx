@@ -10,16 +10,162 @@ import BusSvg from '../Icons/BusSvg';
 import { MapColors } from "../../utils/color";
 import { useEffect, useRef } from "react";
 import { getUserLocation } from "../../utils/gps";
+import { BusStation } from "../../apis/useBusStopsNearByApi";
 interface StreetMapData {
   id: string;
   stops?: Stop[] | undefined;
   busN1EstimateTimes?: BusN1EstimateTime[] | undefined;
   activeTab: number;
   initZoom: number;
+  stations?: BusStation[] | undefined;
+  flyToUserLoc: boolean;
+}
+interface MarkerRealtimeData {
+  stops?: Stop[] | undefined;
+  busN1EstimateTimes?: BusN1EstimateTime[] | undefined;
+  activeTab: number;
+}
+
+function markersByRealtime({ stops, busN1EstimateTimes, activeTab }: MarkerRealtimeData) {
+  const markersFarRealtime: L.Marker[] = [];
+  const markersNearRealtime: L.Marker[] = [];
+  const largeIconSize = 40;
+  const pointRedLargeBusIcon = new L.Icon({
+    iconUrl: point_red_large_bus,
+    iconSize: [largeIconSize, largeIconSize],
+    iconAnchor: [largeIconSize / 2, largeIconSize / 2],//定位
+    popupAnchor: [0, 0]
+  })
+  const pointBlueIcon = new L.Icon({
+    iconUrl: pointBlue,
+    iconSize: [largeIconSize, largeIconSize],
+    iconAnchor: [largeIconSize / 2, largeIconSize / 2],
+    popupAnchor: [0, 0]
+  })
+  const smallIconSize = 30;
+  const pointRedIconSmall = new L.Icon({
+    iconUrl: pointRed,
+    iconSize: [smallIconSize, smallIconSize],
+    iconAnchor: [smallIconSize / 2, smallIconSize / 2],
+    popupAnchor: [0, 0]
+  })
+  const pointBlueIconSmall = new L.Icon({
+    iconUrl: pointBlue,
+    iconSize: [smallIconSize, smallIconSize],
+    iconAnchor: [smallIconSize / 2, smallIconSize / 2],
+    popupAnchor: [0, 0]
+  })
+
+  let realTimelines: L.LatLngExpression[] = [];
+
+  const filterDirection = activeTab;
+
+  const lastIndex = stops ? stops.length - 1 : -1;
+  stops?.forEach((stop, index) => {
+    //TODO 效能優化 targetObject用到多次 是否應該在獲取時整理一次就好 拉到外面整理
+    const targetObject = busN1EstimateTimes?.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
+    const status = targetObject ? (targetObject.StopStatus) : -101;
+    const estimateTime = targetObject ? (targetObject.EstimateTime) : null;
+    const [showStatus, color] = statusDefine(status, estimateTime);
+
+    const lat = stop.StopPosition.PositionLat;
+    const lon = stop.StopPosition.PositionLon;
+    const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
+
+    const tooltipBody = `
+    <div  style="color: white" class="map-stop-body">
+      <div class="map-stop-name">   ${stop.StopName.Zh_tw}</div>
+      <div class="map-stop-status">   ${showStatus}</div>
+    </div>
+  `;
+    const tooltipBodyRed = `
+  <div  style="color: white" class="map-stop-body">
+  ${ReactDOMServer.renderToString(<BusSvg width="21px" height="21px" fill="white" />)}
+    <div class="map-stop-name">   ${stop.StopName.Zh_tw}</div>
+    <div class="map-stop-status">   ${showStatus}</div>
+  </div>
+`;
+
+
+
+    if (color === StatusColorType.red) {
+      markersFarRealtime.push( //當地圖縮小時，較遠時顯示將到站的巴士圖標
+
+        L.marker(latLng, {
+          icon: pointRedLargeBusIcon,
+          opacity: 1.0,
+        }).bindTooltip(L.tooltip({
+          permanent: false,
+          direction: "top",
+          className: "map-stop-tooltip style red"
+        }).setContent(tooltipBody))
+      );
+
+
+      markersNearRealtime.push( //當地圖放大時，較近時顯示進站中tooltip與紅色原點
+        L.marker(latLng, {
+          icon: pointRedIconSmall,
+          opacity: 1.0,
+        }).bindTooltip(L.tooltip({
+          permanent: true,
+          direction: "top",
+          className: "map-stop-tooltip style red" //TODO 箭頭怎改
+        }).setContent(tooltipBodyRed))
+      );
+
+    } else {
+      markersNearRealtime.push( //當地圖放大時，較近時顯示藍色圓點icon與藍色tooltip
+        L.marker(latLng, {
+          icon: pointBlueIconSmall,
+          opacity: 1.0,
+        }).bindTooltip(L.tooltip({
+          permanent: true,
+          direction: "top",
+          className: "map-stop-tooltip style blue" //TODO 箭頭怎改
+        }).setContent(tooltipBody))
+      );
+    }
+
+
+    if ((index === 0) || (index === lastIndex)) {
+      markersFarRealtime.push( //當地圖縮小時， 只顯示起點跟終點藍色原點
+        L.marker(latLng, {
+          icon: pointBlueIcon,
+          opacity: 1.0,
+        })
+      );
+    }
+
+
+
+
+    realTimelines.push(latLng);
+
+  });
+
+  return { markersFarRealtime, markersNearRealtime, realTimelines };
 }
 
 
-export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTimes, activeTab, initZoom }) => {
+function markersByStations({ stations }: { stations?: BusStation[] | undefined }) {
+  const markersFarToShow: L.Marker[] = [];
+  const markersNearToShow: L.Marker[] = [];
+  stations?.forEach((station, index) => {
+    //TODO 效能優化 targetObject用到多次 是否應該在獲取時整理一次就好 拉到外面整理
+    // const targetObject = busN1EstimateTimes?.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
+    // const status = targetObject ? (targetObject.StopStatus) : -101;
+    // const estimateTime = targetObject ? (targetObject.EstimateTime) : null;
+    // const [showStatus, color] = statusDefine(status, estimateTime);
+
+    // const lat = stop.StopPosition.PositionLat;
+    // const lon = stop.StopPosition.PositionLon;
+    // const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
+
+  });
+  return { markersFarToShow, markersNearToShow };
+}
+
+export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTimes, activeTab, initZoom, stations, flyToUserLoc }) => {
 
   const lastCenterRef = useRef<[number, number]>([25.03418, 121.564517]); // 初始化中心點
   const mapRef = useRef<L.Map | null>(null);
@@ -29,7 +175,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
     const fetchUserLocation = async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));//wait 1s
       try {
-        const location = await getUserLocation();
+        const location = await getUserLocation();//TODO 邏輯往外抽
         if (location) {
           console.log("抓取到使用者定位");
 
@@ -46,11 +192,17 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
                 icon: userLocIcon,
                 opacity: 1.0,
               }).bindTooltip("你在這裡！").addTo(mapRef.current).openTooltip();
+
+              if (flyToUserLoc) {
+                mapRef.current.flyTo(userMarkerLoc);
+                activeTabRef.current = activeTab;
+
+              }
             }
           }
         }
       } catch (error) {
-        //FIXME 偶爾切換會出現error log Cannot read properties of undefined (reading 'appendChild') at NewClass._initIcon
+        //FIXME 偶爾切換會出現error log Cannot read properties of undefined (reading 'appendChild') at NewClass._initIcon 但顯示正常
         console.error("捕獲異常:", error, "map", mapRef.current?.getPane);
       }
     };
@@ -72,128 +224,26 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
       lastCenterRef.current = [mapRef.current.getCenter().lat, mapRef.current.getCenter().lng];
     }
     fetchUserLocation();
-    const largeIconSize = 40;
-    const pointRedLargeBusIcon = new L.Icon({
-      iconUrl: point_red_large_bus,
-      iconSize: [largeIconSize, largeIconSize],
-      iconAnchor: [largeIconSize / 2, largeIconSize / 2],//定位
-      popupAnchor: [0, 0]
-    })
-    const pointBlueIcon = new L.Icon({
-      iconUrl: pointBlue,
-      iconSize: [largeIconSize, largeIconSize],
-      iconAnchor: [largeIconSize / 2, largeIconSize / 2],
-      popupAnchor: [0, 0]
-    })
-    const smallIconSize = 30;
-    const pointRedIconSmall = new L.Icon({
-      iconUrl: pointRed,
-      iconSize: [smallIconSize, smallIconSize],
-      iconAnchor: [smallIconSize / 2, smallIconSize / 2],
-      popupAnchor: [0, 0]
-    })
-    const pointBlueIconSmall = new L.Icon({
-      iconUrl: pointBlue,
-      iconSize: [smallIconSize, smallIconSize],
-      iconAnchor: [smallIconSize / 2, smallIconSize / 2],
-      popupAnchor: [0, 0]
-    })
-    const markersFarToShow: L.Marker[] = []; //縮小時較遠的顯示
-    const markersNearToShow: L.Marker[] = [];//放大時較近的顯示
-    let lineCoordinates: L.LatLngExpression[] = [];
+
     let polyline: L.Polyline;
-    const filterDirection = activeTab;
-
-    const lastIndex = stops ? stops.length - 1 : -1;
-    stops?.forEach((stop, index) => {
-      //TODO 效能優化 targetObject用到多次 是否應該在獲取時整理一次就好 拉到外面整理
-      const targetObject = busN1EstimateTimes?.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
-      const status = targetObject ? (targetObject.StopStatus) : -101;
-      const estimateTime = targetObject ? (targetObject.EstimateTime) : null;
-      const [showStatus, color] = statusDefine(status, estimateTime);
-
-      const lat = stop.StopPosition.PositionLat;
-      const lon = stop.StopPosition.PositionLon;
-      const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
-
-
-
-      const tooltipBody = `
-    <div  style="color: white" class="map-stop-body">
-      <div class="map-stop-name">   ${stop.StopName.Zh_tw}</div>
-      <div class="map-stop-status">   ${showStatus}</div>
-    </div>
-  `;
-      const tooltipBodyRed = `
-  <div  style="color: white" class="map-stop-body">
-  ${ReactDOMServer.renderToString(<BusSvg width="21px" height="21px" fill="white" />)}
-    <div class="map-stop-name">   ${stop.StopName.Zh_tw}</div>
-    <div class="map-stop-status">   ${showStatus}</div>
-  </div>
-`;
-
-
-
-      if (color === StatusColorType.red) {
-        markersFarToShow.push( //當地圖縮小時，較遠時顯示將到站的巴士圖標
-
-          L.marker(latLng, {
-            icon: pointRedLargeBusIcon,
-            opacity: 1.0,
-          }).bindTooltip(L.tooltip({
-            permanent: false,
-            direction: "top",
-            className: "map-stop-tooltip style red"
-          }).setContent(tooltipBody))
-        );
-
-
-        markersNearToShow.push( //當地圖放大時，較近時顯示進站中tooltip與紅色原點
-          L.marker(latLng, {
-            icon: pointRedIconSmall,
-            opacity: 1.0,
-          }).bindTooltip(L.tooltip({
-            permanent: true,
-            direction: "top",
-            className: "map-stop-tooltip style red" //TODO 箭頭怎改
-          }).setContent(tooltipBodyRed))
-        );
-
-      } else {
-        markersNearToShow.push( //當地圖放大時，較近時顯示藍色圓點icon與藍色tooltip
-          L.marker(latLng, {
-            icon: pointBlueIconSmall,
-            opacity: 1.0,
-          }).bindTooltip(L.tooltip({
-            permanent: true,
-            direction: "top",
-            className: "map-stop-tooltip style blue" //TODO 箭頭怎改
-          }).setContent(tooltipBody))
-        );
-      }
-
-
-      if ((index === 0) || (index === lastIndex)) {
-        markersFarToShow.push( //當地圖縮小時， 只顯示起點跟終點藍色原點
-          L.marker(latLng, {
-            icon: pointBlueIcon,
-            opacity: 1.0,
-          })
-        );
-      }
-
-
-
-
-      lineCoordinates.push(latLng);
-
-    });
-
+    const markersFarToShow: L.Marker[] = [];
+    const markersNearToShow: L.Marker[] = [];
+    const lineCoordinates: L.LatLngExpression[] = [];
+    if (stops) {
+      const { markersFarRealtime, markersNearRealtime, realTimelines } = markersByRealtime({
+        stops,
+        busN1EstimateTimes,
+        activeTab
+      });
+      markersFarToShow.push(...markersFarRealtime)
+      markersNearToShow.push(...markersNearRealtime)
+      lineCoordinates.push(...realTimelines)
+    }
 
     const handleZoomEnd = () => {
       if (mapRef.current) {
         const currentZoomLevel = mapRef.current?.getZoom() || 0;
-        zoomRef.current = currentZoomLevel; // 记住上次的缩放大小
+        zoomRef.current = currentZoomLevel; // 記住上次縮放大小
 
         markersFarToShow.forEach((marker) => {
           mapRef.current?.removeLayer(marker);
@@ -201,14 +251,14 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
         markersNearToShow.forEach((marker) => {
           mapRef.current?.removeLayer(marker);
         });
-        if (currentZoomLevel >= 15) { // 放大缩小时显示近的标示组
+        if (currentZoomLevel >= 15) { // 顯示近的標示
           markersNearToShow.forEach((marker) => {
             if (mapRef.current) {
               marker.addTo(mapRef.current).openTooltip();
             }
           });
         } else {
-          markersFarToShow.forEach((marker) => {
+          markersFarToShow.forEach((marker) => { // 顯示遠的標示
             if (mapRef.current) {
               marker.addTo(mapRef.current);
             }
@@ -228,14 +278,15 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
         color: MapColors.blueLine,
       }).addTo(mapRef.current);
       if (lineCoordinates.length > 0) {
-
         if (activeTabRef.current !== activeTab) {//有發現切換時才重新移動到路徑中心點
           const centerLatLng = lineCoordinates[Math.floor(lineCoordinates.length / 2)] as [number, number];
           mapRef.current.flyTo(centerLatLng);
           activeTabRef.current = activeTab;
         }
-
       }
+
+
+
 
     }
 
@@ -258,8 +309,9 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
       });
       markersFarToShow.length = 0; // 上面的重新宣告沒用，要在這邊清空數組才行，不然會重複新舊資料
       markersNearToShow.length = 0;
+      lineCoordinates.length = 0;
     };
-  }, [id, busN1EstimateTimes, stops, activeTab, lastCenterRef, activeTabRef]);
+  }, [id, busN1EstimateTimes, stops, activeTab, lastCenterRef, activeTabRef, flyToUserLoc]);
 
 
 
