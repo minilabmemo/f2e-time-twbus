@@ -10,6 +10,7 @@ import useBusApi, { BusRoute, BusRouteResult } from '../../apis/useBusCityApi';
 import SaveSvg from '../../components/Icons/SaveSvg';
 import { IconColors } from '../../utils/color';
 import { isRouteLiked, routeLikeAction } from '../../utils/localStorages/routelikes';
+import { RouteItem } from '../../components/base/RouteItem';
 
 
 export const BusRouteSearch = () => {
@@ -141,39 +142,6 @@ export const BusRouteSearch = () => {
 
 
 
-  const RouteItem = ({ item }: { item: BusRoute }) => {
-    const [isLiked, setIsLiked] = useState(isRouteLiked(item.RouteUID))
-    function calculateURL({ lang, city, route }: { lang: string, city: string, route: string }) {
-      return URI_STOPS.replace(':lang', lang).replace(':city', city).replace(':route', route);
-    }
-    return (
-      <div className='route'>
-        <NavLink to={calculateURL({ lang, city, route: item.RouteName.Zh_tw })} className="route-link" >
-          <div className="route-info" >
-            <div className='route-name'> {lang === LangType.en ? (item.RouteName.En) : (item.RouteName.Zh_tw)} </div>
-            <div className='route-direction'>
-              {lang === LangType.en ? (`${item.DepartureStopNameEn} - ${item.DestinationStopNameEn}`) : (`${item.DepartureStopNameZh} - ${item.DestinationStopNameZh}`)}
-
-            </div>
-          </div>
-
-
-        </NavLink>
-        <div className="route-action"
-          onClick={() => {
-            routeLikeAction(item.RouteUID, item.RouteName.Zh_tw, item.DepartureStopNameZh, item.DepartureStopNameEn, item.DestinationStopNameZh, item.DestinationStopNameEn, city);
-            setIsLiked(!isLiked)
-          }} >
-          <span className='save-icon'>
-            {isRouteLiked(item.RouteUID) ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
-              (<SaveSvg width="21px" height="21px" fill='gray' />)}
-          </span>
-          <div className='route-city'> {getCityNameOrValue(item.City, lang)}</div>
-        </div>
-        <div className='gray-line'></div>
-      </div>
-    )
-  }
 
 
   function RoutesResult({ routes }: { routes: BusRouteResult }) {
@@ -187,8 +155,7 @@ export const BusRouteSearch = () => {
         {(routes.status === 200) && (
           <div>
             {routes.records.map((item, index) => (
-              <RouteItem key={index} item={item} />
-
+              <RouteItem key={index} item={item} lang={lang} />
             ))}
 
           </div>
