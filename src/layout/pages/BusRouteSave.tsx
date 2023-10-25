@@ -11,9 +11,6 @@ export const BusRouteSave = () => {
   const { lang = 'defaultLang' } = useParams();
   const routesLiked = getRoutesLiked();
 
-
-
-
   return (
     <div className='search'>
       <section className='search-header'>

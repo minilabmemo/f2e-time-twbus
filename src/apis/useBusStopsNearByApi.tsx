@@ -37,6 +37,7 @@ interface NameType {
 
 interface BusRequestParam {
   callAtInstall: boolean;
+  filter: string;
 }
 
 // Define action types
@@ -82,13 +83,13 @@ const dataReducer = (
   }
 };
 
-const useBusStopsNearByApi = (query: BusRequestParam): [BusStationResult, ({ filter }: { filter: string }) => void] => {
-  const { callAtInstall } = query;
+const useBusStopsNearByApi = (query: BusRequestParam): [BusStationResult, () => void] => {
+  const { callAtInstall, filter } = query;
   const [token, setToken] = useState<string | null>(null);
 
   const [resData, dispatch] = useReducer(dataReducer, initialState);
 
-  const fetchData = useCallback(({ filter }: { filter: string }) => {
+  const fetchData = useCallback(() => {
     const fetchingData = async () => {
       const root_url = process.env.REACT_APP_API_URL;
 
@@ -127,7 +128,7 @@ const useBusStopsNearByApi = (query: BusRequestParam): [BusStationResult, ({ fil
             const { token, error } = await fetchNewToken();
             if (token) {
               setToken(token);
-              fetchData({ filter: filter });
+              fetchData();
             } else {
               console.error('Error fetching new token:', error);
               console.error('axiosError.response:', axiosError.response?.data);
@@ -172,7 +173,8 @@ const useBusStopsNearByApi = (query: BusRequestParam): [BusStationResult, ({ fil
     if (!isMockData) {
       fetchingData();
     }
-  }, [token]);
+  }, [token, filter]);
+
 
   useEffect(() => {
     if (!token) {
@@ -181,9 +183,10 @@ const useBusStopsNearByApi = (query: BusRequestParam): [BusStationResult, ({ fil
           setToken(token);
         }
       });
+    } else if (callAtInstall) {
+      fetchData();
     }
-  });
-
+  }, [callAtInstall, fetchData, token]);
   return [resData, fetchData];
 };
 

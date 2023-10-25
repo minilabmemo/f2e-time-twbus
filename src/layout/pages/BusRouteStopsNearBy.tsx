@@ -5,7 +5,7 @@ import { ResultErrorHint } from '../../utils/error';
 
 import to_loc from '../../images/to_loc.svg';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import "leaflet/dist/leaflet.css";
 
 import { getUserLocation } from '../../utils/gps';
@@ -15,15 +15,21 @@ import useBusStopsNearByApi, { BusStationResult } from '../../apis/useBusStopsNe
 
 export const BusRouteStopsNearBy = () => {
   const { lang = 'defaultLang' } = useParams();//TODO lang
-  const [result, fetchData] = useBusStopsNearByApi({ callAtInstall: false });
-  console.log("🚀 ~ file: BusRouteStopsNearBy.tsx:24 ~ BusRouteStopsNearBy ~ result:", result)
+  const [filter, setFilter] = useState("")
+
+  function NearByResultByLocation({ spatialFilter }: { spatialFilter: string }) {
+    const [result, fetchData] = useBusStopsNearByApi({ filter: spatialFilter, callAtInstall: true });
+
+    return (
+      <div> <NearByResult result={result} /></div>
+    )
+  }
 
   useEffect(() => {
     const userFetchData = async () => {
       const userLocation = await getUserLocation();
       const spatialFilter = `nearby(${userLocation?.userLat}, ${userLocation?.userLng}, 1000)`;
-      fetchData({ filter: spatialFilter });
-
+      setFilter(spatialFilter)
     }
     userFetchData()
   }, [])
@@ -38,7 +44,7 @@ export const BusRouteStopsNearBy = () => {
         {(result.status === 200) && (
           <div className="result-stations">
             {result.records.map((item, index) => (
-              <>
+              <div key={index}>
                 <span key={index} className='station' onClick={() => { alert("詳細資訊，後端資訊尚未完成，請至站點查詢。") }}>
                   <div className='station-info'>
                     <div className='station-name'> {item.StationName.Zh_tw}</div>
@@ -51,7 +57,7 @@ export const BusRouteStopsNearBy = () => {
 
                 </span>
                 <div className='gray-line'></div>
-              </>
+              </div>
 
 
             ))}
@@ -78,9 +84,7 @@ export const BusRouteStopsNearBy = () => {
             </NavLink > */}
 
           </div>
-          <NearByResult result={result} />
-
-
+          {(filter !== "") && (<NearByResultByLocation spatialFilter={filter}></NearByResultByLocation>)}
 
         </div>
 
