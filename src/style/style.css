@@ -784,6 +784,8 @@ code {
 .result-stations {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  height: 723px;
 }
 .result-stations .station {
   height: 58px;

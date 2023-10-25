@@ -203,7 +203,6 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
               })
               const userMarkerLoc = L.latLng(location.userLat, location.userLng);
               L.marker(userMarkerLoc, {
-
                 icon: userLocIcon,
                 opacity: 1.0,
               }).bindTooltip("你在這裡！", { permanent: false }).addTo(mapRef.current);

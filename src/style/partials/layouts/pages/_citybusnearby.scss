@@ -5,6 +5,8 @@
 .result-stations {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  height: 723px;
 
   .station {
 
