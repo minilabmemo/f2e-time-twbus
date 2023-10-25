@@ -2,8 +2,8 @@
 import { useParams } from 'react-router-dom';
 import { Dict } from '../../utils/const';
 import { ResultErrorHint } from '../../utils/error';
-import to_loc from '../../images/to_loc.svg';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import "leaflet/dist/leaflet.css";
 import { getUserLocation } from '../../utils/gps';
 import useBusStopsNearByApi, { BusStationResult } from '../../apis/useBusStopsNearByApi';
@@ -33,7 +33,8 @@ export const BusRouteStopsNearBy = () => {
         </div>
         <div className='result-map'>
 
-          {/* //TODO 更新站點的title不是整個地圖才是 */}
+
+
           <StreetMap id="street-map-nearby"
             initZoom={13}
             activeTab={0}

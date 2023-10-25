@@ -25,7 +25,19 @@ interface MarkerRealtimeData {
   busN1EstimateTimes?: BusN1EstimateTime[] | undefined;
   activeTab: number;
 }
-
+const smallIconSize = 30;
+const pointRedIconSmall = new L.Icon({
+  iconUrl: pointRed,
+  iconSize: [smallIconSize, smallIconSize],
+  iconAnchor: [smallIconSize / 2, smallIconSize / 2],
+  popupAnchor: [0, 0]
+})
+const pointBlueIconSmall = new L.Icon({
+  iconUrl: pointBlue,
+  iconSize: [smallIconSize, smallIconSize],
+  iconAnchor: [smallIconSize / 2, smallIconSize / 2],
+  popupAnchor: [0, 0]
+})
 function markersByRealtime({ stops, busN1EstimateTimes, activeTab }: MarkerRealtimeData) {
   const markersFarRealtime: L.Marker[] = [];
   const markersNearRealtime: L.Marker[] = [];
@@ -42,19 +54,7 @@ function markersByRealtime({ stops, busN1EstimateTimes, activeTab }: MarkerRealt
     iconAnchor: [largeIconSize / 2, largeIconSize / 2],
     popupAnchor: [0, 0]
   })
-  const smallIconSize = 30;
-  const pointRedIconSmall = new L.Icon({
-    iconUrl: pointRed,
-    iconSize: [smallIconSize, smallIconSize],
-    iconAnchor: [smallIconSize / 2, smallIconSize / 2],
-    popupAnchor: [0, 0]
-  })
-  const pointBlueIconSmall = new L.Icon({
-    iconUrl: pointBlue,
-    iconSize: [smallIconSize, smallIconSize],
-    iconAnchor: [smallIconSize / 2, smallIconSize / 2],
-    popupAnchor: [0, 0]
-  })
+
 
   let realTimelines: L.LatLngExpression[] = [];
 
@@ -148,21 +148,35 @@ function markersByRealtime({ stops, busN1EstimateTimes, activeTab }: MarkerRealt
 
 
 function markersByStations({ stations }: { stations?: BusStation[] | undefined }) {
-  const markersFarToShow: L.Marker[] = [];
-  const markersNearToShow: L.Marker[] = [];
+  const markersFarStations: L.Marker[] = [];
+  const markersNearStations: L.Marker[] = [];
   stations?.forEach((station, index) => {
-    //TODO 效能優化 targetObject用到多次 是否應該在獲取時整理一次就好 拉到外面整理
-    // const targetObject = busN1EstimateTimes?.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
-    // const status = targetObject ? (targetObject.StopStatus) : -101;
-    // const estimateTime = targetObject ? (targetObject.EstimateTime) : null;
-    // const [showStatus, color] = statusDefine(status, estimateTime);
 
-    // const lat = stop.StopPosition.PositionLat;
-    // const lon = stop.StopPosition.PositionLon;
-    // const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
+    const tooltipBody = `
+    <div  style="color: white" class="map-stop-body">
+      <div class="map-stop-name">   ${station.StationName.Zh_tw}</div>
+    </div>
+  `;
+    const lat = station.StationPosition.PositionLat;
+    const lon = station.StationPosition.PositionLon;
+    const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
+    const marker = L.marker(latLng, {
+      icon: pointBlueIconSmall,
+      opacity: 1.0,
+    }).bindTooltip(L.tooltip({
+      permanent: true,
+      direction: "top",
+      className: "map-stop-tooltip style blue"
+    }).setContent(tooltipBody))
 
+    markersFarStations.push(
+      marker
+    );
+    markersNearStations.push(
+      marker
+    );
   });
-  return { markersFarToShow, markersNearToShow };
+  return { markersFarStations, markersNearStations };
 }
 
 export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTimes, activeTab, initZoom, stations, flyToUserLoc }) => {
@@ -189,9 +203,11 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
               })
               const userMarkerLoc = L.latLng(location.userLat, location.userLng);
               L.marker(userMarkerLoc, {
+
                 icon: userLocIcon,
                 opacity: 1.0,
-              }).bindTooltip("你在這裡！").addTo(mapRef.current).openTooltip();
+              }).bindTooltip("你在這裡！", { permanent: false }).addTo(mapRef.current);
+
 
               if (flyToUserLoc) {
                 mapRef.current.flyTo(userMarkerLoc);
@@ -238,6 +254,14 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
       markersFarToShow.push(...markersFarRealtime)
       markersNearToShow.push(...markersNearRealtime)
       lineCoordinates.push(...realTimelines)
+    }
+    if (stations) {
+      const { markersFarStations, markersNearStations } = markersByStations({
+        stations
+      });
+      markersFarToShow.push(...markersFarStations)
+      markersNearToShow.push(...markersNearStations)
+
     }
 
     const handleZoomEnd = () => {
@@ -311,7 +335,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
       markersNearToShow.length = 0;
       lineCoordinates.length = 0;
     };
-  }, [id, busN1EstimateTimes, stops, activeTab, lastCenterRef, activeTabRef, flyToUserLoc]);
+  }, [id, busN1EstimateTimes, stops, activeTab, lastCenterRef, activeTabRef, flyToUserLoc, stations]);
 
 
 
