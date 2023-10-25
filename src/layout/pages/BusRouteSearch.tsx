@@ -11,6 +11,7 @@ import SaveSvg from '../../components/Icons/SaveSvg';
 import { IconColors } from '../../utils/color';
 import { isRouteLiked, routeLikeAction } from '../../utils/localStorages/routelikes';
 import { RouteItem } from '../../components/base/RouteItem';
+import { StreetMap } from '../../components/base/StreetMap';
 
 
 export const BusRouteSearch = () => {
@@ -223,7 +224,13 @@ export const BusRouteSearch = () => {
 
           <Keyboard city={city} />
         </div>
-        <div className='result-map'></div>
+        <div className='result-map'>
+          {/* TODO 根據縣市去做顯示城市站點們 */}
+          <StreetMap id="street-map-init"
+            initZoom={8}
+            activeTab={0}
+          />
+        </div>
 
       </section>
 

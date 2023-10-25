@@ -176,6 +176,7 @@ export const BusRouteStops = () => {
             stops={result.results?.BusStopOfRoutes[activeTab].Stops}
             busN1EstimateTimes={result.results?.BusN1EstimateTimes}
             activeTab={activeTab}
+            initZoom={13}
           />
 
         </div>

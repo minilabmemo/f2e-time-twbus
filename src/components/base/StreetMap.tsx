@@ -12,18 +12,18 @@ import { useEffect, useRef } from "react";
 import { getUserLocation } from "../../utils/gps";
 interface StreetMapData {
   id: string;
-
-  stops: Stop[] | undefined;
-  busN1EstimateTimes: BusN1EstimateTime[] | undefined;
+  stops?: Stop[] | undefined;
+  busN1EstimateTimes?: BusN1EstimateTime[] | undefined;
   activeTab: number;
+  initZoom: number;
 }
 
 
-export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTimes, activeTab }) => {
+export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTimes, activeTab, initZoom }) => {
 
-  const lastCenterRef = useRef<[number, number]>([25.03418, 121.564517]); // 初始化为默认中心点坐标
+  const lastCenterRef = useRef<[number, number]>([25.03418, 121.564517]); // 初始化中心點
   const mapRef = useRef<L.Map | null>(null);
-  const zoomRef = useRef(13); //  0 - 18，值越大越近
+  const zoomRef = useRef(initZoom); //  0 - 18，值越大越近
   const activeTabRef = useRef(-1);
   useEffect(() => {
     const fetchUserLocation = async () => {
@@ -106,7 +106,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
 
     const lastIndex = stops ? stops.length - 1 : -1;
     stops?.forEach((stop, index) => {
-      //TODO 效能優化 targetObject用到多次
+      //TODO 效能優化 targetObject用到多次 是否應該在獲取時整理一次就好 拉到外面整理
       const targetObject = busN1EstimateTimes?.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
       const status = targetObject ? (targetObject.StopStatus) : -101;
       const estimateTime = targetObject ? (targetObject.EstimateTime) : null;

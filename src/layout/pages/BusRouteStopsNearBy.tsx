@@ -20,6 +20,7 @@ export const BusRouteStopsNearBy = () => {
         {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
 
         <NearByResult result={result} />
+
       </div>
     )
   }
@@ -91,9 +92,6 @@ export const BusRouteStopsNearBy = () => {
         </div>
 
         <div className='result-map'>
-          <div className="to-user-loc-icon" >
-            <img src={to_loc} alt="to_loc" />
-          </div>
 
           {/* {result.isLoading ? "loading...." : (<LeafletMap id="street-map" />)} */}
           {/* //TODO 更新站點的title不是整個地圖才是 */}
@@ -102,6 +100,8 @@ export const BusRouteStopsNearBy = () => {
             busN1EstimateTimes={result.results?.BusN1EstimateTimes}
             activeTab={activeTab}
           /> */}
+
+
 
         </div>
 
