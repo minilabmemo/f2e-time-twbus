@@ -10,10 +10,10 @@
 
 
 
-@import './partials/components/layouts/header';
-@import './partials/components/layouts/footer';
+@import './partials/layouts/header';
+@import './partials/layouts/footer';
 
-@import './partials/pages/citybushome';
-@import './partials/pages/citybussearch';
-@import './partials/pages/citybusstops';
-@import './partials/pages/citybusnearby';
+@import './partials/layouts/pages/citybushome';
+@import './partials/layouts/pages/citybussearch';
+@import './partials/layouts/pages/citybusstops';
+@import './partials/layouts/pages/citybusnearby';

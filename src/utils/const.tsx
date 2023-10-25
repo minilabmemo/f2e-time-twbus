@@ -23,6 +23,9 @@ export const URI_SEARCH = "/search/:lang/:city"
 
 // export const URI_STOPS = "/:lang/stops?city=:city&route=:route" //這樣寫比對不到 No routes matched location  //FIXME
 export const URI_STOPS = "/:lang/:city/:route"
+export function calculateStopsURL({ lang, city, route }: { lang: string, city: string, route: string }) {
+  return URI_STOPS.replace(':lang', lang).replace(':city', city).replace(':route', route);
+}
 
 export const StorageKey = "savedAnimalIDs";
 

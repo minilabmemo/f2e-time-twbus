@@ -81,10 +81,13 @@
 }
 
 .keyboard {
+  &.false {
+    padding: 26px 50px;
+  }
 
   background-color: $gray-bg;
   width: 464px;
-  padding: 26px 50px;
+  padding: 10px 50px;
   box-sizing: border-box;
   flex-shrink: 0;
   display: flex;

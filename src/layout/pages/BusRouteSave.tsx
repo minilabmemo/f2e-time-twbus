@@ -25,7 +25,7 @@ export const BusRouteSave = () => {
         <div className='sidebar'>
           <div className='result-routes-save'>
             {routesLiked.map((item, index) => (
-              <div>
+              <div key={index}>
                 <RouteItem key={index} item={item} lang={lang} />
               </div>
 

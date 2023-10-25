@@ -3,6 +3,7 @@ import { LangType } from "./const";
 interface CityData {
   name: string;
   value: string;
+
 }
 export const cityData: CityData[] = [
   { name: '臺北市', value: 'Taipei' },

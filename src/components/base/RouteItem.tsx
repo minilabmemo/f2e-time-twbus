@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { isRouteLiked, routeLikeAction } from "../../utils/localStorages/routelikes";
 import { IconColors } from "../../utils/color";
 import { getCityNameOrValue } from "../../utils/cities";
-import { LangType, URI_STOPS } from "../../utils/const";
+import { LangType, URI_STOPS, calculateStopsURL } from "../../utils/const";
 import { useState } from "react";
 import SaveSvg from "../Icons/SaveSvg";
 import { BusRoute } from "../../apis/useBusCityApi";
@@ -10,12 +10,10 @@ import { BusRoute } from "../../apis/useBusCityApi";
 export const RouteItem = ({ item, lang }: { item: BusRoute, lang: string }) => {
   const city = item.City
   const [isLiked, setIsLiked] = useState(isRouteLiked(item.RouteUID))
-  function calculateURL({ lang, city, route }: { lang: string, city: string, route: string }) {
-    return URI_STOPS.replace(':lang', lang).replace(':city', city).replace(':route', route);
-  }
+
   return (
     <div className='route'>
-      <NavLink to={calculateURL({ lang, city, route: item.RouteName.Zh_tw })} className="route-link" >
+      <NavLink to={calculateStopsURL({ lang, city, route: item.RouteName.Zh_tw })} className="route-link" >
         <div className="route-info" >
           <div className='route-name'> {lang === LangType.en ? (item.RouteName.En) : (item.RouteName.Zh_tw)} </div>
           <div className='route-direction'>

@@ -6,7 +6,7 @@ import { faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { cityData, getCityNameOrValue } from '../../utils/cities';
-import useBusApi, { BusRoute, BusRouteResult } from '../../apis/useBusCityApi';
+import useBusCityApi, { BusRoute, BusRouteResult } from '../../apis/useBusCityApi';
 import SaveSvg from '../../components/Icons/SaveSvg';
 import { IconColors } from '../../utils/color';
 import { isRouteLiked, routeLikeAction } from '../../utils/localStorages/routelikes';
@@ -23,7 +23,7 @@ export const BusRouteSearch = () => {
   if (city === URI_SEARCH_DEFAULT) {
     callAtInstall = false;
   }
-  const [result] = useBusApi({ City: city, callAtInstall: callAtInstall });
+  const [result] = useBusCityApi({ City: city, callAtInstall: callAtInstall });
 
 
 
@@ -54,9 +54,9 @@ export const BusRouteSearch = () => {
         {cityData.map((item, index) => (
 
 
-          <NavLink to={`/search/${lang}/${item.value}`} className="city-link">
+          <NavLink to={`/search/${lang}/${item.value}`} className="city-link" key={index}>
             <div
-              key={index}
+
               className='btn btn-blue'
               onClick={() => handleCityButtonClick()}
             >
@@ -107,7 +107,7 @@ export const BusRouteSearch = () => {
 
   function Keyboard({ city }: { city: string | undefined }) {
     return (
-      <div className='keyboard'>
+      <div className={`keyboard ${cityKeyboard}`}>
 
         {(city === URI_SEARCH_DEFAULT) ? (
           <div className='city-option' onClick={() => setCityKeyboard(true)}>
