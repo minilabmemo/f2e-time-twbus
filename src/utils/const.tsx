@@ -18,7 +18,7 @@ export const Dict = {
 
 export const URI_NEARBY_DEFAULT = "nearby"
 export const URI_SEARCH_DEFAULT = "cities"
-export const URI_SAVE_DEFAULT = "save"
+export const URI_SAVE_DEFAULT = "save/:lang"
 export const URI_SEARCH = "/search/:lang/:city"
 
 // export const URI_STOPS = "/:lang/stops?city=:city&route=:route" //這樣寫比對不到 No routes matched location  //FIXME

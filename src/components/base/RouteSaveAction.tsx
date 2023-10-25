@@ -7,7 +7,8 @@ import { IconColors } from "../../utils/color";
 
 export function RouteSaveAction({ city, routeUID, route }: { city: string, routeUID: string, route: string }) {
   const [result, fetchData] = useBusCityApi({ City: city, routeUID: routeUID, callAtInstall: false });
-  const [isLiked, setIsLiked] = useState(isRouteLiked(routeUID))
+  const checkIsLiked = isRouteLiked(routeUID);
+  const [isLiked, setIsLiked] = useState(checkIsLiked);
 
   const handleRouteLike = () => {
     if (isLiked) {
@@ -28,8 +29,8 @@ export function RouteSaveAction({ city, routeUID, route }: { city: string, route
   }
 
   return (
-    <span className='save-icon' onClick={() => { handleRouteLike(); }} key={routeUID}>
-      {isLiked ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
+    <span className='save-icon' onClick={() => { handleRouteLike(); }} >
+      {checkIsLiked ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
         (<SaveSvg width="21px" height="21px" fill='gray' />)}
     </span >
   );

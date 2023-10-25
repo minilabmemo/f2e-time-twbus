@@ -513,6 +513,12 @@ code {
   margin: 20px;
 }
 
+.result-routes-save {
+  height: 100%;
+  overflow-y: scroll;
+  margin: 20px;
+}
+
 .err-hint {
   margin: 20px;
   color: #D08181;

@@ -156,10 +156,7 @@ export const BusRouteStops = () => {
             </NavLink >
             {getRouteUID(result, route)}
             <RouteSaveAction city={city} routeUID={routeUID} route={route} />
-            {/* <span className='save-icon' onClick={() => { handleRouteLike(routeUID, route); setIsLiked(!isLiked) }}>
-              {isRouteLiked(routeUID) ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
-                (<SaveSvg width="21px" height="21px" fill='gray' />)}
-            </span > */}
+
           </div>
           <BusStopsResult result={result} route={route} key={0} />
 
