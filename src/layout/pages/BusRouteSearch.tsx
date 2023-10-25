@@ -159,7 +159,11 @@ export const BusRouteSearch = () => {
 
 
         </NavLink>
-        <div className="route-action" onClick={() => { routeLikeAction(item.RouteUID); setIsLiked(!isLiked) }} >
+        <div className="route-action"
+          onClick={() => {
+            routeLikeAction(item.RouteUID, item.RouteName.Zh_tw, item.DepartureStopNameZh, item.DepartureStopNameEn, item.DestinationStopNameZh, item.DestinationStopNameEn, city);
+            setIsLiked(!isLiked)
+          }} >
           <span className='save-icon'>
             {isRouteLiked(item.RouteUID) ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
               (<SaveSvg width="21px" height="21px" fill='gray' />)}
@@ -184,25 +188,7 @@ export const BusRouteSearch = () => {
           <div>
             {routes.records.map((item, index) => (
               <RouteItem key={index} item={item} />
-              // <div className='route'>
-              //   <NavLink to={calculateURL({ lang, city, route: item.RouteName.Zh_tw })} className="route-link" key={index}>
-              //     <div className="route-info" >
-              //       <div className='route-name'> {lang === LangType.en ? (item.RouteName.En) : (item.RouteName.Zh_tw)} </div>
-              //       <div className='route-direction'>
-              //         {lang === LangType.en ? (`${item.DepartureStopNameEn} - ${item.DestinationStopNameEn}`) : (`${item.DepartureStopNameZh} - ${item.DestinationStopNameZh}`)}
 
-              //       </div>
-              //     </div>
-
-              //   </NavLink>
-              //   <div className="route-action" onClick={() => { likeAction(item.RouteUID) }} >
-              //     <span className='save-icon'>{item.RouteUID}
-              //       {isRouteLiked(item.RouteUID) ? "tr" : "false"}
-              //       <SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} /></span>
-              //     <div className='route-city'> {getCityNameOrValue(item.City, lang)}</div>
-              //   </div>
-              //   <div className='gray-line'></div>
-              // </div>
             ))}
 
           </div>

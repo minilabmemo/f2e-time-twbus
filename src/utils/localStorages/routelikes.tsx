@@ -1,3 +1,4 @@
+import { BusRoute } from "../../apis/useBusCityApi";
 
 const storage = {
   routeLikes: 'routeLikes' as 'routeLikes',
@@ -13,16 +14,19 @@ export function isRouteLiked(RouteUID: string) {
 
   return isLiked;
 }
-export function routeLikeAction(routeUID: string) {
+
+
+export function routeLikeAction(routeUID: string,
+  routeName: string, startNameZh: string, startNameEn: string, endNameZh: string, endNameEn: string, city: string) {
   const isLiked = isRouteLiked(routeUID);
   if (isLiked) {
     removeRouteByUID(routeUID)
   } else {
-    saveRouteLiked(routeUID)
+    saveRouteLiked(routeUID, routeName, startNameZh, startNameEn, endNameZh, endNameEn, city)
   }
 }
 
-function removeRouteByUID(routeUID: string) {
+export function removeRouteByUID(routeUID: string) {
   const likedRoutes = JSON.parse(localStorage.getItem(storage.routeLikes) as string) || [];
   const indexToRemove = likedRoutes.findIndex((likedRoute: { RouteUID: string; }) => likedRoute.RouteUID === routeUID);
   if (indexToRemove !== -1) {
@@ -32,23 +36,42 @@ function removeRouteByUID(routeUID: string) {
 }
 
 
-function saveRouteLiked(RouteUID: string) {
+export function saveRouteLiked(routeUID: string,
+  routeName: string, startNameZh: string, startNameEn: string, endNameZh: string, endNameEn: string, city: string) {
 
   const likedRoutes = JSON.parse(localStorage.getItem(storage.routeLikes) as string) || [];
-  const route = {
-    RouteUID: RouteUID,
-    RouteName: 'your_route_name',
-    // 其他属性...
-  };
 
-
-  if (!likedRoutes.some((likedRoute: { RouteUID: string; }) => likedRoute.RouteUID === route.RouteUID)) {
+  if (!likedRoutes.some((likedRoute: { RouteUID: string; }) => likedRoute.RouteUID === routeUID)) {
     likedRoutes.push({
-      RouteUID: route.RouteUID,
-      RouteName: route.RouteName,
+      RouteUID: routeUID,
+      RouteName: routeName,
+      DepartureStopNameZh: startNameZh,
+      DepartureStopNameEn: startNameEn,
+      DestinationStopNameZh: endNameZh,
+      DestinationStopNameEn: endNameEn,
+      City: city,
     });
   }
 
   localStorage.setItem(storage.routeLikes, JSON.stringify(likedRoutes));
 
+}
+export function getRoutesLiked(): BusRoute[] {
+  const likedRoutes = JSON.parse(localStorage.getItem(storage.routeLikes) as string) || [];
+  const returnlikedRoutes: BusRoute[] = [];
+
+  likedRoutes.map((item: { RouteUID: string; RouteID: string; RouteName: string; DepartureStopNameZh: any; DepartureStopNameEn: any; DestinationStopNameZh: any; DestinationStopNameEn: any; City: any; }) => {
+    returnlikedRoutes.push({
+      RouteUID: item.RouteUID,
+      RouteID: item.RouteID,
+      RouteName: { Zh_tw: item.RouteName, En: "" },
+      DepartureStopNameZh: item.DepartureStopNameZh,
+      DepartureStopNameEn: item.DepartureStopNameEn,
+      DestinationStopNameZh: item.DestinationStopNameZh,
+      DestinationStopNameEn: item.DestinationStopNameEn,
+      City: item.City,
+    });
+  });
+
+  return returnlikedRoutes;
 }

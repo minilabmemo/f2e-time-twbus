@@ -3,12 +3,12 @@ import construct_img from '../images/construct_img.png';
 export const savedAnimalsMax = 20;
 
 export const LinkNames = {
-  about: { text: "附近站牌", short: "Nearby" },
+  nearby: { zh: "附近站牌", en: "Nearby" },
   search: { zh: "站點查詢", en: "Site Query" },
-  chart: { text: "我的收藏 ", short: "My Collection" },
+  save: { zh: "我的收藏 ", en: "My Collection" },
 };
 export const Dict = {
-  about: { text: "附近站牌", short: "Nearby" },
+
   home: { zh: "首頁", en: "home" },
   timetable: { zh: "時刻表 ", en: "Time Table" },
 };
@@ -18,6 +18,7 @@ export const Dict = {
 
 export const URI_NEARBY_DEFAULT = "nearby"
 export const URI_SEARCH_DEFAULT = "cities"
+export const URI_SAVE_DEFAULT = "save"
 export const URI_SEARCH = "/search/:lang/:city"
 
 // export const URI_STOPS = "/:lang/stops?city=:city&route=:route" //這樣寫比對不到 No routes matched location  //FIXME

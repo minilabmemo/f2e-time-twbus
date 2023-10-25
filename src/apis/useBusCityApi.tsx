@@ -30,6 +30,7 @@ interface NameType {
 
 interface BusRequestParam {
   City: string | undefined;
+  routeUID?: string | undefined;//ex contains(RouteUID,'TPE10132') 
   callAtInstall: boolean;
 }
 
@@ -77,7 +78,7 @@ const dataReducer = (
 };
 
 const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => {
-  const { City, callAtInstall } = query;
+  const { City, routeUID, callAtInstall } = query;
   const [token, setToken] = useState<string | null>(null);
 
   const [resData, dispatch] = useReducer(dataReducer, initialState);
@@ -86,9 +87,16 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
     const fetchingData = async () => {
       const root_url = process.env.REACT_APP_API_URL;
       let url = `${root_url}/api/basic/v2/Bus/Route/City`;
+      //EX: https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City/Taipei?&%24filter=contains(RouteUID%2C%27TPE10132%27)&%24format=JSON
       if (City !== null) {
-        url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City%2C%20RouteUID&%24format=JSON`;
+        url += `/${City}?%24select=RouteName%2CDepartureStopNameZh%2C%20DepartureStopNameEn%2C%20DestinationStopNameZh%2C%20DestinationStopNameEn%2C%20City%2C%20RouteUID`;
       }
+      if (routeUID != null) {
+        const filter = `contains(RouteUID,'${routeUID}')`
+        url += `&%24filter=${filter}`
+      }
+      // url += "&format=JSON"
+
 
       try {
         const response = await axios.get(url, {
@@ -165,7 +173,7 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
     if (!isMockData) {
       fetchingData();
     }
-  }, [City, token]);
+  }, [City, token, routeUID]);
 
   useEffect(() => {
     if (!token) {

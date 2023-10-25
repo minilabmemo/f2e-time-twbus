@@ -16,6 +16,8 @@ import { StreetMap } from '../../components/base/StreetMap';
 import { RefreshBar } from '../../components/base/RefreshBar';
 import { IconColors } from '../../utils/color';
 import { isRouteLiked, routeLikeAction } from '../../utils/localStorages/routelikes';
+import useBusCityApi from '../../apis/useBusCityApi';
+import { RouteSaveAction } from '../../components/base/RouteSaveAction';
 
 
 export const BusRouteStops = () => {
@@ -134,8 +136,10 @@ export const BusRouteStops = () => {
   }
 
 
+
   const routeUID = getRouteUID(result, route) || "";
-  const [isLiked, setIsLiked] = useState(isRouteLiked(routeUID))
+  console.log("🚀 ~ file: BusRouteStops.tsx:141 ~ BusRouteStops ~ routeUID:", routeUID, activeTab)//TODO check 
+
   return (
     <div className='search'>
       <section className='search-header'>
@@ -151,10 +155,11 @@ export const BusRouteStops = () => {
               <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋
             </NavLink >
             {getRouteUID(result, route)}
-            <span className='save-icon' onClick={() => { routeLikeAction(routeUID); setIsLiked(!isLiked) }}>
+            <RouteSaveAction city={city} routeUID={routeUID} route={route} />
+            {/* <span className='save-icon' onClick={() => { handleRouteLike(routeUID, route); setIsLiked(!isLiked) }}>
               {isRouteLiked(routeUID) ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
                 (<SaveSvg width="21px" height="21px" fill='gray' />)}
-            </span >
+            </span > */}
           </div>
           <BusStopsResult result={result} route={route} key={0} />
 
@@ -184,4 +189,8 @@ export const BusRouteStops = () => {
 };
 
 
+
+function useBusApi(arg0: { City: string; callAtInstall: any; }): [any] {
+  throw new Error('Function not implemented.');
+}
 

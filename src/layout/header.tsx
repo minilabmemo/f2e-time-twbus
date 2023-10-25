@@ -5,7 +5,7 @@ import icon_language from '../images/icon_language.svg';
 import { theme } from '../style/theme';
 import { ThemeProvider } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
-import { LinkNames } from '../utils/const';
+import { LinkNames, URI_SAVE_DEFAULT } from '../utils/const';
 
 
 
@@ -25,7 +25,7 @@ export const Header = () => {
 
         <div className='nav'>
           <NavLink to="/nearby" className="nav-link">
-            {isLangZH ? LinkNames.about.text : LinkNames.about.short}
+            {isLangZH ? LinkNames.nearby.zh : LinkNames.nearby.en}
           </NavLink>
 
 
@@ -33,8 +33,8 @@ export const Header = () => {
           <NavLink to={`/search/zh/cities`} className="nav-link">
             {isLangZH ? LinkNames.search.zh : LinkNames.search.en}
           </NavLink>
-          <NavLink to="/chart" className="nav-link">
-            {isLangZH ? LinkNames.chart.text : LinkNames.chart.short}
+          <NavLink to={`/${URI_SAVE_DEFAULT}`} className="nav-link">
+            {isLangZH ? LinkNames.save.zh : LinkNames.save.en}
           </NavLink>
         </div>
 
