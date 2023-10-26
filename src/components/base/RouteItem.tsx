@@ -11,6 +11,10 @@ export const RouteItem = ({ item, lang }: { item: BusRoute, lang: string }) => {
   const city = item.City
   const [isLiked, setIsLiked] = useState(isRouteLiked(item.RouteUID))
 
+  const handleLikeClick = () => {
+    routeLikeAction(item.RouteUID, item.RouteName.Zh_tw, item.DepartureStopNameZh, item.DepartureStopNameEn, item.DestinationStopNameZh, item.DestinationStopNameEn, city);
+    setIsLiked(!isLiked);
+  }
   return (
     <div className='route'>
       <NavLink to={calculateStopsURL({ lang, city, route: item.RouteName.Zh_tw })} className="route-link" >
@@ -24,13 +28,9 @@ export const RouteItem = ({ item, lang }: { item: BusRoute, lang: string }) => {
 
 
       </NavLink>
-      <div className="route-action"
-        onClick={() => {
-          routeLikeAction(item.RouteUID, item.RouteName.Zh_tw, item.DepartureStopNameZh, item.DepartureStopNameEn, item.DestinationStopNameZh, item.DestinationStopNameEn, city);
-          setIsLiked(!isLiked)
-        }} >
+      <div className="route-action" onClick={handleLikeClick}>
         <span className='save-icon'>
-          {isRouteLiked(item.RouteUID) ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
+          {isLiked ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
             (<SaveSvg width="21px" height="21px" fill='gray' />)}
         </span>
         <div className='route-city'> {getCityNameOrValue(city, lang)}</div>

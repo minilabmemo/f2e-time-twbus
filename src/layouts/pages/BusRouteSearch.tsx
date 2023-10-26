@@ -1,15 +1,12 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { ActionType, Dict, LangType, URI_SEARCH_DEFAULT, URI_STOPS, itemI, keyboardRouteList } from '../../utils/const';
+import { ActionType, Dict, URI_SEARCH_DEFAULT, itemI, keyboardRouteList } from '../../utils/const';
 import { ResultErrorHint } from '../../utils/error';
-import { faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { cityData, getCityNameOrValue } from '../../utils/cities';
-import useBusCityApi, { BusRoute, BusRouteResult } from '../../apis/useBusCityApi';
-import SaveSvg from '../../components/Icons/SaveSvg';
-import { IconColors } from '../../utils/color';
-import { isRouteLiked, routeLikeAction } from '../../utils/localStorages/routelikes';
+import useBusCityApi, { BusRouteResult } from '../../apis/useBusCityApi';
 import { RouteItem } from '../../components/base/RouteItem';
 import { StreetMap } from '../../components/base/StreetMap';
 
@@ -208,9 +205,6 @@ export const BusRouteSearch = () => {
     <div className='search'>
       <section className='search-header'>
         <div className='breadcrumb'> 首頁/ {getCityNameOrValue(city, lang)}</div>
-
-
-
         <div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>
       </section>
 

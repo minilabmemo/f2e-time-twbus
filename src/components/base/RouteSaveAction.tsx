@@ -9,13 +9,14 @@ export function RouteSaveAction({ city, routeUID, route }: { city: string, route
   const [result, fetchData] = useBusCityApi({ City: city, routeUID: routeUID, callAtInstall: false });
   const checkIsLiked = isRouteLiked(routeUID);
   const [isLiked, setIsLiked] = useState(checkIsLiked);
+  console.log("🚀 ~ file: RouteSaveAction.tsx:12 ~ RouteSaveAction ~ isLiked:", isLiked)
+
 
   const handleRouteLike = () => {
     if (isLiked) {
       removeRouteByUID(routeUID)
     } else {
       fetchData();
-
       if (result.records.length > 0) {
         const item = result.records[0];
         if (item.RouteUID === routeUID) {
@@ -28,9 +29,13 @@ export function RouteSaveAction({ city, routeUID, route }: { city: string, route
     setIsLiked(!isLiked)
   }
 
+
+
+
+
   return (
     <span className='save-icon' onClick={() => { handleRouteLike(); }} >
-      {checkIsLiked ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
+      {isLiked ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
         (<SaveSvg width="21px" height="21px" fill='gray' />)}
     </span >
   );
