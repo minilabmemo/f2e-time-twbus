@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import logo from '../images/logo.svg';
 import icon_language from '../images/icon_language.svg';
 
-import { theme } from '../style/theme';
+import { theme } from '../styles/theme';
 import { ThemeProvider } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
 import { LinkNames, URI_SAVE_DEFAULT } from '../utils/const';

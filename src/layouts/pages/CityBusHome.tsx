@@ -20,7 +20,7 @@ const CityBusHome = () => {
 
       <section className="home-cities">
 
-        <NavLink to={`/search/zh/Taipei`} className="city-card city-color-1 city-link">
+        <NavLink to={`/search/zh/Taipei`} className="city-card city-color-black city-link">
 
           <div className="city-icon"> <BusSvg width="51px" height="51px" fill={IconColors.blackFont} /></div>
 
@@ -30,34 +30,34 @@ const CityBusHome = () => {
         </NavLink>
 
 
-        <NavLink to={`/search/zh/NewTaipei`} className="city-card city-color-6 city-link">
+        <NavLink to={`/search/zh/NewTaipei`} className="city-card city-color-blue-dark city-link">
           <div className="city-icon"> <BusSvg width="51px" height="51px" fill={IconColors.blueDarkFont} /></div>
 
           <div className="city-name">新北市</div>
           <div className="city-name-en">  New Taipei</div>
         </NavLink>
 
-        <NavLink to={`/search/zh/Taoyuan`} className="city-card city-color-2 city-link">
+        <NavLink to={`/search/zh/Taoyuan`} className="city-card city-color-blue city-link">
           <div className="city-icon"> <BusSvg width="51px" height="51px" fill={IconColors.blueFont} /></div>
           <div className="city-name">桃園市</div>
           <div className="city-name-en">Taoyuan</div>
         </NavLink>
-        <NavLink to={`/search/zh/Taichung`} className="city-card city-color-3 city-link">
+        <NavLink to={`/search/zh/Taichung`} className="city-card city-color-pink city-link">
           <div className="city-icon"> <BusSvg width="51px" height="51px" fill={IconColors.pinkFont} /></div>
           <div className="city-name">台中市</div>
           <div className="city-name-en">Taichung</div>
         </NavLink>
-        <NavLink to={`/search/zh/Tainan`} className="city-card city-color-4 city-link">
+        <NavLink to={`/search/zh/Tainan`} className="city-card city-color-cyan city-link">
           <div className="city-icon"> <BusSvg width="51px" height="51px" fill={IconColors.cyanFont} /></div>
           <div className="city-name">台南市</div>
           <div className="city-name-en">Tainan</div>
         </NavLink>
-        <NavLink to={`/search/zh/Kaohsiung`} className="city-card city-color-5 city-link">
+        <NavLink to={`/search/zh/Kaohsiung`} className="city-card city-color-blue-light city-link">
           <div className="city-icon"> <BusSvg width="51px" height="51px" fill={IconColors.blueLightFont} /></div>
           <div className="city-name">高雄市</div>
           <div className="city-name-en"> 高雄市</div>
         </NavLink>
-        <NavLink to={`/search/zh/cities`} className="city-card city-color-6 city-link">
+        <NavLink to={`/search/zh/cities`} className="city-card city-color-blue-dark city-link">
           <div className="city-icon"> <BusSvg width="51px" height="51px" fill={IconColors.blueDarkFont} /></div>
           <div className="city-name">其他地區</div>
           <div className="city-name-en">Other City</div>

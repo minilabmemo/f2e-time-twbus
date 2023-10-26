@@ -1,7 +1,7 @@
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { ThemeProvider } from '@emotion/react';
-import { theme } from '../style/theme';
+import { theme } from '../styles/theme';
 import ButtonEffect from '../components/btn/ButtonEffect';
 import { ComponentProps } from 'react';
 

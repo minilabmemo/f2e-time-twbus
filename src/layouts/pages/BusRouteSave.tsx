@@ -17,7 +17,7 @@ export const BusRouteSave = () => {
     <div className='search'>
       <section className='search-header'>
         <div className='breadcrumb'> 首頁/ 收藏路線</div>
-        <div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>
+
       </section>
 
       <section className='save-main'>
