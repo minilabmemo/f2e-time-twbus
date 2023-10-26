@@ -35,6 +35,12 @@ npm test -- --coverage
 coverage/lcov-report/src/components/index.html
 ```
 
+### 進度 Todo Tree
+｀｀｀
+TODO 待進行
+NEEDCHECK 需確認事項
+FIXME 有問題待修正
+｀｀｀
 
 #### 資料夾說明
 ```

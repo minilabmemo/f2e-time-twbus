@@ -67,15 +67,15 @@ function Results({ result, route, fetchData, lang, city }:
 
                       {item.Stops.map((itemStop, stopIndex) => {
                         const filterStopName = itemStop.StopName.Zh_tw;
-                        const filterDirection = item.Direction;
-                        const targetObject = result.results?.BusN1EstimateTimes.find(item => item.StopName.Zh_tw === filterStopName && item.Direction === filterDirection);
+
+                        const targetObject = result.results?.BusN1EstimateTimes.find(item => item.StopName.Zh_tw === filterStopName && item.StopUID === itemStop.StopUID);
 
                         return (
                           <div className='stop' key={stopIndex}>
 
                             <StopStatus
                               name={itemStop.StopName.Zh_tw}
-                              status={targetObject ? (targetObject.StopStatus) : -101}
+                              status={targetObject ? (targetObject.StopStatus) : -2}
                               estimateTime={targetObject ? (targetObject.EstimateTime) : null}
                             />
 

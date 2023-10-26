@@ -23,7 +23,6 @@ interface StreetMapData {
 interface MarkerRealtimeData {
   stops?: Stop[] | undefined;
   busN1EstimateTimes?: BusN1EstimateTime[] | undefined;
-  activeTab: number;
 }
 const smallIconSize = 30;
 const pointRedIconSmall = new L.Icon({
@@ -38,7 +37,7 @@ const pointBlueIconSmall = new L.Icon({
   iconAnchor: [smallIconSize / 2, smallIconSize / 2],
   popupAnchor: [0, 0]
 })
-function markersByRealtime({ stops, busN1EstimateTimes, activeTab }: MarkerRealtimeData) {
+function markersByRealtime({ stops, busN1EstimateTimes }: MarkerRealtimeData) {
   const markersFarRealtime: L.Marker[] = [];
   const markersNearRealtime: L.Marker[] = [];
   const largeIconSize = 40;
@@ -58,18 +57,30 @@ function markersByRealtime({ stops, busN1EstimateTimes, activeTab }: MarkerRealt
 
   let realTimelines: L.LatLngExpression[] = [];
 
-  const filterDirection = activeTab;
 
   const lastIndex = stops ? stops.length - 1 : -1;
   stops?.forEach((stop, index) => {
     //TODO 效能優化 targetObject用到多次 是否應該在獲取時整理一次就好 拉到外面整理
-    const targetObject = busN1EstimateTimes?.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw && item.Direction === filterDirection);
+    const targetObject =
+      busN1EstimateTimes?.find(item => item.StopName.Zh_tw === stop.StopName.Zh_tw
+        && item.StopUID === stop.StopUID
+      );
     const status = targetObject ? (targetObject.StopStatus) : -101;
     const estimateTime = targetObject ? (targetObject.EstimateTime) : null;
     const [showStatus, color] = statusDefine(status, estimateTime);
 
-    const lat = stop.StopPosition.PositionLat;
-    const lon = stop.StopPosition.PositionLon;
+    let lat = stop.StopPosition.PositionLat;
+    let lon = stop.StopPosition.PositionLon;
+    if (stop.StopName.Zh_tw === "力捷公司") {
+      if (lat === 24.12478) {
+        lat = 25.036537
+      }
+      if (lon === 120.65676) {
+        lon = 121.301641
+        console.log("修正力捷公司後端資料重複有兩筆，且有不合理地理位置")//NEEDCHECK
+      }
+    }
+
     const latLng = L.latLng(lat, lon); //number類型轉換為適合的類型
 
     const tooltipBody = `
@@ -135,7 +146,6 @@ function markersByRealtime({ stops, busN1EstimateTimes, activeTab }: MarkerRealt
         })
       );
     }
-
 
 
 
@@ -247,8 +257,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
     if (stops) {
       const { markersFarRealtime, markersNearRealtime, realTimelines } = markersByRealtime({
         stops,
-        busN1EstimateTimes,
-        activeTab
+        busN1EstimateTimes
       });
       markersFarToShow.push(...markersFarRealtime)
       markersNearToShow.push(...markersNearRealtime)

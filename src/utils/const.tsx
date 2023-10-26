@@ -80,11 +80,25 @@ export const StatusColorType = {
   gray: 'gray' as 'gray',
 
 };
+
+// estimateTime 到站時間預估(秒) [當StopStatus値為2~4或PlateNumb値為 - 1時，EstimateTime値為null; 當StopStatus値為1時， EstimateTime値多數為null，僅部分路線因有固定發車時間，故EstimateTime有値; 當StopStatus値為0時，EstimateTime有値。]
+//車輛狀態備註 : [0:'正常',1:'尚未發車',2:'交管不停靠',3:'末班車已過',4:'今日未營運']StopStatus: number;
 export function statusDefine(status: number, estimateTime: number | null) {
   if (status === 1) {
-    return ['尚未發車', StatusColorType.gray];//TODO 2345
+    return ['尚未發車', StatusColorType.gray];
   }
+  if (status === 2) {
+    return ['交管不停靠', StatusColorType.gray];
+  }
+  if (status === 3) {
+    return ['末班車已過', StatusColorType.gray];
+  }
+  if (status === 4) {
+    return ['今日未營運', StatusColorType.gray];
+  }
+
   if (estimateTime === null) {
+    console.log("無資訊資料需確認", estimateTime, " ,status", status)
     return ['無資訊', StatusColorType.gray];
   }
   if (typeof estimateTime === 'number') {
