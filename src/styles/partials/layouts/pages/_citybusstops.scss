@@ -10,8 +10,13 @@
   user-select: none;
 
   .save-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    text-align: right;
+    user-select: none;
+    width: 30px;
+    height: 30px;
 
   }
 }

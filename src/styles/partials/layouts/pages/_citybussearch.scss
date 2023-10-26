@@ -61,6 +61,7 @@
 
   .result-map {
     background-color: $blueFont;
+    backdrop-filter: invert(80%);
     width: 976px;
     height: 723px;
     flex-shrink: 0;
@@ -257,7 +258,9 @@
 
 
     .save-icon {
+
       user-select: none;
+
     }
 
     .route-city {

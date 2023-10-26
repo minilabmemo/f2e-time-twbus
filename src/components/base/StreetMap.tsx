@@ -1,4 +1,4 @@
-import { BusN1EstimateTime, BusStopsResult, Stop } from "../../apis/useBusStopsApi";
+import { BusN1EstimateTime, Stop } from "../../apis/useBusStopsApi";
 import user_position from '../../images/user_position.svg';
 import pointBlue from '../../images/point_blue.svg';
 import pointRed from '../../images/point_red.svg';

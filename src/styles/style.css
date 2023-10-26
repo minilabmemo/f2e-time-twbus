@@ -430,6 +430,8 @@ code {
 }
 .search-main .result-map {
   background-color: #3591C5;
+  -webkit-backdrop-filter: invert(80%);
+          backdrop-filter: invert(80%);
   width: 976px;
   height: 723px;
   flex-shrink: 0;
@@ -611,7 +613,14 @@ code {
           user-select: none;
 }
 .link-container .save-icon {
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  width: 30px;
+  height: 30px;
 }
 
 .return-search-link {

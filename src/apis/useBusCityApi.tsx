@@ -176,13 +176,14 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
   }, [City, token, routeUID]);
 
   useEffect(() => {
-    if (!token) {
-      fetchNewToken().then(({ token }) => {
-        if (token) {
-          setToken(token);
-        }
-      });
-    } else if (callAtInstall) {
+    if (callAtInstall) {
+      if (!token) {
+        fetchNewToken().then(({ token }) => {
+          if (token) {
+            setToken(token);
+          }
+        });
+      }
       fetchData();
     }
   }, [callAtInstall, fetchData, token]);

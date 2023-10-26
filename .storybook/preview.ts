@@ -1,8 +1,8 @@
 import type { Preview } from "@storybook/react";
-import '../src/style/style.css';
-import '../src/style/normalize.css';
-import '../src/style/notosanstc.css';
-import '../style/notosanstc.css';
+import '../src/styles/style.css';
+import '../src/styles/normalize.css';
+import '../src/styles/notosanstc.css';
+
 
 const preview: Preview = {
   parameters: {
