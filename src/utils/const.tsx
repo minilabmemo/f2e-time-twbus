@@ -1,6 +1,6 @@
 
 import construct_img from '../images/construct_img.png';
-export const savedAnimalsMax = 20;
+
 
 export const LinkNames = {
   nearby: { zh: "附近站牌", en: "Nearby" },
