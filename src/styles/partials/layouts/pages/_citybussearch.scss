@@ -3,24 +3,27 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 80vh;
+  min-height: 630px;
+
 }
+
+$header-h: 36px;
 
 .content-header {
   position: relative;
   background-color: $gray-bg;
-  height: 36px;
+  height: $header-h;
   display: flex;
   align-items: center;
   color: $black;
   line-height: normal;
 
   .breadcrumb {
-
     position: absolute;
     left: 66px;
-
   }
 
   .timetable {
@@ -31,14 +34,15 @@
 }
 
 .content-main {
-  height: 723px;
+  height: calc(100% - $header-h);
+  min-height: 630px;
   background-color: $white;
   display: flex;
 
   .sidebar {
-
+    position: relative;
     width: 464px;
-    height: 723px;
+
     flex-shrink: 0;
     box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.15);
     z-index: 5;
@@ -65,7 +69,9 @@
     background-color: $blueFont;
     backdrop-filter: invert(80%);
     width: 976px;
-    height: 723px;
+    height: 100%;
+    min-height: 630px;
+
     flex-shrink: 0;
 
   }
@@ -83,11 +89,18 @@
   width: 100%;
 }
 
+$keyboard-height: 330px;
+
 .keyboard {
   &.false {
     padding: 26px 50px;
   }
 
+  width: inherit; //for absolute
+  position: absolute;
+  bottom: 0;
+  height: $keyboard-height;
+  box-sizing: border-box;
   background-color: $gray-bg;
 
   padding: 10px 50px;
@@ -97,8 +110,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-
 
 
   .city-option {
@@ -201,15 +212,12 @@
 
 
 .result-routes {
-  height: 290px;
+  height: calc(100% - $keyboard-height);
   margin: 20px;
-}
-
-.result-routes .scroll {
-  height: inherit;
   overflow-y: auto;
-
 }
+
+
 
 
 .err-hint {

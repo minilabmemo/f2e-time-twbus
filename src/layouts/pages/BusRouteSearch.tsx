@@ -153,7 +153,7 @@ export const BusRouteSearch = () => {
 
           {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
           {(routes.status === 200) && (
-            <div className='scroll'>
+            <div >
               {routes.records.map((item, index) => (
                 <RouteItem key={index} item={item} lang={lang} />
               ))}
