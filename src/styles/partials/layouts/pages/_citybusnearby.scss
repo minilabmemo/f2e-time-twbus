@@ -1,0 +1,44 @@
+.result-body {
+  padding: 10px;
+}
+
+.result-stations {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 723px;
+
+  .station {
+
+    height: 58px;
+    display: flex;
+    justify-content: space-between;
+
+    .station-info {
+      width: 70%;
+      align-self: start;
+
+      .station-name {
+
+        color: #000;
+        font-family: 'Roboto';
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+
+
+
+    }
+
+
+  }
+
+  .station-stop-num {
+    font-size: 14px;
+    font-weight: 400;
+    color: #888;
+  }
+}

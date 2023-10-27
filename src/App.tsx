@@ -1,82 +1,27 @@
 
-import './style/notosanstc.css';
-import './style/style.css';
-import { Header } from './components/header';
-import PetFinder from './components/PetFinder';
-import { Footer } from './components/Footer';
+import './styles/notosanstc.css';
+import './styles/notosans.css';
+import './styles/style.css';
+import { Header } from './layouts/header';
+import PetFinder from './layouts/pages/CityBusHome';
+import { Footer } from './layouts/Footer';
 import { HashRouter, Route, Routes } from 'react-router-dom';
-
-import styled from '@emotion/styled';
-import { About } from './components/News';
-import Stores from './components/Stores';
-import PetDetailsPage from './components/PetDetailsPage';
-import { URI_PET_FIND_PREFIX } from './components/const';
-import PetChart from './components/PetChart';
+import { URI_NEARBY_DEFAULT, URI_PET_FIND_PREFIX, URI_SAVE_DEFAULT, URI_SEARCH, URI_STOPS } from './utils/const';
 import { Wait } from './components/Wait';
+import { BusRouteSearch } from './layouts/pages/BusRouteSearch';
+import { BusRouteStops } from './layouts/pages/BusRouteStops';
+import { BusRouteStopsNearBy } from './layouts/pages/BusRouteStopsNearBy';
+import { BusRouteSave } from './layouts/pages/BusRouteSave';
 
-
-
-//TODO theme
-const Base = styled.div`
-  overflow: hidden; /* solve margin collapsing */
-  background-color: #d0efff;
-  width: 100%;
-  height: auto;
-`;
-
-const Container = styled.div`
-  background-color: #ffffff;
-
-  box-sizing: border-box;
-  height: auto;
- 
-  border-radius: 30px;
-  font-family: 'Noto Sans TC Black';
-  font-weight: 900;
-  
-  
-`;
-const PageContainer = styled.div`
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
- 
-`;
-
-
-
-const PageContentBox = styled.div`
-
-  background-color:#FEFEFE ;
-  border-radius: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  height: auto;
-  display: flex;
- 
-  flex-direction: column;
-  align-items: start;
-  justify-content: start;
- 
-  position:relative
-  
-`;
 
 const BaseLayout = ({ children }: { children: React.ReactNode }) => (
-  <Base className="base">
-    <Container className="container">
+  <div className="base">
+    <div className="container">
       <Header></Header>
-      <PageContainer>
-        <PageContentBox className='page-content-box'>
-          {children}
-        </PageContentBox>
-      </PageContainer>
-
-    </Container>
-    <Footer></Footer>
-  </Base>
+      {children}
+      <Footer></Footer>
+    </div>
+  </div>
 );
 
 function App() {
@@ -84,12 +29,10 @@ function App() {
     <HashRouter>
       <Routes>
         <Route path="/" element={<BaseLayout><PetFinder /></BaseLayout>} />
-        <Route path="/about" element={<BaseLayout><About /></BaseLayout>} />
-        <Route path={`/${URI_PET_FIND_PREFIX}`} element={<BaseLayout><PetFinder /></BaseLayout>} />
-        <Route path="/adopt" element={<BaseLayout><Wait /></BaseLayout>} />
-        <Route path="/chart" element={<BaseLayout><PetChart /></BaseLayout>} />
-        <Route path="/stores" element={<BaseLayout><Stores /></BaseLayout>} />
-        <Route path={`/${URI_PET_FIND_PREFIX}/:id`} element={<BaseLayout><PetDetailsPage /></BaseLayout>} />
+        <Route path={`${URI_NEARBY_DEFAULT}`} element={<BaseLayout><BusRouteStopsNearBy /></BaseLayout>} />
+        <Route path={`${URI_SEARCH}`} element={<BaseLayout><BusRouteSearch /></BaseLayout>} />
+        <Route path={`${URI_STOPS}`} element={<BaseLayout><BusRouteStops /></BaseLayout>} />
+        <Route path={`${URI_SAVE_DEFAULT}`} element={<BaseLayout><BusRouteSave /></BaseLayout>} />
       </Routes>
     </HashRouter>
   );

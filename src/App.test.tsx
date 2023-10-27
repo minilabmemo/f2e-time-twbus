@@ -1,5 +1,5 @@
 import React from 'react';
-import PetFinder from './components/PetFinder';
+
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
