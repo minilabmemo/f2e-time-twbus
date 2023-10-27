@@ -161,14 +161,14 @@ export const BusRouteStops = () => {
   console.log("🚀 ~ file: BusRouteStops.tsx:141 ~ BusRouteStops ~ result:", result)//TODO check 
 
   return (
-    <div className='search'>
-      <section className='search-header'>
+    <div className='content'>
+      <section className='content-header'>
         <div className='breadcrumb'> 首頁/ {getCityNameOrValue(city, lang)}/{route}</div>
 
         <div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>
       </section>
 
-      <section className='search-main'>
+      <section className='content-main'>
 
         <Results result={result} route={route} key={0} fetchData={fetchData} lang={lang} city={city} />
 

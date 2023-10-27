@@ -146,22 +146,24 @@ export const BusRouteSearch = () => {
 
 
     return (
-      <div className='result-routes'>
+      <>
+        <div className='result-routes'>
 
-        <ResultErrorHint status={routes.status} error={routes.error} total={routes.total} />
+          <ResultErrorHint status={routes.status} error={routes.error} total={routes.total} />
 
-        {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
-        {(routes.status === 200) && (
-          <div>
-            {routes.records.map((item, index) => (
-              <RouteItem key={index} item={item} lang={lang} />
-            ))}
+          {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
+          {(routes.status === 200) && (
+            <div className='scroll'>
+              {routes.records.map((item, index) => (
+                <RouteItem key={index} item={item} lang={lang} />
+              ))}
 
-          </div>
-        )}
+            </div>
+          )}
 
 
-      </div>
+        </div>
+      </>
     );
   }
 
@@ -202,13 +204,13 @@ export const BusRouteSearch = () => {
     }
   };
   return (
-    <div className='search'>
-      <section className='search-header'>
+    <div className='content'>
+      <section className='content-header'>
         <div className='breadcrumb'> 首頁/ {getCityNameOrValue(city, lang)}</div>
         <div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>
       </section>
 
-      <section className='search-main'>
+      <section className='content-main'>
         <div className='sidebar'>
           <input placeholder='請輸入關鍵字或使用鍵盤輸入站名' ref={inputRef} onChange={() => handleInputChange()}>
             {/* TODO query icon */}

@@ -93,14 +93,14 @@ export const BusRouteStopsNearBy = () => {
     );
   }
   return (
-    <div className='search'>
-      <section className='search-header'>
+    <div className='content'>
+      <section className='content-header'>
         <div className='breadcrumb'> 首頁/附近站點</div>
 
         <div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>
       </section>
 
-      <section className='search-main'>
+      <section className='content-main'>
 
         {/* <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
               <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋

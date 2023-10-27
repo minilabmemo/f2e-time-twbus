@@ -1,4 +1,4 @@
-.search {
+.content {
   font-family: 'Noto Sans';
   font-size: 12px;
   font-style: normal;
@@ -7,7 +7,7 @@
   overflow-y: hidden;
 }
 
-.search-header {
+.content-header {
   position: relative;
   background-color: $gray-bg;
   height: 36px;
@@ -30,7 +30,7 @@
   }
 }
 
-.search-main {
+.content-main {
   height: 723px;
   background-color: $white;
   display: flex;
@@ -40,9 +40,11 @@
     width: 464px;
     height: 723px;
     flex-shrink: 0;
+    box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    z-index: 5;
 
     input {
-      width: 422px;
+      width: 90%;
       height: 36px;
       flex-shrink: 0;
       background-color: $gray-bg;
@@ -87,7 +89,7 @@
   }
 
   background-color: $gray-bg;
-  width: 464px;
+
   padding: 10px 50px;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -200,10 +202,14 @@
 
 .result-routes {
   height: 290px;
-  overflow-y: scroll;
   margin: 20px;
 }
 
+.result-routes .scroll {
+  height: inherit;
+  overflow-y: auto;
+
+}
 
 
 .err-hint {
