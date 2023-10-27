@@ -1,5 +1,7 @@
-.link-container {
-  height: 38px;
+$stop-action-height: 38px;
+
+.stop-action {
+  height: $stop-action-height;
   display: flex;
   padding-left: 20px;
   padding-right: 20px;
@@ -27,24 +29,24 @@
 
 }
 
-.result-map {
-  position: relative;
+// .result-map {
+//   position: relative;
 
-  .to-user-loc-icon {
-    position: absolute;
-    z-index: 499;
-    padding: 4px 4px;
-    background: #fff;
-    border-radius: 5px;
-    right: 11px;
-    bottom: 15%;
-  }
-}
+//   .to-user-loc-icon { //TODO
+//     position: absolute;
+//     z-index: 499;
+//     padding: 4px 4px;
+//     background: #fff;
+//     border-radius: 5px;
+//     right: 11px;
+//     bottom: 15%;
+//   }
+// }
 
 .result-stops {
 
 
-  height: 690px;
+  height: calc(100% - $stop-action-height);
 
   .route-infos {
 

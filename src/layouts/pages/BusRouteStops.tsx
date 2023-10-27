@@ -23,7 +23,7 @@ function Results({ result, route, fetchData, lang, city }:
   return (
     <>
       <div className='sidebar'>
-        <div className="link-container">
+        <div className="stop-action ">
           <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
             <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋
           </NavLink >

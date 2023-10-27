@@ -609,7 +609,7 @@ code {
   background-color: #F5F6F6;
 }
 
-.link-container {
+.stop-action {
   height: 38px;
   display: flex;
   padding-left: 20px;
@@ -621,7 +621,7 @@ code {
      -moz-user-select: none;
           user-select: none;
 }
-.link-container .save-icon {
+.stop-action .save-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -637,21 +637,8 @@ code {
   color: #000;
 }
 
-.result-map {
-  position: relative;
-}
-.result-map .to-user-loc-icon {
-  position: absolute;
-  z-index: 499;
-  padding: 4px 4px;
-  background: #fff;
-  border-radius: 5px;
-  right: 11px;
-  bottom: 15%;
-}
-
 .result-stops {
-  height: 690px;
+  height: calc(100% - 38px);
 }
 .result-stops .route-infos {
   height: 80px;
@@ -785,14 +772,16 @@ code {
 }
 
 .result-body {
-  padding: 10px;
+  padding: 20px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .result-stations {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 723px;
 }
 .result-stations .station {
   height: 58px;
@@ -817,8 +806,7 @@ code {
   color: #888;
 }
 
-.save-main {
-  height: 723px;
+.center {
   background-color: #FFF;
   display: flex;
   width: 100%;

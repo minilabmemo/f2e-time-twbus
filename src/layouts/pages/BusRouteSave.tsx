@@ -20,7 +20,7 @@ export const BusRouteSave = () => {
 
       </section>
 
-      <section className='save-main'>
+      <section className='content-main center'>
         <div className='result-routes-save'>
           <div className="tab-buttons">
             <button

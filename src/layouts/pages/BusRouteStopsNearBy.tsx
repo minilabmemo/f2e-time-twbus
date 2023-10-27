@@ -24,7 +24,7 @@ export const BusRouteStopsNearBy = () => {
           {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
 
           <NearByResult result={result} />
-          <div className="link-container">
+          <div >
             {/*TODO <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
               <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋
             </NavLink > */}
