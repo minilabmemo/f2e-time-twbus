@@ -16,24 +16,24 @@ export function handleGPSError(error: GeolocationPositionError) {
       console.error("發生未知錯誤");
   }
 }
-
+//TODO watch 是否要加上更新定位
 export async function getUserLocation(): Promise<{ userLat: number; userLng: number } | null> {
-  try {
-    if ("geolocation" in navigator) {
-      const position = await new Promise<GeolocationPosition>((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject);
-      });
-      const userLat = position.coords.latitude;
-      const userLng = position.coords.longitude;
-      return { userLat, userLng };//TODO watch 是否要加上定位
+  return new Promise((resolve, reject) => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const userLat = position.coords.latitude;
+          const userLng = position.coords.longitude;
+          resolve({ userLat, userLng });
+        },
+        (error) => {
+          handleGPSError(error as GeolocationPositionError);
+          resolve(null);
+        }
+      );
     } else {
-
       console.error("瀏覽器不支持地理位置");
-      return null;
+      resolve(null);
     }
-  } catch (error) {
-
-    handleGPSError(error as GeolocationPositionError);
-    return null;
-  }
+  });
 }

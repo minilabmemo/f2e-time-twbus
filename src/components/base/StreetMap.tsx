@@ -197,6 +197,17 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
   const mapRef = useRef<L.Map | null>(null);
   const zoomRef = useRef(initZoom); //  0 - 18，值越大越近
   const activeTabRef = useRef(-1);
+  const panToUserLocation = async () => {
+    if (mapRef.current) {
+      const location = await getUserLocation();
+      if (location && location.userLat !== 0 && location.userLng !== 0) {
+        mapRef.current.panTo(L.latLng(location.userLat, location.userLng));
+      }
+    } else {
+      console.log("地圖尚未完成，等稍後再試。")
+    }
+  };
+
   useEffect(() => {
     const fetchUserLocation = async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));//wait 1s
@@ -351,7 +362,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
 
 
   return <div id={id} style={{ height: "100%" }} >
-    <div className="to-loc-icon" >
+    <div className="to-loc-icon" onClick={panToUserLocation}>
       <img src={to_loc} alt="to_location" />
     </div>
   </div>
