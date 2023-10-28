@@ -72,9 +72,28 @@ $header-h: 36px;
     height: 100%;
     min-height: 630px;
 
-    flex-shrink: 0;
+    position: relative;
 
+    .to-loc-icon {
+      position: absolute;
+      z-index: 499;
+
+      background: #fff;
+      border-radius: 5px;
+      right: 11px;
+      bottom: 100px;
+      width: 30px;
+      height: 30px;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      background-clip: padding-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
   }
+
+
 
 }
 

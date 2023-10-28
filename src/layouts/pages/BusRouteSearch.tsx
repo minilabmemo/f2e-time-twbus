@@ -222,7 +222,7 @@ export const BusRouteSearch = () => {
         </div>
         <div className='result-map'>
           {/* TODO 根據縣市去做顯示城市站點們 */}
-          <StreetMap id="street-map-init"
+          <StreetMap id="street-map-routes"
             initZoom={8}
             activeTab={0}
             flyToUserLoc={false}

@@ -11,6 +11,8 @@ import { MapColors } from "../../utils/color";
 import { useEffect, useRef } from "react";
 import { getUserLocation } from "../../utils/gps";
 import { BusStation } from "../../apis/useBusStopsNearByApi";
+import to_loc from '../../images/to_loc.svg';
+
 interface StreetMapData {
   id: string;
   stops?: Stop[] | undefined;
@@ -347,5 +349,11 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
 
 
 
-  return <div id={id} style={{ height: "100%" }} />;
+
+  return <div id={id} style={{ height: "100%" }} >
+    <div className="to-loc-icon" >
+      <img src={to_loc} alt="to_location" />
+    </div>
+  </div>
+
 };

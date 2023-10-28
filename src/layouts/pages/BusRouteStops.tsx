@@ -6,7 +6,6 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { getCityNameOrValue } from '../../utils/cities';
-import to_loc from '../../images/to_loc.svg';
 
 import useBusStopsApi, { BusStopsResult } from '../../apis/useBusStopsApi';
 import { useState } from 'react';
@@ -97,9 +96,7 @@ function Results({ result, route, fetchData, lang, city }:
 
       </div>
       <div className='result-map'>
-        <div className="to-user-loc-icon" >
-          <img src={to_loc} alt="to_loc" />
-        </div>
+
 
         {/* //TODO 更新站點的title不是整個地圖才是 */}
         {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}

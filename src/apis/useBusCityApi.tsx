@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useReducer } from 'react';
+import { useState, useEffect, useCallback, useReducer } from 'react';
 import axios, { AxiosError } from 'axios';
 
 import { cityRoutes_mock_data } from '../utils/mocks/mock';
@@ -95,7 +95,7 @@ const useBusCityApi = (query: BusRequestParam): [BusRouteResult, () => void] => 
         const filter = `contains(RouteUID,'${routeUID}')`
         url += `&%24filter=${filter}`
       }
-      // url += "&format=JSON"
+      url += "&format=JSON"
 
 
       try {
