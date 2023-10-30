@@ -48,7 +48,7 @@ $stop-action-height: 38px;
   .route-name {
     color: #000;
     font-family: Roboto;
-    font-size: 35px;
+    font-size: 3.5em;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -64,7 +64,7 @@ $stop-action-height: 38px;
 
   color: #000;
   font-family: 'Roboto';
-  font-size: 14px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -113,9 +113,7 @@ $stop-action-height: 38px;
 
   .active {
     color: $white;
-
     font-family: 'Roboto';
-    font-size: 15px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -182,9 +180,9 @@ $stop-action-height: 38px;
 
   .map-stop-name {
     font-family: 'Roboto';
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: 500;
-    line-height: 14px;
+    line-height: 1.4rem;
     letter-spacing: 0em;
     text-align: center;
   }
