@@ -1,5 +1,7 @@
-.link-container {
-  height: 38px;
+$stop-action-height: 38px;
+
+.stop-action {
+  height: $stop-action-height;
   display: flex;
   padding-left: 20px;
   padding-right: 20px;
@@ -27,27 +29,15 @@
 
 }
 
-.result-map {
-  position: relative;
 
-  .to-user-loc-icon {
-    position: absolute;
-    z-index: 499;
-    padding: 4px 4px;
-    background: #fff;
-    border-radius: 5px;
-    right: 11px;
-    bottom: 15%;
-  }
-}
 
 .result-stops {
 
-  width: 464px;
-  height: 690px;
+
+  height: calc(100% - $stop-action-height);
 
   .route-infos {
-    width: 464px;
+
     height: 80px;
     display: flex;
     justify-content: center;
@@ -71,7 +61,7 @@
 .refresh-bar {
   height: 50px;
   margin: 0;
-  width: 464px;
+
   color: #000;
   font-family: 'Roboto';
   font-size: 14px;
@@ -110,7 +100,7 @@
 .tab-buttons {
   overflow-x: scroll;
   overflow-y: hidden;
-  width: 464px;
+
 
   height: 60px;
   display: flex;
@@ -139,9 +129,9 @@
 .tab-contents {
 
   .tab-content {
-    width: 403px;
+
     height: 487px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     margin: 10px;
     padding: 10px;

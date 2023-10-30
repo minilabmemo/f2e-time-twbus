@@ -14,13 +14,13 @@ export const BusRouteSave = () => {
   const routesLiked = getRoutesLiked();
   const [activeTab, setActiveTab] = useState(0)
   return (
-    <div className='search'>
-      <section className='search-header'>
+    <div className='content'>
+      <section className='content-header'>
         <div className='breadcrumb'> 首頁/ 收藏路線</div>
 
       </section>
 
-      <section className='save-main'>
+      <section className='content-main center'>
         <div className='result-routes-save'>
           <div className="tab-buttons">
             <button

@@ -1,7 +1,5 @@
 
-import './styles/notosanstc.css';
-import './styles/notosans.css';
-import './styles/style.css';
+
 import { Header } from './layouts/header';
 import PetFinder from './layouts/pages/CityBusHome';
 import { Footer } from './layouts/Footer';
