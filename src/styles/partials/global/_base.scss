@@ -13,18 +13,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: $base-body-font-size;
+  //debug use
+  // @include pc-bigger-screen {  
+  //   background-color: blue;
+  // }
+
+  @include phone-480-screen {
+    font-size: $base-body-font-size-sm ;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 
 .base {
   background-color: $gray-bg;
-  width: 100%;
+  width: clamp(375px, 100%, 1440px);
   height: 100vh;
+  margin: auto;
 
 }
 
@@ -34,14 +39,7 @@ code {
 }
 
 
-
-
-
-
-
-
-
-
+//debug use
 // * {
 //   outline: 2px solid red;
 // }

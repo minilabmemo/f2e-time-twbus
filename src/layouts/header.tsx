@@ -6,6 +6,8 @@ import { theme } from '../styles/theme';
 import { ThemeProvider } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
 import { LinkNames, URI_SAVE_DEFAULT } from '../utils/const';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -55,6 +57,10 @@ export const Header = () => {
 
         </div>
 
+
+        <div className='phone-options'>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
 
       </div>
     </ThemeProvider >

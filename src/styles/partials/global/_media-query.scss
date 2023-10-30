@@ -1,127 +1,149 @@
- /*1201以上大螢幕*/
- @media screen and (min-width: $big-screen-min) {
-   //  html, body {
-   //    font-size: $font-size-xl;
-   //  }
+/*1201以上大螢幕*/
+@mixin pc-bigger-screen {
+  @media screen and (min-width: $big-screen-min) {
+    @content;
+  }
+}
+
+@mixin pc-small-screen {
+  @media screen and (max-width: $small-screen-max) {
+    @content;
+  }
+}
+
+@mixin phone-480-screen {
+  @media screen and (max-width: $phone-480) {
+    @content;
+  }
+}
+
+//EX : how to use
+// @include phone-480-screen {
+//  ...
+// }
 
 
-   .container {
-     max-width: 1440px;
-     margin: auto;
-   }
+/*1201以上大螢幕*/
+// @media screen and (min-width: $big-screen-min) {
+//   //  html, body {
+//   //    font-size: $font-size-xl;
+//   //  }
+
+//   .container {
+//     max-width: 1440px;
+//     margin: auto;
+//   }
+
+
+// }
+
+//  /*1200以下小螢幕*/
+//  @media screen and (max-width: $small-screen-max) {
+
+
+//    .container {
+//      width: 80%;
+//      margin: auto;
+//    }
+
+//    .search-button-with-ripple {
+//      height: auto !important;
+//    }
+
+//    .chart-status {
+//      flex-direction: column;
+//    }
+//  }
+
+//  @media all and (max-width: $ipad-mini-horizon) {
+
+//    body {
+//      font-size: $font-size-sm;
+//    }
+
+//    .info_img_block {
+//      display: none !important;
+//    }
+
+//    table {
+//      transform: scale(.8);
+//      transform-origin: top left;
+
+//    }
+
+
+//  }
+
+//  @media all and (max-width: $pad-962) {
+
+//    table {
+//      transform: scale(.7);
+//      transform-origin: top left;
+//    }
+
+//  }
+
+//  @media all and (max-width: $ipad-mini-vertical) {
+
+//    table {
+//      transform: scale(.6);
+//      transform-origin: top left;
+//    }
+
+//  }
+
+//  @media all and (max-width: $phone-480) {
+
+//    body {
+//      font-size: $font-size-sm;
+//      /*14*/
+//    }
+
+//    .info, .shelter {
+//      flex-direction: column !important;
+//      align-items: center !important;
+
+//      .shelter_img_block, .info_img_block {
+//        display: none !important;
+//      }
+
+//      .field-value {
+//        display: block;
+//      }
+
+//      .info_pet_block, .shelter_data_block {
+//        width: 100% !important;
+//        ;
+//      }
+
+//      ;
+//    }
 
 
 
-
- }
-
- //  /*1200以下小螢幕*/
- //  @media screen and (max-width: $small-screen-max) {
-
-
- //    .container {
- //      width: 80%;
- //      margin: auto;
- //    }
-
- //    .search-button-with-ripple {
- //      height: auto !important;
- //    }
-
- //    .chart-status {
- //      flex-direction: column;
- //    }
- //  }
-
- //  @media all and (max-width: $ipad-mini-horizon) {
-
- //    body {
- //      font-size: $font-size-sm;
- //    }
-
- //    .info_img_block {
- //      display: none !important;
- //    }
-
- //    table {
- //      transform: scale(.8);
- //      transform-origin: top left;
-
- //    }
+//    .container {
+//      width: 90%;
+//      margin: auto;
+//    }
 
 
- //  }
+//    .MuiSvgIcon-root {
+//      height: 10px !important;
+//      width: 10px !important;
+//    }
 
- //  @media all and (max-width: $pad-962) {
-
- //    table {
- //      transform: scale(.7);
- //      transform-origin: top left;
- //    }
-
- //  }
-
- //  @media all and (max-width: $ipad-mini-vertical) {
-
- //    table {
- //      transform: scale(.6);
- //      transform-origin: top left;
- //    }
-
- //  }
-
- //  @media all and (max-width: $phone-480) {
-
- //    body {
- //      font-size: $font-size-sm;
- //      /*14*/
- //    }
-
- //    .info, .shelter {
- //      flex-direction: column !important;
- //      align-items: center !important;
-
- //      .shelter_img_block, .info_img_block {
- //        display: none !important;
- //      }
-
- //      .field-value {
- //        display: block;
- //      }
-
- //      .info_pet_block, .shelter_data_block {
- //        width: 100% !important;
- //        ;
- //      }
-
- //      ;
- //    }
+//    .alignBlock {
+//      height: .1em !important;
+//    }
 
 
 
- //    .container {
- //      width: 90%;
- //      margin: auto;
- //    }
+//  }
 
+//  @media all and (max-width: $phone-360) {
 
- //    .MuiSvgIcon-root {
- //      height: 10px !important;
- //      width: 10px !important;
- //    }
-
- //    .alignBlock {
- //      height: .1em !important;
- //    }
-
-
-
- //  }
-
- //  @media all and (max-width: $phone-360) {
-
- //    body {
- //      font-size: $font-size-xs;
- //      /*12*/
- //    }
- //  }
+//    body {
+//      font-size: $font-size-xs;
+//      /*12*/
+//    }
+//  }

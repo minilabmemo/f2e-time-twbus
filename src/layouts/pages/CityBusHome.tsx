@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import main from '../../images//home_main.svg';
+import main from '../../images//home_main_phone.svg';
 import BusSvg from '../../components/Icons/BusSvg';
 import { IconColors } from '../../utils/color';
 import { NavLink } from 'react-router-dom';
@@ -9,13 +9,16 @@ const CityBusHome = () => {
   return (
     <>
       <section className="home-main">
-        <img className="city-icon" src={main} alt="main_photo" width={'100%'} />
-        {/* TBD */}
-        <div className="main-text">
-          <div >taiwan bus+</div>
-          <div >台 灣 公 車 動 態</div>
-          <div >時 刻 查 詢 系 統</div>
+        <div className='photo_wrap'>
+          <div className="main-text">
+            <div >taiwan bus+</div>
+            <div >台 灣 公 車 動 態</div>
+            <div >時 刻 查 詢 系 統</div>
+          </div>
         </div>
+
+        {/* TBD */}
+
       </section>
 
       <section className="home-cities">
@@ -63,6 +66,8 @@ const CityBusHome = () => {
           <div className="city-name-en">Other City</div>
         </NavLink>
       </section>
+
+
     </>
   );
 };
