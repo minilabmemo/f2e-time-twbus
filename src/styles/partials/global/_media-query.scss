@@ -11,6 +11,13 @@
   }
 }
 
+@mixin ipad-962-screen {
+  @media screen and (max-width: $pad-962) {
+    @content;
+  }
+}
+
+
 @mixin phone-480-screen {
   @media screen and (max-width: $phone-480) {
     @content;

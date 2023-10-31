@@ -135,7 +135,7 @@ $tab-buttons-height: 60px;
 }
 
 .tab-contents {
-  height: 487px;
+  height: calc(100% - $route-infos-height - $tab-buttons-height - $refresh-bar-height - $stop-action-height);
 
   @include phone-480-screen {
     height: calc(100% - $route-infos-height - $tab-buttons-height - $refresh-bar-height-small - $stop-action-height)

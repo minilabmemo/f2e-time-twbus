@@ -26,13 +26,16 @@ body {
 
 .base {
   background-color: #F5F6F6;
-  width: clamp(375px, 100%, 1440px);
   height: 100vh;
   margin: auto;
 }
 
 .container {
   height: 100vh;
+  width: clamp(320px, 100%, 1440px);
+  margin: auto;
+  overflow-x: auto;
+  overflow-y: auto;
   font-family: "Noto Sans";
 }
 
@@ -300,7 +303,6 @@ body {
   height: 100%;
   max-height: 464px;
   width: 100%;
-  overflow: hidden;
 }
 @media screen and (max-width: 480px) {
   .home-main {
@@ -410,7 +412,8 @@ body {
   font-weight: 400;
   overflow-x: auto;
   overflow-y: auto;
-  height: 80vh;
+  height: calc(100vh - 80px - 60px);
+  width: 100%;
   min-height: 630px;
 }
 @media screen and (max-width: 480px) {
@@ -442,6 +445,7 @@ body {
 .content-main {
   height: calc(100% - 36px);
   min-height: 630px;
+  width: 100%;
   background-color: #FFF;
   display: flex;
 }
@@ -703,7 +707,7 @@ body {
 }
 
 .gray-line {
-  width: 394px;
+  width: 100%;
   height: 1px;
   margin-bottom: 12px;
   background-color: #F5F6F6;
@@ -816,7 +820,7 @@ body {
 }
 
 .tab-contents {
-  height: 487px;
+  height: calc(100% - 80px - 60px - 50px - 38px);
 }
 @media screen and (max-width: 480px) {
   .tab-contents {
@@ -889,8 +893,9 @@ body {
 }
 
 .result-body {
-  padding: 2em;
+  padding: 2rem;
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
   overflow-y: auto;
 }
@@ -912,7 +917,7 @@ body {
 .result-stations .station .station-info .station-name {
   color: #000;
   font-family: "Roboto";
-  font-size: 2em;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;

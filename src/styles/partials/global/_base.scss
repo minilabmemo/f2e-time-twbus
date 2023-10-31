@@ -23,14 +23,16 @@ body {
 
 .base {
   background-color: $gray-bg;
-  width: clamp(375px, 100%, 1440px);
   height: 100vh;
   margin: auto;
-
 }
 
 .container {
   height: 100vh;
+  width: clamp(320px, 100%, 1440px);
+  margin: auto;
+  overflow-x: auto;
+  overflow-y: auto;
   font-family: $font-family;
 }
 
