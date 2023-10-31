@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans", "Noto Sans TC", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
@@ -70,7 +70,7 @@ body {
   justify-content: center;
   position: relative;
   flex-wrap: wrap;
-  z-index: 5;
+  z-index: 6;
 }
 @media screen and (max-width: 480px) {
   .header {
@@ -80,10 +80,17 @@ body {
 
 .brand {
   margin-left: 68px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  width: 162px;
+  height: 42px;
+}
+@media screen and (max-width: 480px) {
+  .brand.sidebar {
+    margin: 0px;
+    display: inline-block;
+    width: 143px;
+    height: 40px;
+    position: relative;
+  }
 }
 
 .nav {
@@ -108,6 +115,8 @@ body {
 
 .phone-options {
   display: none;
+  width: 24px;
+  height: 24px;
   position: relative;
   right: 1.5rem;
 }
@@ -150,7 +159,7 @@ body {
 /*let it to upper layer for clicking */
 .home-link {
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 .home-link img {
   max-width: 214px;
@@ -159,7 +168,79 @@ body {
 .brand-link {
   position: relative;
   left: 0;
-  z-index: 5;
+  z-index: 2;
+}
+
+.bg-blur {
+  height: 100%;
+  width: 100%;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.header-sidebar {
+  height: 100%;
+  width: 70vw;
+  background-color: #FFF;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.header-sidebar .box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #D5D5D5;
+}
+.header-sidebar .close_sidebar {
+  background-color: red;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.sidebar-nav .nav-link {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 16px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #D5D5D5;
+}
+
+.sidebar-lang {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  font-size: 1.2rem;
+}
+.sidebar-lang .active {
+  font-weight: 700;
+}
+.sidebar-lang img {
+  padding-right: 11px;
 }
 
 .footer {
@@ -377,7 +458,7 @@ body {
 }
 .content-main .result-map .to-loc-icon {
   position: absolute;
-  z-index: 499;
+  z-index: 5;
   background: #fff;
   border-radius: 5px;
   right: 11px;
