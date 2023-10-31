@@ -1,16 +1,22 @@
+$footer-height: 60px;
+$footer-height-small: 40px;
+
 .footer {
 
   background: $black-foot;
   width: 100%;
-  height: 60px;
+  height: $footer-height;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
+  @include phone-480-screen {
+    height: $footer-height-small;
+  }
+
   .footer-right {
     color: $white;
-
     margin: 0 auto;
   }
 }

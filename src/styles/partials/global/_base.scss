@@ -13,10 +13,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: $base-body-font-size;
-  //debug use
-  // @include pc-bigger-screen {  
-  //   background-color: blue;
-  // }
 
   @include phone-480-screen {
     font-size: $base-body-font-size-sm ;
@@ -36,6 +32,14 @@ body {
 .container {
   height: 100vh;
   font-family: $font-family;
+}
+
+.icon {
+  margin-right: 10px;
+
+  @include phone-480-screen {
+    margin-right: 6px;
+  }
 }
 
 

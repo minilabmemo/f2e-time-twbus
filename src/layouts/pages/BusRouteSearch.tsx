@@ -1,6 +1,6 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { ActionType, Dict, URI_SEARCH_DEFAULT, itemI, keyboardRouteList } from '../../utils/const';
+import { ActionType, Dict, URI_SEARCH_DEFAULT, itemI, keyboardRouteList, phone_media } from '../../utils/const';
 import { ResultErrorHint } from '../../utils/error';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,10 +9,13 @@ import { cityData, getCityNameOrValue } from '../../utils/cities';
 import useBusCityApi, { BusRouteResult } from '../../apis/useBusCityApi';
 import { RouteItem } from '../../components/base/RouteItem';
 import { StreetMap } from '../../components/base/StreetMap';
+import { useMediaQuery } from "@uidotdev/usehooks";
+import map_icon from "../../images/map.svg"
 
 
 export const BusRouteSearch = () => {
 
+  const isSmallDevice = useMediaQuery(phone_media);
 
   //TODO lang
   const inputRef = useRef<HTMLInputElement>(null);
@@ -23,12 +26,11 @@ export const BusRouteSearch = () => {
   }
   const [result] = useBusCityApi({ City: city, callAtInstall: callAtInstall });
 
-
-
   const [cityKeyboard, setCityKeyboard] = useState(false)
 
   const [routes, setRoutes] = useState(result)
-
+  const [phoneMapOpen, setMapOpen] = useState(false)
+  console.log("🚀 ~ file: BusRouteSearch.tsx:33 ~ BusRouteSearch ~ phoneMapOpen:", phoneMapOpen)
   // 當回傳 result 發現變化時，更新 路線顯示
   useEffect(() => {
     setRoutes(result);
@@ -42,9 +44,6 @@ export const BusRouteSearch = () => {
       if (inputRef.current) { //切換城市清空之前的關鍵字輸入
         inputRef.current.value = "";
       }
-
-
-
     };
 
     return (
@@ -136,12 +135,6 @@ export const BusRouteSearch = () => {
     );
   }
 
-
-
-
-
-
-
   function RoutesResult({ routes }: { routes: BusRouteResult }) {
 
 
@@ -207,27 +200,42 @@ export const BusRouteSearch = () => {
     <div className='content'>
       <section className='content-header'>
         <div className='breadcrumb'> 首頁/ {getCityNameOrValue(city, lang)}</div>
-        <div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>
+
+        {isSmallDevice ? (
+          <div className='mapBtn' onClick={() => setMapOpen(!phoneMapOpen)}>
+            <img src={map_icon} alt="map_icon" className='icon' />
+            {Dict.map[lang as keyof typeof Dict.map]}</div>
+        ) : (<div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>)}
       </section>
 
-      <section className='content-main'>
-        <div className='sidebar'>
+      <section className={`content-main ${isSmallDevice ? 'small' : ''}`}>
+        <div className={`sidebar ${phoneMapOpen ? 'hidden' : ""}`}>
           <input placeholder='請輸入關鍵字或使用鍵盤輸入站名' ref={inputRef} onChange={() => handleInputChange()}>
-            {/* TODO query icon */}
-          </input>
+
+          </input>  {/* TODO query icon */}
 
           <RoutesResult routes={routes} />
 
           <Keyboard city={city} />
         </div>
-        <div className='result-map'>
+        {phoneMapOpen && (<div className='result-map phone'>
+          {/* TODO 根據縣市去做顯示城市站點們 */}
+          <StreetMap id="street-map-routes-phone"
+            initZoom={8}
+            activeTab={0}
+            flyToUserLoc={false}
+          />
+        </div>)}
+
+        {isSmallDevice || (<div className='result-map'>
           {/* TODO 根據縣市去做顯示城市站點們 */}
           <StreetMap id="street-map-routes"
             initZoom={8}
             activeTab={0}
             flyToUserLoc={false}
           />
-        </div>
+        </div>)}
+
 
       </section>
 

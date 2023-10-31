@@ -1,5 +1,8 @@
+$header-height: 80px;
+$header-height-small: 67px;
+
 .header {
-  height: 80px;
+  height: $header-height;
   letter-spacing: normal;
   margin: 0 auto;
   color: $black;
@@ -14,6 +17,7 @@
   z-index: 6;
 
   @include phone-480-screen {
+    height: $header-height-small;
     justify-content: space-between;
   }
 }

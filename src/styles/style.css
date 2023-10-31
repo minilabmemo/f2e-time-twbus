@@ -36,6 +36,15 @@ body {
   font-family: "Noto Sans";
 }
 
+.icon {
+  margin-right: 10px;
+}
+@media screen and (max-width: 480px) {
+  .icon {
+    margin-right: 6px;
+  }
+}
+
 /*大於1200 大螢幕介面*/
 /*980~1200 低解析小螢幕*/
 /*iPad 橫放螢幕 寬1024 或是螢幕寬度1024 */
@@ -74,6 +83,7 @@ body {
 }
 @media screen and (max-width: 480px) {
   .header {
+    height: 67px;
     justify-content: space-between;
   }
 }
@@ -251,6 +261,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 480px) {
+  .footer {
+    height: 40px;
+  }
+}
 .footer .footer-right {
   color: #FFF;
   margin: 0 auto;
@@ -398,6 +413,13 @@ body {
   height: 80vh;
   min-height: 630px;
 }
+@media screen and (max-width: 480px) {
+  .content {
+    width: 100vw;
+    height: calc(100vh - 67px - 40px);
+    min-height: 500px;
+  }
+}
 
 .content-header {
   position: relative;
@@ -412,7 +434,7 @@ body {
   position: absolute;
   left: 66px;
 }
-.content-header .timetable {
+.content-header .timetable, .content-header .mapBtn {
   position: absolute;
   right: 66px;
 }
@@ -423,12 +445,27 @@ body {
   background-color: #FFF;
   display: flex;
 }
+@media screen and (max-width: 480px) {
+  .content-main {
+    min-height: 500px;
+  }
+}
 .content-main .sidebar {
   position: relative;
   width: 464px;
   flex-shrink: 0;
   box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.15);
   z-index: 5;
+}
+.content-main .sidebar.hidden {
+  display: none;
+}
+@media screen and (max-width: 480px) {
+  .content-main .sidebar {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+  }
 }
 .content-main .sidebar input {
   width: 90%;
@@ -446,6 +483,11 @@ body {
 }
 .content-main .sidebar input::placeholder {
   opacity: 1;
+}
+@media screen and (max-width: 480px) {
+  .content-main .sidebar input {
+    width: 80%;
+  }
 }
 .content-main .result-map {
   background-color: #3591C5;
@@ -470,6 +512,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.content-main .result-map.phone {
+  width: 100%;
 }
 
 .city-link, .route-link {
@@ -498,6 +543,17 @@ body {
 .keyboard.false {
   padding: 26px 50px;
 }
+@media screen and (max-width: 480px) {
+  .keyboard.false {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .keyboard {
+    padding: 0;
+    height: 260px;
+  }
+}
 .keyboard .city-option {
   display: flex;
   justify-content: center;
@@ -509,8 +565,10 @@ body {
   border-radius: 10px;
   color: #FFF;
 }
-.keyboard .city-option .icon {
-  margin-right: 10px;
+@media screen and (max-width: 480px) {
+  .keyboard .city-option {
+    width: 300px;
+  }
 }
 .keyboard .routes.disable_routes {
   width: 380px;
@@ -525,6 +583,11 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 480px) {
+  .keyboard .routes, .keyboard .cities-keyboard {
+    width: 310px;
+  }
+}
 .keyboard .routes .btn, .keyboard .cities-keyboard .btn {
   display: flex;
   justify-content: center;
@@ -535,6 +598,13 @@ body {
   height: 38px;
   flex-shrink: 0;
   background-color: #D5D5D5;
+}
+@media screen and (max-width: 480px) {
+  .keyboard .routes .btn, .keyboard .cities-keyboard .btn {
+    width: 50px;
+    height: 30px;
+    margin: 6px;
+  }
 }
 .keyboard .routes .btn-grad, .keyboard .cities-keyboard .btn-grad {
   background-color: #D5D5D5;
@@ -596,7 +666,7 @@ body {
 .route .route-info .route-name {
   color: #000;
   font-family: "Roboto";
-  font-size: 2em;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -668,7 +738,12 @@ body {
 }
 
 .result-stops {
-  height: calc(100% - 38px);
+  height: calc(100% - 38px - 36px);
+}
+@media screen and (max-width: 480px) {
+  .result-stops {
+    height: calc(100% - 36px);
+  }
 }
 .result-stops .route-infos {
   height: 80px;
@@ -679,7 +754,7 @@ body {
 .result-stops .route-name {
   color: #000;
   font-family: Roboto;
-  font-size: 3.5em;
+  font-size: 3.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -695,6 +770,11 @@ body {
   font-weight: 400;
   line-height: normal;
   border-top: 2px #F5F6F6 solid;
+}
+@media screen and (max-width: 480px) {
+  .refresh-bar {
+    height: 37px;
+  }
 }
 .refresh-bar .countdown-line {
   height: 2px;
@@ -735,8 +815,16 @@ body {
   border-radius: 5px 5px 0px 0px;
 }
 
-.tab-contents .tab-content {
+.tab-contents {
   height: 487px;
+}
+@media screen and (max-width: 480px) {
+  .tab-contents {
+    height: calc(100% - 80px - 60px - 37px - 38px);
+  }
+}
+.tab-contents .tab-content {
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   margin: 10px;
