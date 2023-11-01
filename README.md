@@ -4,7 +4,7 @@
   -   web版 (1440px)
 <img src="./demo_web.png" >
   - phone 版（375px）
-
+<img src="./demo_phone.png" >
 ----
 
 
