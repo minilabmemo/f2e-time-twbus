@@ -27,8 +27,8 @@ const CityBusHome = () => {
 
           <div className="city-icon"> <BusSvg width="5.1rem" height="5.1rem" fill={IconColors.blackFont} /></div>
 
-          <div className="city-name">台北市/新北市 </div>
-          <div className="city-name-en"> Taipei/New Taipei </div>
+          <div className="city-name">台北市 </div>
+          <div className="city-name-en"> Taipei </div>
 
         </NavLink>
 
