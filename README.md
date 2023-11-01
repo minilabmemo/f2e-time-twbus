@@ -1,7 +1,9 @@
 # f2e-time-twbus
 
-- 作品畫面(電腦版)
+- 作品畫面
+  -   web版 (1440px)
 <img src="./demo_web.png" >
+  - phone 版（375px）
 
 ----
 

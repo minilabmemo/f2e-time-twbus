@@ -12,17 +12,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   font-size: $base-body-font-size;
 
   @include phone-screen {
     font-size: $base-body-font-size-sm ;
+  }
+
+  @include phone-small-screen {
+    font-size: $base-body-font-size-xsm ;
   }
 }
 
 
 
 .base {
-  background-color: $gray-bg;
+  background-color: rgb(236, 235, 234);
   height: 100vh;
   margin: auto;
 }
