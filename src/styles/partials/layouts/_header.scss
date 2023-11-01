@@ -1,6 +1,8 @@
+$header-height: 80px;
+$header-height-small: 67px;
+
 .header {
-  height: 80px;
-  font-size: .8rem;
+  height: $header-height;
   letter-spacing: normal;
   margin: 0 auto;
   color: $black;
@@ -12,15 +14,32 @@
   justify-content: center;
   position: relative;
   flex-wrap: wrap;
-  z-index: 5
+  z-index: 6;
+
+  @include phone-screen {
+    height: $header-height-small;
+    justify-content: space-between;
+
+  }
 }
 
 .brand {
-  margin-left: 68px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  margin-left: 3rem;
+  width: 162px;
+  height: 42px;
+
+
+  &.sidebar {
+    @include phone-screen {
+      margin: 0px;
+      display: inline-block;
+      width: 143px;
+      height: 40px;
+      position: relative;
+
+    }
+  }
+
 }
 
 .nav {
@@ -38,10 +57,34 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  @include phone-screen {
+    display: none;
+  }
+
+}
+
+.phone-options {
+  display: none;
+  width: 24px;
+  height: 24px;
+
+
+  @include phone-screen {
+    display: unset;
+  }
+
+  position: relative;
+  right: 1.5rem;
 }
 
 .lang {
-  right: 1.5rem;
+  @include phone-screen {
+    display: none;
+  }
+
+  position: relative;
+  right: 3rem;
 
   display: flex;
   flex-direction: row;
@@ -61,8 +104,6 @@
   margin: 1.5rem;
   color: $black;
   text-decoration: none;
-  font-size: .8rem;
-
 
 }
 
@@ -74,7 +115,7 @@
 /*let it to upper layer for clicking */
 .home-link {
   position: relative;
-  z-index: 3;
+  z-index: 1;
 
   img {
     max-width: 214px;
@@ -88,123 +129,85 @@
 .brand-link {
   position: relative;
   left: 0;
-  z-index: 5;
+  z-index: 2;
 }
 
 
-/* media */
-@media screen and (min-width: $big-screen-min) {
-  .brand {
-    width: 214px;
-    height: 52px;
-    left: 3px;
-
-    .home-link {
-      img {
-        width: 100%;
-      }
-    }
-
-  }
-
-
-
-  .brand,
-  .lang,
-  .about-image {
-    position: absolute;
-
-  }
-
-
-
-
+.bg-blur {
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 3;
 }
 
+.header-sidebar {
+  height: 100%;
+  width: 70vw;
+  background-color: $white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
 
-@media screen and (max-width: $small-screen-max) {
-
-  .brand {
-    width: 214px;
-    height: 52px;
-    left: 3px;
-
-    .home-link {
-      img {
-        width: 100%;
-      }
-    }
-
+  .box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: $gray-btn;
   }
 
+  .close_sidebar {
+    background-color: red;
 
 
-
-
-
-
-
+  }
 }
 
-@media all and (max-width: $ipad-mini-horizon) {
-  .brand {
-    top: 0;
-    margin: 10px;
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
 
-    .home-link {
-      img {
-        width: 80%;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
 
-      }
-    }
-
+  .nav-link {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 16px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: $gray-btn;
   }
-
-
-
-
-  .brand,
-  .lang,
-  .about-image {
-    position: relative;
-    top: 0;
-    margin: 10px;
-  }
-
 
 
 }
 
-@media all and (max-width: $phone-480) {
-  .brand {
-    width: 150px;
-    height: 20px;
-    left: 3px;
-    margin: 8px;
+.sidebar-lang {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  font-size: 1.2rem;
 
-    .home-link {
-      img {
-        width: 100%;
-      }
-    }
+  .active {
+    font-weight: 700;
   }
 
-
-  .nav,
-  .lang,
-  .about-image {
-    margin: 8px;
+  img {
+    padding-right: 11px;
   }
-
-}
-
-@media all and (max-width: $phone-360) {
-
-  .lang {
-    width: 8.5em;
-
-  }
-
-
-
 }

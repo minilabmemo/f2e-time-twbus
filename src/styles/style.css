@@ -1,31 +1,56 @@
 @charset "UTF-8";
+/*1201以上大螢幕*/
 /*大於1200 大螢幕介面*/
 /*980~1200 低解析小螢幕*/
 /*iPad 橫放螢幕 寬1024 或是螢幕寬度1024 */
 /* Pad 962px*/
 /*iPad 橫放螢幕 寬768px */
+/*576px 手機螢幕*/
 /*480px 手機螢幕*/
 /*360px 手機螢幕*/
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  font-size: 62.5%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans", "Noto Sans TC", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
+}
+@media screen and (max-width: 576px) {
+  body {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 360px) {
+  body {
+    font-size: 1.2rem;
+  }
 }
 
 .base {
-  background-color: #F5F6F6;
-  width: 100%;
+  background-color: rgb(236, 235, 234);
   height: 100vh;
-  font-size: 20px;
+  margin: auto;
 }
 
 .container {
   height: 100vh;
+  width: clamp(320px, 100%, 1440px);
+  margin: auto;
+  overflow-x: auto;
+  overflow-y: auto;
   font-family: "Noto Sans";
+}
+
+.icon {
+  margin-right: 10px;
+}
+@media screen and (max-width: 576px) {
+  .icon {
+    margin-right: 6px;
+  }
 }
 
 /*大於1200 大螢幕介面*/
@@ -33,91 +58,9 @@ code {
 /*iPad 橫放螢幕 寬1024 或是螢幕寬度1024 */
 /* Pad 962px*/
 /*iPad 橫放螢幕 寬768px */
+/*576px 手機螢幕*/
 /*480px 手機螢幕*/
 /*360px 手機螢幕*/
-/*1201以上大螢幕*/
-@media screen and (min-width: 1201px) {
-  html, body {
-    font-size: 20px;
-  }
-  .container {
-    max-width: 1440px;
-    margin: auto;
-  }
-}
-/*1200以下小螢幕*/
-@media screen and (max-width: 1200px) {
-  .container {
-    width: 80%;
-    margin: auto;
-  }
-  .search-button-with-ripple {
-    height: auto !important;
-  }
-  .chart-status {
-    flex-direction: column;
-  }
-}
-@media all and (max-width: 1024px) {
-  body {
-    font-size: 14px;
-  }
-  .info_img_block {
-    display: none !important;
-  }
-  table {
-    transform: scale(0.8);
-    transform-origin: top left;
-  }
-}
-@media all and (max-width: 962px) {
-  table {
-    transform: scale(0.7);
-    transform-origin: top left;
-  }
-}
-@media all and (max-width: 768px) {
-  table {
-    transform: scale(0.6);
-    transform-origin: top left;
-  }
-}
-@media all and (max-width: 480px) {
-  body {
-    font-size: 14px;
-    /*14*/
-  }
-  .info, .shelter {
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-  .info .shelter_img_block, .info .info_img_block, .shelter .shelter_img_block, .shelter .info_img_block {
-    display: none !important;
-  }
-  .info .field-value, .shelter .field-value {
-    display: block;
-  }
-  .info .info_pet_block, .info .shelter_data_block, .shelter .info_pet_block, .shelter .shelter_data_block {
-    width: 100% !important;
-  }
-  .container {
-    width: 90%;
-    margin: auto;
-  }
-  .MuiSvgIcon-root {
-    height: 10px !important;
-    width: 10px !important;
-  }
-  .alignBlock {
-    height: 0.1em !important;
-  }
-}
-@media all and (max-width: 360px) {
-  body {
-    font-size: 12px;
-    /*12*/
-  }
-}
 .spinner {
   width: 56px;
   height: 56px;
@@ -134,7 +77,6 @@ code {
 }
 .header {
   height: 80px;
-  font-size: 0.8rem;
   letter-spacing: normal;
   margin: 0 auto;
   color: #000;
@@ -146,15 +88,28 @@ code {
   justify-content: center;
   position: relative;
   flex-wrap: wrap;
-  z-index: 5;
+  z-index: 6;
+}
+@media screen and (max-width: 576px) {
+  .header {
+    height: 67px;
+    justify-content: space-between;
+  }
 }
 
 .brand {
-  margin-left: 68px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  margin-left: 3rem;
+  width: 162px;
+  height: 42px;
+}
+@media screen and (max-width: 576px) {
+  .brand.sidebar {
+    margin: 0px;
+    display: inline-block;
+    width: 143px;
+    height: 40px;
+    position: relative;
+  }
 }
 
 .nav {
@@ -171,13 +126,37 @@ code {
   font-weight: 400;
   line-height: normal;
 }
+@media screen and (max-width: 576px) {
+  .nav {
+    display: none;
+  }
+}
+
+.phone-options {
+  display: none;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  right: 1.5rem;
+}
+@media screen and (max-width: 576px) {
+  .phone-options {
+    display: unset;
+  }
+}
 
 .lang {
-  right: 1.5rem;
+  position: relative;
+  right: 3rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+@media screen and (max-width: 576px) {
+  .lang {
+    display: none;
+  }
 }
 .lang .active {
   font-weight: 700;
@@ -190,7 +169,6 @@ code {
   margin: 1.5rem;
   color: #000;
   text-decoration: none;
-  font-size: 0.8rem;
 }
 
 .nav-link.active {
@@ -200,7 +178,7 @@ code {
 /*let it to upper layer for clicking */
 .home-link {
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 .home-link img {
   max-width: 214px;
@@ -209,94 +187,97 @@ code {
 .brand-link {
   position: relative;
   left: 0;
-  z-index: 5;
+  z-index: 2;
 }
 
-/* media */
-@media screen and (min-width: 1201px) {
-  .brand {
-    width: 214px;
-    height: 52px;
-    left: 3px;
-  }
-  .brand .home-link img {
-    width: 100%;
-  }
-  .brand,
-  .lang,
-  .about-image {
-    position: absolute;
-  }
+.bg-blur {
+  height: 100%;
+  width: 100%;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 3;
 }
-@media screen and (max-width: 1200px) {
-  .brand {
-    width: 214px;
-    height: 52px;
-    left: 3px;
-  }
-  .brand .home-link img {
-    width: 100%;
-  }
+
+.header-sidebar {
+  height: 100%;
+  width: 70vw;
+  background-color: #FFF;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
-@media all and (max-width: 1024px) {
-  .brand {
-    top: 0;
-    margin: 10px;
-  }
-  .brand .home-link img {
-    width: 80%;
-  }
-  .brand,
-  .lang,
-  .about-image {
-    position: relative;
-    top: 0;
-    margin: 10px;
-  }
+.header-sidebar .box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #D5D5D5;
 }
-@media all and (max-width: 480px) {
-  .brand {
-    width: 150px;
-    height: 20px;
-    left: 3px;
-    margin: 8px;
-  }
-  .brand .home-link img {
-    width: 100%;
-  }
-  .nav,
-  .lang,
-  .about-image {
-    margin: 8px;
-  }
+.header-sidebar .close_sidebar {
+  background-color: red;
 }
-@media all and (max-width: 360px) {
-  .lang {
-    width: 8.5em;
-  }
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
 }
+.sidebar-nav .nav-link {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 16px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #D5D5D5;
+}
+
+.sidebar-lang {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  font-size: 1.2rem;
+}
+.sidebar-lang .active {
+  font-weight: 700;
+}
+.sidebar-lang img {
+  padding-right: 11px;
+}
+
 .footer {
   background: #444444;
   width: 100%;
-  height: 59px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+@media screen and (max-width: 576px) {
+  .footer {
+    height: 40px;
+  }
+}
 .footer .footer-right {
   color: #FFF;
   margin: 0 auto;
-}
-
-.home-main {
-  position: relative;
-}
-.home-main .main-text {
-  writing-mode: vertical-lr;
-  position: absolute;
-  left: 150px;
-  top: 100px;
-  color: #FFF;
 }
 
 .city-color-black {
@@ -323,13 +304,62 @@ code {
   color: #52797C;
 }
 
+.home-main {
+  background-color: rgb(216, 216, 236);
+  height: 100%;
+  max-height: 464px;
+  width: 100%;
+}
+@media screen and (max-width: 576px) {
+  .home-main {
+    max-height: 213px;
+  }
+}
+.home-main .photo_wrap {
+  position: relative;
+  overflow: hidden;
+  background-image: url("../images/home_main.svg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  max-height: 464px;
+  background-repeat: no-repeat;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+@media screen and (max-width: 576px) {
+  .home-main .photo_wrap {
+    background-image: url("../images/home_main_phone.svg");
+  }
+}
+.home-main .photo_wrap .main-text {
+  writing-mode: vertical-lr;
+  position: absolute;
+  left: 12%;
+  top: 20%;
+  color: #FFF;
+  font-size: 2.6rem;
+}
+@media screen and (max-width: 576px) {
+  .home-main .photo_wrap .main-text {
+    font-size: 1.8rem;
+  }
+}
+
 .home-cities {
   background-color: #F5F6F6;
   width: 100%;
-  height: 218px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+@media screen and (max-width: 576px) {
+  .home-cities {
+    flex-wrap: wrap;
+    height: calc(100vh - 213px - 67px - 40px);
+  }
 }
 .home-cities .city-card {
   margin: 1rem;
@@ -343,13 +373,21 @@ code {
   align-items: center;
   border-radius: 16px;
 }
+@media screen and (max-width: 576px) {
+  .home-cities .city-card {
+    width: 40%;
+    height: 16vh;
+    max-height: 25%;
+  }
+}
 .home-cities .city-card .city-icon {
-  margin: 0.5em 1.5rem;
+  margin: 0.5rem 1.5rem;
+  height: 5.1rem;
+  width: 5.1rem;
 }
 .home-cities .city-card .city-name {
-  margin-bottom: 6px;
+  margin-bottom: 0.6rem;
   font-family: "Noto Sans";
-  font-size: 0.8rem;
   font-weight: 700;
   line-height: 1.1rem;
   letter-spacing: 0em;
@@ -357,11 +395,16 @@ code {
 }
 .home-cities .city-card .city-name-en {
   font-family: "Noto Sans";
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0em;
   text-align: center;
+}
+@media screen and (max-width: 576px) {
+  .home-cities .city-card .city-name-en {
+    font-size: 1rem;
+  }
 }
 
 .result-loading {
@@ -375,13 +418,21 @@ code {
 
 .content {
   font-family: "Noto Sans";
-  font-size: 12px;
+  font-size: 1.2rem;
   font-style: normal;
   font-weight: 400;
   overflow-x: auto;
   overflow-y: auto;
-  height: 80vh;
+  height: calc(100vh - 80px - 60px);
+  width: 100%;
   min-height: 630px;
+}
+@media screen and (max-width: 576px) {
+  .content {
+    width: 100vw;
+    height: calc(100vh - 67px - 40px);
+    min-height: 500px;
+  }
 }
 
 .content-header {
@@ -395,18 +446,24 @@ code {
 }
 .content-header .breadcrumb {
   position: absolute;
-  left: 66px;
+  left: 3rem;
 }
-.content-header .timetable {
+.content-header .timetable, .content-header .mapBtn {
   position: absolute;
-  right: 66px;
+  right: 3rem;
 }
 
 .content-main {
   height: calc(100% - 36px);
   min-height: 630px;
+  width: 100%;
   background-color: #FFF;
   display: flex;
+}
+@media screen and (max-width: 576px) {
+  .content-main {
+    min-height: 500px;
+  }
 }
 .content-main .sidebar {
   position: relative;
@@ -414,6 +471,16 @@ code {
   flex-shrink: 0;
   box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.15);
   z-index: 5;
+}
+.content-main .sidebar.hidden {
+  display: none;
+}
+@media screen and (max-width: 576px) {
+  .content-main .sidebar {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+  }
 }
 .content-main .sidebar input {
   width: 90%;
@@ -432,6 +499,11 @@ code {
 .content-main .sidebar input::placeholder {
   opacity: 1;
 }
+@media screen and (max-width: 576px) {
+  .content-main .sidebar input {
+    width: 80%;
+  }
+}
 .content-main .result-map {
   background-color: #3591C5;
   -webkit-backdrop-filter: invert(80%);
@@ -443,7 +515,7 @@ code {
 }
 .content-main .result-map .to-loc-icon {
   position: absolute;
-  z-index: 499;
+  z-index: 5;
   background: #fff;
   border-radius: 5px;
   right: 11px;
@@ -455,6 +527,9 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.content-main .result-map.phone {
+  width: 100%;
 }
 
 .city-link, .route-link {
@@ -483,6 +558,17 @@ code {
 .keyboard.false {
   padding: 26px 50px;
 }
+@media screen and (max-width: 576px) {
+  .keyboard.false {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 576px) {
+  .keyboard {
+    padding: 0;
+    height: 260px;
+  }
+}
 .keyboard .city-option {
   display: flex;
   justify-content: center;
@@ -494,8 +580,10 @@ code {
   border-radius: 10px;
   color: #FFF;
 }
-.keyboard .city-option .icon {
-  margin-right: 10px;
+@media screen and (max-width: 576px) {
+  .keyboard .city-option {
+    width: 300px;
+  }
 }
 .keyboard .routes.disable_routes {
   width: 380px;
@@ -510,6 +598,11 @@ code {
   display: flex;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 576px) {
+  .keyboard .routes, .keyboard .cities-keyboard {
+    width: 310px;
+  }
+}
 .keyboard .routes .btn, .keyboard .cities-keyboard .btn {
   display: flex;
   justify-content: center;
@@ -520,6 +613,13 @@ code {
   height: 38px;
   flex-shrink: 0;
   background-color: #D5D5D5;
+}
+@media screen and (max-width: 576px) {
+  .keyboard .routes .btn, .keyboard .cities-keyboard .btn {
+    width: 50px;
+    height: 30px;
+    margin: 6px;
+  }
 }
 .keyboard .routes .btn-grad, .keyboard .cities-keyboard .btn-grad {
   background-color: #D5D5D5;
@@ -581,7 +681,7 @@ code {
 .route .route-info .route-name {
   color: #000;
   font-family: "Roboto";
-  font-size: 20px;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -589,7 +689,7 @@ code {
 .route .route-info .route-direction {
   color: #888;
   font-family: "Noto Sans";
-  font-size: 14px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -611,14 +711,14 @@ code {
 .route .route-action .route-city {
   color: #888;
   font-family: "Noto Sans";
-  font-size: 14px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
 .gray-line {
-  width: 394px;
+  width: 100%;
   height: 1px;
   margin-bottom: 12px;
   background-color: #F5F6F6;
@@ -653,7 +753,12 @@ code {
 }
 
 .result-stops {
-  height: calc(100% - 38px);
+  height: calc(100% - 38px - 36px);
+}
+@media screen and (max-width: 576px) {
+  .result-stops {
+    height: calc(100% - 36px);
+  }
 }
 .result-stops .route-infos {
   height: 80px;
@@ -664,7 +769,7 @@ code {
 .result-stops .route-name {
   color: #000;
   font-family: Roboto;
-  font-size: 35px;
+  font-size: 3.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -675,11 +780,16 @@ code {
   margin: 0;
   color: #000;
   font-family: "Roboto";
-  font-size: 14px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   border-top: 2px #F5F6F6 solid;
+}
+@media screen and (max-width: 576px) {
+  .refresh-bar {
+    height: 37px;
+  }
 }
 .refresh-bar .countdown-line {
   height: 2px;
@@ -713,7 +823,6 @@ code {
 .tab-buttons .active {
   color: #FFF;
   font-family: "Roboto";
-  font-size: 15px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -721,8 +830,16 @@ code {
   border-radius: 5px 5px 0px 0px;
 }
 
+.tab-contents {
+  height: calc(100% - 80px - 60px - 50px - 38px);
+}
+@media screen and (max-width: 576px) {
+  .tab-contents {
+    height: calc(100% - 80px - 60px - 37px - 38px);
+  }
+}
 .tab-contents .tab-content {
-  height: 487px;
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   margin: 10px;
@@ -759,9 +876,9 @@ code {
 
 .map-stop-tooltip .map-stop-name {
   font-family: "Roboto";
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 500;
-  line-height: 14px;
+  line-height: 1.4rem;
   letter-spacing: 0em;
   text-align: center;
 }
@@ -787,8 +904,9 @@ code {
 }
 
 .result-body {
-  padding: 20px;
+  padding: 2rem;
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
   overflow-y: auto;
 }
@@ -810,13 +928,13 @@ code {
 .result-stations .station .station-info .station-name {
   color: #000;
   font-family: "Roboto";
-  font-size: 20px;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 }
 .result-stations .station-stop-num {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
   color: #888;
 }

@@ -61,6 +61,11 @@ export const BusRouteStopsNearBy = () => {
   //TODO 詳細路線串接待確認  距離如何計算也待確認
   function NearByResult({ result }: { result: BusStationResult }) {
 
+    function handleHint() {
+      alert("詳細資訊，後端資訊尚未完成，請至站點查詢。")
+    }
+
+
     return (
       <div className='result-body'>
         <ResultErrorHint status={result.status} error={result.error} total={result.total} />
@@ -69,7 +74,7 @@ export const BusRouteStopsNearBy = () => {
           <div className="result-stations">
             {result.records.map((item, index) => (
               <div key={index}>
-                <span key={index} className='station' onClick={() => { alert("詳細資訊，後端資訊尚未完成，請至站點查詢。") }}>
+                <span key={index} className='station' onClick={() => handleHint()}>
                   <div className='station-info'>
                     <div className='station-name'> {item.StationName.Zh_tw}</div>
                     <div className='station-stop-num'> {item.Stops.length}個路線</div>

@@ -11,6 +11,7 @@ export const Dict = {
 
   home: { zh: "首頁", en: "home" },
   timetable: { zh: "時刻表 ", en: "Time Table" },
+  map: { zh: "地圖 ", en: "Map" },
 };
 
 
@@ -128,4 +129,6 @@ export function statusDefine(status: number, estimateTime: number | null) {
   }
   return ['未知', StatusColorType.gray];
 }
+
+
 

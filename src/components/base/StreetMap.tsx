@@ -361,7 +361,7 @@ export const StreetMap: React.FC<StreetMapData> = ({ id, stops, busN1EstimateTim
 
 
 
-  return <div id={id} style={{ height: "100%" }} >
+  return <div id={id} style={{ height: "100%", width: "100vw", maxWidth: "100%" }} >
     <div className="to-loc-icon" onClick={panToUserLocation}>
       <img src={to_loc} alt="to_location" />
     </div>

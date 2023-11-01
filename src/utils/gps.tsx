@@ -24,6 +24,9 @@ export async function getUserLocation(): Promise<{ userLat: number; userLng: num
         (position) => {
           const userLat = position.coords.latitude;
           const userLng = position.coords.longitude;
+          // const userLat = 25.03418; test
+          // const userLng = 121.564517 test
+
           resolve({ userLat, userLng });
         },
         (error) => {

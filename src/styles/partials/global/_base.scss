@@ -1,0 +1,60 @@
+@import './variables';
+
+
+html {
+  font-size: $base-font-size;
+}
+
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans', 'Noto Sans TC', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-size: $base-body-font-size;
+
+  @include phone-screen {
+    font-size: $base-body-font-size-sm ;
+  }
+
+  @include phone-small-screen {
+    font-size: $base-body-font-size-xsm ;
+  }
+}
+
+
+
+.base {
+  background-color: rgb(236, 235, 234);
+  height: 100vh;
+  margin: auto;
+}
+
+.container {
+  height: 100vh;
+  width: clamp(320px, 100%, 1440px);
+  margin: auto;
+  overflow-x: auto;
+  overflow-y: auto;
+  font-family: $font-family;
+}
+
+.icon {
+  margin-right: 10px;
+
+  @include phone-screen {
+    margin-right: 6px;
+  }
+}
+
+
+//debug use
+// * {
+//   outline: 2px solid red;
+// }
+
+// * {
+//   background-color: rgb(0 100 0/0.1);
+// }

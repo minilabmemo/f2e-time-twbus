@@ -1,4 +1,5 @@
 $stop-action-height: 38px;
+$stop-action-height-small: 36px;
 
 .stop-action {
   height: $stop-action-height;
@@ -30,14 +31,17 @@ $stop-action-height: 38px;
 }
 
 
+$route-infos-height: 80px;
 
 .result-stops {
 
+  height: calc(100% - $stop-action-height - $stop-action-height-small);
 
-  height: calc(100% - $stop-action-height);
+  @include phone-screen {
+    height: calc(100% - $stop-action-height-small);
+  }
 
   .route-infos {
-
     height: 80px;
     display: flex;
     justify-content: center;
@@ -48,7 +52,7 @@ $stop-action-height: 38px;
   .route-name {
     color: #000;
     font-family: Roboto;
-    font-size: 35px;
+    font-size: 3.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -57,18 +61,24 @@ $stop-action-height: 38px;
 
 }
 
+$refresh-bar-height: 50px;
+$refresh-bar-height-small: 37px;
 
 .refresh-bar {
-  height: 50px;
+  height: $refresh-bar-height;
   margin: 0;
 
   color: #000;
   font-family: 'Roboto';
-  font-size: 14px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   border-top: 2px $gray-bg solid;
+
+  @include phone-screen {
+    height: $refresh-bar-height-small;
+  }
 
   .countdown-line {
     height: 2px;
@@ -97,12 +107,12 @@ $stop-action-height: 38px;
 
 }
 
+$tab-buttons-height: 60px;
+
 .tab-buttons {
   overflow-x: scroll;
   overflow-y: hidden;
-
-
-  height: 60px;
+  height: $tab-buttons-height;
   display: flex;
 
   .tab-button {
@@ -113,9 +123,7 @@ $stop-action-height: 38px;
 
   .active {
     color: $white;
-
     font-family: 'Roboto';
-    font-size: 15px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -127,10 +135,15 @@ $stop-action-height: 38px;
 }
 
 .tab-contents {
+  height: calc(100% - $route-infos-height - $tab-buttons-height - $refresh-bar-height - $stop-action-height);
+
+  @include phone-screen {
+    height: calc(100% - $route-infos-height - $tab-buttons-height - $refresh-bar-height-small - $stop-action-height)
+  }
 
   .tab-content {
+    height: 100%;
 
-    height: 487px;
     overflow-y: auto;
     overflow-x: hidden;
     margin: 10px;
@@ -140,6 +153,8 @@ $stop-action-height: 38px;
     .stop {
       height: 42px;
     }
+
+
   }
 }
 
@@ -182,9 +197,9 @@ $stop-action-height: 38px;
 
   .map-stop-name {
     font-family: 'Roboto';
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: 500;
-    line-height: 14px;
+    line-height: 1.4rem;
     letter-spacing: 0em;
     text-align: center;
   }

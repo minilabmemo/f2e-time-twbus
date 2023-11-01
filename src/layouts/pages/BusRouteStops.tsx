@@ -1,6 +1,7 @@
 
 import { NavLink, useParams } from 'react-router-dom';
 import { Dict, URI_SEARCH, statusDefine } from '../../utils/const';
+import { phone_media } from '../../utils/media_query';
 import { ResultErrorHint } from '../../utils/error';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,15 +14,16 @@ import "leaflet/dist/leaflet.css";
 import { StreetMap } from '../../components/base/StreetMap';
 import { RefreshBar } from '../../components/base/RefreshBar';
 import { RouteSaveAction } from '../../components/base/RouteSaveAction';
-
+import map_icon from "../../images/map.svg"
+import { useMediaQuery } from "@uidotdev/usehooks";
 //TODO 捲軸紀錄以免更新後回到上方
-function Results({ result, route, fetchData, lang, city }:
-  { result: BusStopsResult, route: string, fetchData: () => void, lang: string, city: string }) {
+function Results({ result, route, fetchData, lang, city, isSmallDevice, phoneMapOpen }:
+  { result: BusStopsResult, route: string, fetchData: () => void, lang: string, city: string, isSmallDevice: boolean, phoneMapOpen: boolean }) {
   const routeUID = getRouteUID(result, route) || "";
   const [activeTab, setActiveTab] = useState(0);
   return (
     <>
-      <div className='sidebar'>
+      <div className={`sidebar ${phoneMapOpen ? 'hidden' : ""}`}>
         <div className="stop-action ">
           <NavLink to={calculateSearchURL({ lang, city, })} className="return-search-link">
             <FontAwesomeIcon icon={faChevronLeft} className='icon' /> 返回搜尋
@@ -40,7 +42,7 @@ function Results({ result, route, fetchData, lang, city }:
           </div>
           {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
           {(result.status === 200) && (
-            <div>
+            <>
               <div className="tab-buttons">
                 {result.results?.BusStopOfRoutes.map((item, index) => (
                   <span key={index}>
@@ -85,7 +87,7 @@ function Results({ result, route, fetchData, lang, city }:
                     </div>)
                 ))}
               </div>
-            </div>
+            </>
 
 
 
@@ -95,9 +97,19 @@ function Results({ result, route, fetchData, lang, city }:
         </div >
 
       </div>
-      <div className='result-map'>
 
-
+      {phoneMapOpen && (<div className='result-map phone'>
+        {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
+        {(result.status === 200) && (
+          <StreetMap id="street-map-phone"
+            stops={result.results?.BusStopOfRoutes[activeTab].Stops}
+            busN1EstimateTimes={result.results?.BusN1EstimateTimes}
+            activeTab={activeTab}
+            initZoom={15}
+            flyToUserLoc={false}
+          />)}
+      </div>)}
+      {isSmallDevice || (<div className='result-map'>
         {/* //TODO 更新站點的title不是整個地圖才是 */}
         {result.isLoading && (<div className='result-loading'> <div className='spinner'></div></div>)}
         {(result.status === 200) && (
@@ -109,7 +121,8 @@ function Results({ result, route, fetchData, lang, city }:
             flyToUserLoc={false}
           />)}
 
-      </div>
+      </div>)}
+
     </>
   );
 }
@@ -150,24 +163,27 @@ function getRouteUID(result: BusStopsResult, route: string) {
 }
 
 export const BusRouteStops = () => {
-
+  const isSmallDevice = useMediaQuery(phone_media);
   const { lang = 'defaultLang', city = 'defaultCity', route = "defaultRoute" } = useParams();//TODO lang
 
   const [result, fetchData] = useBusStopsApi({ City: city, Route: route, callAtInstall: true });
 
   console.log("🚀 ~ file: BusRouteStops.tsx:141 ~ BusRouteStops ~ result:", result)//TODO check 
-
+  const [phoneMapOpen, setMapOpen] = useState(false)
   return (
     <div className='content'>
       <section className='content-header'>
         <div className='breadcrumb'> 首頁/ {getCityNameOrValue(city, lang)}/{route}</div>
-
-        <div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>
+        {isSmallDevice ? (
+          <div className='mapBtn' onClick={() => setMapOpen(!phoneMapOpen)}>
+            <img src={map_icon} alt="map_icon" className='icon' />
+            {Dict.map[lang as keyof typeof Dict.map]}</div>
+        ) : (<div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>)}
       </section>
 
       <section className='content-main'>
 
-        <Results result={result} route={route} key={0} fetchData={fetchData} lang={lang} city={city} />
+        <Results result={result} route={route} key={0} fetchData={fetchData} lang={lang} city={city} isSmallDevice={isSmallDevice} phoneMapOpen={phoneMapOpen} />
 
 
       </section >

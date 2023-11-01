@@ -1,6 +1,6 @@
 
 import styled from '@emotion/styled';
-import { ConstructPhoto } from '../utils/const';
+import { ConstructPhoto } from '../../utils/const';
 
 
 

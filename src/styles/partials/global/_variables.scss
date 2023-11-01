@@ -1,3 +1,10 @@
+$base-font-size: 62.5%;
+$base-body-font-size: 1.6rem;
+$base-body-font-size-sm: 1.4rem;
+$base-body-font-size-xsm: 1.2rem;
+
+
+
 //color -----
 $black: #000;
 $white: #FFF;
@@ -38,16 +45,6 @@ $blueLine: #355F8B;
 //font -----
 $font-family: "Noto Sans";
 
-//font-size -----
-$font-size-xs: 12px;
-$font-size-sm: 14px;
-$font-size-base: 16px;
-$font-size-lg: 18px;
-$font-size-xl: 20px;
-$font-size-2xl: 24px;
-$font-size-3xl: 30px;
-$font-size-5xl: 48px;
-
 
 //RWD -----
 
@@ -65,6 +62,9 @@ $pad-962: 962px;
 
 $ipad-mini-vertical: 768px;
 /*iPad 橫放螢幕 寬768px */
+
+$phone-576: 576px;
+/*576px 手機螢幕*/
 
 $phone-480: 480px;
 /*480px 手機螢幕*/
