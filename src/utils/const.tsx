@@ -132,4 +132,3 @@ export function statusDefine(status: number, estimateTime: number | null) {
 
 
 
-export const phone_media = "only screen and (max-width : 480px)"

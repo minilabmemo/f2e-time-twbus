@@ -10,7 +10,7 @@
   min-height: 630px;
 
 
-  @include phone-480-screen {
+  @include phone-screen {
     width: 100vw;
     height: calc(100vh - $header-height-small - $footer-height-small);
     min-height: 500px;
@@ -45,7 +45,7 @@ $header-h: 36px;
   min-height: 630px;
   width: 100%;
 
-  @include phone-480-screen {
+  @include phone-screen {
     min-height: 500px;
 
   }
@@ -68,7 +68,7 @@ $header-h: 36px;
 
 
 
-    @include phone-480-screen {
+    @include phone-screen {
       width: 100%;
       height: 100%;
       overflow-y: hidden;
@@ -91,7 +91,7 @@ $header-h: 36px;
 
       }
 
-      @include phone-480-screen {
+      @include phone-screen {
         width: 80%;
 
       }
@@ -152,7 +152,7 @@ $keyboard-height-small: 260px;
   &.false {
     padding: 26px 50px;
 
-    @include phone-480-screen {
+    @include phone-screen {
       padding: 0;
     }
 
@@ -173,7 +173,7 @@ $keyboard-height-small: 260px;
   justify-content: center;
   align-items: center;
 
-  @include phone-480-screen {
+  @include phone-screen {
     padding: 0;
     height: $keyboard-height-small;
   }
@@ -194,7 +194,7 @@ $keyboard-height-small: 260px;
 
 
 
-    @include phone-480-screen {
+    @include phone-screen {
       width: 300px;
     }
 
@@ -215,7 +215,7 @@ $keyboard-height-small: 260px;
     display: flex;
     flex-wrap: wrap;
 
-    @include phone-480-screen {
+    @include phone-screen {
       width: 310px;
     }
 
@@ -230,7 +230,7 @@ $keyboard-height-small: 260px;
       flex-shrink: 0;
       background-color: $gray-btn;
 
-      @include phone-480-screen {
+      @include phone-screen {
         width: 50px;
         height: 30px;
         margin: 6px;

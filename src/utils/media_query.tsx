@@ -1,0 +1,1 @@
+export const phone_media = "only screen and (max-width : 576px)"

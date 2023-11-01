@@ -14,7 +14,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: $base-body-font-size;
 
-  @include phone-480-screen {
+  @include phone-screen {
     font-size: $base-body-font-size-sm ;
   }
 }
@@ -39,7 +39,7 @@ body {
 .icon {
   margin-right: 10px;
 
-  @include phone-480-screen {
+  @include phone-screen {
     margin-right: 6px;
   }
 }

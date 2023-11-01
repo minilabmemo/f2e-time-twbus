@@ -37,7 +37,7 @@ $route-infos-height: 80px;
 
   height: calc(100% - $stop-action-height - $stop-action-height-small);
 
-  @include phone-480-screen {
+  @include phone-screen {
     height: calc(100% - $stop-action-height-small);
   }
 
@@ -76,7 +76,7 @@ $refresh-bar-height-small: 37px;
   line-height: normal;
   border-top: 2px $gray-bg solid;
 
-  @include phone-480-screen {
+  @include phone-screen {
     height: $refresh-bar-height-small;
   }
 
@@ -137,7 +137,7 @@ $tab-buttons-height: 60px;
 .tab-contents {
   height: calc(100% - $route-infos-height - $tab-buttons-height - $refresh-bar-height - $stop-action-height);
 
-  @include phone-480-screen {
+  @include phone-screen {
     height: calc(100% - $route-infos-height - $tab-buttons-height - $refresh-bar-height-small - $stop-action-height)
   }
 

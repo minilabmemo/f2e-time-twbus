@@ -11,7 +11,7 @@ $footer-height-small: 40px;
   justify-content: center;
   align-items: center;
 
-  @include phone-480-screen {
+  @include phone-screen {
     height: $footer-height-small;
   }
 

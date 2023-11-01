@@ -1,6 +1,7 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { ActionType, Dict, URI_SEARCH_DEFAULT, itemI, keyboardRouteList, phone_media } from '../../utils/const';
+import { ActionType, Dict, URI_SEARCH_DEFAULT, itemI, keyboardRouteList } from '../../utils/const';
+import { phone_media } from '../../utils/media_query';
 import { ResultErrorHint } from '../../utils/error';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
