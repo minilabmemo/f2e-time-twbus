@@ -1,25 +1,28 @@
 {
   "files": {
-    "main.css": "/f2e-time-twbus/static/css/main.f60baef5.css",
-    "main.js": "/f2e-time-twbus/static/js/main.30988511.js",
+    "main.css": "/f2e-time-twbus/static/css/main.3582ae4a.css",
+    "main.js": "/f2e-time-twbus/static/js/main.d0e4a05e.js",
     "static/js/787.0ddffe5d.chunk.js": "/f2e-time-twbus/static/js/787.0ddffe5d.chunk.js",
+    "static/media/home_main_phone.svg": "/f2e-time-twbus/static/media/home_main_phone.25246f5f3e220df1cf13.svg",
     "static/media/home_main.svg": "/f2e-time-twbus/static/media/home_main.3cdd394d4786fe3df87c.svg",
     "static/media/construct_img.png": "/f2e-time-twbus/static/media/construct_img.f03bc801bfbea71f1e55.png",
     "static/media/logo.svg": "/f2e-time-twbus/static/media/logo.722c8ca2fa48e9f7dae2b66eeac0df89.svg",
     "static/media/point_red_large_bus.svg": "/f2e-time-twbus/static/media/point_red_large_bus.3df3e81eb1d8e9ecb2a417f049b4435a.svg",
+    "static/media/map.svg": "/f2e-time-twbus/static/media/map.a7d0440dc509f11d4647a2029212a21f.svg",
     "static/media/to_loc.svg": "/f2e-time-twbus/static/media/to_loc.96c14840100cb0a026b2ccc7a1cfc38b.svg",
     "static/media/user_position.svg": "/f2e-time-twbus/static/media/user_position.be855a2041044d4899b5fe107c55b9d0.svg",
+    "static/media/close.svg": "/f2e-time-twbus/static/media/close.a1bcf88f654e05182167810908b68853.svg",
     "static/media/point_blue.svg": "/f2e-time-twbus/static/media/point_blue.b9a2caa4301843056ce1a9f990f2c0dd.svg",
     "index.html": "/f2e-time-twbus/index.html",
     "static/media/point_red.svg": "/f2e-time-twbus/static/media/point_red.1a77831c3096e4b8574e281e19df9a44.svg",
     "static/media/icon_language.svg": "/f2e-time-twbus/static/media/icon_language.8f49f9ca358df403157d2ddeb09f8fa4.svg",
     "static/media/icons8_refresh.svg": "/f2e-time-twbus/static/media/icons8_refresh.3bd1043c907147a4ab56d1eb09a7a8c0.svg",
-    "main.f60baef5.css.map": "/f2e-time-twbus/static/css/main.f60baef5.css.map",
-    "main.30988511.js.map": "/f2e-time-twbus/static/js/main.30988511.js.map",
+    "main.3582ae4a.css.map": "/f2e-time-twbus/static/css/main.3582ae4a.css.map",
+    "main.d0e4a05e.js.map": "/f2e-time-twbus/static/js/main.d0e4a05e.js.map",
     "787.0ddffe5d.chunk.js.map": "/f2e-time-twbus/static/js/787.0ddffe5d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f60baef5.css",
-    "static/js/main.30988511.js"
+    "static/css/main.3582ae4a.css",
+    "static/js/main.d0e4a05e.js"
   ]
 }
