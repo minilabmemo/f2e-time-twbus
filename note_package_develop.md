@@ -122,3 +122,21 @@ npm test
 npm test -- --coverage 
 coverage/lcov-report/src/components/index.html
 ```
+
+
+## 本地測試
+
+### react 專案使用 npm start
+即可開啟網站
+*無法針對build中的html live server啟動。
+
+### docker
+  - 確保可以 build 之後
+  - .dockerignore 
+  - 撰寫 dockerfile (網路範本), build image
+  ```
+  docker build -t fe-time-twbus . --no-cache  //會花上一段時間
+  docker run -p 80:80 fe-time-twbus //端口可改
+   INFO  Accepting connections at http://localhost:80
+  打開 http://localhost 看到網站了！ 一片空白 //TODO 需要修改到public檔案？ 待研究
+  ```
