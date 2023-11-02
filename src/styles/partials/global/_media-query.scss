@@ -1,4 +1,4 @@
-//RWD -----
+//斷點 方向 大->小 -----
 
 $big-screen-min: 1201px;
 /*大於1200 大螢幕介面*/
@@ -24,20 +24,23 @@ $phone-480: 480px;
 $phone-360: 360px;
 /*360px 手機螢幕*/
 
-/*1201以上大螢幕*/
-@mixin pc-bigger-screen {
-  @media screen and (min-width: $big-screen-min) {
-    @content;
-  }
-}
 
+
+//mixin--------------------------
+/* 預設1201以上大螢幕 不特別寫*/
+
+//1200以下
 @mixin pc-small-screen {
   @media screen and (max-width: $small-screen-max) {
     @content;
   }
 }
 
-
+@mixin ipad-screen {
+  @media screen and (max-width: $ipad-mini-vertical) {
+    @content;
+  }
+}
 
 @mixin phone-screen {
   @media screen and (max-width: $phone-576) {
