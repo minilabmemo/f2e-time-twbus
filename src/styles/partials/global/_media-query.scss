@@ -24,6 +24,8 @@ $phone-480: 480px;
 $phone-360: 360px;
 /*360px 手機螢幕*/
 
+$phone-320: 320px;
+/*320px 手機螢幕*/
 
 
 //mixin--------------------------
@@ -50,6 +52,12 @@ $phone-360: 360px;
 
 @mixin phone-small-screen {
   @media screen and (max-width: $phone-360) {
+    @content;
+  }
+}
+
+@mixin phone-x-small-screen {
+  @media screen and (max-width: $phone-320) {
     @content;
   }
 }

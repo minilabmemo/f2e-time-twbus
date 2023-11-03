@@ -22,6 +22,10 @@ body {
   @include phone-small-screen {
     font-size: $base-body-font-size-xsm ;
   }
+
+  @include phone-x-small-screen {
+    font-size: $base-body-font-size-xsm ;
+  }
 }
 
 
@@ -35,8 +39,12 @@ body {
 .container {
   height: 100vh;
   width: clamp(320px, 100%, 1440px);
-  margin: auto;
+  margin: 0 auto;
   font-family: $font-family;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box
 }
 
 .icon {

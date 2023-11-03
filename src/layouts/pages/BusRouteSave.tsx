@@ -52,7 +52,7 @@ export const BusRouteSave = () => {
             )}
             {activeTab === 1 && (
               <div className="tab-content" >
-                施工中...
+                站點收藏功能暫時施工中...待規劃完成後開放
               </div>
             )}
           </div>
