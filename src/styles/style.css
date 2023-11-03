@@ -39,8 +39,6 @@ body {
   height: 100vh;
   width: clamp(320px, 100%, 1440px);
   margin: auto;
-  overflow-x: auto;
-  overflow-y: auto;
   font-family: "Noto Sans";
 }
 
@@ -313,9 +311,8 @@ body {
   background-image: url("../images/home_main.svg");
   background-position: center;
   background-size: cover;
-  width: 100%;
+  max-width: 100%;
   height: 100%;
-  max-height: 464px;
   background-repeat: no-repeat;
   -o-object-fit: contain;
      object-fit: contain;
