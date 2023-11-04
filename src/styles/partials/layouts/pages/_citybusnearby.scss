@@ -2,16 +2,15 @@
   padding: 2rem;
   height: 100%;
   width: 100%;
-
-  box-sizing: border-box;
   overflow-y: auto;
+  display: flex;
+
 }
 
 .result-stations {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-
 
   .station {
 
@@ -24,20 +23,20 @@
       align-self: start;
 
       .station-name {
-
         color: #000;
         font-family: 'Roboto';
         font-size: 2rem;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+
+        @include phone-x-small-screen {
+          font-size: 1.6rem;
+        }
       }
 
 
-
-
     }
-
 
   }
 
@@ -45,5 +44,9 @@
     font-size: 1.4rem;
     font-weight: 400;
     color: #888;
+
+    @include phone-x-small-screen {
+      font-size: 1.2rem;
+    }
   }
 }

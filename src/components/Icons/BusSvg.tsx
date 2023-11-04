@@ -1,15 +1,15 @@
 import React from 'react';
 
 interface IconProps {
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
   fill?: string;
 }
 
 const BusSvg: React.FC<IconProps> = ({ width, height, fill }) => {
   return (
 
-    <svg width={width} height={height} viewBox="0 0 51 51" fill={fill} xmlns="http://www.w3.org/2000/svg">
+    <svg width={width} height={height} viewBox="0 0 51 51" fill={fill} xmlns="http://www.w3.org/2000/svg" >
       <path d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z" />
       <path d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z" />
       <path d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z" />

@@ -7,7 +7,8 @@
 /*576px 手機螢幕*/
 /*480px 手機螢幕*/
 /*360px 手機螢幕*/
-/*1201以上大螢幕*/
+/*320px 手機螢幕*/
+/* 預設1201以上大螢幕 不特別寫*/
 html {
   font-size: 62.5%;
 }
@@ -28,6 +29,11 @@ body {
     font-size: 1.2rem;
   }
 }
+@media screen and (max-width: 320px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
 
 .base {
   background-color: rgb(236, 235, 234);
@@ -38,10 +44,12 @@ body {
 .container {
   height: 100vh;
   width: clamp(320px, 100%, 1440px);
-  margin: auto;
-  overflow-x: auto;
-  overflow-y: auto;
+  margin: 0 auto;
   font-family: "Noto Sans";
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 .icon {
@@ -217,10 +225,6 @@ body {
   border-style: solid;
   border-color: #D5D5D5;
 }
-.header-sidebar .close_sidebar {
-  background-color: red;
-}
-
 .sidebar-nav {
   display: flex;
   flex-direction: column;
@@ -232,7 +236,6 @@ body {
 }
 .sidebar-nav .nav-link {
   margin: 0;
-  box-sizing: border-box;
   padding: 16px;
   border-width: 0 0 1px 0;
   border-style: solid;
@@ -313,9 +316,8 @@ body {
   background-image: url("../images/home_main.svg");
   background-position: center;
   background-size: cover;
-  width: 100%;
+  max-width: 100%;
   height: 100%;
-  max-height: 464px;
   background-repeat: no-repeat;
   -o-object-fit: contain;
      object-fit: contain;
@@ -356,7 +358,6 @@ body {
 .home-cities .city-card {
   margin: 1rem;
   background-color: #FFF;
-  box-sizing: border-box;
   width: 217px;
   height: 174px;
   display: flex;
@@ -374,8 +375,14 @@ body {
 }
 .home-cities .city-card .city-icon {
   margin: 0.5rem 1.5rem;
-  height: 5.1rem;
-  width: 5.1rem;
+  height: 5rem;
+  width: 5rem;
+}
+@media screen and (max-width: 320px) {
+  .home-cities .city-card .city-icon {
+    height: 2.8rem;
+    width: 2.8rem;
+  }
 }
 .home-cities .city-card .city-name {
   margin-bottom: 0.6rem;
@@ -402,7 +409,6 @@ body {
 .result-loading {
   position: absolute;
   opacity: 0.7;
-  box-sizing: border-box;
   padding: 50px 150px;
   display: flex;
   justify-content: center;
@@ -459,13 +465,17 @@ body {
 }
 .content-main .sidebar {
   position: relative;
-  width: 464px;
-  flex-shrink: 0;
+  width: 32%;
   box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.15);
   z-index: 5;
 }
 .content-main .sidebar.hidden {
   display: none;
+}
+@media screen and (max-width: 768px) {
+  .content-main .sidebar {
+    width: 45%;
+  }
 }
 @media screen and (max-width: 576px) {
   .content-main .sidebar {
@@ -482,7 +492,6 @@ body {
   margin: 20px;
   border-radius: 10px;
   border: 0;
-  box-sizing: border-box;
   padding: 10px;
 }
 .content-main .sidebar input::-moz-placeholder {
@@ -500,10 +509,18 @@ body {
   background-color: #3591C5;
   -webkit-backdrop-filter: invert(80%);
           backdrop-filter: invert(80%);
-  width: 976px;
+  width: 68%;
   height: 100%;
   min-height: 630px;
   position: relative;
+}
+@media screen and (max-width: 768px) {
+  .content-main .result-map {
+    width: 55%;
+  }
+}
+.content-main .result-map.phone {
+  width: 100%;
 }
 .content-main .result-map .to-loc-icon {
   position: absolute;
@@ -520,9 +537,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-.content-main .result-map.phone {
-  width: 100%;
-}
 
 .city-link, .route-link {
   text-decoration: none;
@@ -533,22 +547,19 @@ body {
 }
 
 .keyboard {
-  width: inherit;
+  width: 100%;
   position: absolute;
   bottom: 0;
   height: 330px;
-  box-sizing: border-box;
   background-color: #F5F6F6;
-  padding: 10px 50px;
-  box-sizing: border-box;
-  flex-shrink: 0;
+  padding: 1% 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .keyboard.false {
-  padding: 26px 50px;
+  padding: 1% 5%;
 }
 @media screen and (max-width: 576px) {
   .keyboard.false {
@@ -558,27 +569,27 @@ body {
 @media screen and (max-width: 576px) {
   .keyboard {
     padding: 0;
-    height: 260px;
+    height: 320px;
   }
 }
 .keyboard .city-option {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
   background-color: #283C43;
-  width: 364px;
+  width: 96%;
+  margin: 2%;
   height: 38px;
   border-radius: 10px;
   color: #FFF;
 }
 @media screen and (max-width: 576px) {
   .keyboard .city-option {
-    width: 300px;
+    width: 80%;
   }
 }
 .keyboard .routes.disable_routes {
-  width: 380px;
+  width: 100%;
   height: 216px;
   background-color: #F5F6F6;
   position: absolute;
@@ -586,32 +597,31 @@ body {
 }
 .keyboard .routes, .keyboard .cities-keyboard {
   position: relative;
-  width: 380px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 @media screen and (max-width: 576px) {
   .keyboard .routes, .keyboard .cities-keyboard {
-    width: 310px;
+    width: 80%;
   }
+}
+.keyboard .routes .city-link, .keyboard .cities-keyboard .city-link {
+  margin: 1% 2%;
+  width: 16%;
+}
+.keyboard .routes .city-link .btn, .keyboard .cities-keyboard .city-link .btn {
+  width: 100%;
 }
 .keyboard .routes .btn, .keyboard .cities-keyboard .btn {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  margin: 8px;
-  width: 60px;
+  margin: 2%;
+  width: 16%;
   height: 38px;
-  flex-shrink: 0;
   background-color: #D5D5D5;
-}
-@media screen and (max-width: 576px) {
-  .keyboard .routes .btn, .keyboard .cities-keyboard .btn {
-    width: 50px;
-    height: 30px;
-    margin: 6px;
-  }
 }
 .keyboard .routes .btn-grad, .keyboard .cities-keyboard .btn-grad {
   background-color: #D5D5D5;
@@ -723,7 +733,6 @@ body {
   padding-right: 20px;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -795,7 +804,7 @@ body {
   width: 100%;
 }
 .refresh-bar .refresh-box .count {
-  margin: 0px 20px;
+  margin: 0px 10px;
 }
 .refresh-bar .refresh-box .button {
   margin: 0px 20px;
@@ -836,7 +845,6 @@ body {
   overflow-x: hidden;
   margin: 10px;
   padding: 10px;
-  box-sizing: border-box;
 }
 .tab-contents .tab-content .stop {
   height: 42px;
@@ -899,14 +907,14 @@ body {
   padding: 2rem;
   height: 100%;
   width: 100%;
-  box-sizing: border-box;
   overflow-y: auto;
+  display: flex;
 }
 
 .result-stations {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 }
 .result-stations .station {
   height: 58px;
@@ -925,10 +933,20 @@ body {
   font-weight: 700;
   line-height: normal;
 }
+@media screen and (max-width: 320px) {
+  .result-stations .station .station-info .station-name {
+    font-size: 1.6rem;
+  }
+}
 .result-stations .station-stop-num {
   font-size: 1.4rem;
   font-weight: 400;
   color: #888;
+}
+@media screen and (max-width: 320px) {
+  .result-stations .station-stop-num {
+    font-size: 1.2rem;
+  }
 }
 
 .center {
@@ -939,26 +957,22 @@ body {
 }
 
 .result-routes-save {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
   margin: 20px;
   width: 742px;
-  height: 600px;
-  border-radius: 0px, 0px, 5px, 5px;
+  height: 90%;
+  min-height: 600px;
   border-radius: 0px 0px 5px 5px;
   background: #FFF;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
 }
 .result-routes-save .tab-buttons {
   width: 100%;
 }
-.result-routes-save .tab-content {
+.result-routes-save .tab-contents {
   width: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+  height: 100%;
 }
 .result-routes-save .tab-button {
-  overflow: hidden;
   width: 50%;
 }/*# sourceMappingURL=style.css.map */

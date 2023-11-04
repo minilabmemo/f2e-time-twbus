@@ -8,8 +8,6 @@ $stop-action-height-small: 36px;
   padding-right: 20px;
   align-items: center;
   justify-content: space-between;
-
-  box-sizing: border-box;
   user-select: none;
 
   .save-icon {
@@ -93,7 +91,7 @@ $refresh-bar-height-small: 37px;
     width: 100%;
 
     .count {
-      margin: 0px 20px
+      margin: 0px 10px
     }
 
 
@@ -143,18 +141,14 @@ $tab-buttons-height: 60px;
 
   .tab-content {
     height: 100%;
-
     overflow-y: auto;
     overflow-x: hidden;
     margin: 10px;
     padding: 10px;
-    box-sizing: border-box;
 
     .stop {
       height: 42px;
     }
-
-
   }
 }
 

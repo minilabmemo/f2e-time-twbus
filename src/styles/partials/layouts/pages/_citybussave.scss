@@ -9,31 +9,28 @@
 }
 
 .result-routes-save {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
   margin: 20px;
   width: 742px;
-  height: 600px;
-  border-radius: 0px, 0px, 5px, 5px;
+  height: 90%;
+  min-height: 600px;
   border-radius: 0px 0px 5px 5px;
   background: #FFF;
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.10);
+  overflow-y: scroll;
 
   .tab-buttons {
     width: 100%;
 
   }
 
-  .tab-content {
+  .tab-contents {
     width: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: 100%;
 
   }
 
   .tab-button {
-    overflow: hidden;
+
     width: 50%;
   }
 }
