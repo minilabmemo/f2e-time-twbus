@@ -3,8 +3,10 @@ import main from '../../assets/images//home_main_phone.svg';
 import BusSvg from '../../components/Icons/BusSvg';
 import { IconColors } from '../../utils/color';
 import { NavLink } from 'react-router-dom';
-const CityBusHome = () => {
+import { useTranslation } from 'react-i18next';
 
+const CityBusHome = () => {
+  const { t } = useTranslation();
 
   return (
     <>
@@ -12,8 +14,8 @@ const CityBusHome = () => {
         <div className='photo_wrap'>
           <div className="main-text">
             <div >taiwan bus+</div>
-            <div >台 灣 公 車 動 態</div>
-            <div >時 刻 查 詢 系 統</div>
+            <div >{t('home.photo.title')}</div>
+            <div >{t('home.photo.sub_title')}</div>
           </div>
         </div>
 

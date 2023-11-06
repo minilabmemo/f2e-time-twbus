@@ -1,6 +1,5 @@
 
 import { useParams } from 'react-router-dom';
-import { Dict } from '../../utils/const';
 import { ResultErrorHint } from '../../utils/error';
 
 import { useEffect, useState } from 'react';
@@ -8,6 +7,8 @@ import "leaflet/dist/leaflet.css";
 import { getUserLocation } from '../../utils/gps';
 import useBusStopsNearByApi, { BusStationResult } from '../../apis/useBusStopsNearByApi';
 import { StreetMap } from '../../components/base/StreetMap';
+import { useTranslation } from 'react-i18next';
+import { LangStrings } from '../../utils/i18n';
 
 export const BusRouteStopsNearBy = () => {
   const { lang = 'defaultLang' } = useParams();//TODO lang
@@ -60,7 +61,7 @@ export const BusRouteStopsNearBy = () => {
 
   //TODO 詳細路線串接待確認  距離如何計算也待確認
   function NearByResult({ result }: { result: BusStationResult }) {
-
+    const { i18n } = useTranslation();
     function handleHint() {
       alert("詳細資訊，後端資訊尚未完成，請至站點查詢。")
     }
@@ -76,7 +77,13 @@ export const BusRouteStopsNearBy = () => {
               <div key={index}>
                 <span key={index} className='station' onClick={() => handleHint()}>
                   <div className='station-info'>
-                    <div className='station-name'> {item.StationName.Zh_tw}</div>
+                    <div className='station-name'>
+                      {
+                        i18n.language === LangStrings.zh
+                          ? item.StationName.Zh_tw
+                          : item.StationName.En
+                      }
+                    </div>
                     <div className='station-stop-num'> {item.Stops.length}個路線</div>
                   </div>
                   <div className='station-far'>
@@ -97,12 +104,13 @@ export const BusRouteStopsNearBy = () => {
       </div >
     );
   }
+  const { t } = useTranslation();
   return (
     <div className='content'>
       <section className='content-header'>
         <div className='breadcrumb'> 首頁/附近站點</div>
 
-        <div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>
+        <div className='timetable'>{t("timetable")}</div>
       </section>
 
       <section className='content-main'>

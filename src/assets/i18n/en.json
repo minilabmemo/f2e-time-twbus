@@ -1,0 +1,17 @@
+{
+  "home": {
+    "title": "home",
+    "photo": {
+      "title": "Taiwan bus dynamics",
+      "sub_title": "Time query system",
+      "en_title": "taiwan bus+"
+    }
+  },
+  "header": {
+    "nearby": "Nearby",
+    "search": "Site Query",
+    "save": "My Collection"
+  },
+  "timetable": "Time Table",
+  "map": "Map"
+}

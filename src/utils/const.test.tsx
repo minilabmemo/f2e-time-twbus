@@ -1,7 +1,7 @@
 import {
 
-  LinkNames,
-  Dict,
+
+
   URI_NEARBY_DEFAULT,
   URI_SEARCH_DEFAULT,
   URI_SAVE_DEFAULT,
@@ -18,14 +18,6 @@ import {
 } from './const';
 
 describe('常數與物件', () => {
-
-
-  it('LinkNames 和 Dict 應該包含特定語言的名稱', () => {
-    expect(LinkNames.nearby).toHaveProperty('zh');
-    expect(LinkNames.nearby).toHaveProperty('en');
-    expect(Dict.home).toHaveProperty('zh');
-    expect(Dict.home).toHaveProperty('en');
-  });
 
   it('URI_NEARBY_DEFAULT、URI_SEARCH_DEFAULT 和 URI_SAVE_DEFAULT 應該包含預設值', () => {
     expect(URI_NEARBY_DEFAULT).toEqual('nearby');

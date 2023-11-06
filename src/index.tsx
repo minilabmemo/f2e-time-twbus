@@ -7,7 +7,7 @@ import './styles/notosans.css';
 import './styles/style.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import './utils/i18n';
 
 import whyDidYouRender from '@welldone-software/why-did-you-render';
 console.info("NODE_ENV:", process.env.NODE_ENV)

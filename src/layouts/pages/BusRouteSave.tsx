@@ -1,12 +1,8 @@
 
 import { useParams } from 'react-router-dom';
-import { Dict } from '../../utils/const';
 import { getRoutesLiked } from '../../utils/localStorages/routelikes';
 import { RouteItem } from '../../components/base/RouteItem';
-import { StreetMap } from '../../components/base/StreetMap';
 import { useState } from 'react';
-
-
 
 export const BusRouteSave = () => {
 

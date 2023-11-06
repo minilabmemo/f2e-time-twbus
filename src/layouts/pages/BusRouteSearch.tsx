@@ -1,6 +1,6 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { ActionType, Dict, URI_SEARCH_DEFAULT, itemI, keyboardRouteList } from '../../utils/const';
+import { ActionType, URI_SEARCH_DEFAULT, itemI, keyboardRouteList } from '../../utils/const';
 import { phone_media } from '../../utils/media_query';
 import { ResultErrorHint } from '../../utils/error';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,7 @@ import { RouteItem } from '../../components/base/RouteItem';
 import { StreetMap } from '../../components/base/StreetMap';
 import { useMediaQuery } from "@uidotdev/usehooks";
 import map_icon from "../../assets/images/map.svg"
+import { useTranslation } from 'react-i18next';
 
 
 export const BusRouteSearch = () => {
@@ -197,6 +198,7 @@ export const BusRouteSearch = () => {
 
     }
   };
+  const { t } = useTranslation();
   return (
     <div className='content'>
       <section className='content-header'>
@@ -205,8 +207,8 @@ export const BusRouteSearch = () => {
         {isSmallDevice ? (
           <div className='mapBtn' onClick={() => setMapOpen(!phoneMapOpen)}>
             <img src={map_icon} alt="map_icon" className='icon' />
-            {Dict.map[lang as keyof typeof Dict.map]}</div>
-        ) : (<div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>)}
+            {t('map')}</div>
+        ) : (<div className='timetable'>   {t('timetable')}</div>)}
       </section>
 
       <section className={`content-main ${isSmallDevice ? 'small' : ''}`}>

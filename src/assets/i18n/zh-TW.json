@@ -1,0 +1,17 @@
+{
+  "home": {
+    "title": "首頁",
+    "photo": {
+      "title": "台 灣 公 車 動 態",
+      "sub_title": "時 刻 查 詢 系 統",
+      "en_title": "taiwan bus+"
+    }
+  },
+  "header": {
+    "nearby": "附近站牌",
+    "search": "站點查詢",
+    "save": "我的收藏"
+  },
+  "timetable": "時刻表",
+  "map": "地圖 "
+}

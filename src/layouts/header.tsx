@@ -6,32 +6,37 @@ import { useLocation } from 'react-router-dom';
 import { theme } from '../styles/theme';
 import { ThemeProvider } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
-import { LinkNames, URI_SAVE_DEFAULT } from '../utils/const';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
+import { LangStrings } from '../utils/i18n';
 
 
 
 
-export const NavLinks = ({ isLangZH, className }: { isLangZH: boolean, className: string }) => {
+
+export const NavLinks = ({ className }: { isLangZH: boolean, className: string }) => {
+  const { t } = useTranslation();
   return (
     <div className={className}>
       <NavLink to="/nearby" className="nav-link">
-        {isLangZH ? LinkNames.nearby.zh : LinkNames.nearby.en}
+        {t('header.nearby')}
       </NavLink>
 
 
 
       <NavLink to={`/search/zh/cities`} className="nav-link">
-        {isLangZH ? LinkNames.search.zh : LinkNames.search.en}
+        {t('header.search')}
       </NavLink>
       <NavLink to={`/save/zh`} className="nav-link">
-        {isLangZH ? LinkNames.save.zh : LinkNames.save.en}
+        {t('header.save')}
       </NavLink>
     </div>
   )
 }
-export const LanguageOptions = ({ isLangZH, className, setLangZH }: { isLangZH: boolean, className: string, setLangZH: (value: React.SetStateAction<boolean>) => void }) => {
+export const LanguageOptions = ({ isLangZH, className, setLang }: { isLangZH: boolean, className: string, setLang: any }) => {
+
   return (
     <div className={className}>
 
@@ -39,11 +44,11 @@ export const LanguageOptions = ({ isLangZH, className, setLangZH }: { isLangZH: 
 
       {/* TODO need by web URL*/}
       {isLangZH ?
-        (<div onClick={() => setLangZH(!isLangZH)}>
+        (<div onClick={() => setLang(LangStrings.en)}>
           <span className="active"> 中文</span>｜<span >英文</span></div>)
         :
         (
-          <div onClick={() => setLangZH(!isLangZH)}>
+          <div onClick={() => setLang(LangStrings.zh)}>
             <span > 中文</span>｜<span className="active" >英文</span>
           </div>)
       }
@@ -54,7 +59,12 @@ export const LanguageOptions = ({ isLangZH, className, setLangZH }: { isLangZH: 
 
 
 export const Header = () => {
-  const [isLangZH, setLangZH] = useState(true);
+  const { i18n } = useTranslation();
+  const [lang, setLang] = useState(null);
+  useEffect(() => {
+    if (lang !== null) i18n.changeLanguage(lang);
+  }, [i18n, lang]);
+  const isLangZH = (i18n.language === LangStrings.zh) ? true : false
   let location = useLocation();
   const [isSmallOption, setSmallOption] = useState(false)
   useEffect(() => {//發生點擊 NavLink 就先關閉選單
@@ -73,7 +83,7 @@ export const Header = () => {
 
 
         <NavLinks isLangZH={isLangZH} className="nav" />
-        <LanguageOptions isLangZH={isLangZH} className="lang" setLangZH={setLangZH} />
+        <LanguageOptions isLangZH={isLangZH} className="lang" setLang={setLang} />
 
 
 
@@ -99,7 +109,7 @@ export const Header = () => {
               <div>
                 <NavLinks isLangZH={isLangZH} className="sidebar-nav" />
               </div>
-              <LanguageOptions isLangZH={isLangZH} className="sidebar-lang" setLangZH={setLangZH} />
+              <LanguageOptions isLangZH={isLangZH} className="sidebar-lang" setLang={setLang} />
             </div>
           </>
         )}

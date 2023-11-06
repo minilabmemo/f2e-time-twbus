@@ -1,6 +1,6 @@
 
 import { NavLink, useParams } from 'react-router-dom';
-import { Dict, URI_SEARCH, statusDefine } from '../../utils/const';
+import { URI_SEARCH, statusDefine } from '../../utils/const';
 import { phone_media } from '../../utils/media_query';
 import { ResultErrorHint } from '../../utils/error';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -16,11 +16,13 @@ import { RefreshBar } from '../../components/base/RefreshBar';
 import { RouteSaveAction } from '../../components/base/RouteSaveAction';
 import map_icon from "../../assets/images/map.svg"
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { useTranslation } from 'react-i18next';
 //TODO 捲軸紀錄以免更新後回到上方
 function Results({ result, route, fetchData, lang, city, isSmallDevice, phoneMapOpen }:
   { result: BusStopsResult, route: string, fetchData: () => void, lang: string, city: string, isSmallDevice: boolean, phoneMapOpen: boolean }) {
   const routeUID = getRouteUID(result, route) || "";
   const [activeTab, setActiveTab] = useState(0);
+
   return (
     <>
       <div className={`sidebar ${phoneMapOpen ? 'hidden' : ""}`}>
@@ -164,10 +166,10 @@ function getRouteUID(result: BusStopsResult, route: string) {
 
 export const BusRouteStops = () => {
   const isSmallDevice = useMediaQuery(phone_media);
-  const { lang = 'defaultLang', city = 'defaultCity', route = "defaultRoute" } = useParams();//TODO lang
+  const { lang = 'defaultLang', city = 'defaultCity', route = "defaultRoute" } = useParams();
 
   const [result, fetchData] = useBusStopsApi({ City: city, Route: route, callAtInstall: true });
-
+  const { t } = useTranslation();
   console.log("🚀 ~ file: BusRouteStops.tsx:141 ~ BusRouteStops ~ result:", result)//TODO check 
   const [phoneMapOpen, setMapOpen] = useState(false)
   return (
@@ -177,8 +179,8 @@ export const BusRouteStops = () => {
         {isSmallDevice ? (
           <div className='mapBtn' onClick={() => setMapOpen(!phoneMapOpen)}>
             <img src={map_icon} alt="map_icon" className='icon' />
-            {Dict.map[lang as keyof typeof Dict.map]}</div>
-        ) : (<div className='timetable'>{Dict.timetable[lang as keyof typeof Dict.timetable]}</div>)}
+            {t("map")}</div>
+        ) : (<div className='timetable'> {t("timetable")}</div>)}
       </section>
 
       <section className='content-main'>
