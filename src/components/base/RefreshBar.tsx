@@ -1,6 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import refresh_now from '../../images/icons8_refresh.svg';
 
+// 程式碼功能如下：
+// 1.從initialCountdown開始倒數，每一秒減一，到0時發送一次refreshAction，並重新開始倒數
+// 例如initialCountdown=5，就顯示5,4,3,2,1,0，到0時發送一次refreshAction，並重新開始倒數顯示5,4,3,2,1,0
+// 2.按下立即更新就立即發送一次refreshAction，並重新設定成initialCountdown重新倒數
+// 不管現在倒數到哪了，按下後發送一次refreshActio，重新開始倒數顯示5,4,3,2,1,0
+
 export function RefreshBar({ initialCountdown, refreshAction, updateTime }: { initialCountdown: number, refreshAction: () => void, updateTime: string | undefined }) {
   const [countdown, setCountdown] = useState(initialCountdown);
   const countdownTimerRef = useRef<NodeJS.Timeout | null>(null);
