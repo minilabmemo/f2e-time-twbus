@@ -61,6 +61,10 @@ body {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
 .spinner {
   width: 56px;
   height: 56px;
@@ -161,9 +165,6 @@ body {
 .lang .active {
   font-weight: 700;
 }
-.lang img {
-  padding-right: 11px;
-}
 
 .nav-link {
   margin: 1.5rem;
@@ -253,8 +254,10 @@ body {
 .sidebar-lang .active {
   font-weight: 700;
 }
-.sidebar-lang img {
-  padding-right: 11px;
+
+.lang-icon {
+  width: 2rem;
+  height: 2rem;
 }
 
 .footer {

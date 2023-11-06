@@ -57,9 +57,8 @@ Object {
             >
               <img
                 alt="icon_save"
-                height="20px"
+                class="lang-icon icon"
                 src="icon_language.svg"
-                width="20px"
               />
               <div>
                 <span
@@ -430,9 +429,8 @@ Object {
           >
             <img
               alt="icon_save"
-              height="20px"
+              class="lang-icon icon"
               src="icon_language.svg"
-              width="20px"
             />
             <div>
               <span

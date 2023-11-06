@@ -35,7 +35,7 @@ export const LanguageOptions = ({ isLangZH, className, setLangZH }: { isLangZH: 
   return (
     <div className={className}>
 
-      <img width="20px" height="20px" src={icon_language} alt="icon_save" />
+      <img src={icon_language} alt="icon_save" className="lang-icon icon" />
 
       {/* TODO need by web URL*/}
       {isLangZH ?
