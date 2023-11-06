@@ -41,37 +41,43 @@ Object {
               </a>
               <a
                 class="nav-link"
-                href="#/search/zh/cities"
+                href="#/search/zh-TW/cities"
               >
                 站點查詢
               </a>
               <a
                 class="nav-link"
-                href="#/save/zh"
+                href="#/save/zh-TW"
               >
-                我的收藏 
+                我的收藏
               </a>
             </div>
-            <div
-              class="lang"
+            <a
+              aria-current="page"
+              class="link active"
+              href="#/"
             >
-              <img
-                alt="icon_save"
-                class="lang-icon icon"
-                src="icon_language.svg"
-              />
-              <div>
-                <span
-                  class="active"
-                >
-                   中文
-                </span>
-                ｜
-                <span>
-                  英文
-                </span>
+              <div
+                class="lang"
+              >
+                <img
+                  alt="icon_save"
+                  class="lang-icon icon"
+                  src="icon_language.svg"
+                />
+                <div>
+                  <span
+                    class="active"
+                  >
+                     中文
+                  </span>
+                  ｜
+                  <span>
+                    英文
+                  </span>
+                </div>
               </div>
-            </div>
+            </a>
             <div
               class="phone-options"
             >
@@ -413,37 +419,43 @@ Object {
             </a>
             <a
               class="nav-link"
-              href="#/search/zh/cities"
+              href="#/search/zh-TW/cities"
             >
               站點查詢
             </a>
             <a
               class="nav-link"
-              href="#/save/zh"
+              href="#/save/zh-TW"
             >
-              我的收藏 
+              我的收藏
             </a>
           </div>
-          <div
-            class="lang"
+          <a
+            aria-current="page"
+            class="link active"
+            href="#/"
           >
-            <img
-              alt="icon_save"
-              class="lang-icon icon"
-              src="icon_language.svg"
-            />
-            <div>
-              <span
-                class="active"
-              >
-                 中文
-              </span>
-              ｜
-              <span>
-                英文
-              </span>
+            <div
+              class="lang"
+            >
+              <img
+                alt="icon_save"
+                class="lang-icon icon"
+                src="icon_language.svg"
+              />
+              <div>
+                <span
+                  class="active"
+                >
+                   中文
+                </span>
+                ｜
+                <span>
+                  英文
+                </span>
+              </div>
             </div>
-          </div>
+          </a>
           <div
             class="phone-options"
           >
