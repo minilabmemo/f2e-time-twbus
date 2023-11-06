@@ -41,11 +41,7 @@ describe('RefreshBar', () => {
     fireEvent.click(screen.getByText('立即更新 14:30:00'));
 
     // Ensure that the refresh action is triggered
-    await waitFor(() => {
-      expect(mockRefreshAction).toHaveBeenCalledTimes(1);
-    });
-
-    // Ensure that the countdown has reset to the initial value (10 in this case)
+    expect(mockRefreshAction).toHaveBeenCalledTimes(1);
     expect(screen.getByText('10 秒後更新')).toBeInTheDocument();
   });
 });

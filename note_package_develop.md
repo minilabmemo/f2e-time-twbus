@@ -58,6 +58,8 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+- npm testC 可以產生 測試報告覆蓋率
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -106,9 +108,10 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## vscode plugin
 - vscode-stylted-components
-- Code Spell Checker
+- Code Spell Checker 幫你拼字檢查
 - SCSS intellisense
-- Live Sass Compiler > watch sass [vscode button at below]
+- Live Sass Compiler > watch sass [vscode button at below] 幫你轉換css檔案
+- 安裝 jest 可以幫助你產生測試按鈕與cmd+shift+P->Jest:Toggle Coverage 提示未覆蓋範圍
 
 ## storybook
 ```

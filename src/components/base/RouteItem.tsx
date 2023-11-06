@@ -29,8 +29,9 @@ export const RouteItem = ({ item, lang }: { item: BusRoute, lang: string }) => {
 
       </NavLink>
       <div className="route-action" onClick={handleLikeClick}>
-        <span className='save-icon'>
-          {isLiked ? (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
+        <span className='save-icon' data-testid='save-icon'>
+          {isLiked ?
+            (<SaveSvg width="21px" height="21px" fill={IconColors.pinkFont} />) :
             (<SaveSvg width="21px" height="21px" fill='gray' />)}
         </span>
         <div className='route-city'> {getCityNameOrValue(city, lang)}</div>
