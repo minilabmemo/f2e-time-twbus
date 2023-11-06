@@ -75,5 +75,37 @@ describe('statusDefine 函數', () => {
     expect(status2[0]).toEqual('進站中');
     expect(status2[1]).toEqual(StatusColorType.red);
 
+    const status3 = statusDefine(2, 30);
+    expect(status3[0]).toEqual('交管不停靠');
+    expect(status3[1]).toEqual(StatusColorType.gray);
+
+    const status4 = statusDefine(3, 30);
+    expect(status4[0]).toEqual('末班車已過');
+    expect(status4[1]).toEqual(StatusColorType.gray);
+
+    const status5 = statusDefine(4, 30);
+    expect(status5[0]).toEqual('今日未營運');
+    expect(status5[1]).toEqual(StatusColorType.gray);
+
+    const status6 = statusDefine(0, null);
+    expect(status6[0]).toEqual('無資訊');
+    expect(status6[1]).toEqual(StatusColorType.gray);
+
+    const status7 = statusDefine(0, 100);
+    expect(status7[0]).toEqual('即將進站');
+    expect(status7[1]).toEqual(StatusColorType.red);
+
+    const status8 = statusDefine(0, 125);
+    expect(status8[0]).toEqual('2分5秒');
+    expect(status8[1]).toEqual(StatusColorType.blue);
+
+    const status9 = statusDefine(0, 3610);
+    expect(status9[0]).toEqual('1小時0分10秒');
+    expect(status9[1]).toEqual(StatusColorType.blue);
+
+    const status10 = statusDefine(6, "not number");
+    expect(status10[0]).toEqual('未知');
+    expect(status10[1]).toEqual(StatusColorType.gray);
+
   });
 });

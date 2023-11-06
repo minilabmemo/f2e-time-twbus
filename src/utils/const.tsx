@@ -1,7 +1,5 @@
 
 import construct_img from '../images/construct_img.png';
-
-
 export const LinkNames = {
   nearby: { zh: "附近站牌", en: "Nearby" },
   search: { zh: "站點查詢", en: "Site Query" },
@@ -13,10 +11,6 @@ export const Dict = {
   timetable: { zh: "時刻表 ", en: "Time Table" },
   map: { zh: "地圖 ", en: "Map" },
 };
-
-
-
-
 export const URI_NEARBY_DEFAULT = "nearby"
 export const URI_SEARCH_DEFAULT = "cities"
 export const URI_SAVE_DEFAULT = "save/:lang"
@@ -114,7 +108,7 @@ export function statusDefine(status: number, estimateTime: number | null) {
       const seconds = estimateTime % 60;
       if (minutes === 1) { //兩分鐘內顯示 即將進站
         // return [` 即將進站 ${minutes}分${seconds}秒`, "red"];
-        return [` 即將進站`, StatusColorType.red];
+        return [`即將進站`, StatusColorType.red];
       }
       return [`${minutes}分${seconds}秒`, StatusColorType.blue];
     }
