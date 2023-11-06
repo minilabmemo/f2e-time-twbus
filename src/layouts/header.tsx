@@ -17,7 +17,8 @@ import { LangStrings } from '../utils/i18n';
 
 
 export const NavLinks = ({ className }: { isLangZH: boolean, className: string }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
   return (
     <div className={className}>
       <NavLink to="/nearby" className="nav-link">
@@ -26,10 +27,10 @@ export const NavLinks = ({ className }: { isLangZH: boolean, className: string }
 
 
 
-      <NavLink to={`/search/zh/cities`} className="nav-link">
+      <NavLink to={`/search/${i18n.language}/cities`} className="nav-link">
         {t('header.search')}
       </NavLink>
-      <NavLink to={`/save/zh`} className="nav-link">
+      <NavLink to={`/save/${i18n.language}`} className="nav-link">
         {t('header.save')}
       </NavLink>
     </div>
@@ -37,23 +38,31 @@ export const NavLinks = ({ className }: { isLangZH: boolean, className: string }
 }
 export const LanguageOptions = ({ isLangZH, className, setLang }: { isLangZH: boolean, className: string, setLang: any }) => {
 
+  let location = useLocation();
+  function calculateStopsURL() {
+    const oldLang = isLangZH ? "zh" : "en";
+    const newLang = isLangZH ? "en" : "zh";
+    return location.pathname.replace(oldLang, newLang);
+  }
   return (
-    <div className={className}>
+    <NavLink to={calculateStopsURL()} className="link" >
+      <div className={className}>
 
-      <img src={icon_language} alt="icon_save" className="lang-icon icon" />
+        <img src={icon_language} alt="icon_save" className="lang-icon icon" />
 
-      {/* TODO need by web URL*/}
-      {isLangZH ?
-        (<div onClick={() => setLang(LangStrings.en)}>
-          <span className="active"> 中文</span>｜<span >英文</span></div>)
-        :
-        (
-          <div onClick={() => setLang(LangStrings.zh)}>
-            <span > 中文</span>｜<span className="active" >英文</span>
-          </div>)
-      }
+        {/* TODO need by web URL*/}
+        {isLangZH ?
+          (<div onClick={() => setLang(LangStrings.en)}>
+            <span className="active"> 中文</span>｜<span >英文</span></div>)
+          :
+          (
+            <div onClick={() => setLang(LangStrings.zh)}>
+              <span > 中文</span>｜<span className="active" >英文</span>
+            </div>)
+        }
 
-    </div>
+      </div>
+    </NavLink>
   )
 }
 

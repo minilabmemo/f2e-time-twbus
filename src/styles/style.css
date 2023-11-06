@@ -65,6 +65,19 @@ img {
   max-width: 100%;
 }
 
+.link {
+  text-decoration: none;
+}
+
+a.link:visited {
+  color: #000;
+  /* 修改链接文字颜色 */
+  background-color: transparent;
+  /* 修改链接背景颜色 */
+  text-decoration: none;
+  /* 移除下划线 */
+}
+
 .spinner {
   width: 56px;
   height: 56px;

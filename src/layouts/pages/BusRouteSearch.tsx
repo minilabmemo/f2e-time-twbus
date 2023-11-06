@@ -22,6 +22,7 @@ export const BusRouteSearch = () => {
   //TODO lang
   const inputRef = useRef<HTMLInputElement>(null);
   const { lang = 'defaultLang', city = 'defaultCity' } = useParams();
+
   let callAtInstall = true;
   if (city === URI_SEARCH_DEFAULT) {
     callAtInstall = false;
