@@ -11,7 +11,7 @@ import useBusCityApi, { BusRouteResult } from '../../apis/useBusCityApi';
 import { RouteItem } from '../../components/base/RouteItem';
 import { StreetMap } from '../../components/base/StreetMap';
 import { useMediaQuery } from "@uidotdev/usehooks";
-import map_icon from "../../images/map.svg"
+import map_icon from "../../assets/images/map.svg"
 
 
 export const BusRouteSearch = () => {

@@ -1,5 +1,5 @@
 
-import construct_img from '../images/construct_img.png';
+import construct_img from '../assets/images/construct_img.png';
 export const LinkNames = {
   nearby: { zh: "附近站牌", en: "Nearby" },
   search: { zh: "站點查詢", en: "Site Query" },

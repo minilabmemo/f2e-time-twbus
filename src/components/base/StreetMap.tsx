@@ -1,8 +1,8 @@
 import { BusN1EstimateTime, Stop } from "../../apis/useBusStopsApi";
-import user_position from '../../images/user_position.svg';
-import pointBlue from '../../images/point_blue.svg';
-import pointRed from '../../images/point_red.svg';
-import point_red_large_bus from '../../images/point_red_large_bus.svg';
+import user_position from '../../assets/images/user_position.svg';
+import pointBlue from '../../assets/images/point_blue.svg';
+import pointRed from '../../assets/images/point_red.svg';
+import point_red_large_bus from '../../assets/images/point_red_large_bus.svg';
 import ReactDOMServer from "react-dom/server";
 import L from "leaflet";
 import { StatusColorType, statusDefine } from "../../utils/const";
@@ -11,7 +11,7 @@ import { MapColors } from "../../utils/color";
 import { useEffect, useRef } from "react";
 import { getUserLocation } from "../../utils/gps";
 import { BusStation } from "../../apis/useBusStopsNearByApi";
-import to_loc from '../../images/to_loc.svg';
+import to_loc from '../../assets/images/to_loc.svg';
 
 interface StreetMapData {
   id: string;

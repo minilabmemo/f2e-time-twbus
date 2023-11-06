@@ -40,7 +40,7 @@ $home-main-png-small: 213px;
   .photo_wrap {
     position: relative;
     overflow: hidden;
-    background-image: url("../images/home_main.svg");
+    background-image: url("../assets/images/home_main.svg");
     background-position: center;
     background-size: cover;
 
@@ -51,7 +51,7 @@ $home-main-png-small: 213px;
     object-fit: contain;
 
     @include phone-screen {
-      background-image: url("../images/home_main_phone.svg");
+      background-image: url("../assets/images/home_main_phone.svg");
     }
 
     .main-text {

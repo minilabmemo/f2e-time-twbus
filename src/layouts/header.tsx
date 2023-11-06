@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../images/logo.svg';
-import icon_language from '../images/icon_language.svg';
-import close from '../images/close.svg';
+import logo from '../assets/images/logo.svg';
+import icon_language from '../assets/images/icon_language.svg';
+import close from '../assets/images/close.svg';
 import { useLocation } from 'react-router-dom';
 import { theme } from '../styles/theme';
 import { ThemeProvider } from '@emotion/react';

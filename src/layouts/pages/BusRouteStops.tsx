@@ -14,7 +14,7 @@ import "leaflet/dist/leaflet.css";
 import { StreetMap } from '../../components/base/StreetMap';
 import { RefreshBar } from '../../components/base/RefreshBar';
 import { RouteSaveAction } from '../../components/base/RouteSaveAction';
-import map_icon from "../../images/map.svg"
+import map_icon from "../../assets/images/map.svg"
 import { useMediaQuery } from "@uidotdev/usehooks";
 //TODO 捲軸紀錄以免更新後回到上方
 function Results({ result, route, fetchData, lang, city, isSmallDevice, phoneMapOpen }:

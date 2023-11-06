@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import refresh_now from '../../images/icons8_refresh.svg';
+import refresh_now from '../../assets/images/icons8_refresh.svg';
 
 // 程式碼功能如下：
 // 1.從initialCountdown開始倒數，每一秒減一，到0時發送一次refreshAction，並重新開始倒數

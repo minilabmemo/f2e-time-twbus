@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import main from '../../images//home_main_phone.svg';
+import main from '../../assets/images//home_main_phone.svg';
 import BusSvg from '../../components/Icons/BusSvg';
 import { IconColors } from '../../utils/color';
 import { NavLink } from 'react-router-dom';
