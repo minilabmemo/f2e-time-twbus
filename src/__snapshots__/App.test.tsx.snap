@@ -6,14 +6,13 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="base css-mznbqw"
+        class="base"
       >
         <div
-          class="container css-co09e4"
+          class="container"
         >
           <div
-            class="css-1d8r25c"
-            data-testid="header-component"
+            class="header"
           >
             <div
               class="brand"
@@ -24,8 +23,10 @@ Object {
                 href="#/"
               >
                 <img
-                  alt="brand"
-                  src="brand.svg"
+                  alt="logo"
+                  height="42px"
+                  src="logo.svg"
+                  width="162px"
                 />
               </a>
             </div>
@@ -34,663 +35,357 @@ Object {
             >
               <a
                 class="nav-link"
-                href="#/about"
+                href="#/nearby"
               >
-                關於本站
+                附近站牌
               </a>
               <a
                 class="nav-link"
-                href="#/find-pet"
+                href="#/search/zh/cities"
               >
-                寵物找尋
+                站點查詢
               </a>
               <a
                 class="nav-link"
-                href="#/adopt"
+                href="#/save/zh"
               >
-                關於領養
-              </a>
-              <a
-                class="nav-link"
-                href="#/chart"
-              >
-                統計圖表
+                我的收藏 
               </a>
             </div>
             <div
-              class="store css-17f0sn1"
+              class="lang"
             >
-              <a
-                class="store-link"
-                href="#/stores"
-              >
-                <img
-                  alt="icon_save"
-                  height="20px"
-                  src="icon_save.svg"
-                  width="20px"
-                />
-                <span>
-                  寵物收藏區
+              <img
+                alt="icon_save"
+                height="20px"
+                src="icon_language.svg"
+                width="20px"
+              />
+              <div>
+                <span
+                  class="active"
+                >
+                   中文
                 </span>
-              </a>
+                ｜
+                <span>
+                  英文
+                </span>
+              </div>
+            </div>
+            <div
+              class="phone-options"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-bars "
+                data-icon="bars"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+                  fill="currentColor"
+                />
+              </svg>
             </div>
           </div>
-          <div
-            class="css-dbo3zp"
+          <section
+            class="home-main"
           >
             <div
-              class="page-content-box css-ljlvt3"
+              class="photo_wrap"
             >
-              <section
-                style="width: 100%; height: 100%;"
-              >
-                <div
-                  class="carousel css-ht3yfb"
-                >
-                  <div
-                    class="css-1f8sh1y"
-                  >
-                    <div
-                      class="css-1l7c0cy"
-                    >
-                      <div
-                        draggable="false"
-                        style="height: 100%; user-select: none; transform: translate3d(0px, 0px, 0) scale(NaN, NaN); transform-origin: 50% 50% 0;"
-                      >
-                        <div
-                          style="position: relative; height: 100%; opacity: 0; z-index: 1; transform: none;"
-                        >
-                          <div>
-                            <div
-                              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-vkdabb-MuiPaper-root"
-                            >
-                              <img
-                                alt="img 1"
-                                src="main_img_1.png"
-                                style="display: block; margin: auto;"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-1l7c0cy"
-                    >
-                      <div
-                        draggable="false"
-                        style="height: 100%; user-select: none; transform: translate3d(0px, 0px, 0) scale(NaN, NaN); transform-origin: 50% 50% 0;"
-                      >
-                        <div
-                          style="position: relative; height: 100%; opacity: 0; display: none; z-index: 0; transform: none; z-index: 0; z-index: 0; z-index: 0;"
-                        >
-                          <div>
-                            <div
-                              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-vkdabb-MuiPaper-root"
-                            >
-                              <img
-                                alt="img 2"
-                                src="main_img_2.png"
-                                style="display: block; margin: auto;"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-1l7c0cy"
-                    >
-                      <div
-                        draggable="false"
-                        style="height: 100%; user-select: none; transform: translate3d(0px, 0px, 0) scale(NaN, NaN); transform-origin: 50% 50% 0;"
-                      >
-                        <div
-                          style="position: relative; height: 100%; opacity: 0; display: none; z-index: 0; transform: none; z-index: 0; z-index: 0; z-index: 0;"
-                        >
-                          <div>
-                            <div
-                              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-vkdabb-MuiPaper-root"
-                            >
-                              <img
-                                alt="img 3"
-                                src="main_img_3.png"
-                                style="display: block; margin: auto;"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class=" css-1abc02a"
-                  >
-                    <button
-                      aria-label="Next"
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-ktslay-MuiButtonBase-root-MuiIconButton-root"
-                      style="background-color: cornflowerblue;"
-                      tabindex="0"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                        data-testid="NavigateNextIcon"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-                        />
-                      </svg>
-                      <span
-                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
-                    </button>
-                  </div>
-                  <div
-                    class=" css-hn784z"
-                  >
-                    <button
-                      aria-label="Previous"
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-ktslay-MuiButtonBase-root-MuiIconButton-root"
-                      style="background-color: cornflowerblue;"
-                      tabindex="0"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                        data-testid="NavigateBeforeIcon"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-                        />
-                      </svg>
-                      <span
-                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
-                    </button>
-                  </div>
-                  <div
-                    class=" css-1m9128y"
-                    style="margin: auto;"
-                  >
-                    <button
-                      aria-label="carousel indicator 1"
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium   css-8ucetn-MuiButtonBase-root-MuiIconButton-root"
-                      style="color: LightSkyBlue;"
-                      tabindex="0"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-aq8pb7-MuiSvgIcon-root"
-                        data-testid="FiberManualRecordIcon"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="8"
-                        />
-                      </svg>
-                      <span
-                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
-                    </button>
-                    <button
-                      aria-label="carousel indicator 2"
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-bbreus-MuiButtonBase-root-MuiIconButton-root"
-                      style="color: cornflowerblue;"
-                      tabindex="0"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-aq8pb7-MuiSvgIcon-root"
-                        data-testid="FiberManualRecordIcon"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="8"
-                        />
-                      </svg>
-                      <span
-                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
-                    </button>
-                    <button
-                      aria-label="carousel indicator 3"
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-bbreus-MuiButtonBase-root-MuiIconButton-root"
-                      style="color: cornflowerblue;"
-                      tabindex="0"
-                      type="button"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-aq8pb7-MuiSvgIcon-root"
-                        data-testid="FiberManualRecordIcon"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="8"
-                        />
-                      </svg>
-                      <span
-                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </section>
               <div
-                class="query-box css-17bh521"
+                class="main-text"
               >
-                <div
-                  class="title-box"
-                >
-                  <img
-                    alt="pet"
-                    src="pet.svg"
-                    style="width: 2em; height: 2em;"
-                  />
-                  <span
-                    class="title-text"
-                  >
-                    查詢條件
-                  </span>
+                <div>
+                  taiwan bus+
                 </div>
-                <div
-                  class="query-hint"
-                >
-                  本資料根據農委會資料開放平台-動物認領養資料呈現，資料呈現有誤或缺失等問題？，
-                  <a
-                    class=""
-                    href="#/about"
-                  >
-                    快來告訴我！
-                  </a>
+                <div>
+                  台 灣 公 車 動 態
                 </div>
-                <div
-                  class="css-15g53k6"
-                >
-                  <div
-                    class="css-1hf907s"
-                  >
-                    <div
-                      style="width: auto;"
-                    >
-                      <label
-                        class="css-1pteklo"
-                        for="area"
-                      >
-                        地區
-                      </label>
-                      <span
-                        data-dropdown-id="dropdown"
-                      >
-                        <input
-                          class="css-f16yi3"
-                          readonly=""
-                          value="任何地區"
-                        />
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    class="css-1hf907s"
-                  >
-                    <label
-                      class="css-1pteklo"
-                      for="animalType"
-                    >
-                      種類
-                    </label>
-                    <div
-                      class="css-1wqqbyi"
-                    >
-                      <div
-                        class="css-1gg7rw7"
-                        data-testid="switch-button"
-                        disabled=""
-                      >
-                        <svg
-                          fill="#FAFAFA"
-                          height="2.1em"
-                          viewBox="0 0 25 24"
-                          width="2.1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M12.9912 9.60086L20.3125 12.2782V23.2C20.3125 23.4122 20.2302 23.6157 20.0837 23.7657C19.9372 23.9157 19.7385 24 19.5312 24H16.4062C16.199 24 16.0003 23.9157 15.8538 23.7657C15.7073 23.6157 15.625 23.4122 15.625 23.2V17.6004H7.8125V23.2C7.8125 23.4122 7.73019 23.6157 7.58368 23.7657C7.43716 23.9157 7.23845 24 7.03125 24H3.90625C3.69905 24 3.50034 23.9157 3.35382 23.7657C3.20731 23.6157 3.125 23.4122 3.125 23.2V12.5052C1.31055 11.8427 0 10.0838 0 8.00095C0 7.57663 0.16462 7.16969 0.457646 6.86965C0.750671 6.56961 1.1481 6.40105 1.5625 6.40105C1.9769 6.40105 2.37433 6.56961 2.66735 6.86965C2.96038 7.16969 3.125 7.57663 3.125 8.00095C3.12577 8.42503 3.29064 8.83151 3.5835 9.13138C3.87636 9.43125 4.27334 9.60006 4.6875 9.60086H12.9912ZM25 4.00119V5.6011C25 6.44974 24.6708 7.26362 24.0847 7.8637C23.4987 8.46378 22.7038 8.8009 21.875 8.8009H20.3125V10.5798L14.0625 8.29443V0.801381C14.0625 0.0889237 14.9033 -0.268055 15.396 0.235915L16.728 1.60133H19.3467C19.8794 1.60133 20.5063 1.99731 20.7441 2.48578L21.0938 3.20124H24.2188C24.426 3.20124 24.6247 3.28552 24.7712 3.43554C24.9177 3.58556 25 3.78903 25 4.00119ZM19.5312 4.00119C19.5312 3.84297 19.4854 3.68831 19.3996 3.55676C19.3137 3.42521 19.1917 3.32268 19.049 3.26213C18.9062 3.20158 18.7491 3.18574 18.5976 3.21661C18.446 3.24748 18.3068 3.32366 18.1976 3.43554C18.0883 3.54741 18.0139 3.68995 17.9838 3.84513C17.9536 4.0003 17.9691 4.16115 18.0282 4.30732C18.0874 4.45349 18.1875 4.57843 18.316 4.66633C18.4444 4.75423 18.5955 4.80114 18.75 4.80114C18.9572 4.80114 19.1559 4.71686 19.3024 4.56684C19.4489 4.41682 19.5312 4.21335 19.5312 4.00119Z"
-                          />
-                        </svg>
-                        <div
-                          class="css-xso49i"
-                        >
-                          狗
-                        </div>
-                      </div>
-                      <div
-                        class="css-k1s7yi"
-                        data-testid="switch-button"
-                      >
-                        <svg
-                          fill="#CBCBCB"
-                          height="2.1em"
-                          viewBox="0 0 24 24"
-                          width="2.1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M23.6392 8.92234C23.1414 8.59822 22.2465 6.70548 22.0473 6.48942C21.8482 6.2726 20.7038 5.78586 20.7038 5.78586L20.0572 3.569C18.813 3.73127 18.0674 5.89387 18.0175 6.05613C18.0175 6.05613 17.8928 9.81409 12.3705 8.35429C8.41248 7.30787 6.03202 6.29573 4.03271 8.33595C3.90765 8.10272 3.82219 7.86552 3.7598 7.60962C3.64833 7.14795 3.62302 6.61821 3.6234 6.01461C3.6234 5.71882 3.62851 5.40713 3.62888 5.08026C3.62851 4.39575 3.60577 3.64114 3.43923 2.83788C3.27423 2.03426 2.95951 1.18637 2.40676 0.341638C2.16835 -0.0235415 1.70251 -0.10964 1.36618 0.149878C1.03022 0.409396 0.950959 0.915645 1.18974 1.28082C1.62587 1.95051 1.85358 2.57322 1.98343 3.19389C2.11182 3.81375 2.13676 4.43682 2.13643 5.08026C2.13643 5.38716 2.1309 5.69854 2.1309 6.01461C2.13165 6.65887 2.15143 7.32896 2.31502 8.0178C2.44374 8.5647 2.67699 9.11721 3.04196 9.63308C1.49672 12.278 2.34549 15.0865 2.34549 15.0865L0.747381 17.8498C0.718412 17.8997 0.698959 17.9551 0.689068 18.0124L0.00684957 22.091C-0.0231973 22.2703 0.0472558 22.4517 0.185865 22.5538L2.10676 23.9682C2.14782 23.9988 2.19882 24.0076 2.24649 23.9933C2.29458 23.9793 2.33382 23.9426 2.35468 23.894L2.74496 22.9859C2.77393 22.9177 2.76221 22.8372 2.71524 22.7822L2.21237 22.199C2.11008 22.0806 2.07301 21.9119 2.11482 21.7557L2.95107 18.6463C2.97821 18.5471 3.03469 18.4606 3.11208 18.4008L4.23629 17.5317C4.38887 17.4129 4.59535 17.4185 4.74282 17.5445C4.89029 17.6704 4.94382 17.8869 4.87449 18.0763L4.3786 19.4308C4.32141 19.5863 4.34668 19.7633 4.44427 19.8924L7.27074 23.63H9.39034C9.4839 23.63 9.55984 23.5475 9.55984 23.4463V22.2998C9.55984 22.1981 9.4839 22.1156 9.39034 22.1156H8.71988C8.56323 22.1156 8.41946 22.0212 8.34573 21.8709L7.19804 19.7796C7.12102 19.6214 7.1357 19.4296 7.23474 19.2873L8.26355 17.8099C8.34352 17.6956 8.46826 17.6278 8.60068 17.6278H11.4693C11.6039 17.6278 11.7308 17.6979 11.8104 17.8164C11.89 17.9348 11.9131 18.087 11.8727 18.2269L10.9481 21.3937C10.9187 21.4934 10.9216 21.6014 10.9565 21.6991L11.5496 23.3598H13.3905V22.9273L13.0861 21.8872C13.0575 21.79 13.0597 21.6851 13.0923 21.5891L14.3332 17.9288C14.3948 17.7478 14.5532 17.6278 14.7304 17.6278H15.9965C16.1113 17.6278 16.2213 17.6789 16.3013 17.7693L19.8082 23.0353C19.8082 23.0353 21.5992 23.0353 22.1963 23.0353C22.7934 23.0353 22.5624 21.7406 21.9975 21.6831C20.9275 21.5751 19.5598 18.331 18.9627 17.1953C18.3656 16.0599 20.1189 12.544 21.4502 12.3833C22.7934 12.221 23.49 11.6259 23.6891 10.8147C24.087 10.3283 24.1369 9.24681 23.6392 8.92234Z"
-                          />
-                        </svg>
-                        <div
-                          class="css-xso49i"
-                        >
-                          貓
-                        </div>
-                      </div>
-                      <div
-                        class="css-k1s7yi"
-                        data-testid="switch-button"
-                      >
-                        <svg
-                          fill="#CBCBCB"
-                          height="2.1em"
-                          viewBox="0 0 24 24"
-                          width="2.1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M23 4.04052L21.3823 4.40523C20.6927 1.85813 18.5884 0 16.1062 0C13.0652 0 10.5911 2.78852 10.5911 6.21623C10.5911 6.68924 10.6384 7.14996 10.7277 7.59294L0.619708 0.105671L0.282659 1.2633C-0.677366 4.56124 1.05693 7.56586 1.78453 8.63032C1.69469 9.09437 1.59873 9.82232 1.65498 10.6464C1.78471 12.5458 2.63486 14.0595 4.1136 15.0239C4.43941 15.2364 4.77799 15.4053 5.12375 15.5315C5.45936 16.3547 5.92988 17.1109 6.52136 17.7622C6.89143 18.1698 7.29694 18.5227 7.7294 18.8182C7.42272 19.1005 7.03136 19.2703 6.60537 19.2703H5.37496C5.03346 18.185 4.11395 17.4054 3.03547 17.4054V19.2703C3.49161 19.2703 3.86271 19.6885 3.86271 20.2027C3.86271 20.7169 3.49161 21.1351 3.03547 21.1351V23C4.11395 23 5.03346 22.2204 5.37496 21.1351H6.60537C7.71763 21.1351 8.70771 20.5355 9.33572 19.6085C9.88861 19.786 10.4642 19.8821 11.0506 19.8912C11.0816 19.8917 11.1126 19.8919 11.1436 19.8919C12.8947 19.8919 14.5418 19.1311 15.7902 17.7431C17.0609 16.3302 17.7607 14.4442 17.7607 12.4324C17.7607 12.3376 17.7588 12.2429 17.7556 12.1484C19.6576 11.4751 21.1187 9.66931 21.5145 7.43543L23 7.77031L21.897 5.90539L23 4.04052ZM17.2092 6.52702C16.7524 6.52702 16.382 6.10955 16.382 5.59456C16.382 5.07962 16.7524 4.66215 17.2092 4.66215C17.6661 4.66215 18.0365 5.07962 18.0365 5.59456C18.0364 6.10955 17.6661 6.52702 17.2092 6.52702Z"
-                          />
-                        </svg>
-                        <div
-                          class="css-xso49i"
-                        >
-                          鳥
-                        </div>
-                      </div>
-                      <div
-                        class="css-k1s7yi"
-                        data-testid="switch-button"
-                      >
-                        <svg
-                          fill="#CBCBCB"
-                          height="2.1em"
-                          viewBox="0 0 24 24"
-                          width="2.1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M18.1296 20.8365C18.6211 18.3323 18.8731 15.5859 18.8606 12.8198C18.8486 10.171 18.5968 7.54899 18.1295 5.16354H0.731254C0.239945 7.66797 -0.0120566 10.4145 0.000443383 13.1804C0.0123574 15.8296 0.264066 18.4516 0.731205 20.8365H18.1296ZM9.43033 18.3088C7.41934 18.3088 5.67334 17.6782 5.67334 15.6134C5.67334 13.6888 7.3587 12.1231 9.43033 12.1231C11.502 12.1231 13.1873 13.6888 13.1873 15.6134C13.1873 17.6771 11.4432 18.3088 9.43033 18.3088ZM13.3513 8.98737C14.4734 8.78633 15.5384 9.56836 15.7316 10.7357C15.9475 12.04 14.9864 13.2416 13.6981 13.2416C12.723 13.2416 11.8449 12.5179 11.6703 11.4629C11.4771 10.2957 12.2289 9.18836 13.3513 8.98737ZM9.43033 7.57007C10.5665 7.57007 11.4909 8.53141 11.4909 9.71309C11.4909 10.8948 10.5666 11.8561 9.43033 11.8561C8.2941 11.8561 7.36973 10.8948 7.36973 9.71309C7.36973 8.53141 8.29419 7.57007 9.43033 7.57007ZM5.15972 8.95639C6.2959 8.95639 7.22032 9.91773 7.22032 11.0994C7.22032 12.281 6.29595 13.2424 5.15972 13.2424C4.02349 13.2424 3.09912 12.2811 3.09912 11.0994C3.09917 9.91773 4.02354 8.95639 5.15972 8.95639Z"
-                          />
-                          <path
-                            d="M0.713089 3.34958H18.1478L18.6585 1.11688C18.7888 0.547219 18.3727 0 17.8101 0H1.05074C0.487649 0 0.0721216 0.547625 0.202297 1.11693L0.713089 3.34958Z"
-                          />
-                          <path
-                            d="M18.1477 22.6505H0.713092L0.202399 24.8831C0.0720276 25.4528 0.488141 26 1.05074 26H17.81C18.3731 26 18.7886 25.4524 18.6585 24.8831L18.1477 22.6505Z"
-                          />
-                        </svg>
-                        <div
-                          class="css-xso49i"
-                        >
-                          其他
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-1hf907s"
-                  >
-                    <label
-                      class="css-1pteklo"
-                      for="animalSex"
-                    >
-                      性別
-                    </label>
-                    <div
-                      class="css-1wqqbyi"
-                    >
-                      <div
-                        class="css-15chvrb"
-                        data-testid="switch-button"
-                      >
-                        <div
-                          class="css-1ope4af"
-                        >
-                          公
-                        </div>
-                      </div>
-                      <div
-                        class="css-15chvrb"
-                        data-testid="switch-button"
-                      >
-                        <div
-                          class="css-1ope4af"
-                        >
-                          母
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-1hf907s"
-                  >
-                    <label
-                      class="css-1pteklo"
-                    >
-                      關鍵字
-                    </label>
-                    <input
-                      class="css-y6uj2z"
-                      placeholder="例如：虎斑, 柴犬"
-                    />
-                  </div>
-                  <div
-                    class="css-1hf907s"
-                  >
-                    <label
-                      class="alignBlock css-1pteklo"
-                    />
-                    <div
-                      class="search-button-with-ripple css-1c9bx7y"
-                    >
-                      <div
-                        class="ripple-container"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-magnifying-glass "
-                          data-icon="magnifying-glass"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="font-size: 1.2em; width: 1.5em; height: 1.2em;"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                        <span
-                          style="margin-left: .2em;"
-                        >
-                          搜尋
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                <div>
+                  時 刻 查 詢 系 統
                 </div>
               </div>
-              <section />
             </div>
+          </section>
+          <section
+            class="home-cities"
+          >
+            <a
+              class="city-card city-color-black city-link"
+              href="#/search/zh/Taipei"
+            >
+              <div
+                class="city-icon"
+              >
+                 
+                <svg
+                  fill="#283C43"
+                  viewBox="0 0 51 51"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                  />
+                  <path
+                    d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                  />
+                  <path
+                    d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                  />
+                  <path
+                    d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                  />
+                  <path
+                    d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="city-name"
+              >
+                台北市 
+              </div>
+              <div
+                class="city-name-en"
+              >
+                 Taipei 
+              </div>
+            </a>
+            <a
+              class="city-card city-color-blue city-link"
+              href="#/search/zh/Taoyuan"
+            >
+              <div
+                class="city-icon"
+              >
+                 
+                <svg
+                  fill="#3591C5"
+                  viewBox="0 0 51 51"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                  />
+                  <path
+                    d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                  />
+                  <path
+                    d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                  />
+                  <path
+                    d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                  />
+                  <path
+                    d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="city-name"
+              >
+                桃園市
+              </div>
+              <div
+                class="city-name-en"
+              >
+                Taoyuan
+              </div>
+            </a>
+            <a
+              class="city-card city-color-pink city-link"
+              href="#/search/zh/Taichung"
+            >
+              <div
+                class="city-icon"
+              >
+                 
+                <svg
+                  fill="#D08181"
+                  viewBox="0 0 51 51"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                  />
+                  <path
+                    d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                  />
+                  <path
+                    d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                  />
+                  <path
+                    d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                  />
+                  <path
+                    d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="city-name"
+              >
+                台中市
+              </div>
+              <div
+                class="city-name-en"
+              >
+                Taichung
+              </div>
+            </a>
+            <a
+              class="city-card city-color-cyan city-link"
+              href="#/search/zh/Tainan"
+            >
+              <div
+                class="city-icon"
+              >
+                 
+                <svg
+                  fill="#7FC0C5"
+                  viewBox="0 0 51 51"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                  />
+                  <path
+                    d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                  />
+                  <path
+                    d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                  />
+                  <path
+                    d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                  />
+                  <path
+                    d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="city-name"
+              >
+                台南市
+              </div>
+              <div
+                class="city-name-en"
+              >
+                Tainan
+              </div>
+            </a>
+            <a
+              class="city-card city-color-blue-light city-link"
+              href="#/search/zh/Kaohsiung"
+            >
+              <div
+                class="city-icon"
+              >
+                 
+                <svg
+                  fill="#5E9BAE"
+                  viewBox="0 0 51 51"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                  />
+                  <path
+                    d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                  />
+                  <path
+                    d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                  />
+                  <path
+                    d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                  />
+                  <path
+                    d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="city-name"
+              >
+                高雄市
+              </div>
+              <div
+                class="city-name-en"
+              >
+                 Kaohsiung
+              </div>
+            </a>
+            <a
+              class="city-card city-color-blue-dark city-link"
+              href="#/search/zh/cities"
+            >
+              <div
+                class="city-icon"
+              >
+                 
+                <svg
+                  fill="#52797C"
+                  viewBox="0 0 51 51"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                  />
+                  <path
+                    d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                  />
+                  <path
+                    d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                  />
+                  <path
+                    d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                  />
+                  <path
+                    d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="city-name"
+              >
+                其他地區
+              </div>
+              <div
+                class="city-name-en"
+              >
+                Other City
+              </div>
+            </a>
+          </section>
+          <div
+            class="footer"
+          >
+            <span
+              class="footer-right"
+            >
+              Copyright © 2023 台灣公車 e 點通 All rights reserved.
+            </span>
           </div>
-        </div>
-        <div
-          class="css-1x44e1i"
-        >
-          聯絡信箱 : minilabmemo+petfinder@gmail.com 
-          <br />
-          Pet Finder TW@2023
-        </div>
-      </div>
-    </div>
-    <div
-      id="dropdown-root"
-    >
-      <div
-        childrensize="[object Object]"
-        class="sc-hfDuwB bJVVqY overlay-wrapper"
-        data-dropdown-id="dropdown"
-        gap="12"
-        placement="bottom"
-        position="[object Object]"
-      >
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          任何地區
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          臺北市
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          基隆市
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          新北市
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          連江縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          宜蘭縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          新竹市
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          新竹縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          桃園市
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          苗栗縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          臺中市
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          彰化縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          南投縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          嘉義市
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          嘉義縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          雲林縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          臺南市
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          高雄市
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          澎湖縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          金門縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          屏東縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          臺東縣
-        </div>
-        <div
-          class="sc-jCIOXC hhBMBe"
-        >
-          花蓮縣
         </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="base css-mznbqw"
+      class="base"
     >
       <div
-        class="container css-co09e4"
+        class="container"
       >
         <div
-          class="css-1d8r25c"
-          data-testid="header-component"
+          class="header"
         >
           <div
             class="brand"
@@ -701,8 +396,10 @@ Object {
               href="#/"
             >
               <img
-                alt="brand"
-                src="brand.svg"
+                alt="logo"
+                height="42px"
+                src="logo.svg"
+                width="162px"
               />
             </a>
           </div>
@@ -711,521 +408,344 @@ Object {
           >
             <a
               class="nav-link"
-              href="#/about"
+              href="#/nearby"
             >
-              關於本站
+              附近站牌
             </a>
             <a
               class="nav-link"
-              href="#/find-pet"
+              href="#/search/zh/cities"
             >
-              寵物找尋
+              站點查詢
             </a>
             <a
               class="nav-link"
-              href="#/adopt"
+              href="#/save/zh"
             >
-              關於領養
-            </a>
-            <a
-              class="nav-link"
-              href="#/chart"
-            >
-              統計圖表
+              我的收藏 
             </a>
           </div>
           <div
-            class="store css-17f0sn1"
+            class="lang"
           >
-            <a
-              class="store-link"
-              href="#/stores"
-            >
-              <img
-                alt="icon_save"
-                height="20px"
-                src="icon_save.svg"
-                width="20px"
-              />
-              <span>
-                寵物收藏區
+            <img
+              alt="icon_save"
+              height="20px"
+              src="icon_language.svg"
+              width="20px"
+            />
+            <div>
+              <span
+                class="active"
+              >
+                 中文
               </span>
-            </a>
+              ｜
+              <span>
+                英文
+              </span>
+            </div>
+          </div>
+          <div
+            class="phone-options"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-bars "
+              data-icon="bars"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+                fill="currentColor"
+              />
+            </svg>
           </div>
         </div>
-        <div
-          class="css-dbo3zp"
+        <section
+          class="home-main"
         >
           <div
-            class="page-content-box css-ljlvt3"
+            class="photo_wrap"
           >
-            <section
-              style="width: 100%; height: 100%;"
-            >
-              <div
-                class="carousel css-ht3yfb"
-              >
-                <div
-                  class="css-1f8sh1y"
-                >
-                  <div
-                    class="css-1l7c0cy"
-                  >
-                    <div
-                      draggable="false"
-                      style="height: 100%; user-select: none; transform: translate3d(0px, 0px, 0) scale(NaN, NaN); transform-origin: 50% 50% 0;"
-                    >
-                      <div
-                        style="position: relative; height: 100%; opacity: 0; z-index: 1; transform: none;"
-                      >
-                        <div>
-                          <div
-                            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-vkdabb-MuiPaper-root"
-                          >
-                            <img
-                              alt="img 1"
-                              src="main_img_1.png"
-                              style="display: block; margin: auto;"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-1l7c0cy"
-                  >
-                    <div
-                      draggable="false"
-                      style="height: 100%; user-select: none; transform: translate3d(0px, 0px, 0) scale(NaN, NaN); transform-origin: 50% 50% 0;"
-                    >
-                      <div
-                        style="position: relative; height: 100%; opacity: 0; display: none; z-index: 0; transform: none; z-index: 0; z-index: 0; z-index: 0;"
-                      >
-                        <div>
-                          <div
-                            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-vkdabb-MuiPaper-root"
-                          >
-                            <img
-                              alt="img 2"
-                              src="main_img_2.png"
-                              style="display: block; margin: auto;"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-1l7c0cy"
-                  >
-                    <div
-                      draggable="false"
-                      style="height: 100%; user-select: none; transform: translate3d(0px, 0px, 0) scale(NaN, NaN); transform-origin: 50% 50% 0;"
-                    >
-                      <div
-                        style="position: relative; height: 100%; opacity: 0; display: none; z-index: 0; transform: none; z-index: 0; z-index: 0; z-index: 0;"
-                      >
-                        <div>
-                          <div
-                            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-vkdabb-MuiPaper-root"
-                          >
-                            <img
-                              alt="img 3"
-                              src="main_img_3.png"
-                              style="display: block; margin: auto;"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=" css-1abc02a"
-                >
-                  <button
-                    aria-label="Next"
-                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-ktslay-MuiButtonBase-root-MuiIconButton-root"
-                    style="background-color: cornflowerblue;"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                      data-testid="NavigateNextIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-                      />
-                    </svg>
-                    <span
-                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
-                  </button>
-                </div>
-                <div
-                  class=" css-hn784z"
-                >
-                  <button
-                    aria-label="Previous"
-                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-ktslay-MuiButtonBase-root-MuiIconButton-root"
-                    style="background-color: cornflowerblue;"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                      data-testid="NavigateBeforeIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-                      />
-                    </svg>
-                    <span
-                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
-                  </button>
-                </div>
-                <div
-                  class=" css-1m9128y"
-                  style="margin: auto;"
-                >
-                  <button
-                    aria-label="carousel indicator 1"
-                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium   css-8ucetn-MuiButtonBase-root-MuiIconButton-root"
-                    style="color: LightSkyBlue;"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-aq8pb7-MuiSvgIcon-root"
-                      data-testid="FiberManualRecordIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="8"
-                      />
-                    </svg>
-                    <span
-                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
-                  </button>
-                  <button
-                    aria-label="carousel indicator 2"
-                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-bbreus-MuiButtonBase-root-MuiIconButton-root"
-                    style="color: cornflowerblue;"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-aq8pb7-MuiSvgIcon-root"
-                      data-testid="FiberManualRecordIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="8"
-                      />
-                    </svg>
-                    <span
-                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
-                  </button>
-                  <button
-                    aria-label="carousel indicator 3"
-                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-bbreus-MuiButtonBase-root-MuiIconButton-root"
-                    style="color: cornflowerblue;"
-                    tabindex="0"
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-aq8pb7-MuiSvgIcon-root"
-                      data-testid="FiberManualRecordIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="8"
-                      />
-                    </svg>
-                    <span
-                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
-                  </button>
-                </div>
-              </div>
-            </section>
             <div
-              class="query-box css-17bh521"
+              class="main-text"
             >
-              <div
-                class="title-box"
-              >
-                <img
-                  alt="pet"
-                  src="pet.svg"
-                  style="width: 2em; height: 2em;"
-                />
-                <span
-                  class="title-text"
-                >
-                  查詢條件
-                </span>
+              <div>
+                taiwan bus+
               </div>
-              <div
-                class="query-hint"
-              >
-                本資料根據農委會資料開放平台-動物認領養資料呈現，資料呈現有誤或缺失等問題？，
-                <a
-                  class=""
-                  href="#/about"
-                >
-                  快來告訴我！
-                </a>
+              <div>
+                台 灣 公 車 動 態
               </div>
-              <div
-                class="css-15g53k6"
-              >
-                <div
-                  class="css-1hf907s"
-                >
-                  <div
-                    style="width: auto;"
-                  >
-                    <label
-                      class="css-1pteklo"
-                      for="area"
-                    >
-                      地區
-                    </label>
-                    <span
-                      data-dropdown-id="dropdown"
-                    >
-                      <input
-                        class="css-f16yi3"
-                        readonly=""
-                        value="任何地區"
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div
-                  class="css-1hf907s"
-                >
-                  <label
-                    class="css-1pteklo"
-                    for="animalType"
-                  >
-                    種類
-                  </label>
-                  <div
-                    class="css-1wqqbyi"
-                  >
-                    <div
-                      class="css-1gg7rw7"
-                      data-testid="switch-button"
-                      disabled=""
-                    >
-                      <svg
-                        fill="#FAFAFA"
-                        height="2.1em"
-                        viewBox="0 0 25 24"
-                        width="2.1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M12.9912 9.60086L20.3125 12.2782V23.2C20.3125 23.4122 20.2302 23.6157 20.0837 23.7657C19.9372 23.9157 19.7385 24 19.5312 24H16.4062C16.199 24 16.0003 23.9157 15.8538 23.7657C15.7073 23.6157 15.625 23.4122 15.625 23.2V17.6004H7.8125V23.2C7.8125 23.4122 7.73019 23.6157 7.58368 23.7657C7.43716 23.9157 7.23845 24 7.03125 24H3.90625C3.69905 24 3.50034 23.9157 3.35382 23.7657C3.20731 23.6157 3.125 23.4122 3.125 23.2V12.5052C1.31055 11.8427 0 10.0838 0 8.00095C0 7.57663 0.16462 7.16969 0.457646 6.86965C0.750671 6.56961 1.1481 6.40105 1.5625 6.40105C1.9769 6.40105 2.37433 6.56961 2.66735 6.86965C2.96038 7.16969 3.125 7.57663 3.125 8.00095C3.12577 8.42503 3.29064 8.83151 3.5835 9.13138C3.87636 9.43125 4.27334 9.60006 4.6875 9.60086H12.9912ZM25 4.00119V5.6011C25 6.44974 24.6708 7.26362 24.0847 7.8637C23.4987 8.46378 22.7038 8.8009 21.875 8.8009H20.3125V10.5798L14.0625 8.29443V0.801381C14.0625 0.0889237 14.9033 -0.268055 15.396 0.235915L16.728 1.60133H19.3467C19.8794 1.60133 20.5063 1.99731 20.7441 2.48578L21.0938 3.20124H24.2188C24.426 3.20124 24.6247 3.28552 24.7712 3.43554C24.9177 3.58556 25 3.78903 25 4.00119ZM19.5312 4.00119C19.5312 3.84297 19.4854 3.68831 19.3996 3.55676C19.3137 3.42521 19.1917 3.32268 19.049 3.26213C18.9062 3.20158 18.7491 3.18574 18.5976 3.21661C18.446 3.24748 18.3068 3.32366 18.1976 3.43554C18.0883 3.54741 18.0139 3.68995 17.9838 3.84513C17.9536 4.0003 17.9691 4.16115 18.0282 4.30732C18.0874 4.45349 18.1875 4.57843 18.316 4.66633C18.4444 4.75423 18.5955 4.80114 18.75 4.80114C18.9572 4.80114 19.1559 4.71686 19.3024 4.56684C19.4489 4.41682 19.5312 4.21335 19.5312 4.00119Z"
-                        />
-                      </svg>
-                      <div
-                        class="css-xso49i"
-                      >
-                        狗
-                      </div>
-                    </div>
-                    <div
-                      class="css-k1s7yi"
-                      data-testid="switch-button"
-                    >
-                      <svg
-                        fill="#CBCBCB"
-                        height="2.1em"
-                        viewBox="0 0 24 24"
-                        width="2.1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M23.6392 8.92234C23.1414 8.59822 22.2465 6.70548 22.0473 6.48942C21.8482 6.2726 20.7038 5.78586 20.7038 5.78586L20.0572 3.569C18.813 3.73127 18.0674 5.89387 18.0175 6.05613C18.0175 6.05613 17.8928 9.81409 12.3705 8.35429C8.41248 7.30787 6.03202 6.29573 4.03271 8.33595C3.90765 8.10272 3.82219 7.86552 3.7598 7.60962C3.64833 7.14795 3.62302 6.61821 3.6234 6.01461C3.6234 5.71882 3.62851 5.40713 3.62888 5.08026C3.62851 4.39575 3.60577 3.64114 3.43923 2.83788C3.27423 2.03426 2.95951 1.18637 2.40676 0.341638C2.16835 -0.0235415 1.70251 -0.10964 1.36618 0.149878C1.03022 0.409396 0.950959 0.915645 1.18974 1.28082C1.62587 1.95051 1.85358 2.57322 1.98343 3.19389C2.11182 3.81375 2.13676 4.43682 2.13643 5.08026C2.13643 5.38716 2.1309 5.69854 2.1309 6.01461C2.13165 6.65887 2.15143 7.32896 2.31502 8.0178C2.44374 8.5647 2.67699 9.11721 3.04196 9.63308C1.49672 12.278 2.34549 15.0865 2.34549 15.0865L0.747381 17.8498C0.718412 17.8997 0.698959 17.9551 0.689068 18.0124L0.00684957 22.091C-0.0231973 22.2703 0.0472558 22.4517 0.185865 22.5538L2.10676 23.9682C2.14782 23.9988 2.19882 24.0076 2.24649 23.9933C2.29458 23.9793 2.33382 23.9426 2.35468 23.894L2.74496 22.9859C2.77393 22.9177 2.76221 22.8372 2.71524 22.7822L2.21237 22.199C2.11008 22.0806 2.07301 21.9119 2.11482 21.7557L2.95107 18.6463C2.97821 18.5471 3.03469 18.4606 3.11208 18.4008L4.23629 17.5317C4.38887 17.4129 4.59535 17.4185 4.74282 17.5445C4.89029 17.6704 4.94382 17.8869 4.87449 18.0763L4.3786 19.4308C4.32141 19.5863 4.34668 19.7633 4.44427 19.8924L7.27074 23.63H9.39034C9.4839 23.63 9.55984 23.5475 9.55984 23.4463V22.2998C9.55984 22.1981 9.4839 22.1156 9.39034 22.1156H8.71988C8.56323 22.1156 8.41946 22.0212 8.34573 21.8709L7.19804 19.7796C7.12102 19.6214 7.1357 19.4296 7.23474 19.2873L8.26355 17.8099C8.34352 17.6956 8.46826 17.6278 8.60068 17.6278H11.4693C11.6039 17.6278 11.7308 17.6979 11.8104 17.8164C11.89 17.9348 11.9131 18.087 11.8727 18.2269L10.9481 21.3937C10.9187 21.4934 10.9216 21.6014 10.9565 21.6991L11.5496 23.3598H13.3905V22.9273L13.0861 21.8872C13.0575 21.79 13.0597 21.6851 13.0923 21.5891L14.3332 17.9288C14.3948 17.7478 14.5532 17.6278 14.7304 17.6278H15.9965C16.1113 17.6278 16.2213 17.6789 16.3013 17.7693L19.8082 23.0353C19.8082 23.0353 21.5992 23.0353 22.1963 23.0353C22.7934 23.0353 22.5624 21.7406 21.9975 21.6831C20.9275 21.5751 19.5598 18.331 18.9627 17.1953C18.3656 16.0599 20.1189 12.544 21.4502 12.3833C22.7934 12.221 23.49 11.6259 23.6891 10.8147C24.087 10.3283 24.1369 9.24681 23.6392 8.92234Z"
-                        />
-                      </svg>
-                      <div
-                        class="css-xso49i"
-                      >
-                        貓
-                      </div>
-                    </div>
-                    <div
-                      class="css-k1s7yi"
-                      data-testid="switch-button"
-                    >
-                      <svg
-                        fill="#CBCBCB"
-                        height="2.1em"
-                        viewBox="0 0 24 24"
-                        width="2.1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M23 4.04052L21.3823 4.40523C20.6927 1.85813 18.5884 0 16.1062 0C13.0652 0 10.5911 2.78852 10.5911 6.21623C10.5911 6.68924 10.6384 7.14996 10.7277 7.59294L0.619708 0.105671L0.282659 1.2633C-0.677366 4.56124 1.05693 7.56586 1.78453 8.63032C1.69469 9.09437 1.59873 9.82232 1.65498 10.6464C1.78471 12.5458 2.63486 14.0595 4.1136 15.0239C4.43941 15.2364 4.77799 15.4053 5.12375 15.5315C5.45936 16.3547 5.92988 17.1109 6.52136 17.7622C6.89143 18.1698 7.29694 18.5227 7.7294 18.8182C7.42272 19.1005 7.03136 19.2703 6.60537 19.2703H5.37496C5.03346 18.185 4.11395 17.4054 3.03547 17.4054V19.2703C3.49161 19.2703 3.86271 19.6885 3.86271 20.2027C3.86271 20.7169 3.49161 21.1351 3.03547 21.1351V23C4.11395 23 5.03346 22.2204 5.37496 21.1351H6.60537C7.71763 21.1351 8.70771 20.5355 9.33572 19.6085C9.88861 19.786 10.4642 19.8821 11.0506 19.8912C11.0816 19.8917 11.1126 19.8919 11.1436 19.8919C12.8947 19.8919 14.5418 19.1311 15.7902 17.7431C17.0609 16.3302 17.7607 14.4442 17.7607 12.4324C17.7607 12.3376 17.7588 12.2429 17.7556 12.1484C19.6576 11.4751 21.1187 9.66931 21.5145 7.43543L23 7.77031L21.897 5.90539L23 4.04052ZM17.2092 6.52702C16.7524 6.52702 16.382 6.10955 16.382 5.59456C16.382 5.07962 16.7524 4.66215 17.2092 4.66215C17.6661 4.66215 18.0365 5.07962 18.0365 5.59456C18.0364 6.10955 17.6661 6.52702 17.2092 6.52702Z"
-                        />
-                      </svg>
-                      <div
-                        class="css-xso49i"
-                      >
-                        鳥
-                      </div>
-                    </div>
-                    <div
-                      class="css-k1s7yi"
-                      data-testid="switch-button"
-                    >
-                      <svg
-                        fill="#CBCBCB"
-                        height="2.1em"
-                        viewBox="0 0 24 24"
-                        width="2.1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.1296 20.8365C18.6211 18.3323 18.8731 15.5859 18.8606 12.8198C18.8486 10.171 18.5968 7.54899 18.1295 5.16354H0.731254C0.239945 7.66797 -0.0120566 10.4145 0.000443383 13.1804C0.0123574 15.8296 0.264066 18.4516 0.731205 20.8365H18.1296ZM9.43033 18.3088C7.41934 18.3088 5.67334 17.6782 5.67334 15.6134C5.67334 13.6888 7.3587 12.1231 9.43033 12.1231C11.502 12.1231 13.1873 13.6888 13.1873 15.6134C13.1873 17.6771 11.4432 18.3088 9.43033 18.3088ZM13.3513 8.98737C14.4734 8.78633 15.5384 9.56836 15.7316 10.7357C15.9475 12.04 14.9864 13.2416 13.6981 13.2416C12.723 13.2416 11.8449 12.5179 11.6703 11.4629C11.4771 10.2957 12.2289 9.18836 13.3513 8.98737ZM9.43033 7.57007C10.5665 7.57007 11.4909 8.53141 11.4909 9.71309C11.4909 10.8948 10.5666 11.8561 9.43033 11.8561C8.2941 11.8561 7.36973 10.8948 7.36973 9.71309C7.36973 8.53141 8.29419 7.57007 9.43033 7.57007ZM5.15972 8.95639C6.2959 8.95639 7.22032 9.91773 7.22032 11.0994C7.22032 12.281 6.29595 13.2424 5.15972 13.2424C4.02349 13.2424 3.09912 12.2811 3.09912 11.0994C3.09917 9.91773 4.02354 8.95639 5.15972 8.95639Z"
-                        />
-                        <path
-                          d="M0.713089 3.34958H18.1478L18.6585 1.11688C18.7888 0.547219 18.3727 0 17.8101 0H1.05074C0.487649 0 0.0721216 0.547625 0.202297 1.11693L0.713089 3.34958Z"
-                        />
-                        <path
-                          d="M18.1477 22.6505H0.713092L0.202399 24.8831C0.0720276 25.4528 0.488141 26 1.05074 26H17.81C18.3731 26 18.7886 25.4524 18.6585 24.8831L18.1477 22.6505Z"
-                        />
-                      </svg>
-                      <div
-                        class="css-xso49i"
-                      >
-                        其他
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-1hf907s"
-                >
-                  <label
-                    class="css-1pteklo"
-                    for="animalSex"
-                  >
-                    性別
-                  </label>
-                  <div
-                    class="css-1wqqbyi"
-                  >
-                    <div
-                      class="css-15chvrb"
-                      data-testid="switch-button"
-                    >
-                      <div
-                        class="css-1ope4af"
-                      >
-                        公
-                      </div>
-                    </div>
-                    <div
-                      class="css-15chvrb"
-                      data-testid="switch-button"
-                    >
-                      <div
-                        class="css-1ope4af"
-                      >
-                        母
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-1hf907s"
-                >
-                  <label
-                    class="css-1pteklo"
-                  >
-                    關鍵字
-                  </label>
-                  <input
-                    class="css-y6uj2z"
-                    placeholder="例如：虎斑, 柴犬"
-                  />
-                </div>
-                <div
-                  class="css-1hf907s"
-                >
-                  <label
-                    class="alignBlock css-1pteklo"
-                  />
-                  <div
-                    class="search-button-with-ripple css-1c9bx7y"
-                  >
-                    <div
-                      class="ripple-container"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-magnifying-glass "
-                        data-icon="magnifying-glass"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        style="font-size: 1.2em; width: 1.5em; height: 1.2em;"
-                        viewBox="0 0 512 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                      <span
-                        style="margin-left: .2em;"
-                      >
-                        搜尋
-                      </span>
-                    </div>
-                  </div>
-                </div>
+              <div>
+                時 刻 查 詢 系 統
               </div>
             </div>
-            <section />
           </div>
+        </section>
+        <section
+          class="home-cities"
+        >
+          <a
+            class="city-card city-color-black city-link"
+            href="#/search/zh/Taipei"
+          >
+            <div
+              class="city-icon"
+            >
+               
+              <svg
+                fill="#283C43"
+                viewBox="0 0 51 51"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                />
+                <path
+                  d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                />
+                <path
+                  d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                />
+                <path
+                  d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                />
+                <path
+                  d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                />
+              </svg>
+            </div>
+            <div
+              class="city-name"
+            >
+              台北市 
+            </div>
+            <div
+              class="city-name-en"
+            >
+               Taipei 
+            </div>
+          </a>
+          <a
+            class="city-card city-color-blue city-link"
+            href="#/search/zh/Taoyuan"
+          >
+            <div
+              class="city-icon"
+            >
+               
+              <svg
+                fill="#3591C5"
+                viewBox="0 0 51 51"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                />
+                <path
+                  d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                />
+                <path
+                  d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                />
+                <path
+                  d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                />
+                <path
+                  d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                />
+              </svg>
+            </div>
+            <div
+              class="city-name"
+            >
+              桃園市
+            </div>
+            <div
+              class="city-name-en"
+            >
+              Taoyuan
+            </div>
+          </a>
+          <a
+            class="city-card city-color-pink city-link"
+            href="#/search/zh/Taichung"
+          >
+            <div
+              class="city-icon"
+            >
+               
+              <svg
+                fill="#D08181"
+                viewBox="0 0 51 51"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                />
+                <path
+                  d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                />
+                <path
+                  d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                />
+                <path
+                  d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                />
+                <path
+                  d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                />
+              </svg>
+            </div>
+            <div
+              class="city-name"
+            >
+              台中市
+            </div>
+            <div
+              class="city-name-en"
+            >
+              Taichung
+            </div>
+          </a>
+          <a
+            class="city-card city-color-cyan city-link"
+            href="#/search/zh/Tainan"
+          >
+            <div
+              class="city-icon"
+            >
+               
+              <svg
+                fill="#7FC0C5"
+                viewBox="0 0 51 51"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                />
+                <path
+                  d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                />
+                <path
+                  d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                />
+                <path
+                  d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                />
+                <path
+                  d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                />
+              </svg>
+            </div>
+            <div
+              class="city-name"
+            >
+              台南市
+            </div>
+            <div
+              class="city-name-en"
+            >
+              Tainan
+            </div>
+          </a>
+          <a
+            class="city-card city-color-blue-light city-link"
+            href="#/search/zh/Kaohsiung"
+          >
+            <div
+              class="city-icon"
+            >
+               
+              <svg
+                fill="#5E9BAE"
+                viewBox="0 0 51 51"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                />
+                <path
+                  d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                />
+                <path
+                  d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                />
+                <path
+                  d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                />
+                <path
+                  d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                />
+              </svg>
+            </div>
+            <div
+              class="city-name"
+            >
+              高雄市
+            </div>
+            <div
+              class="city-name-en"
+            >
+               Kaohsiung
+            </div>
+          </a>
+          <a
+            class="city-card city-color-blue-dark city-link"
+            href="#/search/zh/cities"
+          >
+            <div
+              class="city-icon"
+            >
+               
+              <svg
+                fill="#52797C"
+                viewBox="0 0 51 51"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M43.0312 17.5312H46.2188V23.9062H43.0312V17.5312Z"
+                />
+                <path
+                  d="M4.78125 17.5312H7.96875V23.9062H4.78125V17.5312Z"
+                />
+                <path
+                  d="M31.875 31.875H35.0625V35.0625H31.875V31.875Z"
+                />
+                <path
+                  d="M15.9375 31.875H19.125V35.0625H15.9375V31.875Z"
+                />
+                <path
+                  d="M33.4688 6.375H17.5312C15.4186 6.37753 13.3932 7.21791 11.8993 8.71179C10.4054 10.2057 9.56503 12.2311 9.5625 14.3438V36.6562C9.56334 37.5014 9.89944 38.3116 10.497 38.9092C11.0946 39.5068 11.9049 39.8429 12.75 39.8438V44.625H15.9375V39.8438H35.0625V44.625H38.25V39.8438C39.095 39.8425 39.905 39.5063 40.5025 38.9088C41.1 38.3113 41.4362 37.5012 41.4375 36.6562V14.3438C41.435 12.2311 40.5946 10.2057 39.1007 8.71179C37.6068 7.21791 35.5814 6.37753 33.4688 6.375ZM38.25 15.9375V25.5H12.75V15.9375H38.25ZM17.5312 9.5625H33.4688C34.4544 9.56543 35.4149 9.8734 36.2185 10.4441C37.0221 11.0149 37.6293 11.8203 37.9568 12.75H13.0433C13.3707 11.8203 13.9779 11.0149 14.7815 10.4441C15.5851 9.8734 16.5456 9.56543 17.5312 9.5625ZM12.75 36.6562V28.6875H38.2516L38.2532 36.6562H12.75Z"
+                />
+              </svg>
+            </div>
+            <div
+              class="city-name"
+            >
+              其他地區
+            </div>
+            <div
+              class="city-name-en"
+            >
+              Other City
+            </div>
+          </a>
+        </section>
+        <div
+          class="footer"
+        >
+          <span
+            class="footer-right"
+          >
+            Copyright © 2023 台灣公車 e 點通 All rights reserved.
+          </span>
         </div>
-      </div>
-      <div
-        class="css-1x44e1i"
-      >
-        聯絡信箱 : minilabmemo+petfinder@gmail.com 
-        <br />
-        Pet Finder TW@2023
       </div>
     </div>
   </div>,

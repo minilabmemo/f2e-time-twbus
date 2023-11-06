@@ -15,7 +15,7 @@ import {
   LangType,
   StatusColorType,
   statusDefine,
-} from './const'; // 請替換為你的模組路徑
+} from './const';
 
 describe('常數與物件', () => {
 
@@ -71,7 +71,7 @@ describe('statusDefine 函數', () => {
     expect(status1[0]).toEqual('尚未發車');
     expect(status1[1]).toEqual(StatusColorType.gray);
 
-    const status2 = statusDefine(2, 30);
+    const status2 = statusDefine(0, 30);
     expect(status2[0]).toEqual('進站中');
     expect(status2[1]).toEqual(StatusColorType.red);
 

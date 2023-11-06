@@ -3,6 +3,11 @@
   "homepage": "https://minilabmemo.github.io/f2e-time-twbus",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@shotgunjed)/"
+    ]
+  },
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -37,7 +42,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "testReport": "npm test -- --coverage",
+    "testC": "npm test -- --coverage",
     "eject": "react-scripts eject",
     "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build"
