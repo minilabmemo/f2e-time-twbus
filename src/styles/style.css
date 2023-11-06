@@ -806,8 +806,10 @@ body {
 .refresh-bar .refresh-box .count {
   margin: 0px 10px;
 }
-.refresh-bar .refresh-box .button {
+.refresh-bar .refresh-box button {
   margin: 0px 20px;
+  border: 0px;
+  background-color: #FFF;
 }
 
 .tab-buttons {

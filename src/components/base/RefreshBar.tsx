@@ -1,26 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import refresh_now from '../../images/icons8_refresh.svg';
-export function RefreshBar({ initialCountdown, refreshAction, updateTime }: { initialCountdown: number, refreshAction: () => void, updateTime: string | undefined }) {
 
+export function RefreshBar({ initialCountdown, refreshAction, updateTime }: { initialCountdown: number, refreshAction: () => void, updateTime: string | undefined }) {
   const [countdown, setCountdown] = useState(initialCountdown);
+  const countdownTimerRef = useRef<NodeJS.Timeout | null>(null);
+
   const startCountdown = () => {
-    setCountdown(initialCountdown); // 重置
-    const countdownTimer = setInterval(() => {
+    setCountdown(initialCountdown);
+
+    countdownTimerRef.current = setInterval(() => {
       setCountdown((prevCountdown) => prevCountdown - 1);
     }, 1000);
-
-    setTimeout(() => {
-      clearInterval(countdownTimer);
-    }, initialCountdown * 1000);
   };
+
+  const handleRefresh = () => {
+    if (countdownTimerRef.current) {
+      clearInterval(countdownTimerRef.current as NodeJS.Timeout);
+    }
+    setCountdown(initialCountdown);
+    refreshAction();
+    startCountdown();
+  };
+
   useEffect(() => {
-    startCountdown(); // 组件加載後就開始倒數
+    startCountdown();
+
+    return () => {
+      if (countdownTimerRef.current) {
+        clearInterval(countdownTimerRef.current as NodeJS.Timeout);
+      }
+    };
   }, []);
+
   useEffect(() => {
     if (countdown === 0) {
+      if (countdownTimerRef.current) {
+        clearInterval(countdownTimerRef.current as NodeJS.Timeout);
+      }
       refreshAction();
+      startCountdown();
     }
   }, [countdown, refreshAction]);
+
   function extractTimeFromDateTime(dateTimeString: string | undefined) {
     if (dateTimeString) {
       var indexOfT = dateTimeString.indexOf('T');
@@ -29,15 +50,16 @@ export function RefreshBar({ initialCountdown, refreshAction, updateTime }: { in
       }
     }
   }
+
   return (
     <div className='refresh-bar'>
-      <div style={{ width: `${(countdown / initialCountdown) * 100}%` }} className='countdown-line'> </div>
+      <div style={{ width: `${(countdown / initialCountdown) * 100}%` }} className='countdown-line'></div>
       <div className='refresh-box'>
         <div className="count">{countdown} 秒後更新</div>
-
-        <div className="button" onClick={() => refreshAction()}>  <img src={refresh_now} alt="refresh_now" className='icon' /> 立即更新 {extractTimeFromDateTime(updateTime)}</div>
+        <button onClick={handleRefresh}>
+          <img src={refresh_now} alt="refresh_now" className='icon' /> 立即更新 {extractTimeFromDateTime(updateTime)}
+        </button>
       </div>
-
-    </div >
-  )
+    </div>
+  );
 }
